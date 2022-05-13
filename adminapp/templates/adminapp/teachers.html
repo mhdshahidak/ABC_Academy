@@ -1,0 +1,95 @@
+{% extends 'adminapp/index.html' %}
+{% block content %}
+{% load static %}
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="row">
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="{% static 'webapp/img/img-01.jpg' %}" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Malappuram</h5>
+                      
+                      <a href="{% url 'adminapp:teacherslist' %}" class="btn btn-sm btn-success">View</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="{% static 'webapp/img/img-02.jpg' %}" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Kondotty</h5>
+                      <a href="{% url 'adminapp:teacherslist' %}" class="btn btn-sm btn-success">View</a>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="{% static 'webapp/img/img-03.jpg' %}" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Mukkam</h5>
+                      
+                      <a href="{% url 'adminapp:teacherslist' %}" class="btn btn-sm btn-success">View</a>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="{% static 'webapp/img/img-04.jpg' %}" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Edavannappara</h5>
+                      <a href="{% url 'adminapp:teacherslist' %}" class="btn btn-sm btn-success">View</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="{% static 'webapp/img/img-01.jpg' %}" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Ramanattukara</h5>
+                      
+                      <a href="{% url 'adminapp:teacherslist' %}" class="btn btn-sm btn-success">View</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="{% static 'webapp/img/img-02.jpg' %}" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Manjer</h5>
+                      <a href="{% url 'adminapp:teacherslist' %}" class="btn btn-sm btn-success">View</a>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="{% static 'webapp/img/img-03.jpg' %}" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Nilaboor</h5>
+                      
+                      <a href="{% url 'adminapp:teacherslist' %}" class="btn btn-sm btn-success">View</a>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="{% static 'webapp/img/img-04.jpg' %}" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Vengara</h5>
+                      <a href="{% url 'adminapp:teacherslist' %}" class="btn btn-sm btn-success">View</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        </div>
+    </div>
+</div>
+
+{% endblock %}
