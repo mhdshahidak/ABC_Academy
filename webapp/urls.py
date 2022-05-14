@@ -4,6 +4,6 @@ from django.urls import path
 app_name ='webapp'
 
 urlpatterns = [
-    path('',views.index,name="index"),
+    path('',views.home,name="home"),
 
 ]
