@@ -1,35 +1,38 @@
 from django.shortcuts import render
 
 # Create your views here.
-def index(request):
-    return render(request,'adminapp/admindash.html')
+def admindashbord(request):
+    return render(request,'adminapps/home.html')
 
-def branch(request):
-    return render(request,'adminapp/branch.html')
+def branch_list(request):
+    return render(request,'adminapps/branch.html')
 
-def add_branch(request):
-    return render(request,'adminapp/addbranch.html')
+# def branch_list(request):
+#     return render(request,'adminapps/branchlist.html')
 
-def teachers(request):
-    return render(request,'adminapp/teachers.html')
+# def add_branch(request):
+#     return render(request,'adminapp/addbranch.html')
 
-def teachers_list(request):
-    return render(request,'adminapp/teachers_list.html')
+# def teachers(request):
+#     return render(request,'adminapp/teachers.html')
 
-def add_teachers(request):
-    return render(request,'adminapp/add_teacher.html')
+# def teachers_list(request):
+#     return render(request,'adminapp/teachers_list.html')
 
-def exams(request):
-    return render(request,'adminapp/exams.html')
+# def add_teachers(request):
+#     return render(request,'adminapp/add_teacher.html')
 
-def students(request):
-    return render(request,'adminapp/students.html')
+# def exams(request):
+#     return render(request,'adminapp/exams.html')
 
-def students_by_courses(request):
-    return render(request,'adminapp/students_by_branch.html')
+# def students(request):
+#     return render(request,'adminapp/students.html')
 
-def students_list(request):
-    return render(request,'adminapp/student_list.html')
+# def students_by_courses(request):
+#     return render(request,'adminapp/students_by_branch.html')
 
-def add_student(request):
-    return render(request,'adminapp/addstudent.html')
+# def students_list(request):
+#     return render(request,'adminapp/student_list.html')
+
+# def add_student(request):
+#     return render(request,'adminapp/addstudent.html')
