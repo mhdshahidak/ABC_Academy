@@ -7,32 +7,32 @@ def admindashbord(request):
 def branch_list(request):
     return render(request,'adminapps/branch.html')
 
-# def branch_list(request):
-#     return render(request,'adminapps/branchlist.html')
 
-# def add_branch(request):
-#     return render(request,'adminapp/addbranch.html')
+def add_branch(request):
+    return render(request,'adminapps/addbranch.html')
 
-# def teachers(request):
-#     return render(request,'adminapp/teachers.html')
+def teachers(request):
+    return render(request,'adminapps/teachers.html')
 
-# def teachers_list(request):
-#     return render(request,'adminapp/teachers_list.html')
+def teachers_list(request):
+    return render(request,'adminapps/teachers_list.html')
 
-# def add_teachers(request):
-#     return render(request,'adminapp/add_teacher.html')
+def add_teacher(request):
+    return render(request,'adminapps/addteacher.html')
+
+def students(request):
+    return render(request,'adminapps/students.html')
+
 
 # def exams(request):
 #     return render(request,'adminapp/exams.html')
 
-# def students(request):
-#     return render(request,'adminapp/students.html')
 
-# def students_by_courses(request):
-#     return render(request,'adminapp/students_by_branch.html')
+def students_by_courses(request):
+    return render(request,'adminapps/students_by_branch.html')
 
-# def students_list(request):
-#     return render(request,'adminapp/student_list.html')
+def students_list(request):
+    return render(request,'adminapps/students_list.html')
 
-# def add_student(request):
-#     return render(request,'adminapp/addstudent.html')
+def add_student(request):
+    return render(request,'adminapps/addstudent.html')

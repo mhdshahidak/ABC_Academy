@@ -1,4 +1,4 @@
-{% extends 'adminapp/index.html' %}
+{% extends 'adminapps/index.html' %}
 {% block content %}
 {% load static %}
 
@@ -8,93 +8,50 @@
             <div class="row align-items-center">
                 <div class="col">
                     <h3 class="page-title">
-                        Invoice Grid
+                        Students
                     </h3>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item">
                             <a href="index.html">Dashboard</a>
                         </li>
                         <li class="breadcrumb-item active">
-                            Invoice Grid
+                            Students
                         </li>
                     </ul>
                 </div>
-                <div class="col-auto">
-                    <a href="{% url 'adminapp:addbranch' %}" class="btn btn-primary me-1">
-                        <i class="fas fa-plus"></i>
-                    </a>
-                    <a class="btn btn-primary filter-btn"
-                       href="javascript:void(0);"
-                       id="filter_search">
-                        <i class="fas fa-filter"></i>
-                    </a>
+                <div class="col-auto text-end float-end ms-auto">
+                    <!-- <a href="#" class="btn btn-outline-primary me-2"><i class="fas fa-download"></i> Download</a> -->
+                    <a href="add-student.html" class="btn btn-primary"><i class="fas fa-plus"></i></a>
                 </div>
             </div>
-            
         </div>
         <div class="row">
             <div class="col-xl-3 col-sm-6 col-12">
                 <div class="card">
                     <div class="card-body">
                         <div class="dash-widget-header">
-                            <span class="dash-widget-icon bg-1">
-                                <i class="fas fa-dollar-sign"></i>
+                            <span class="dash-widget-icon bg-3">
+                                <i class="fa fa-building"></i>
                             </span>
                             <div class="dash-count">
                                 <div class="dash-title">
-                                    Calicut
+                                    Kondotty
                                 </div>
                                 <div class="dash-counts">
                                     <p>
-                                        1,642
+                                        50
                                     </p>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="progress progress-sm mt-3">
-                            <div class="progress-bar bg-5"
-                                 role="progressbar"
-                                 style="width: 75%"
-                                 aria-valuenow="75"
-                                 aria-valuemin="0"
-                                 aria-valuemax="100">
-                            </div>
-                        </div>
-                        <p class="text-muted mt-3 mb-0">
-                            <a href="{% url 'adminapp:coursestudents' %}"><span class="text-danger me-1"><i class="fas fa-arrow-down me-1"></i></span></a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 col-12">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="dash-widget-header">
-                            <span class="dash-widget-icon bg-2">
-                                <i class="fas fa-users"></i>
-                            </span>
-                            <div class="dash-count">
-                                <div class="dash-title">
-                                    Ramanatttukara
-                                </div>
-                                <div class="dash-counts">
-                                    <p>
-                                        3,642
+                                <a href="{% url 'admins:coursestudents' %}">
+                                    <p class="text-muted mt-3 mb-0" style="float: right;">
+                                        <span class="text-success me-1"><i class="fa fa-arrow-right"></i>
                                     </p>
-                                </div>
+                                </a>
                             </div>
                         </div>
-                        <div class="progress progress-sm mt-3">
-                            <div class="progress-bar bg-6"
-                                 role="progressbar"
-                                 style="width: 65%"
-                                 aria-valuenow="75"
-                                 aria-valuemin="0"
-                                 aria-valuemax="100">
-                            </div>
-                        </div>
+                        
                         <p class="text-muted mt-3 mb-0">
-                            <a href="{% url 'adminapp:coursestudents' %}"><span class="text-danger me-1"><i class="fas fa-arrow-down me-1"></i></span></a>
+                            <span class="text-success me-1"></span> since last week
                         </p>
                     </div>
                 </div>
@@ -104,30 +61,27 @@
                     <div class="card-body">
                         <div class="dash-widget-header">
                             <span class="dash-widget-icon bg-3">
-                                <i class="fas fa-file-alt"></i>
+                                <i class="fa fa-building"></i>
                             </span>
                             <div class="dash-count">
                                 <div class="dash-title">
-                                    Mukkam
+                                    Ramanattukara
                                 </div>
                                 <div class="dash-counts">
                                     <p>
-                                        1,041
+                                        30
                                     </p>
                                 </div>
+                                <a href="{% url 'admins:teachers_list' %}">
+                                    <p class="text-muted mt-3 mb-0" style="float: right;">
+                                        <span class="text-success me-1"><i class="fa fa-arrow-right"></i>
+                                    </p>
+                                </a>
                             </div>
                         </div>
-                        <div class="progress progress-sm mt-3">
-                            <div class="progress-bar bg-7"
-                                 role="progressbar"
-                                 style="width: 85%"
-                                 aria-valuenow="75"
-                                 aria-valuemin="0"
-                                 aria-valuemax="100">
-                            </div>
-                        </div>
+                        
                         <p class="text-muted mt-3 mb-0">
-                            <a href="{% url 'adminapp:coursestudents' %}"><span class="text-danger me-1"><i class="fas fa-arrow-down me-1"></i></span></a>
+                            <span class="text-success me-1"></span> since last week
                         </p>
                     </div>
                 </div>
@@ -136,37 +90,97 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="dash-widget-header">
-                            <span class="dash-widget-icon bg-4">
-                                <i class="far fa-file"></i>
+                            <span class="dash-widget-icon bg-3">
+                                <i class="fa fa-building"></i>
                             </span>
                             <div class="dash-count">
                                 <div class="dash-title">
-                                    Kondotty
+                                    Calicut
                                 </div>
                                 <div class="dash-counts">
                                     <p>
-                                        2,150
+                                        60
                                     </p>
                                 </div>
+                                <a href="{% url 'admins:teachers_list' %}">
+                                    <p class="text-muted mt-3 mb-0" style="float: right;">
+                                        <span class="text-success me-1"><i class="fa fa-arrow-right"></i>
+                                    </p>
+                                </a>
                             </div>
                         </div>
-                        <div class="progress progress-sm mt-3">
-                            <div class="progress-bar bg-8"
-                                 role="progressbar"
-                                 style="width: 45%"
-                                 aria-valuenow="75"
-                                 aria-valuemin="0"
-                                 aria-valuemax="100">
-                            </div>
-                        </div>
+                        
                         <p class="text-muted mt-3 mb-0">
-                            <a href="{% url 'adminapp:coursestudents' %}"><span class="text-danger me-1"><i class="fas fa-arrow-down me-1"></i></span></a>
+                            <span class="text-success me-1"></span> since last week
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="dash-widget-header">
+                            <span class="dash-widget-icon bg-3">
+                                <i class="fa fa-building"></i>
+                            </span>
+                            <div class="dash-count">
+                                <div class="dash-title">
+                                    Mukkam
+                                </div>
+                                <div class="dash-counts">
+                                    <p>
+                                        25
+                                    </p>
+                                </div>
+                                <a href="{% url 'admins:teachers_list' %}">
+                                    <p class="text-muted mt-3 mb-0" style="float: right;">
+                                        <span class="text-success me-1"><i class="fa fa-arrow-right"></i>
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <p class="text-muted mt-3 mb-0">
+                            <span class="text-success me-1"></span> since last week
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="dash-widget-header">
+                            <span class="dash-widget-icon bg-3">
+                                <i class="fa fa-building"></i>
+                            </span>
+                            <div class="dash-count">
+                                <div class="dash-title">
+                                    Manjeri
+                                </div>
+                                <div class="dash-counts">
+                                    <p>
+                                        20
+                                    </p>
+                                </div>
+                                <a href="{% url 'admins:teachers_list' %}">
+                                    <p class="text-muted mt-3 mb-0" style="float: right;">
+                                        <span class="text-success me-1"><i class="fa fa-arrow-right"></i>
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <p class="text-muted mt-3 mb-0">
+                            <span class="text-success me-1"></span> since last week
                         </p>
                     </div>
                 </div>
             </div>
         </div>
+        
+        
     </div>
+   
 </div>
 
 {% endblock %}
