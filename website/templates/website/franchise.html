@@ -2,12 +2,13 @@
 {% load static %}
 {% block content %}
 
+
 <link href="{% static 'websites/css/skins/square/blue.css' %}" rel="stylesheet">
 
 
 <div class="sub_header bg_1">
     <div id="intro_txt">
-        <h1>Online <strong>Apply</strong> course</h1>
+        <h1><strong>Franchise</strong></h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
     </div>
 </div>
@@ -33,23 +34,24 @@
                     <form action="" id="apply_online" method="POST">
                         <div class="indent_title_in">
                             <i class="pe-7s-user"></i>
-                            <h3>Personal details</h3>
+                            <h3> details</h3>
                             <!-- <p>Mussum ipsum cacilds, vidis litro abertis.</p> -->
                         </div>
                         <div class="wrapper_indent">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>First name</label>
-                                        <input type="text" class="form-control styled required" id="name_apply"
-                                            name="name_apply" placeholder="First name">
+                                        <label>Branch name</label>
+                                        <input type="text" class="form-control styled required" id="branchname_apply"
+                                            name="branchname_apply" placeholder="Branch name">
                                     </div>
                                 </div>
+                                
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Last name</label>
-                                        <input type="text" class="form-control styled required" id="lastname_apply"
-                                            name="lastname_apply" placeholder="Last name">
+                                        <label>Branch Manager Name</label>
+                                        <input type="text" class="form-control styled required" id="manager_apply"
+                                            name="manager_apply" placeholder="Branch Manager Name">
                                     </div>
                                 </div>
                             </div><!-- End row -->
@@ -69,36 +71,6 @@
                                     </div>
                                 </div>
                             </div><!-- End row -->
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Date of birth</label>
-                                        <input type="text" class="form-control styled required" id="birth_apply"
-                                            name="birth_apply" placeholder="dd/mm/year">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Gender</label><br>
-                                        <div class="radio_inline">
-                                            <input type="radio" name="gender_apply" id="gender_apply_male"
-                                                class="required" value="Male"><label
-                                                style="margin-right:20px;">Male</label>
-                                            <input type="radio" name="gender_apply" id="gender_apply_female"
-                                                class="required" value="Female"><label>Female</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><!-- End row -->
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Photo</label>
-                                        <input type="file" class="form-control styled required" id="photo_apply"
-                                            name="photo_apply" placeholder="Upload your photo">
-                                    </div>
-                                </div>
-                            </div><!-- End row -->
                         </div>
 
                         <hr class="styled_2">
@@ -108,8 +80,6 @@
                             <!-- <p>Mussum ipsum cacilds, vidis litro abertis.</p> -->
                         </div>
                         <div class="wrapper_indent">
-
-
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -150,58 +120,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <hr class="styled_2">
-                        <div class="indent_title_in">
-                            <i class="pe-7s-study"></i>
-                            <h3>Course preferences</h3>
-                            <!-- <p>Mussum ipsum cacilds, vidis litro abertis.</p> -->
-                        </div>
-                        <div class="wrapper_indent">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Branch</label>
-                                    <div class="styled-select">
-                                        <select class="form-control required" name="country_apply"
-                                            id="country_apply">
-                                            <option value="" selected>Select your country</option>
-                                            <option value="Europe">Kondotty</option>
-                                            <option value="Asia">malappuram</option>
-                                            <option value="North America">Ramanattukara</option>
-                                            <option value="South America">vadakara</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row list_courses_apply">
-                                <div class="col-md-4">
-                                    <!-- <h4>Diploma courses</h4> -->
-                                    <ul>
-                                        <li>
-                                            <label>
-                                                <input type="checkbox" name="apply_course[]"
-                                                    id="mathematics_apply" value="Mathematics diploma" required
-                                                    minlength="1">Montessory TTC
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label>
-                                                <input type="checkbox" name="apply_course[]" id="sciences_apply"
-                                                    value="Sciences diploma">Fashion Designing
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label>
-                                                <input type="checkbox" name="apply_course[]"
-                                                    id="litterature_apply"
-                                                    value="Litterature diploma">Other Short Term Courses
-                                            </label>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
                         <hr class="styled_2">
 
                         <div class="wrapper_indent">
@@ -232,4 +150,12 @@ $('input').iCheck({
   $("#apply_online").validate();
 </script>
 
-{% endblock  %}
+
+
+{% endblock content %}
+
+
+
+
+
+

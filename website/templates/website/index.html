@@ -38,6 +38,10 @@
     <!-- SPECIFIC CSS -->
     <link href="{% static 'websites/layerslider/css/layerslider.css' %}" rel="stylesheet">
     <link href="{% static 'websites/css/tabs.css' %}" rel="stylesheet">
+
+    <!-- BOOTSTRAP ICON CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 </head>
 
 <body>
@@ -78,14 +82,14 @@
                                     <li><a href="{% url 'web:onlineapplication' %}">Apply online</a></li>
                                 </ul>
                             </li>
-                            <li><a href="">Franchisee</a></li>
+                            <li><a href="{% url 'web:franchise' %}">Franchisee</a></li>
                             <li class="submenu">
                                 <a href="javascript:void(0);" class="show-submenu">About <i
                                         class="icon-down-open-mini"></i></a>
                                 <ul>
                                     <li><a href="{% url 'web:about' %}">About us</a></li>
                                     <li><a href="">Plan a visit</a></li>
-                                    <li><a href="">Contacts</a></li>
+                                    <li><a href="{% url 'web:contact' %}">Contacts</a></li>
                                 </ul>
                             </li>
                             <li class="megamenu submenu">
@@ -95,10 +99,10 @@
                                     <div class="col-md-4">
                                         <h3>Entertainments</h3>
                                         <ul>
-                                            <li><a href="">Blog</a></li>
-                                            <li><a href="">News</a></li>
-                                            <li><a href="">Events</a></li>
-                                            <li><a href="">Gallery</a></li>
+                                            <li><a href="{% url 'web:blog' %}">Blog</a></li>
+                                            <li><a href="{% url 'web:news' %}">News</a></li>
+                                            <li><a href="{% url 'web:events' %}">Events</a></li>
+                                            <li><a href="{% url 'web:gallery' %}">Gallery</a></li>
                                             <li><a href="">Testimonials</a></li>
                                         </ul>
                                     </div>
@@ -183,8 +187,8 @@
                         <li><a href="#">Plan a visit</a></li>
                     </ul>
                     <ul id="contacts_footer">
-                        <li>Info line - <a href="tel://033284322">(+91) – 9037304624</a></li>
-                        <li>Email - <a href="#">info@abcacademy.co.in</a></li>
+                        <li>Info line - <a href="">(+91) – 9037304624</a></li>
+                        <li>Email - <a href="">info@abcacademy.co.in</a></li>
                     </ul>
                 </div>
             </div><!-- End row -->
@@ -193,11 +197,12 @@
     <div id="copy">
         <div class="container">
             <ul class="follow-us hidden-xs">
-                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                <li><a href=""><i class="fa-brands fa-facebook-f"></i></a></li>
+                <li><a href=""><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
+                <li><a href=""><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a></li>
+                <li><a href=""><i class="fa-brands fa-youtube" aria-hidden="true"></i></a></li>
+                <li><a href=""><i class="fa-brands fa-google" aria-hidden="true"></i></a></li>
+                <li><a href=""><i class="fa-brands fa-twitter" aria-hidden="true"></i></a></li>
             </ul>
         </div>
     </div><!-- End copy -->
@@ -297,34 +302,37 @@
     <script>new CBPFWTabs(document.getElementById('tabs'));</script>
 
 
-    <style>
+<style>
     ul.follow-us {
-	display: block;
-}
- ul.follow-us li {
-	display: block;
-	padding: 0 4px;
-	float: left;
-}
- ul.follow-us li:first-child {
-	padding-left: 2px;
-}
- ul.follow-us li a {
-	width: 40px;
-	height: 40px;
-	display: block;
-	border: 2px #4d87b5 solid;
-	border-radius: 50%;
-	font-size: 18px;
-	line-height: 38px;
-	text-align: center;
-	color: #fff;
-}
- ul.follow-us li a:hover {
-	background: #1c7bc3;
-	border-color: #1c7bc3;
-}
-    </style>
+        display: block;
+    }
+     ul.follow-us li {
+        display: block;
+        padding: 0 2px;
+        float: left;
+    }
+     ul.follow-us li:first-child {
+        padding-left: 10px;
+        margin-left: 380px;
+    }
+     ul.follow-us li a {
+        width: 40px;
+        height: 40px;
+        display: block;
+        border: 2px #4d87b5 solid;
+        border-radius: 50%;
+        font-size: 18px;
+        line-height: 38px;
+        text-align: center;
+        color: #fff;
+        background: #1c7bc3;
+        border-color: #1c7bc3;
+    }
+     ul.follow-us li a:hover {
+        background: black;
+        border-color: black;
+    }
+        </style>
 </body>
 
 </html>

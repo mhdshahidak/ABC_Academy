@@ -1,0 +1,132 @@
+{% extends 'website/index.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="sub_header bg_1">
+    <div id="intro_txt">
+        <h1>ABC Academy <strong>Events</strong> page</h1>
+        <p>Ex saepe accusata duo, vel ne summo option delenit.</p>
+    </div>
+</div>
+<!--End sub_header -->
+
+<div id="position">
+    <div class="container">
+        <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">Category</a></li>
+            <li>Page active</li>
+        </ul>
+    </div>
+</div><!-- Position -->
+
+
+<div class="container_gray_bg">
+    <div class="container margin_60">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="strip_all_courses_list wow fadeIn" data-wow-delay="0.1s">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <div class="img_list">
+                                <a href="{% url 'web:eventpage' %}"><img src="{% static 'websites/img/event1.jpg' %}"
+                                        alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="clearfix visible-xs-block">
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="course_list_desc">
+                                <h5>20 Agusut 2015</h5>
+                                <h3><strong>Next students meeting</strong></h3>
+                                <p>
+                                    Lorem ipsum dolor sit amet, ei tincidunt persequeris efficiantur vel, usu animal patrioque omittantur et. Timeam nostrud platonem nec ea, simul nihil delectus has ex.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2">
+                            <div class="details_list_col">
+                                <div>
+                                    <a href="{% url 'web:eventpage' %}" class="button_outline">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--End strip -->
+
+
+                <div class="strip_all_courses_list wow fadeIn" data-wow-delay="0.1s">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <div class="img_list">
+                                <a href=""><img src="{% static 'websites/img/event2.jpg' %}"
+                                        alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="clearfix visible-xs-block">
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="course_list_desc">
+                                <h5>20 Agusut 2015</h5>
+                                <h3><strong>Next students meeting</strong></h3>
+                                <p>
+                                    Lorem ipsum dolor sit amet, ei tincidunt persequeris efficiantur vel, usu animal patrioque omittantur et. Timeam nostrud platonem nec ea, simul nihil delectus has ex.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2">
+                            <div class="details_list_col">
+                                <div>
+                                    <a href="" class="button_outline">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--End strip -->
+
+                <div class="strip_all_courses_list wow fadeIn" data-wow-delay="0.1s">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <div class="img_list">
+                                <a href=""><img src="{% static 'websites/img/event3.jpg' %}"
+                                        alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="clearfix visible-xs-block">
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="course_list_desc">
+                                <h5>20 Agusut 2015</h5>
+                                <h3><strong>Next students meeting</strong></h3>
+                                <p>
+                                    Lorem ipsum dolor sit amet, ei tincidunt persequeris efficiantur vel, usu animal patrioque omittantur et. Timeam nostrud platonem nec ea, simul nihil delectus has ex.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2">
+                            <div class="details_list_col">
+                                <div>
+                                    <a href="{% url 'web:eventpage' %}" class="button_outline">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--End strip -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}
