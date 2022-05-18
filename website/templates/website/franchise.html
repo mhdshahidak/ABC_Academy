@@ -1,0 +1,161 @@
+{% extends 'website/index.html' %}
+{% load static %}
+{% block content %}
+
+
+<link href="{% static 'websites/css/skins/square/blue.css' %}" rel="stylesheet">
+
+
+<div class="sub_header bg_1">
+    <div id="intro_txt">
+        <h1><strong>Franchise</strong></h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+    </div>
+</div>
+<!--End sub_header -->
+
+
+
+<div class="container_gray_bg">
+    <div id="position">
+        <div class="container">
+            <ul>
+                <li><a href="">Home</a></li>
+                <li><a href="">Category</a></li>
+                <li>Page active</li>
+            </ul>
+        </div>
+    </div><!-- Position -->
+    <div class="container margin_60">
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="box_style_1">
+                    <form action="" id="apply_online" method="POST">
+                        <div class="indent_title_in">
+                            <i class="pe-7s-user"></i>
+                            <h3> details</h3>
+                            <!-- <p>Mussum ipsum cacilds, vidis litro abertis.</p> -->
+                        </div>
+                        <div class="wrapper_indent">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Branch name</label>
+                                        <input type="text" class="form-control styled required" id="branchname_apply"
+                                            name="branchname_apply" placeholder="Branch name">
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Branch Manager Name</label>
+                                        <input type="text" class="form-control styled required" id="manager_apply"
+                                            name="manager_apply" placeholder="Branch Manager Name">
+                                    </div>
+                                </div>
+                            </div><!-- End row -->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="email" class="form-control styled required" id="email_apply"
+                                            name="email_apply" placeholder="youremail@domain.com">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Phone number</label>
+                                        <input type="text" class="form-control styled required" id="phone_apply"
+                                            name="phone_apply" placeholder="+0043 XXX XXXXX">
+                                    </div>
+                                </div>
+                            </div><!-- End row -->
+                        </div>
+
+                        <hr class="styled_2">
+                        <div class="indent_title_in">
+                            <i class="pe-7s-map-marker"></i>
+                            <h3>Address</h3>
+                            <!-- <p>Mussum ipsum cacilds, vidis litro abertis.</p> -->
+                        </div>
+                        <div class="wrapper_indent">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Address line</label>
+                                        <input type="text" class="form-control styled required" id="address_apply"
+                                            name="address_apply" placeholder="Your full address">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>City</label>
+                                        <input type="text" class="form-control styled required" id="town_apply"
+                                            name="town_apply" placeholder="Town">
+                                    </div>
+                                </div>
+                            </div><!-- End row -->
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Country</label>
+                                    <div class="styled-select">
+                                        <select class="form-control required" name="country_apply"
+                                            id="country_apply">
+                                            <option value="" selected>Select your country</option>
+                                            <option value="Europe">India</option>
+                                            <option value="Asia">Asia</option>
+                                            <option value="North America">North America</option>
+                                            <option value="South America">South America</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Postal Code</label>
+                                        <input type="text" class="form-control styled required"
+                                            id="postal_code_apply" name="postal_code_apply" placeholder="001238">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="styled_2">
+
+                        <div class="wrapper_indent">
+                            <p><button type="submit" class="button">Submit</button></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--End row -->
+    </div>
+    <!--End container -->
+</div>
+<!--End container_gray_bg -->
+
+
+
+<!-- Specific scripts -->
+<script src="{% static 'websites/js/icheck.js' %}"></script>
+<script>  
+$('input').iCheck({
+   checkboxClass: 'icheckbox_square-blue',
+   radioClass: 'iradio_square-blue'
+ });
+ </script>
+ <script src="{% static 'websites/js/jquery.validate.js' %}"></script>
+ <script>
+  $("#apply_online").validate();
+</script>
+
+
+
+{% endblock content %}
+
+
+
+
+
+

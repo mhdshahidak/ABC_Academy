@@ -1,0 +1,264 @@
+{% extends 'website/index.html' %}
+{% load static %}
+{% block content %}
+
+
+
+
+<div class="sub_header bg_1">
+    <div id="intro_txt">
+        <h1> <strong>ABC</strong> Training Academy courses</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, pariatur?</p>
+    </div>
+</div>
+<!--End sub_header -->
+
+<div id="position">
+    <div class="container">
+        <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">Category</a></li>
+            <li>Page active</li>
+        </ul>
+    </div>
+</div><!-- Position -->
+
+
+
+<div class="container_gray_bg">
+    <div class="container margin_60">
+        <div class="row">
+            <div class="col-md-9">
+
+                <div class="strip_all_courses_list wow fadeIn" data-wow-delay="0.1s">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <div class="img_list">
+                                <a href="{% url 'web:ttccourse' %}"><img src="{% static 'websites/img/course_1.jpg' %}" alt="">
+                                    <div class="short_info">
+                                        <h3>MONTESSORI TTC</h3>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="clearfix visible-xs-block">
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="course_list_desc">
+                                <h3><strong>Montessori</strong> TTC</h3>
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio vero doloribus ullam
+                                    at quidem exercitationem qui temporibus nihil voluptates nobis cum dignissimos, aut
+                                    non saepe ipsa voluptatem tempore illum adipisci!
+                                </p>
+                                <ul class="add_info">
+                                    <li>
+                                        <div class="tooltip_styled tooltip-effect-4">
+                                            <span class="tooltip-item"><i class="pe-7s-compass"></i></span>
+                                            <div class="tooltip-content">
+                                                Dedicated Study Plan
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="tooltip_styled tooltip-effect-4">
+                                            <span class="tooltip-item"><i class="pe-7s-hourglass"></i></span>
+                                            <div class="tooltip-content">
+                                                Admission Deadline 31/11/2015
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="tooltip_styled tooltip-effect-4">
+                                            <span class="tooltip-item"><i class="pe-7s-medal"></i></span>
+                                            <div class="tooltip-content">
+                                                Most Requested Course
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2">
+                            <div class="details_list_col">
+                                <div>
+                                    <a href="{% url 'web:ttccourse' %}" class="button_outline">Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--End strip -->
+
+
+                <div class="strip_all_courses_list wow fadeIn" data-wow-delay="0.1s">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <div class="img_list">
+                                <a href="{% url 'web:fashioncourse' %}"><img src="{% static 'websites/img/course_4.jpg' %}" alt="">
+                                    <div class="short_info">
+                                        <h3>Fashion Designing</h3>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="clearfix visible-xs-block">
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="course_list_desc">
+                                <h3><strong>Fashion Designing</strong> diploma</h3>
+                                <p>
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt eum nisi facilis
+                                    eveniet perferendis amet saepe eligendi mollitia ducimus, recusandae nihil corporis
+                                    iusto aliquam aperiam rem doloremque eius at provident!
+                                </p>
+                                <ul class="add_info">
+                                    <li>
+                                        <div class="tooltip_styled tooltip-effect-4">
+                                            <span class="tooltip-item"><i class="pe-7s-compass"></i></span>
+                                            <div class="tooltip-content">
+                                                Dedicated Study Plan
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="tooltip_styled tooltip-effect-4">
+                                            <span class="tooltip-item"><i class="pe-7s-hourglass"></i></span>
+                                            <div class="tooltip-content">
+                                                Admission Deadline 31/11/2015
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="tooltip_styled tooltip-effect-4">
+                                            <span class="tooltip-item"><i class="pe-7s-medal"></i></span>
+                                            <div class="tooltip-content">
+                                                Most Requested Course
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2">
+                            <div class="details_list_col">
+                                <div>
+                                    <a href="{% url 'web:fashioncourse' %}" class="button_outline">Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--End strip -->
+
+                <div class="strip_all_courses_list wow fadeIn" data-wow-delay="0.1s">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <div class="img_list">
+                                <a href=""><img src="{% static 'websites/img/course_5.jpg' %}" alt="">
+                                    <div class="short_info">
+                                        <h3>Short Term Course</h3>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="clearfix visible-xs-block">
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="course_list_desc">
+                                <h3><strong>Short Term</strong> courses</h3>
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam sed, adipisci, quia
+                                    expedita suscipit corrupti esse quos natus debitis animi iste nobis ad nulla soluta?
+                                    Obcaecati consequatur assumenda ipsum architecto!
+                                </p>
+                                <ul class="add_info">
+                                    <li>
+                                        <div class="tooltip_styled tooltip-effect-4">
+                                            <span class="tooltip-item"><i class="pe-7s-compass"></i></span>
+                                            <div class="tooltip-content">
+                                                Dedicated Study Plan
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="tooltip_styled tooltip-effect-4">
+                                            <span class="tooltip-item"><i class="pe-7s-hourglass"></i></span>
+                                            <div class="tooltip-content">
+                                                Admission Deadline 31/11/2015
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="tooltip_styled tooltip-effect-4">
+                                            <span class="tooltip-item"><i class="pe-7s-medal"></i></span>
+                                            <div class="tooltip-content">
+                                                Most Requested Course
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2">
+                            <div class="details_list_col">
+                                <div>
+                                    <a href="" class="button_outline">Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--End strip -->
+
+            </div>
+            <!--End col-md-9 -->
+
+            <aside class="col-md-3">
+                <div class="banner">
+                    <i class=" iconcustom-school"></i>
+                    <h3>Take a campus tour</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab quis eos, autem itaque rerum saepe!
+                    </p>
+                    <a href="{% url 'web:tours' %}" class="banner_bt">Start tour</a>
+                </div>
+                <h4><strong>How to apply</strong></h4>
+                <p>
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus, deserunt at. Ad voluptas eveniet
+                    aliquid, vero nihil natus dignissimos harum.
+                </p>
+                <hr class="styled">
+                <div class="box_side">
+                    <h5>By Phone</h5>
+                    <i class="icon-phone"></i>
+                    <p>
+                        <a href="">(+91) – 9037304624</a><br>
+                        <small>Monday to Friday 9.00am - 6.00pm</small>
+                    </p>
+                </div>
+                <hr class="styled">
+                <div class="box_side">
+                    <h5>Apply Online</h5>
+                    <i class="icon_desktop"></i>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi in numquam eligendi. Blanditiis
+                        explicabo similique mollitia doloremque, temporibus expedita rem.
+                    </p>
+                    <p>
+                        <a href="{% url 'web:onlineapplication' %}" class="button small">Apply online</a>
+                    </p>
+                </div>
+            </aside>
+
+        </div>
+        <!--End row -->
+    </div>
+    <!--End container -->
+</div>
+<!--End container_gray_bg -->
+
+
+
+
+{% endblock %}

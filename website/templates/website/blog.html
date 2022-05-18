@@ -1,0 +1,148 @@
+{% extends 'website/index.html' %}
+{% load static %}
+{% block content %}
+
+<!-- SPECIFIC CSS -->
+<link href="{% static 'websites/css/blog.css' %}" rel="stylesheet">
+
+
+<div class="sub_header bg_1">
+    <div id="intro_txt">
+        <h1>ABC Academy <strong>Blog</strong> page</h1>
+        <p>Ex saepe accusata duo, vel ne summo option delenit.</p>
+    </div>
+</div>
+<!--End sub_header -->
+
+<div id="position">
+    <div class="container">
+        <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">Category</a></li>
+            <li>Page active</li>
+        </ul>
+    </div>
+</div><!-- Position -->
+
+
+<div class="container_gray_bg">
+    <div class="container margin_60">
+        <div class="row">
+
+            <div class="col-md-9">
+                <div class="post">
+                    <a href="{% url 'web:blogpost' %}"><img src="{% static 'websites/img/blog-1.jpg' %}" alt="" class="img-responsive"></a>
+                    <div class="post_info clearfix">
+                        <div class="post-left">
+                            <ul>
+                                <li><i class="icon-calendar-empty"></i>date <em>by Mark</em></li>
+                                <li><i class="icon-inbox-alt"></i><a href="#">Category</a></li>
+                                <li><i class="icon-tags"></i><a href="#">Works</a>, <a href="#">Personal</a></li>
+                            </ul>
+                        </div>
+                        <div class="post-right"><i class="icon-comment"></i><a href="">25 </a></div>
+                    </div>
+                    <h2>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur qui sit reprehenderit dolorem suscipit eaque neque saepe hic, modi, iste dolore aut provident officia maiores soluta natus recusandae ipsam non id? Perferendis asperiores quisquam, soluta dolor velit hic commodi libero molestias possimus praesentium, ducimus similique maiores molestiae. Nisi, optio. Et.
+                    </p>
+                    <p>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse doloribus voluptates assumenda sapiente in sed accusamus aspernatur distinctio eveniet magnam quidem commodi, quisquam id iure labore reiciendis culpa. Ab eum deleniti nam. A nam necessitatibus hic ipsa inventore molestias, et officiis dolorum iure cum, iste dolorem. Asperiores, autem. Vitae totam voluptatibus ea, ex minus exercitationem excepturi modi iure saepe adipisci?.......
+                    </p>
+                    <a href="{% url 'web:blogpost' %}" class="button">Read more</a>
+                </div><!-- end post -->
+
+                <div class="post">
+                    <a href=""><img src="{% static 'websites/img/blog-1.jpg' %}" alt="" class="img-responsive"></a>
+                    <div class="post_info clearfix">
+                        <div class="post-left">
+                            <ul>
+                                <li><i class="icon-calendar-empty"></i>date <em>by Mark</em></li>
+                                <li><i class="icon-inbox-alt"></i><a href="#">Category</a></li>
+                                <li><i class="icon-tags"></i><a href="#">Works</a>, <a href="#">Personal</a></li>
+                            </ul>
+                        </div>
+                        <div class="post-right"><i class="icon-comment"></i><a href="">25 </a></div>
+                    </div>
+                    <h2>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur qui sit reprehenderit dolorem suscipit eaque neque saepe hic, modi, iste dolore aut provident officia maiores soluta natus recusandae ipsam non id? Perferendis asperiores quisquam, soluta dolor velit hic commodi libero molestias possimus praesentium, ducimus similique maiores molestiae. Nisi, optio. Et.
+                    </p>
+                    <p>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse doloribus voluptates assumenda sapiente in sed accusamus aspernatur distinctio eveniet magnam quidem commodi, quisquam id iure labore reiciendis culpa. Ab eum deleniti nam. A nam necessitatibus hic ipsa inventore molestias, et officiis dolorum iure cum, iste dolorem. Asperiores, autem. Vitae totam voluptatibus ea, ex minus exercitationem excepturi modi iure saepe adipisci?.......
+                    </p>
+                    <a href="" class="button">Read more</a>
+                </div><!-- end post -->
+
+                <div class="post">
+                    <a href=""><img src="{% static 'websites/img/blog-1.jpg' %}" alt="" class="img-responsive"></a>
+                    <div class="post_info clearfix">
+                        <div class="post-left">
+                            <ul>
+                                <li><i class="icon-calendar-empty"></i>date <em>by Mark</em></li>
+                                <li><i class="icon-inbox-alt"></i><a href="#">Category</a></li>
+                                <li><i class="icon-tags"></i><a href="#">Works</a>, <a href="#">Personal</a></li>
+                            </ul>
+                        </div>
+                        <div class="post-right"><i class="icon-comment"></i><a href="">25 </a></div>
+                    </div>
+                    <h2>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur qui sit reprehenderit dolorem suscipit eaque neque saepe hic, modi, iste dolore aut provident officia maiores soluta natus recusandae ipsam non id? Perferendis asperiores quisquam, soluta dolor velit hic commodi libero molestias possimus praesentium, ducimus similique maiores molestiae. Nisi, optio. Et.
+                    </p>
+                    <p>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse doloribus voluptates assumenda sapiente in sed accusamus aspernatur distinctio eveniet magnam quidem commodi, quisquam id iure labore reiciendis culpa. Ab eum deleniti nam. A nam necessitatibus hic ipsa inventore molestias, et officiis dolorum iure cum, iste dolorem. Asperiores, autem. Vitae totam voluptatibus ea, ex minus exercitationem excepturi modi iure saepe adipisci?.......
+                    </p>
+                    <a href="" class="button">Read more</a>
+                </div><!-- end post -->
+
+                
+
+
+                <div class="text-center">
+                    <ul class="pagination">
+                        <li><a href="">Prev</a></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="">2</a></li>
+                        <li><a href="">3</a></li>
+                        <li><a href="">4</a></li>
+                        <li><a href="">5</a></li>
+                        <li><a href="">Next</a></li>
+                    </ul><!-- end pagination-->
+                </div>
+            </div><!-- End col-md-8-->
+
+            <aside class="col-md-3" id="sidebar">
+
+                <div class="widget">
+                    <div id="custom-search-input">
+                        <div class="input-group col-md-12">
+                            <input type="text" class="form-control input-lg" placeholder="Search" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-info btn-lg" type="button">
+                                    <i class="icon-search-1"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div><!-- End Search -->
+                <hr>
+                <div class="widget">
+                    <h4>Categories</h4>
+                    <ul id="cat_nav">
+                        <li><a href="{% url 'web:news' %}">News</a></li>
+                        <li><a href="{% url 'web:events' %}">Events</a></li>
+                        <li><a href="{% url 'web:blog' %}">Blogs</a></li>
+                    </ul>
+                </div><!-- End widget -->
+
+                <hr>
+            </aside><!-- End aside -->
+
+        </div><!-- End row-->
+    </div><!-- End container -->
+</div>
+
+
+
+{% endblock %}

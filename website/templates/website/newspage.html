@@ -1,0 +1,92 @@
+{% extends 'website/index.html' %}
+{% load static %}
+{% block content %}
+
+<link href="{% static 'websites/css/blog.css' %}" rel="stylesheet">
+
+
+<div class="sub_header bg_1">
+    <div id="intro_txt">
+        <h1>ABC ACADEMY <strong>News</strong> page</h1>
+        <p>Ex saepe accusata duo, vel ne summo option delenit.</p>
+    </div>
+</div>
+<!--End sub_header -->
+
+<div id="position">
+    <div class="container">
+        <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">Category</a></li>
+            <li>Page active</li>
+        </ul>
+    </div>
+</div><!-- Position -->
+
+
+<div class="container_gray_bg">
+    <div class="container margin_60">
+        <div class="row">
+
+            <div class="col-md-9">
+
+                <div class="post">
+                    <img src="{% static 'websites/img/blog-3.jpg' %}" alt="" class="img-responsive">
+                    <div class="post_info clearfix">
+                        <div class="post-left">
+                            <ul>
+                                <li><i class="icon-calendar-empty"></i>Date <em>by Mark</em></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <h2>Success Stories for ABC College in 2015's.</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet, ei tincidunt persequeris efficiantur vel, usu animal patrioque omittantur et. Timeam nostrud platonem nec ea, simul nihil delectus has ex.Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur qui sit reprehenderit dolorem suscipit eaque neque saepe hic, modi, iste dolore aut provident officia maiores soluta natus recusandae ipsam non id? Perferendis asperiores quisquam, soluta dolor velit hic commodi libero molestias possimus praesentium, ducimus similique maiores molestiae. Nisi, optio. Et.
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur qui sit reprehenderit dolorem suscipit eaque neque saepe hic, modi, iste dolore aut provident officia maiores soluta natus recusandae ipsam non id? Perferendis asperiores quisquam, soluta dolor velit hic commodi libero molestias possimus praesentium, ducimus similique maiores molestiae. Nisi, optio. Et.
+                    </p>
+                </div><!-- end post -->
+
+            </div><!-- End col-md-8-->
+
+
+            <aside class="col-md-3" id="sidebar">
+
+                <div class="widget">
+                    <div id="custom-search-input">
+                        <div class="input-group col-md-12">
+                            <input type="text" class="form-control input-lg" placeholder="Search" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-info btn-lg" type="button">
+                                    <i class="icon-search-1"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div><!-- End Search -->
+                <hr>
+                <div class="widget">
+                    <h4>Categories</h4>
+                    <ul id="cat_nav">
+                        <li><a href="{% url 'web:blog' %}">Blog</a></li>
+                        <li><a href="{% url 'web:events' %}">Events</a></li>
+                        <li><a href="{% url 'web:news' %}">News</a></li>
+                    </ul>
+                </div><!-- End widget -->
+
+                <hr>
+
+            </aside><!-- End aside -->
+
+        </div><!-- End row-->
+    </div><!-- End container -->
+</div>
+<!--End container_gray_bg -->
+
+
+{% endblock %}
+
+
+
+

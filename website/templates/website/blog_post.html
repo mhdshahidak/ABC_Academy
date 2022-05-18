@@ -1,0 +1,144 @@
+{% extends 'website/index.html' %}
+{% load static %}
+{% block content %}
+
+<link href="{% static 'websites/css/blog.css' %}" rel="stylesheet">
+
+
+<div class="sub_header bg_1">
+    <div id="intro_txt">
+        <h1>ABC ACADEMY <strong>Blog</strong> page</h1>
+        <p>Ex saepe accusata duo, vel ne summo option delenit.</p>
+    </div>
+</div>
+<!--End sub_header -->
+
+<div id="position">
+    <div class="container">
+        <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">Category</a></li>
+            <li>Page active</li>
+        </ul>
+    </div>
+</div><!-- Position -->
+
+
+<div class="container_gray_bg">
+    <div class="container margin_60">
+        <div class="row">
+
+            <div class="col-md-9">
+
+                <div class="post">
+                    <img src="{% static 'websites/img/blog-3.jpg' %}" alt="" class="img-responsive">
+                    <div class="post_info clearfix">
+                        <div class="post-left">
+                            <ul>
+                                <li><i class="icon-calendar-empty"></i>Date <em>by Mark</em></li>
+                                <li><i class="icon-inbox-alt"></i><a href="">Category</a></li>
+                                <li><i class="icon-tags"></i><a href="">Works</a>, <a href="#">Personal</a></li>
+                            </ul>
+                        </div>
+                        <div class="post-right"><i class="icon-comment"></i><a href="">25 </a></div>
+                    </div>
+                    <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore culpa molestiae aut voluptas libero magnam adipisci quasi ea fugit in ad ullam necessitatibus, autem nesciunt velit recusandae error temporibus magni amet a vero? Quaerat, ea, in provident dolore voluptatem fugiat praesentium veritatis eius minima fugit voluptas omnis, repellat vitae nesciunt!
+                    </p>
+                    <p>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Numquam, modi quas vitae voluptatibus mollitia dignissimos possimus consequatur fugiat itaque totam tenetur neque, repellendus minima commodi accusantium dicta quam laudantium nobis impedit fuga. Autem praesentium, ipsa dolor reprehenderit suscipit perferendis officia odit pariatur doloremque error animi dolorum corporis et iure laudantium sequi sunt sed culpa explicabo velit voluptates, enim, eligendi similique.......
+                    </p>
+                </div><!-- end post -->
+
+                <h4>2 comments</h4>
+
+                <div id="comments">
+                    <ol>
+                        <li>
+                            <div class="avatar"><a href="#"><img src="{% static 'websites/img/avatar1.jpg' %}" alt=""></a></div>
+                            <div class="comment_right clearfix">
+                                <div class="comment_info">
+                                    Posted by <a href="">Anna Smith</a><span>|</span> 25 apr 2019 <span>|</span><a
+                                        href="">Reply</a>
+                                </div>
+                                <p>
+                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vitae ipsum, harum consequatur tenetur repellendus sed! Quod enim placeat harum consequatur, assumenda, accusantium ipsum, quae rerum modi magni delectus quibusdam. Sapiente..
+                                </p>
+                            </div>
+                            <ul>
+                                <li>
+                                    <div class="avatar"><a href="#"><img src="{% static 'websites/img/avatar2.jpg' %}" alt=""></a></div>
+
+                                    <div class="comment_right clearfix">
+                                        <div class="comment_info">
+                                            Posted by <a href="">Tom Sawyer</a><span>|</span> 25 apr 2019
+                                            <span>|</span><a href="">Reply</a>
+                                        </div>
+                                        <p>
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate ex, autem doloremque doloribus ipsa ab facere sit, eaque, fuga reiciendis exercitationem blanditiis. Vitae nemo nostrum ex quae, excepturi obcaecati eveniet!
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div><!-- End Comments -->
+
+                <h4>Leave a comment</h4>
+
+                <form action="" method="POST">
+                    <div class="form-group">
+                        <input class="form-control styled" type="text" name="name" placeholder="Enter name">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control styled" type="text" name="mail" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" class="form-control styled" style="height:150px;"
+                            placeholder="Message"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="button" value="Post Comment">
+                        <input type="reset" class="button_outline" value="Clear form">
+                    </div>
+                </form>
+            </div><!-- End col-md-8-->
+
+
+            <aside class="col-md-3" id="sidebar">
+
+                <div class="widget">
+                    <div id="custom-search-input">
+                        <div class="input-group col-md-12">
+                            <input type="text" class="form-control input-lg" placeholder="Search" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-info btn-lg" type="button">
+                                    <i class="icon-search-1"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div><!-- End Search -->
+                <hr>
+                <div class="widget">
+                    <h4>Categories</h4>
+                    <ul id="cat_nav">
+                        <li><a href="{% url 'web:news' %}">News</a></li>
+                        <li><a href="{% url 'web:events' %}">Events</a></li>
+                        <li><a href="{% url 'web:blog' %}">Blog</a></li>
+                    </ul>
+                </div><!-- End widget -->
+
+                <hr>
+
+            </aside><!-- End aside -->
+
+        </div><!-- End row-->
+    </div><!-- End container -->
+</div>
+<!--End container_gray_bg -->
+
+{% endblock %}
+
+

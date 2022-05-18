@@ -1,0 +1,89 @@
+{% extends 'website/index.html' %}
+{% load static %}
+{% block content %}
+
+<link href="{% static 'websites/css/blog.css' %}" rel="stylesheet">
+
+
+<div class="sub_header bg_1">
+    <div id="intro_txt">
+        <h1>ABC ACADEMY <strong>Events</strong> page</h1>
+        <p>Ex saepe accusata duo, vel ne summo option delenit.</p>
+    </div>
+</div>
+<!--End sub_header -->
+
+<div id="position">
+    <div class="container">
+        <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">Category</a></li>
+            <li>Page active</li>
+        </ul>
+    </div>
+</div><!-- Position -->
+
+
+<div class="container_gray_bg">
+    <div class="container margin_60">
+        <div class="row">
+
+            <div class="col-md-9">
+
+                <div class="post">
+                    <img src="{% static 'websites/img/event1.jpg' %}" alt="" class="img-responsive" width="1000px">
+                    <div class="post_info clearfix">
+                        <div class="post-left">
+                            <ul>
+                                <li><i class="icon-calendar-empty"></i>Date <em>by Mark</em></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <h3><strong>Next students meeting</strong></h3>
+                    <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia earum error at tempora quo assumenda labore corrupti tenetur sunt, tempore non voluptatum blanditiis et aut laboriosam sint fuga ducimus aperiam minima, possimus ad, laudantium architecto ut? Repellat soluta fuga doloribus consequatur praesentium vel doloremque, veritatis fugit repellendus ipsa. Ipsa, totam!
+                    </p>
+                    <p>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Numquam, modi quas vitae voluptatibus mollitia dignissimos possimus consequatur fugiat itaque totam tenetur neque, repellendus minima commodi accusantium dicta quam laudantium nobis impedit fuga. Autem praesentium, ipsa dolor reprehenderit suscipit perferendis officia odit pariatur doloremque error animi dolorum corporis et iure laudantium sequi sunt sed culpa explicabo velit voluptates, enim, eligendi similique.......
+                    </p>
+                </div><!-- end post -->
+            </div><!-- End col-md-8-->
+
+
+            <aside class="col-md-3" id="sidebar">
+
+                <div class="widget">
+                    <div id="custom-search-input">
+                        <div class="input-group col-md-12">
+                            <input type="text" class="form-control input-lg" placeholder="Search" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-info btn-lg" type="button">
+                                    <i class="icon-search-1"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div><!-- End Search -->
+                <hr>
+                <div class="widget">
+                    <h4>Categories</h4>
+                    <ul id="cat_nav">
+                        <li><a href="{% url 'web:news' %}">News</a></li>
+                        <li><a href="{% url 'web:blog' %}">Blog</a></li>
+                        <li><a href="{% url 'web:news' %}">Events</a></li>
+                    </ul>
+                </div><!-- End widget -->
+
+                <hr>
+
+            </aside><!-- End aside -->
+
+        </div><!-- End row-->
+    </div><!-- End container -->
+</div>
+<!--End container_gray_bg -->
+
+
+{% endblock %}
+
+
