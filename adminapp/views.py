@@ -1,38 +1,77 @@
+from multiprocessing import context
 from django.shortcuts import render
 
 # Create your views here.
 def admindashbord(request):
-    return render(request,'adminapps/home.html')
+    context={
+        "is_admindash":True
+    }
+    return render(request,'adminapps/home.html', context)
 
 def branch_list(request):
-    return render(request,'adminapps/branch.html')
+    context={
+        "is_branch":True
+    }
+    return render(request,'adminapps/branch.html', context)
 
 
 def add_branch(request):
-    return render(request,'adminapps/addbranch.html')
+    context={
+        "is_addbranch":True
+    }
+    return render(request,'adminapps/addbranch.html', context)
+
+def branch_course(request):
+    context={
+        "is_branch_course":True
+    }
+    return render(request,'adminapps/branch_course.html', context)
 
 def teachers(request):
-    return render(request,'adminapps/teachers.html')
+    context={
+        "is_teachers":True
+    }
+    return render(request,'adminapps/teachers.html', context)
 
 def teachers_list(request):
-    return render(request,'adminapps/teachers_list.html')
+    context={
+        "is_teacherslist":True
+    }
+    return render(request,'adminapps/teachers_list.html', context)
 
 def add_teacher(request):
-    return render(request,'adminapps/addteacher.html')
+    context={
+        "is_addteacher":True
+    }
+    return render(request,'adminapps/addteacher.html', context)
 
 def students(request):
-    return render(request,'adminapps/students.html')
-
-
-# def exams(request):
-#     return render(request,'adminapp/exams.html')
+    context={
+        "is_students":True
+    }
+    return render(request,'adminapps/students.html', context)
 
 
 def students_by_courses(request):
-    return render(request,'adminapps/students_by_branch.html')
+    context={
+        "is_students_by_courses":True
+    }
+    return render(request,'adminapps/students_by_branch.html', context)
 
 def students_list(request):
-    return render(request,'adminapps/students_list.html')
+    context={
+        "is_students_list":True
+    }
+    return render(request,'adminapps/students_list.html', context)
 
 def add_student(request):
-    return render(request,'adminapps/addstudent.html')
+    context={
+        "is_add_student":True
+    }
+    return render(request,'adminapps/addstudent.html', context)
+
+
+# login
+
+def login(request):
+    return render(request,'adminapps/login.html')

@@ -1,7 +1,6 @@
 from . import views
 from django.urls import path
 
-<<<<<<< HEAD
 app_name ='web'
 
 urlpatterns = [
@@ -21,12 +20,4 @@ urlpatterns = [
     path('eventpage',views.eventpages,name='eventpage'),
     path('gallery',views.gallery,name='gallery'),
     path('franchise',views.franchise,name='franchise')
-=======
-app_name ='adminapp'
-
-urlpatterns = [
-    # path('',views.index,name="index"),
-    
-
->>>>>>> 991e2af24607bed6e0675f93c71401adebd460fe
 ]
