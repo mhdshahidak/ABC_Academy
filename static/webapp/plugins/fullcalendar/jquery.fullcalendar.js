@@ -39,7 +39,7 @@
         var $this = this;
             var form = $("<form></form>");
             form.append("<label>Change event name</label>");
-            form.append("<div class='input-group'><input class='form-control' type=text value='" + calEvent.title + "' /><span class='input-group-append'><button type='submit' class='btn btn-success'><i class='fas fa-check'></i> Save</button></span></div>");
+            form.append("<div class='input-group'><input class='form-control' type=text value='" + calEvent.title + "' /><span class='input-group-append'><button type='submit' class='btn btn-success'><i class='fa fa-check'></i> Save</button></span></div>");
             $this.$modal.modal({
                 backdrop: 'static'
             });
@@ -66,7 +66,7 @@
             form.append("<div class='event-inputs'></div>");
             form.find(".event-inputs")
                 .append("<div class='form-group'><label class='control-label'>Event Name</label><input class='form-control' placeholder='Insert Event Name' type='text' name='title'/></div>")
-                .append("<div class='form-group'><label class='control-label'>Category</label><select class='form-control' name='category'></select></div>")
+                .append("<div class='form-group mb-0'><label class='control-label'>Category</label><select class='form-control' name='category'></select></div>")
                 .find("select[name='category']")
                 .append("<option value='bg-danger'>Danger</option>")
                 .append("<option value='bg-success'>Success</option>")
@@ -87,7 +87,7 @@
                         title: title,
                         start:start,
                         end: end,
-                        allDay: false,
+                        allDay: true,
                         className: categoryClass
                     }, true);  
                     $this.$modal.modal('hide');
@@ -179,7 +179,7 @@
             var categoryName = $this.$categoryForm.find("input[name='category-name']").val();
             var categoryColor = $this.$categoryForm.find("select[name='category-color']").val();
             if (categoryName !== null && categoryName.length != 0) {
-                $this.$extEvents.append('<div class="calendar-events" data-class="bg-' + categoryColor + '" style="position: relative;"><i class="fas fa-circle text-' + categoryColor + '"></i>' + categoryName + '</div>')
+                $this.$extEvents.append('<div class="calendar-events" data-class="bg-' + categoryColor + '" style="position: relative;"><i class="fa fa-circle text-' + categoryColor + '"></i>' + categoryName + '</div>')
                 $this.enableDrag();
             }
 
