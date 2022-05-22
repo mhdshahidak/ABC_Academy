@@ -10,4 +10,5 @@ urlpatterns = [
     path('courses',views.courses,name='courses'),
     path('studentlist',views.studentlist,name='studentlist'),
     path('coursewisestudentlist',views.coursewise_studentlist,name='coursewisestudentlist'),
+    path('calander',views.calander,name='calander'),
 ]

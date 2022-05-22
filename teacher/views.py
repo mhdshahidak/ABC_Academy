@@ -20,3 +20,6 @@ def studentlist(request):
 def coursewise_studentlist(request):
     return render(request,'teacher/coursewise_studentlist.html')
 
+def calander(request):
+    return render(request,'teacher/calender.html')
+
