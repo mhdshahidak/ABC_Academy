@@ -1,0 +1,511 @@
+{% extends 'teacher/master.html' %}
+{% load static %}
+{% block content %}
+
+
+
+
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title">Students</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Students</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Solid Rounded</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="nav nav-tabs nav-tabs-solid nav-tabs-rounded">
+                            <li class="nav-item"><a class="nav-link active" href="#solid-rounded-tab1"
+                                    data-bs-toggle="tab">All Student</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#solid-rounded-tab2"
+                                    data-bs-toggle="tab">Active Student</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#solid-rounded-tab3"
+                                    data-bs-toggle="tab">Inactive Student</a></li>
+                        </ul>
+                        <div class="tab-content">
+
+
+
+                            <div class="tab-pane show active" id="solid-rounded-tab1">
+                                <table class="table table-hover table-center mb-0 datatable">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>DOB</th>
+                                            <th>Parent Name</th>
+                                            <th>Mobile Number</th>
+                                            <th>Email</th>
+                                            <th>Address</th>
+                                            <th class="text-center">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <h2 class="table-avatar">
+                                                    <a href="profile.html" class="avatar avatar-sm me-2"><img
+                                                            class="avatar-img rounded-circle"
+                                                            src="{% static 'webapp/img/profiles/avatar-03.jpg' %}"
+                                                            alt="User Image"></a>
+                                                    <a href="profile.html">Brian Johnson <span>PRE2209</span></a>
+                                                </h2>
+                                            </td>
+                                            <td>2 Feb 2002</td>
+                                            <td>Jeffrey Wong</td>
+                                            <td>097 3584 5870</td>
+                                            <td>ghvjhb@gmail.com</td>
+                                            <td>911 Deer Ridge Drive,USA</td>
+                                            <td class="text-end">
+                                                <div class="actions">
+                                                    <a href="" class="btn btn-sm bg-primary-light  me-2">
+                                                        <i class="fa fa-eye"></i>
+                                                    </a>
+                                                    <a href=""
+                                                        class="btn btn-sm bg-info-light me-2">
+                                                        <i class="fa fa-pen"></i>
+                                                    </a>
+                                                    <a href="#" class="btn btn-sm bg-warning-light">
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h2 class="table-avatar">
+                                                    <a href="profile.html" class="avatar avatar-sm me-2"><img
+                                                            class="avatar-img rounded-circle"
+                                                            src="{% static 'webapp/img/profiles/avatar-03.jpg' %}"
+                                                            alt="User Image"></a>
+                                                    <a href="profile.html">Brian Johnson <span>PRE2209</span></a>
+                                                </h2>
+                                            </td>
+                                            <td>2 Feb 2002</td>
+                                            <td>Jeffrey Wong</td>
+                                            <td>097 3584 5870</td>
+                                            <td>ghvjhb@gmail.com</td>
+                                            <td>911 Deer Ridge Drive,USA</td>
+                                            <td class="text-end">
+                                                <div class="actions">
+                                                    <a href="" class="btn btn-sm bg-primary-light  me-2">
+                                                        <i class="fa fa-eye"></i>
+                                                    </a>
+                                                    <a href=""
+                                                        class="btn btn-sm bg-info-light me-2">
+                                                        <i class="fa fa-pen"></i>
+                                                    </a>
+                                                    <a href="#" class="btn btn-sm bg-warning-light">
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h2 class="table-avatar">
+                                                    <a href="profile.html" class="avatar avatar-sm me-2"><img
+                                                            class="avatar-img rounded-circle"
+                                                            src="{% static 'webapp/img/profiles/avatar-03.jpg' %}"
+                                                            alt="User Image"></a>
+                                                    <a href="profile.html">Brian Johnson <span>PRE2209</span></a>
+                                                </h2>
+                                            </td>
+                                            <td>2 Feb 2002</td>
+                                            <td>Jeffrey Wong</td>
+                                            <td>097 3584 5870</td>
+                                            <td>ghvjhb@gmail.com</td>
+                                            <td>911 Deer Ridge Drive,USA</td>
+                                            <td class="text-end">
+                                                <div class="actions">
+                                                    <a href="" class="btn btn-sm bg-primary-light  me-2">
+                                                        <i class="fa fa-eye"></i>
+                                                    </a>
+                                                    <a href=""
+                                                        class="btn btn-sm bg-info-light me-2">
+                                                        <i class="fa fa-pen"></i>
+                                                    </a>
+                                                    <a href="#" class="btn btn-sm bg-warning-light">
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h2 class="table-avatar">
+                                                    <a href="profile.html" class="avatar avatar-sm me-2"><img
+                                                            class="avatar-img rounded-circle"
+                                                            src="{% static 'webapp/img/profiles/avatar-03.jpg' %}"
+                                                            alt="User Image"></a>
+                                                    <a href="profile.html">Brian Johnson <span>PRE2209</span></a>
+                                                </h2>
+                                            </td>
+                                            <td>2 Feb 2002</td>
+                                            <td>Jeffrey Wong</td>
+                                            <td>097 3584 5870</td>
+                                            <td>ghvjhb@gmail.com</td>
+                                            <td>911 Deer Ridge Drive,USA</td>
+                                            <td class="text-end">
+                                                <div class="actions">
+                                                    <a href="" class="btn btn-sm bg-primary-light  me-2">
+                                                        <i class="fa fa-eye"></i>
+                                                    </a>
+                                                    <a href=""
+                                                        class="btn btn-sm bg-info-light me-2">
+                                                        <i class="fa fa-pen"></i>
+                                                    </a>
+                                                    <a href="#" class="btn btn-sm bg-warning-light">
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h2 class="table-avatar">
+                                                    <a href="profile.html" class="avatar avatar-sm me-2"><img
+                                                            class="avatar-img rounded-circle"
+                                                            src="{% static 'webapp/img/profiles/avatar-03.jpg' %}"
+                                                            alt="User Image"></a>
+                                                    <a href="profile.html">Brian Johnson <span>PRE2209</span></a>
+                                                </h2>
+                                            </td>
+                                            <td>2 Feb 2002</td>
+                                            <td>Jeffrey Wong</td>
+                                            <td>097 3584 5870</td>
+                                            <td>ghvjhb@gmail.com</td>
+                                            <td>911 Deer Ridge Drive,USA</td>
+                                            <td class="text-end">
+                                                <div class="actions">
+                                                    <a href="" class="btn btn-sm bg-primary-light  me-2">
+                                                        <i class="fa fa-eye"></i>
+                                                    </a>
+                                                    <a href=""
+                                                        class="btn btn-sm bg-info-light me-2">
+                                                        <i class="fa fa-pen"></i>
+                                                    </a>
+                                                    <a href="#" class="btn btn-sm bg-warning-light">
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h2 class="table-avatar">
+                                                    <a href="profile.html" class="avatar avatar-sm me-2"><img
+                                                            class="avatar-img rounded-circle"
+                                                            src="{% static 'webapp/img/profiles/avatar-03.jpg' %}"
+                                                            alt="User Image"></a>
+                                                    <a href="profile.html">Brian Johnson <span>PRE2209</span></a>
+                                                </h2>
+                                            </td>
+                                            <td>2 Feb 2002</td>
+                                            <td>Jeffrey Wong</td>
+                                            <td>097 3584 5870</td>
+                                            <td>ghvjhb@gmail.com</td>
+                                            <td>911 Deer Ridge Drive,USA</td>
+                                            <td class="text-end">
+                                                <div class="actions">
+                                                    <a href="" class="btn btn-sm bg-primary-light  me-2">
+                                                        <i class="fa fa-eye"></i>
+                                                    </a>
+                                                    <a href=""
+                                                        class="btn btn-sm bg-info-light me-2">
+                                                        <i class="fa fa-pen"></i>
+                                                    </a>
+                                                    <a href="#" class="btn btn-sm bg-warning-light">
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h2 class="table-avatar">
+                                                    <a href="profile.html" class="avatar avatar-sm me-2"><img
+                                                            class="avatar-img rounded-circle"
+                                                            src="{% static 'webapp/img/profiles/avatar-03.jpg' %}"
+                                                            alt="User Image"></a>
+                                                    <a href="profile.html">Brian Johnson <span>PRE2209</span></a>
+                                                </h2>
+                                            </td>
+                                            <td>2 Feb 2002</td>
+                                            <td>Jeffrey Wong</td>
+                                            <td>097 3584 5870</td>
+                                            <td>ghvjhb@gmail.com</td>
+                                            <td>911 Deer Ridge Drive,USA</td>
+                                            <td class="text-end">
+                                                <div class="actions">
+                                                    <a href="" class="btn btn-sm bg-primary-light  me-2">
+                                                        <i class="fa fa-eye"></i>
+                                                    </a>
+                                                    <a href=""
+                                                        class="btn btn-sm bg-info-light me-2">
+                                                        <i class="fa fa-pen"></i>
+                                                    </a>
+                                                    <a href="#" class="btn btn-sm bg-warning-light">
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h2 class="table-avatar">
+                                                    <a href="profile.html" class="avatar avatar-sm me-2"><img
+                                                            class="avatar-img rounded-circle"
+                                                            src="{% static 'webapp/img/profiles/avatar-03.jpg' %}"
+                                                            alt="User Image"></a>
+                                                    <a href="profile.html">Brian Johnson <span>PRE2209</span></a>
+                                                </h2>
+                                            </td>
+                                            <td>2 Feb 2002</td>
+                                            <td>Jeffrey Wong</td>
+                                            <td>097 3584 5870</td>
+                                            <td>ghvjhb@gmail.com</td>
+                                            <td>911 Deer Ridge Drive,USA</td>
+                                            <td class="text-end">
+                                                <div class="actions">
+                                                    <a href="" class="btn btn-sm bg-primary-light  me-2">
+                                                        <i class="fa fa-eye"></i>
+                                                    </a>
+                                                    <a href=""
+                                                        class="btn btn-sm bg-info-light me-2">
+                                                        <i class="fa fa-pen"></i>
+                                                    </a>
+                                                    <a href="#" class="btn btn-sm bg-warning-light">
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+
+                            <div class="tab-pane" id="solid-rounded-tab2">
+                                <table class="table table-hover table-center mb-0 datatable">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>DOB</th>
+                                            <th>Parent Name</th>
+                                            <th>Mobile Number</th>
+                                            <th>Email</th>
+                                            <th>Address</th>
+                                            <th class="text-end">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <h2 class="table-avatar">
+                                                    <a href="profile.html" class="avatar avatar-sm me-2"><img
+                                                            class="avatar-img rounded-circle"
+                                                            src="{% static 'webapp/img/profiles/avatar-03.jpg' %}"
+                                                            alt="User Image"></a>
+                                                    <a href="profile.html">Brian Johnson <span>PRE2209</span></a>
+                                                </h2>
+                                            </td>
+                                            <td>2 Feb 2002</td>
+                                            <td>Jeffrey Wong</td>
+                                            <td>097 3584 5870</td>
+                                            <td>ghvjhb@gmail.com</td>
+                                            <td>911 Deer Ridge Drive,USA</td>
+                                            <td class="text-end">
+                                                <div class="actions">
+                                                    <a href="" class="btn btn-sm bg-primary-light  me-2">
+                                                        <i class="fa fa-eye"></i>
+                                                    </a>
+                                                    <a href=""
+                                                        class="btn btn-sm bg-info-light me-2">
+                                                        <i class="fa fa-pen"></i>
+                                                    </a>
+                                                    <a href="#" class="btn btn-sm bg-warning-light">
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h2 class="table-avatar">
+                                                    <a href="profile.html" class="avatar avatar-sm me-2"><img
+                                                            class="avatar-img rounded-circle"
+                                                            src="{% static 'webapp/img/profiles/avatar-03.jpg' %}"
+                                                            alt="User Image"></a>
+                                                    <a href="profile.html">Brian Johnson <span>PRE2209</span></a>
+                                                </h2>
+                                            </td>
+                                            <td>2 Feb 2002</td>
+                                            <td>Jeffrey Wong</td>
+                                            <td>097 3584 5870</td>
+                                            <td>ghvjhb@gmail.com</td>
+                                            <td>911 Deer Ridge Drive,USA</td>
+                                            <td class="text-end">
+                                                <div class="actions">
+                                                    <a href="" class="btn btn-sm bg-primary-light  me-2">
+                                                        <i class="fa fa-eye"></i>
+                                                    </a>
+                                                    <a href=""
+                                                        class="btn btn-sm bg-info-light me-2">
+                                                        <i class="fa fa-pen"></i>
+                                                    </a>
+                                                    <a href="#" class="btn btn-sm bg-warning-light">
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h2 class="table-avatar">
+                                                    <a href="profile.html" class="avatar avatar-sm me-2"><img
+                                                            class="avatar-img rounded-circle"
+                                                            src="{% static 'webapp/img/profiles/avatar-03.jpg' %}"
+                                                            alt="User Image"></a>
+                                                    <a href="profile.html">Brian Johnson <span>PRE2209</span></a>
+                                                </h2>
+                                            </td>
+                                            <td>2 Feb 2002</td>
+                                            <td>Jeffrey Wong</td>
+                                            <td>097 3584 5870</td>
+                                            <td>ghvjhb@gmail.com</td>
+                                            <td>911 Deer Ridge Drive,USA</td>
+                                            <td class="text-end">
+                                                <div class="actions">
+                                                    <a href="" class="btn btn-sm bg-primary-light  me-2">
+                                                        <i class="fa fa-eye"></i>
+                                                    </a>
+                                                    <a href=""
+                                                        class="btn btn-sm bg-info-light me-2">
+                                                        <i class="fa fa-pen"></i>
+                                                    </a>
+                                                    <a href="#" class="btn btn-sm bg-warning-light">
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+
+
+                            <div class="tab-pane" id="solid-rounded-tab3">
+                                <table class="table table-hover table-center mb-0 datatable">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>DOB</th>
+                                            <th>Parent Name</th>
+                                            <th>Mobile Number</th>
+                                            <th>Email</th>
+                                            <th>Address</th>
+                                            <th class="text-end">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <h2 class="table-avatar">
+                                                    <a href="profile.html" class="avatar avatar-sm me-2"><img
+                                                            class="avatar-img rounded-circle"
+                                                            src="{% static 'webapp/img/profiles/avatar-03.jpg' %}"
+                                                            alt="User Image"></a>
+                                                    <a href="profile.html">Brian Johnson <span>PRE2209</span></a>
+                                                </h2>
+                                            </td>
+                                            <td>2 Feb 2002</td>
+                                            <td>Jeffrey Wong</td>
+                                            <td>097 3584 5870</td>
+                                            <td>ghvjhb@gmail.com</td>
+                                            <td>911 Deer Ridge Drive,USA</td>
+                                            <td class="text-end">
+                                                <div class="actions">
+                                                    <a href="" class="btn btn-sm bg-primary-light  me-2">
+                                                        <i class="fa fa-eye"></i>
+                                                    </a>
+                                                    <a href=""
+                                                        class="btn btn-sm bg-info-light me-2">
+                                                        <i class="fa fa-pen"></i>
+                                                    </a>
+                                                    <a href="#" class="btn btn-sm bg-warning-light">
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h2 class="table-avatar">
+                                                    <a href="profile.html" class="avatar avatar-sm me-2"><img
+                                                            class="avatar-img rounded-circle"
+                                                            src="{% static 'webapp/img/profiles/avatar-03.jpg' %}"
+                                                            alt="User Image"></a>
+                                                    <a href="profile.html">Brian Johnson <span>PRE2209</span></a>
+                                                </h2>
+                                            </td>
+                                            <td>2 Feb 2002</td>
+                                            <td>Jeffrey Wong</td>
+                                            <td>097 3584 5870</td>
+                                            <td>ghvjhb@gmail.com</td>
+                                            <td>911 Deer Ridge Drive,USA</td>
+                                            <td class="text-end">
+                                                <div class="actions">
+                                                    <a href="" class="btn btn-sm bg-primary-light  me-2">
+                                                        <i class="fa fa-eye"></i>
+                                                    </a>
+                                                    <a href=""
+                                                        class="btn btn-sm bg-info-light me-2">
+                                                        <i class="fa fa-pen"></i>
+                                                    </a>
+                                                    <a href="#" class="btn btn-sm bg-warning-light">
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}
+
+
+
+
+

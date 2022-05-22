@@ -24,6 +24,8 @@ urlpatterns = [
     path('adminapp/',include('adminapp.urls')),
     path('branch/',include('branch.urls')),
 
+    path('teacher/',include('teacher.urls')),
+     path('student/',include('student.urls')),
 
 
 

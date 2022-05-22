@@ -6325,7 +6325,7 @@ table.table-inbox tbody tr.checked {
 .paid-continue-btn:focus,
 .paid-continue-btn:active {
 	background-color: #fff;
-	border: 1px solid ##18aefa;
+	border: 1px solid #18aefa;
 	color: #18aefa;
 } */
 .paid-cancel-btn {

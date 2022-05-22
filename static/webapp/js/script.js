@@ -151,12 +151,20 @@ Version      : 1.0
 	
     // Datatable
 
-    if ($('.datatable').length > 0) {
-        $('.datatable').DataTable({
-            "bFilter": false,
-        });
-    }
+    // if ($('.datatable').length > 0) {
+    //     $('.datatable').DataTable({
+    //         "bFilter": false,
+    //     });
+    // }
 
+	if ($('.datatable').length > 0) {
+		$('.datatable').DataTable({
+			language: {
+				search: '<i class="fas fa-search"></i>',
+				searchPlaceholder: "Search"
+			  }
+		});
+	}
 	// Check all email
 	
 	$(document).on('click', '#check_all', function() {
