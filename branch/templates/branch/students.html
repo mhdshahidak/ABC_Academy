@@ -1,0 +1,186 @@
+{% extends 'branch/master.html' %}
+{% block content %}
+{% load static %}
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title">
+                        Students
+                    </h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="index.html">Dashboard</a>
+                        </li>
+                        <li class="breadcrumb-item active">
+                            Students
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-auto text-end float-end ms-auto">
+                    <!-- <a href="#" class="btn btn-outline-primary me-2"><i class="fas fa-download"></i> Download</a> -->
+                    <a href="{% url 'branch:addstudent' %}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="dash-widget-header">
+                            <span class="dash-widget-icon bg-3">
+                                <i class="fa fa-building"></i>
+                            </span>
+                            <div class="dash-count">
+                                <div class="dash-title">
+                                    TTC 2021-2022
+                                </div>
+                                <div class="dash-counts">
+                                    <p>
+                                        50
+                                    </p>
+                                </div>
+                                <a href="{% url 'branch:branchstudentslist' %}">
+                                    <p class="text-muted mt-3 mb-0" style="float: right;">
+                                        <span class="text-success me-1"><i class="fa fa-arrow-right"></i>
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <p class="text-muted mt-3 mb-0">
+                            <span class="text-success me-1"></span> since last week
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="dash-widget-header">
+                            <span class="dash-widget-icon bg-3">
+                                <i class="fa fa-building"></i>
+                            </span>
+                            <div class="dash-count">
+                                <div class="dash-title">
+                                    TTC 2022-2023
+                                </div>
+                                <div class="dash-counts">
+                                    <p>
+                                        30
+                                    </p>
+                                </div>
+                                <a href="{% url 'branch:branchstudentslist' %}">
+                                    <p class="text-muted mt-3 mb-0" style="float: right;">
+                                        <span class="text-success me-1"><i class="fa fa-arrow-right"></i>
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <p class="text-muted mt-3 mb-0">
+                            <span class="text-success me-1"></span> since last week
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="dash-widget-header">
+                            <span class="dash-widget-icon bg-3">
+                                <i class="fa fa-building"></i>
+                            </span>
+                            <div class="dash-count">
+                                <div class="dash-title">
+                                    FASHION DESIGNING 2021-2022
+                                </div>
+                                <div class="dash-counts">
+                                    <p>
+                                        60
+                                    </p>
+                                </div>
+                                <a href="{% url 'branch:branchstudentslist' %}">
+                                    <p class="text-muted mt-3 mb-0" style="float: right;">
+                                        <span class="text-success me-1"><i class="fa fa-arrow-right"></i>
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <p class="text-muted mt-3 mb-0">
+                            <span class="text-success me-1"></span> since last week
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="dash-widget-header">
+                            <span class="dash-widget-icon bg-3">
+                                <i class="fa fa-building"></i>
+                            </span>
+                            <div class="dash-count">
+                                <div class="dash-title">
+                                    FASHION DESIGNING 2022-2023
+                                </div>
+                                <div class="dash-counts">
+                                    <p>
+                                        25
+                                    </p>
+                                </div>
+                                <a href="{% url 'branch:branchstudentslist' %}">
+                                    <p class="text-muted mt-3 mb-0" style="float: right;">
+                                        <span class="text-success me-1"><i class="fa fa-arrow-right"></i>
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <p class="text-muted mt-3 mb-0">
+                            <span class="text-success me-1"></span> since last week
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="dash-widget-header">
+                            <span class="dash-widget-icon bg-3">
+                                <i class="fa fa-building"></i>
+                            </span>
+                            <div class="dash-count">
+                                <div class="dash-title">
+                                    LAB TECHNITION 2021-2022
+                                </div>
+                                <div class="dash-counts">
+                                    <p>
+                                        20
+                                    </p>
+                                </div>
+                                <a href="{% url 'branch:branchstudentslist' %}">
+                                    <p class="text-muted mt-3 mb-0" style="float: right;">
+                                        <span class="text-success me-1"><i class="fa fa-arrow-right"></i>
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <p class="text-muted mt-3 mb-0">
+                            <span class="text-success me-1"></span> since last week
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+   
+</div>
+
+{% endblock %}
