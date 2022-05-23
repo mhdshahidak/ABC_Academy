@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ABC TRAINING ACADEMY</title>
 
-    <link rel="shortcut icon" href="{% static 'teacher/img/favicon.png' %}">
+    <link rel="shortcut icon" href="{% static 'websites/logo.web' %}">
 
     <link rel="stylesheet" href="{% static 'teacher/css/bootstrap.min.css' %}">
 
@@ -188,27 +188,15 @@
                             <a href=""><i data-feather="clipboard"></i> <span> My Profile</span> <span
                                     class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="">My Profile</a></li>
-                                <li><a href="">Edit Profile</a></li>
+                                <li><a href="{% url 'student:profile' %}">My Profile</a></li>
+                                <li><a href="{% url 'student:editprofile' %}">Edit Profile</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href=""><i data-feather="star"></i> <span>Courses</span></a>
+                            <a href=""><i data-feather="star"></i> <span>Exam</span></a>
                         </li>
                         <li>
-                            <a href=""><i data-feather="credit-card"></i> <span>Student</span></a>
-                        </li>
-                        <li class="submenu">
-                            <a href=""><i data-feather="pie-chart"></i> <span> Exam</span> <span
-                                    class="menu-arrow"></span></a>
-                            <ul>
-                                <li><a href="">Exam Date</a></li>
-                                <li><a href="">Upload Exam Paper</a></li>
-                                <li><a href="">Evluation</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href=""><i data-feather="settings"></i> <span>Result</span></a>
+                            <a href=""><i data-feather="credit-card"></i> <span>Result</span></a>
                         </li>
                         <li>
                             <a href=""><i data-feather="settings"></i> <span>Calander</span></a>
@@ -235,15 +223,154 @@
 <script src="{% static 'teacher/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
 <script src="{% static 'teacher/plugins/apexchart/apexcharts.min.js' %}"></script>
 <script src="{% static 'teacher/plugins/apexchart/chart-data.js' %}"></script>
-<script src="{% static 'teacher/js/script.js' %}"></script>
 
-<!-- calender JS -->
+<!-- datepicker JS -->
 <script src="{% static 'teacher/plugins/moment/moment.min.js' %}"></script>
 <script src="{% static 'teacher/js/bootstrap-datetimepicker.min.js' %}"></script>
 
+<!-- calender JS -->
 <script src="{% static 'teacher/js/jquery-ui.min.js' %} "></script>
 <script src="{% static 'teacher/plugins/fullcalendar/fullcalendar.min.js' %}"></script>
 <script src="{% static 'teacher/plugins/fullcalendar/jquery.fullcalendar.js' %}"></script>
+
+<!-- DataTable JS -->
+<script src="{% static 'teacher/plugins/datatables/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'teacher/plugins/datatables/datatables.min.js' %} "></script>
+
+
+<script>
+
+    // datatable
+    if ($('.datatable').length > 0) {
+        $('.datatable').DataTable({
+            language: {
+                search: '<i class="fas fa-search"></i>',
+                searchPlaceholder: "Search"
+            }
+        });
+    }
+    // end datatable
+
+
+    if ($('.datetimepicker').length > 0) {
+        $('.datetimepicker').datetimepicker({
+            format: 'DD-MM-YYYY',
+            icons: {
+                up: "fas fa-angle-up",
+                down: "fas fa-angle-down",
+                next: 'fas fa-angle-right',
+                previous: 'fas fa-angle-left'
+            }
+        });
+    }
+
+    //    toggle
+    $(document).on('click', '#toggle_btn', function () {
+        if ($('body').hasClass('mini-sidebar')) {
+            $('body').removeClass('mini-sidebar');
+            $('.subdrop + ul').slideDown();
+        } else {
+            $('body').addClass('mini-sidebar');
+            $('.subdrop + ul').slideUp();
+        }
+        setTimeout(function () {
+            mA.redraw();
+            mL.redraw();
+        }, 300);
+        return false;
+    });
+
+
+    // filters
+    $(document).on('click', '#filter_search', function () {
+        $('#filter_inputs').show();
+    });
+
+    // selectbox
+    $('.app-listing .selectBox').on("click", function () {
+        $(this).parent().find('#checkBoxes').fadeToggle();
+        $(this).parent().parent().siblings().find('#checkBoxes').fadeOut();
+    });
+
+    $('.invoices-main-form .selectBox').on("click", function () {
+        $(this).parent().find('#checkBoxes-one').fadeToggle();
+        $(this).parent().parent().siblings().find('#checkBoxes-one').fadeOut();
+    });
+    
+
+    // Variables declarations
+
+    var $wrapper = $('.main-wrapper');
+    var $pageWrapper = $('.page-wrapper');
+    var $slimScrolls = $('.slimscroll');
+
+    // Sidebar
+    var Sidemenu = function () {
+        this.$menuItem = $('#sidebar-menu a');
+    };
+
+    function init() {
+        var $this = Sidemenu;
+        $('#sidebar-menu a').on('click', function (e) {
+            if ($(this).parent().hasClass('submenu')) {
+                e.preventDefault();
+            }
+            if (!$(this).hasClass('subdrop')) {
+                $('ul', $(this).parents('ul:first')).slideUp(350);
+                $('a', $(this).parents('ul:first')).removeClass('subdrop');
+                $(this).next('ul').slideDown(350);
+                $(this).addClass('subdrop');
+            } else if ($(this).hasClass('subdrop')) {
+                $(this).removeClass('subdrop');
+                $(this).next('ul').slideUp(350);
+            }
+        });
+        $('#sidebar-menu ul li.submenu a.active').parents('li:last').children('a:first').addClass('active').trigger('click');
+    }
+
+    // Sidebar Initiate
+    init();
+
+    // Mobile menu sidebar overlay
+    $('body').append('<div class="sidebar-overlay"></div>');
+    $(document).on('click', '#mobile_btn', function () {
+        $wrapper.toggleClass('slide-nav');
+        $('.sidebar-overlay').toggleClass('opened');
+        $('html').toggleClass('menu-opened');
+        return false;
+    });
+
+    // Sidebar overlay
+    $(".sidebar-overlay").on("click", function () {
+        $wrapper.removeClass('slide-nav');
+        $(".sidebar-overlay").removeClass("opened");
+        $('html').removeClass('menu-opened');
+    });
+
+    // Page Content Height
+    if ($('.page-wrapper').length > 0) {
+        var height = $(window).height();
+        $(".page-wrapper").css("min-height", height);
+    }
+
+    // Page Content Height Resize
+    $(window).resize(function () {
+        if ($('.page-wrapper').length > 0) {
+            var height = $(window).height();
+            $(".page-wrapper").css("min-height", height);
+        }
+    });
+
+    // Select 2
+    if ($('.select').length > 0) {
+        $('.select').select2({
+            minimumResultsForSearch: -1,
+            width: '100%'
+        });
+    }
+
+
+</script>
 
 
 </body>
