@@ -6,14 +6,17 @@
         <meta name="viewport"
               content="width=device-width, initial-scale=1.0, user-scalable=0">
         <title>Preskool - Dashboard</title>
-        <link rel="shortcut icon" href="{% static 'webapp/img/favicon.png' %}">
+        <link rel="shortcut icon" href="{% static 'websites/logo.webp' %}">
         <link rel="stylesheet"
               href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;1,400&amp;display=swap">
         <link rel="stylesheet"
               href="{% static 'webapp/plugins/bootstrap/css/bootstrap.min.css' %}">
-        <link rel="stylesheet"
+        <!-- <link rel="stylesheet"
               href="{% static 'webapp/plugins/fontawesome/css/fontawesome.min.css' %}">
-        <link rel="stylesheet" href="{% static 'webapp/plugins/fontawesome/css/all.min.css' %}">
+        <link rel="stylesheet" href="{% static 'webapp/plugins/fontawesome/css/all.min.css' %}"> -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+            integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="{% static 'webapp/css/style.css' %}">
     </head>
     <body>
@@ -21,10 +24,10 @@
             <div class="header">
                 <div class="header-left">
                     <a href="index.html" class="logo">
-                        <img src="{% static 'webapp/img/logo.png' %}" alt="Logo">
+                        <img src="{% static 'websites/logo.webp' %}" alt="Logo">
                     </a>
                     <a href="index.html" class="logo logo-small">
-                        <img src="{% static 'webapp/img/logo-small.png' %}" alt="Logo" width="30" height="30">
+                        <img src="{% static 'websites/logo.webp' %}" alt="Logo" width="30" height="30">
                     </a>
                 </div>
                 <a href="javascript:void(0);" id="toggle_btn">
@@ -173,19 +176,20 @@
                             <li class="menu-title">
                                 <span>Main Menu</span>
                             </li>
-                            <li class="active">
-                                <a href="{% url 'branch:master' %}"><i class="fas fa-user-graduate"></i> <span>Dashboard</span></a>
+                            <li {% if is_master %} class="active"{% endif %}>
+                                <a href="{% url 'branch:master' %}"><i class="fa fa-th"></i> <span>Dashboard</span></a>
                             </li>
                             <li class="submenu">
                                 <a href="#"><i class="fas fa-user-graduate"></i> <span> Students</span> <span class="menu-arrow"></span></a>
                                 <ul>
-                                    <li>
+                                    <li {% if is_students %} class="active"
+                                    {% elif is_studentslist %} class="active" {% endif %}>
                                         <a href="{% url 'branch:branchstudents' %}">Student View</a>
                                     </li>
-                                    <li>
+                                    <li {% if is_all_students_list %} class="active"{% endif %}>
                                         <a href="{% url 'branch:allbranchstudentslist' %}">Student List</a>
                                     </li>
-                                    <li>
+                                    <li {% if is_add_students_branch %} class="active"{% endif %}>
                                         <a href="{% url 'branch:addstudent' %}">Student Add</a>
                                     </li>
                                 </ul>
@@ -193,10 +197,10 @@
                             <li class="submenu">
                                 <a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Teachers</span> <span class="menu-arrow"></span></a>
                                 <ul>
-                                    <li>
+                                    <li {% if is_teachers %} class="active"{% endif %}>
                                         <a href="{% url 'branch:teacherslist' %}">Teacher List</a>
                                     </li>
-                                    <li>
+                                    <li {% if is_add_teachers %} class="active"{% endif %}>
                                         <a href="{% url 'branch:addteacherbranch' %}">Teacher Add</a>
                                     </li>
                                     
@@ -205,10 +209,10 @@
                             <li class="submenu">
                                 <a href="#"><i class="fas fa-building"></i> <span> Departments</span> <span class="menu-arrow"></span></a>
                                 <ul>
-                                    <li>
+                                    <li {% if is_courses %} class="active"{% endif %}>
                                         <a href="{% url 'branch:courses' %}">Department List</a>
                                     </li>
-                                    <li>
+                                    <li {% if is_add_courses %} class="active"{% endif %}>
                                         <a href="{% url 'branch:addcourses' %}">Department Add</a>
                                     </li>
                                 </ul>
@@ -238,10 +242,10 @@
                             </li>
                              -->
                             <li>
-                                <a href="fees.html"><i class="fas fa-comment-dollar"></i> <span>Fees</span></a>
+                                <a href="{% url 'branch:fees' %}"><i class="fas fa-comment-dollar"></i> <span>Fees</span></a>
                             </li>
                             <li>
-                                <a href="exam.html"><i class="fas fa-clipboard-list"></i> <span>Exam </span></a>
+                                <a href="#"><i class="fas fa-clipboard-list"></i> <span>Exam </span></a>
                             </li>
                             <!-- <li>
                                 <a href="event.html"><i class="fas fa-calendar-day"></i> <span>Events</span></a>
@@ -285,5 +289,38 @@
         <script src="{% static 'webapp/plugins/apexchart/apexcharts.min.js' %}"></script>
         <script src="{% static 'webapp/plugins/apexchart/chart-data.js' %}"></script>
         <script src="{% static 'webapp/js/script.js' %}"></script>
+
+        <!-- <script>
+            $(document).on('click', '#toggle_btn', function() {
+		if($('body').hasClass('mini-sidebar')) {
+			$('body').removeClass('mini-sidebar');
+			$('.subdrop + ul').slideDown();
+		} else {
+			$('body').addClass('mini-sidebar');
+			$('.subdrop + ul').slideUp();
+		}
+		setTimeout(function(){ 
+			mA.redraw();
+			mL.redraw();
+		}, 300);
+		return false;
+	});
+	$(document).on('mouseover', function(e) {
+		e.stopPropagation();
+		if($('body').hasClass('mini-sidebar') && $('#toggle_btn').is(':visible')) {
+			var targ = $(e.target).closest('.sidebar').length;
+			if(targ) {
+				$('body').addClass('expand-menu');
+				$('.subdrop + ul').slideDown();
+			} else {
+				$('body').removeClass('expand-menu');
+				$('.subdrop + ul').slideUp();
+			}
+			return false;
+		}
+	});
+
+    </script> -->
+         
     </body>
 </html>

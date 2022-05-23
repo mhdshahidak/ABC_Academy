@@ -15,11 +15,15 @@ urlpatterns = [
     path('coursestudents',views.students_by_courses,name="coursestudents"),
     path('studentslist',views.students_list,name="studentslist"),
     path('addstudent',views.add_student,name="addstudent"),
+    path('exams',views.exam,name="exams"),
+    path('examsadd',views.exam_add_list,name="examsadd"),
+
+
 
 
     # login
     
-    path('login',views.login,name="adminlogin"),
+    path('login', views.login,name="adminlogin"),
    
 
 

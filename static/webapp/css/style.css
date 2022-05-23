@@ -3068,6 +3068,10 @@ footer p {
 	border-color: #fdbb38;
 	border-radius: 30px 0px;
 }
+.bg-one1{
+	/* background-color: rgb(253 187 56 / 0.5); */
+	border-color: #bebebe;
+}
 
 .bg-two {
 	background-color: rgb(25 175 251 / 0.2);
@@ -7500,7 +7504,7 @@ table.table-inbox tbody tr.checked {
 /* additional */
 
 
-.dash-widget-icon {
+/* .dash-widget-icon {
 	align-items: center;
 	border-radius: 10px;
 	color: #fff;
@@ -7516,3 +7520,96 @@ table.table-inbox tbody tr.checked {
 	align-items: center;
 	display: flex;
 }
+.dash-widget-header{
+	display: block;
+} */
+
+
+/* //////////////////////////////////// */
+
+.dash-title {
+	font-size: 15px;
+	font-weight: 600;
+}
+.dash-widget-icon {
+	align-items: center;
+	border-radius: 10px;
+	color: #fff;
+	display: inline-flex;
+	font-size: 1.875rem;
+	height: 4rem;
+	justify-content: center;
+	text-align: center;
+	width: 4rem;
+}
+.dash-count {
+	font-size: 18px;
+	margin-left: 15px;
+	padding-top: 5px;
+}
+.dash-widget-info h3 {
+	margin-bottom: 10px;
+}
+.dash-widget-header {
+	align-items: center;
+	display: flex;
+}
+.activity-feed {
+	list-style: none;
+	margin-bottom: 0;
+	margin-left: 5px;
+	padding: 0;
+}
+.activity-feed .feed-item {
+	border-left: 2px solid #e4e8eb;
+	padding-bottom: 19px;
+	padding-left: 20px;
+	position: relative;
+}
+.activity-feed .feed-item:last-child {
+	border-color: transparent;
+}
+.activity-feed .feed-item:after {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -7px;
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	background-color: #7638ff;
+}
+.activity-feed .feed-item .feed-date {
+	display: block;
+	position: relative;
+	color: #777;
+	text-transform: uppercase;
+	font-size: 13px;
+}
+.activity-feed .feed-item .feed-text {
+	color: #777;
+	position: relative;
+}
+.activity-feed .feed-item .feed-text a {
+	color: #333;
+	font-weight: 600;
+} 
+.modal-icon i {   
+    font-size: 42px;   
+    color: #6c757d;
+}
+.modal-footer {
+	border-top: 0;
+	padding-top: 0;
+	padding-bottom: .75rem;
+}
+.add-remove i {
+	font-size: 18px;
+	cursor: pointer;
+}
+
+/* //////////////////////////////////// */
+
+
+
