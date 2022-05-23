@@ -13,8 +13,8 @@
                 <div class="col-sm-6">
                     <h3 class="page-title">Settings</h3>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a>
-                        </li>
+                        <li class="breadcrumb-item"><a href="{% url 'student:home' %}">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'student:profile' %}">Profile</a></li>
                         <li class="breadcrumb-item active">Profile Settings</li>
                     </ul>
                 </div>
@@ -25,11 +25,11 @@
         <div class="row">
             <div class="col-3">
               <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true"><i class="far fa-user" ></i> <span>Basic Details Settings</span></a>
+                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true"><i class="fa fa-user" ></i> <span>Basic Details Settings</span></a>
 
-                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false"><i class="far fa-user"></i> <span>Gaurdian Settings</span></a>
+                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false"><i class="fa fa-users"></i> <span>Gaurdian Settings</span></a>
 
-                <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false"><i class="far fa-user"></i> <span>Admission Settings</span></a>
+                <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false"><i class="fas fa-chalkboard-teacher"></i> <span>Admission Settings</span></a>
 
                 <a class="nav-link" id="v-pills-psw-tab" data-toggle="pill" href="#v-pills-psw" role="tab" aria-controls="v-pills-messages" aria-selected="false"><i class="fas fa-unlock-alt"></i> <span>Change Password</span></a>
 
@@ -57,7 +57,7 @@
                                                         alt="Profile Image">
                                                     <input type="file" id="edit_img">
                                                     <span class="avatar-edit">
-                                                        <i data-feather="edit-2" class="avatar-uploader-icon shadow-soft"></i>
+                                                        <i class="fa fa-pen"  class="avatar-uploader-icon shadow-soft"></i>
                                                     </span>
                                                 </label>
                                             </div>

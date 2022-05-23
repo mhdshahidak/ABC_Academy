@@ -9,12 +9,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ABC TRAINING ACADEMY</title>
 
-    <link rel="shortcut icon" href="{% static 'websites/logo.web' %}">
+    <link rel="shortcut icon" href="{% static 'websites/logo.webp' %}">
 
     <link rel="stylesheet" href="{% static 'teacher/css/bootstrap.min.css' %}">
 
     <link rel="stylesheet" href="{% static 'teacher/plugins/fontawesome/css/fontawesome.min.css' %}">
     <link rel="stylesheet" href="{% static 'teacher/plugins/fontawesome/css/all.min.css' %}">
+
+    <!-- Google material CDN -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
 
     <link rel="stylesheet" href="{% static 'teacher/css/style.css' %}">
 
@@ -31,10 +34,10 @@
                     <img src="{% static 'websites/logo.webp' %}" alt="Logo">
                 </a>
                 <a href="" class="white-logo">
-                    <img src="{% static 'websites/logo.png' %}" alt="Logo">
+                    <img src="{% static 'websites/logo.webp' %}" alt="Logo">
                 </a>
                 <a href="" class="logo logo-small">
-                    <img src="{% static 'websites/logo.png' %}" alt="Logo" width="30" height="30">
+                    <img src="{% static 'websites/logo.webp' %}" alt="Logo" width="30" height="30">
                 </a>
             </div>
 
@@ -54,7 +57,7 @@
 
                 <li class="nav-item dropdown">
                     <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
-                        <i data-feather="bell"></i> <span class="badge rounded-pill">5</span>
+                        <i class="fa fa-bell"></i> <span class="badge rounded-pill">5</span>
                     </a>
                     <div class="dropdown-menu notifications">
                         <div class="topnav-dropdown-header">
@@ -161,11 +164,11 @@
                         <span>Admin</span>
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href=""><i data-feather="user" class="me-1"></i>
-                            Profile</a>
-                        <a class="dropdown-item" href=""><i data-feather="settings" class="me-1"></i>
+                        <a class="dropdown-item" href="{% url 'student:profile' %}"><i class="fa fa-user" class="me-1"></i>&nbsp;
+                                      Profile</a>
+                        <a class="dropdown-item" href=""><i class="fa fa-cog" class="me-1"></i>&nbsp;
                             Settings</a>
-                        <a class="dropdown-item" href=""><i data-feather="log-out" class="me-1"></i>
+                        <a class="dropdown-item" href=""><i class="fa fa-sign-out-alt" class="me-1"></i>&nbsp;
                             Logout</a>
                     </div>
                 </li>
@@ -182,10 +185,10 @@
                     <ul>
                         <li class="menu-title"><span>Main</span></li>
                         <li class="active">
-                            <a href="{% url 'student:home' %}"><i data-feather="home"></i> <span>Dashboard</span></a>
+                            <a href="{% url 'student:home' %}"><i class="fa fa-th"></i> <span>Dashboard</span></a>
                         </li>
                         <li class="submenu">
-                            <a href=""><i data-feather="clipboard"></i> <span> My Profile</span> <span
+                            <a href=""><i class="fa fa-address-card"></i> <span> My Profile</span> <span
                                     class="menu-arrow"></span></a>
                             <ul>
                                 <li><a href="{% url 'student:profile' %}">My Profile</a></li>
@@ -193,13 +196,13 @@
                             </ul>
                         </li>
                         <li>
-                            <a href=""><i data-feather="star"></i> <span>Exam</span></a>
+                            <a href=""><i class="fa fa-edit"></i> <span>Exam</span></a>
                         </li>
                         <li>
-                            <a href=""><i data-feather="credit-card"></i> <span>Result</span></a>
+                            <a href=""><i class="fa fa-clipboard"></i> <span>Result</span></a>
                         </li>
                         <li>
-                            <a href=""><i data-feather="settings"></i> <span>Calander</span></a>
+                            <a href=""><i class="fa fa-calendar"></i> <span>Calendar</span></a>
                         </li>
                     </ul>
                 </div>
