@@ -39,7 +39,8 @@
                 </div>
                 <div class="text-center mb-5">
                     <label class="avatar avatar-xxl profile-cover-avatar" for="avatar_upload">
-                        <img class="avatar-img" src="{% static 'teacher/img/profiles/avatar-02.jpg' %}" alt="Profile Image">
+                        <img class="avatar-img" src="{% static 'teacher/img/profiles/avatar-02.jpg' %}"
+                            alt="Profile Image">
                         <input type="file" id="avatar_upload">
                         <span class="avatar-edit">
                             <i data-feather="edit-2" class="avatar-uploader-icon shadow-soft"></i>
@@ -61,7 +62,7 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-8">
-                        <div class="card">
+                        <div class="card bg-white">
                             <div class="card-header">
                                 <h5 class="card-title d-flex justify-content-between">
                                     <span>Profile</span>
@@ -69,81 +70,94 @@
                                 </h5>
                             </div>
                             <div class="card-body">
-                                <div class="col-lg-4">
-                                    <ul class="list-unstyled mb-0">
-                                        <li class="py-0">
-                                            <small class="text-dark"><b><span>About</span></b></small>
-                                        </li>
-                                        <li>
-                                            Charles Hafner
-                                        </li>
-                                        <li>
-                                            ABC125874
-                                         </li>
-                                        <li>
-                                           22/02/1999
-                                        </li>
-                                    </ul>
+                                <ul class="nav nav-tabs nav-tabs-solid">
+                                    <li class="nav-item"><a class="nav-link active" href="#solid-tab1"
+                                            data-bs-toggle="tab">About</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#solid-tab2"
+                                            data-bs-toggle="tab">Contact</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#solid-tab3"
+                                            data-bs-toggle="tab">Professional Details</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane show active" id="solid-tab1">
+                                        <ul class="list-unstyled mb-0">
+                                            <li class="py-0">
+                                                <small class="text-dark"><b><span>About</span></b></small>
+                                            </li>
+                                            <li>
+                                                Charles Hafner
+                                            </li>
+                                            <li>
+                                                ABC125874
+                                             </li>
+                                            <li>
+                                               22/02/1999
+                                            </li>
+                                        </ul>
+                                    </div>
+
+
+
+
+                                    <div class="tab-pane" id="solid-tab2">
+                                        <ul class="list-unstyled mb-0">
+                                            <li class="pt-2 pb-0">
+                                                <small class="text-dark">Contacts</small>
+                                            </li>
+                                            <li>
+                                                <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                                                    data-cfemail="71121910031d14021910171f1403311409101c011d145f121e1c">[email&#160;protected]</a>
+                                            </li>
+                                            <li>
+                                                +1 (304) 499-13-66
+                                            </li>
+                                            <li class="pt-2 pb-0">
+                                                <small class="text-dark">Address</small>
+                                            </li>
+                                            <li>
+                                                4663 Agriculture Lane,<br>
+                                                Miami,<br>
+                                                Florida - 33165,<br>
+                                                United States.
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="tab-pane" id="solid-tab3">
+                                        <ul class="list-unstyled mb-0">
+                                            <li class="pt-2 pb-0">
+                                                <small class="text-dark">Contacts</small>
+                                            </li>
+                                            <li>
+                                                <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                                                    data-cfemail="71121910031d14021910171f1403311409101c011d145f121e1c">[email&#160;protected]</a>
+                                            </li>
+                                            <li>
+                                                +1 (304) 499-13-66
+                                            </li>
+                                            <li class="pt-2 pb-0">
+                                                <small class="text-dark">Address</small>
+                                            </li>
+                                            <li>
+                                                4663 Agriculture Lane,<br>
+                                                Miami,<br>
+                                                Florida - 33165,<br>
+                                                United States.
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div class="col-lg-4">
-                                    <ul class="list-unstyled mb-0">
-                                        <li class="py-0">
-                                            <small class="text-dark"><b><span>About</span></b></small>
-                                        </li>
-                                        <li>
-                                            Charles Hafner
-                                        </li>
-                                        <li>
-                                            ABC125874
-                                         </li>
-                                        <li>
-                                           22/02/1999
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- <ul class="list-unstyled mb-0">
-                                    <li class="py-0">
-                                        <small class="text-dark"><b><span>About</span></b></small>
-                                    </li>
-                                    <li>
-                                        Charles Hafner
-                                    </li>
-                                    <li>
-                                        ABC125874
-                                     </li>
-                                    <li>
-                                       22/02/1999
-                                    </li>
-                                    <li class="pt-2 pb-0">
-                                        <small class="text-dark">Contacts</small>
-                                    </li>
-                                    <li>
-                                        <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                                            data-cfemail="71121910031d14021910171f1403311409101c011d145f121e1c">[email&#160;protected]</a>
-                                    </li>
-                                    <li>
-                                        +1 (304) 499-13-66
-                                    </li>
-                                    <li class="pt-2 pb-0">
-                                        <small class="text-dark">Address</small>
-                                    </li>
-                                    <li>
-                                        4663 Agriculture Lane,<br>
-                                        Miami,<br>
-                                        Florida - 33165,<br>
-                                        United States.
-                                    </li>
-                                </ul> -->
                             </div>
                         </div>
                     </div>
+
                     <div class="col-lg-4">
                         <div class="card">
                             <div class="card-header">
                                 <h5 class="card-title">Activity</h5>
                             </div>
                             <div class="card-body card-body-height">
-                                
+                
                             </div>
                         </div>
                     </div>
@@ -151,12 +165,14 @@
             </div>
         </div>
     </div>
+    
+</div>
+</div>
+</div>
+</div>
 </div>
 
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 
 {% endblock %}
-
-
-
