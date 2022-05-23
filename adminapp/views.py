@@ -71,6 +71,19 @@ def add_student(request):
     return render(request,'adminapps/addstudent.html', context)
 
 
+def exam(request):
+    context={
+        "is_exam":True
+    }
+    return render(request,'adminapps/exams.html', context)
+
+def exam_add_list(request):
+    context={
+        "is_exam_add_list":True
+    }
+    return render(request,'adminapps/exam_add_lists.html', context)
+
+
 # login
 
 def login(request):
