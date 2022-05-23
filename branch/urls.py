@@ -13,6 +13,9 @@ urlpatterns = [
     path('addteacher',views.add_teachers,name="addteacherbranch"),
     path('courses',views.courses,name="courses"),
     path('addcourses',views.add_courses,name="addcourses"),
+    path('fees',views.fees,name="fees"),
+    path('addfees',views.add_fees,name="addfees"),
+
 
 
 ]
