@@ -1,4 +1,4 @@
-{% extends 'teacher/master.html' %}
+{% extends 'student/master.html' %}
 {% load static %}
 {% block content %}
 
@@ -13,8 +13,8 @@
                 <div class="col-sm-6">
                     <h3 class="page-title">Settings</h3>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{% url 'teacher:homepage' %}">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="{% url 'teacher:profile' %}">Profile</a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'student:home' %}">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'student:profile' %}">Profile</a></li>
                         <li class="breadcrumb-item active">Profile Settings</li>
                     </ul>
                 </div>
@@ -27,9 +27,9 @@
               <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true"><i class="fa fa-user" ></i> <span>Basic Details Settings</span></a>
 
-                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false"><i class="fa fa-users"></i> <span>Address Settings</span></a>
+                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false"><i class="fa fa-users"></i> <span>Gaurdian Settings</span></a>
 
-                <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false"><i class="fas fa-chalkboard-teacher"></i> <span>Professional Settings</span></a>
+                <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false"><i class="fas fa-chalkboard-teacher"></i> <span>Admission Settings</span></a>
 
                 <a class="nav-link" id="v-pills-psw-tab" data-toggle="pill" href="#v-pills-psw" role="tab" aria-controls="v-pills-messages" aria-selected="false"><i class="fas fa-unlock-alt"></i> <span>Change Password</span></a>
 
@@ -71,7 +71,7 @@
                                         </div>
                                     </div>
                                     <div class="row form-group">
-                                        <label for="Student ID" class="col-sm-3 col-form-label input-label">Staff ID</label>
+                                        <label for="Student ID" class="col-sm-3 col-form-label input-label">Student ID</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="Student ID" placeholder="Student ID"
                                                 value="32156351">
@@ -120,35 +120,43 @@
                     <div class="col-xl-12 col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h5 class="card-title">Contact information</h5>
+                                <h5 class="card-title">Gaurdian information</h5>
                             </div>
                             <div class="card-body">
                                 <form>
                                     <div class="row form-group">
-                                        <label for="address" class="col-sm-3 col-form-label input-label">Address</label>
+                                        <label for="Fathername" class="col-sm-3 col-form-label input-label">Father Name</label>
                                         <div class="col-sm-9">
-                                            <textarea name="address" id="address" class="form-control" cols="30" rows="10">vjhhjhjSjknjn,m </textarea>
+                                            <input type="text" class="form-control" id="Fathername" placeholder="Your Father Name"
+                                                value="Charles Hafner">
                                         </div>
                                     </div>
                                     <div class="row form-group">
-                                        <label for="city" class="col-sm-3 col-form-label input-label">City</label>
+                                        <label for="mothername" class="col-sm-3 col-form-label input-label">Mother Name</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="city" placeholder="Your City Name"
+                                            <input type="text" class="form-control" id="mothername" placeholder="Your Mother Name"
                                                 value="32156351">
                                         </div>
                                     </div>
                                     <div class="row form-group">
-                                        <label for="district" class="col-sm-3 col-form-label input-label">District</label>
+                                        <label for="email" class="col-sm-3 col-form-label input-label">Email</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="district" placeholder="Your District Name"
-                                                value="malappuram">
+                                            <input type="email" class="form-control" id="email" placeholder="Gaurdian Email"
+                                                value="charleshafner@example.com">
                                         </div>
                                     </div>
                                     <div class="row form-group">
-                                        <label for="pin" class="col-sm-3 col-form-label input-label">Zip Code</label>
+                                        <label for="phone" class="col-sm-3 col-form-label input-label">Phone <span
+                                                class="text-muted">(Optional)</span></label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="pin" placeholder="Your zipcode"
-                                                value="676312">
+                                            <input type="text" class="form-control" id="phone" placeholder="+x(xxx)xxx-xx-xx"
+                                                value="+1 (304) 499-13-66">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <label for="address" class="col-sm-3 col-form-label input-label">Address</label>
+                                        <div class="col-sm-9">
+                                            <textarea name="address" id="address" cols="95" rows="4" class="form-control" value="yvygbh">ubuhygvgbasdff</textarea>
                                         </div>
                                     </div>
                                     <div class="text-end">
@@ -166,37 +174,30 @@
                     <div class="col-xl-12 col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h5 class="card-title">Professional information</h5>
+                                <h5 class="card-title">Admission information</h5>
                             </div>
                             <div class="card-body">
                                 <form>
                                     <div class="row form-group">
-                                        <label for="admissionnum" class="col-sm-3 col-form-label input-label">Staff ID</label>
+                                        <label for="admissionnum" class="col-sm-3 col-form-label input-label">Admission Number</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="admissionnum" placeholder="Your ID"
-                                                value="254785445">
+                                            <input type="text" class="form-control" id="admissionnum" placeholder="Your Admission Number"
+                                                value="Charles Hafner">
                                         </div>
                                     </div>
                                     
                                     <div class="row form-group">
-                                        <label for="jdate" class="col-sm-3 col-form-label input-label">Joining Date</label>
+                                        <label for="cname" class="col-sm-3 col-form-label input-label">Course Name</label>
                                         <div class="col-sm-9">
-                                            <input type="date" class="form-control" id="jdate" placeholder="Joining Dtae"
+                                            <input type="text" class="form-control" id="cname" placeholder="Section"
                                                 value="charleshafner@example.com">
                                         </div>
                                     </div>
                                     <div class="row form-group">
-                                        <label for="course" class="col-sm-3 col-form-label input-label">Course</label>
+                                        <label for="Class" class="col-sm-3 col-form-label input-label">Class</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="course" placeholder="Course"
-                                                value="ttc">
-                                        </div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <label for="qualification" class="col-sm-3 col-form-label input-label">Qualification</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="qualification" placeholder="Qualification"
-                                                value="ttc">
+                                            <input type="text" class="form-control" id="Class" placeholder="Class"
+                                                value="32156351">
                                         </div>
                                     </div>
                                     <div class="row form-group">
@@ -306,7 +307,202 @@
               </div>
             </div>
           </div>
-              
+        <!-- <div class="row">
+            <div class="col-xl-3 col-md-4">
+
+                <div class="widget settings-menu">
+                    <ul>
+                        <li class="nav-item" data-bs-toggle="tab">
+                            <a href="#basic" class="nav-link  active">
+                                <i class="far fa-user" ></i> <span>Basic Details Settings</span>
+                            </a>
+                        </li>
+                        <li class="nav-item" data-bs-toggle="tab">
+                            <a href="#guardian" class="nav-link">
+                                <i class="far fa-user"></i> <span>Gaurdian Settings</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item" data-bs-toggle="tab">
+                            <a href="settings.html" class="nav-link">
+                                <i class="far fa-user"></i> <span>Admission Settings</span>
+                            </a>
+                        </li>
+                        <li class="nav-item" data-bs-toggle="tab">
+                            <a href="settings.html" class="nav-link">
+                                <i class="far fa-user"></i> <span>Class Settings</span>
+                            </a>
+                        </li>
+                        <li class="nav-item" data-bs-toggle="tab">
+                            <a href="change-password.html" class="nav-link">
+                                <i class="fas fa-unlock-alt"></i> <span>Change Password</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="delete-account.html" class="nav-link">
+                                <i class="fas fa-ban"></i> <span>Delete Account</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="col-xl-9 col-md-8">
+                <div class="card" id="basic">
+                    <div class="card-header">
+                        <h5 class="card-title">Basic information</h5>
+                    </div>
+                    <div class="card-body">
+
+                        <form>
+                            <div class="row form-group">
+                                <label for="name" class="col-sm-3 col-form-label input-label">Name</label>
+                                <div class="col-sm-9">
+                                    <div class="d-flex align-items-center">
+                                        <label class="avatar avatar-xxl profile-cover-avatar m-0" for="edit_img">
+                                            <img id="avatarImg" class="avatar-img"
+                                                src="{% static 'teacher/img/profiles/avatar-02.jpg' %}"
+                                                alt="Profile Image">
+                                            <input type="file" id="edit_img">
+                                            <span class="avatar-edit">
+                                                <i data-feather="edit-2" class="avatar-uploader-icon shadow-soft"></i>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label for="name" class="col-sm-3 col-form-label input-label">Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="name" placeholder="Your Name"
+                                        value="Charles Hafner">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label for="Student ID" class="col-sm-3 col-form-label input-label">Student ID</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="Student ID" placeholder="Student ID"
+                                        value="32156351">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label for="gender" class="col-sm-3 col-form-label input-label">Gender</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="gender" placeholder="Gender"
+                                        value="Male">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label for="dob" class="col-sm-3 col-form-label input-label">DOB</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="dob" placeholder="dob"
+                                        value="12/02/1999">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label for="email" class="col-sm-3 col-form-label input-label">Email</label>
+                                <div class="col-sm-9">
+                                    <input type="email" class="form-control" id="email" placeholder="Email"
+                                        value="charleshafner@example.com">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label for="phone" class="col-sm-3 col-form-label input-label">Phone <span
+                                        class="text-muted">(Optional)</span></label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="phone" placeholder="+x(xxx)xxx-xx-xx"
+                                        value="+1 (304) 499-13-66">
+                                </div>
+                            </div>
+                            <div class="text-end">
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-xl-9 col-md-8"  id="guardian">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Basic information</h5>
+                    </div>
+                    <div class="card-body">
+
+                        <form>
+                            <div class="row form-group">
+                                <label for="name" class="col-sm-3 col-form-label input-label">Name</label>
+                                <div class="col-sm-9">
+                                    <div class="d-flex align-items-center">
+                                        <label class="avatar avatar-xxl profile-cover-avatar m-0" for="edit_img">
+                                            <img id="avatarImg" class="avatar-img"
+                                                src="{% static 'teacher/img/profiles/avatar-02.jpg' %}"
+                                                alt="Profile Image">
+                                            <input type="file" id="edit_img">
+                                            <span class="avatar-edit">
+                                                <i data-feather="edit-2" class="avatar-uploader-icon shadow-soft"></i>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label for="name" class="col-sm-3 col-form-label input-label">Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="name" placeholder="Your Name"
+                                        value="Charles Hafner">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label for="Student ID" class="col-sm-3 col-form-label input-label">Student ID</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="Student ID" placeholder="Student ID"
+                                        value="32156351">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label for="gender" class="col-sm-3 col-form-label input-label">Gender</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="gender" placeholder="Gender"
+                                        value="Male">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label for="dob" class="col-sm-3 col-form-label input-label">DOB</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="dob" placeholder="dob"
+                                        value="12/02/1999">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label for="email" class="col-sm-3 col-form-label input-label">Email</label>
+                                <div class="col-sm-9">
+                                    <input type="email" class="form-control" id="email" placeholder="Email"
+                                        value="charleshafner@example.com">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label for="phone" class="col-sm-3 col-form-label input-label">Phone <span
+                                        class="text-muted">(Optional)</span></label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="phone" placeholder="+x(xxx)xxx-xx-xx"
+                                        value="+1 (304) 499-13-66">
+                                </div>
+                            </div>
+                            <div class="text-end">
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div> -->
     </div>
 </div>
 

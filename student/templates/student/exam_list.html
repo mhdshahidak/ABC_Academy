@@ -1,0 +1,93 @@
+{% extends 'student/master.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3 class="page-title">Exams</h3>
+                    <ul class="breadcrumb">
+                        <li class=""><a href="{% url 'student:home' %}">Dashboard /</a></li>
+                        <li class="breadcrumb-item active">Exams</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card card-table">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-center table-hover datatable">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th>Exam/Subject</th>
+                                        <th>Date</th>
+                                        <th>Start Time</th>
+                                        <th>End Time</th>
+                                        <th>Total Hours</th>
+                                        <th>Status</th>
+                                        <th class="text-start">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <h2>
+                                                <a href="">Physics <span>Series Exam1</span></a>
+                                            </h2>
+                                        </td>
+                                        <td>
+                                            12/02/2022
+                                        </td>
+                                        <td>10:00 AM</td>
+                                        <td>12:30 PM</td>
+                                        <th>2.30 hrs</th>
+                                        <td><span class="badge badge-pill bg-warning-light">Not Attended</span></td>
+                                        <td class="text-start">
+                                            <a href="{% url 'student:examinst' %}"
+                                                class="btn btn-sm btn-white text-primary me-2"><i
+                                                    class="far fa-edit me-1"></i> Attend Exam</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h2>
+                                                <a href="">Physics <span>Series Exam1</span></a>
+                                            </h2>
+                                        </td>
+                                        <td>
+                                            12/02/2022
+                                        </td>
+                                        <td>10:00 AM</td>
+                                        <td>12:30 PM</td>
+                                        <th>2.30 hrs</th>
+                                        <td><span class="badge badge-pill bg-success-light">Attended</span></td>
+                                        <td class="text-start">
+                                            <a href=""
+                                                class="btn btn-sm btn-white text-primary me-2"><i
+                                                    class="far fa-edit me-1"></i> Attend Exam</a>
+                                        </td>
+                                    </tr>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+
+
