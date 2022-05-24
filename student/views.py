@@ -10,3 +10,9 @@ def profile(request):
 
 def edit_profile(request):
     return render(request,'student/edit_profile.html')
+
+def exam_list(request):
+    return render(request,'student/exam_list.html')
+
+def exam_instructions(request):
+    return render(request,'student/exam_instructions.html')

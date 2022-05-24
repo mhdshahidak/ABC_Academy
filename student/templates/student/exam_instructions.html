@@ -1,0 +1,69 @@
+{% extends 'student/master.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="row justify-content-lg-center">
+            <div class="col-lg-10">
+                <div class="row">
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="card-title d-flex justify-content-between">
+                                <span style="color: navy;"><i class="fa fa-edit"></i> Physics Exam</span>
+                                <button type="button" class="btn btn-sm btn-rounded btn-danger"><i class="fa fa-undo"></i>&nbsp;
+                                    Pending Submission
+                                </button>
+                                <button type="button" class="btn btn-sm btn-rounded btn-warning">
+                                    Mark : 25
+                                </button>
+                                <!-- <a class="btn btn-sm btn-white" href="settings.html">Edit</a> -->
+                            </h6>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title text-center pt-2 pb-0">
+                                Please Read the instructions carefully
+                            </h5><br>
+                            <ul class="list-group list-group-numbered">
+                                <li>
+                                    he clock has been set at server and count down timer at the top right corner of the screen will display left out time to closure from where you can monitor time you have to complete the exam.
+                                </li>
+                                <li>
+                                    Click one of the answer option buttons to select your answer.
+                                </li>
+                                <li>
+                                    To change an answer, simply click the desired option button.
+                                </li>
+                                <li>
+                                    The size of the file attached should be less than 10 MB
+                                </li>
+                                <li>
+                                    Click on SAVE & NEXT to save the answer before moving to the next question. The next question will automatically be displayed.
+                                </li>
+                                <li>
+                                    Click SKIP to proceed to the next question without changing the saved state for the current question.
+                                </li>
+                                <li>
+                                    To go to a question, click on the question number in the Question Palette on the right hand side of the screen.
+                                </li>
+                            </ul><br>
+                            <h6>
+                                Color Indication
+                            </h6>
+                            <ul class="list-group">
+                                <li class="">
+                                  <input class="form-check-input me-1" type="checkbox" value="" aria-label="..." style="color: grey;">
+                                  First checkbox
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
