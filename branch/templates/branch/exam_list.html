@@ -1,6 +1,7 @@
-{% extends 'adminapps/index.html' %}
+{% extends 'branch/master.html' %}
 {% block content %}
 {% load static %}
+
 <div class="page-wrapper">
     <div class="row">
         <div class="col-md-12">
@@ -9,7 +10,7 @@
                     <h5 class="card-title">Exams</h5><br>
                     <!-- <a class="text-end">Add</a> -->
                     <div class="col-auto profile-btn">
-                        <a href="{% url 'admins:examsaddfirst' %}" class="btn btn-success">
+                        <a href="{% url 'branch:examaddbone' %}" class="btn btn-success">
                             Add Exam
                         </a>
                     </div>
@@ -640,5 +641,6 @@
         </div>
     </div>
 </div>
+
 
 {% endblock %}

@@ -66,3 +66,35 @@ def add_fees(request):
         "is_add_fees":True
     }
     return render(request,'branch/add_fees.html', context)
+
+
+# profile
+
+def profile_branch(request):
+    return render(request,'branch/profile_branch.html')
+
+# exam 
+
+def exam_list(request):
+    context={
+        "is_exam_list":True
+    }
+    return render(request,'branch/exam_list.html', context)
+
+def exam_add_b_one(request):
+    context={
+        "is_exam_add_b_one":True
+    }
+    return render(request,'branch/exam_addb1.html', context)
+
+def exam_add_b_two(request):
+    context={
+        "is_exam_add_b_two":True
+    }
+    return render(request,'branch/exam_addb2.html', context)
+
+def exam_add_b_Three(request):
+    context={
+        "is_exam_add_b_three":True
+    }
+    return render(request,'branch/exam_addb3.html', context)

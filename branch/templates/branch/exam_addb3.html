@@ -1,0 +1,90 @@
+{% extends 'branch/master.html' %}
+{% block content %}
+{% load static %}
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title">
+                        FASHION MARKETING 2022-2023 MARCH
+                    </h3>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form>
+                            <div class="row">
+                                <div class="col-12">
+                                    <h5 class="form-title">
+                                        <span>Question 1</span>
+                                    </h5>
+                                </div>
+                                <div class="col-sm-12 col-lg-10">
+                                    <div class="form-group">
+                                        <textarea class="form-control"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-lg-2">
+                                    <div class="form-group">
+                                        <!-- <label>
+                                            Type
+                                        </label>
+                                        <input type="checkbox"> -->
+                                        <ul>
+                                            <li>
+                                                Type:
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" class="form-check-input"> MCQ
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" class="form-check-input"> DESCRIPTION
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-12 text-end">
+                                    <a href="#" class="btn btn-info ">
+                                        Next >
+                                    </a>
+                                </div> -->
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <h5 class="">
+                                        <span>MCQ OPTIONS</span>
+                                    </h5>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-12 text-end">
+                                    <a href="#" class="btn btn-success ">
+                                        SAVE & NEXT
+                                    </a>
+                                    <a href="#" class="btn btn-info  ">
+                                        FINISH 
+                                    </a>
+                                </div>
+                                <!-- <div class="col-12 ">
+                                    
+                                </div> -->
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

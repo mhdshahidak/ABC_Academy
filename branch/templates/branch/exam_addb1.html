@@ -1,4 +1,4 @@
-{% extends 'adminapps/index.html' %}
+{% extends 'branch/master.html' %}
 {% block content %}
 {% load static %}
 
@@ -8,16 +8,9 @@
             <div class="row align-items-center">
                 <div class="col">
                     <h3 class="page-title">
-                        Add Fees
+                        Add Exam
                     </h3>
-                    <!-- <ul class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="fees-collections.html">Accounts</a>
-                        </li>
-                        <li class="breadcrumb-item active">
-                            Add Fees
-                        </li>
-                    </ul> -->
+                    
                 </div>
             </div>
         </div>
@@ -29,13 +22,13 @@
                             <div class="row">
                                 <div class="col-12">
                                     <h5 class="form-title">
-                                        <span>Fees Information</span>
+                                        <span>Exam Information</span>
                                     </h5>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
                                         <label>
-                                            Student ID
+                                            Exam Name
                                         </label>
                                         <input type="text" class="form-control">
                                     </div>
@@ -43,34 +36,20 @@
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
                                         <label>
-                                            Student Name
-                                        </label>
-                                        <input type="text" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <div class="form-group">
-                                        <label>
-                                            Fees Type
+                                            Department
                                         </label>
                                         <select class="form-control select">
                                             <option>
-                                                Select Type
+                                                Select Department
                                             </option>
                                             <option>
-                                                Class Test
+                                                FASHION DESIGNING
                                             </option>
                                             <option>
-                                                Exam Fees
+                                                TTC
                                             </option>
                                             <option>
-                                                Hostel Fees
-                                            </option>
-                                            <option>
-                                                Transport Fees
-                                            </option>
-                                            <option>
-                                                Mess Fees
+                                                LAB TECHNITION
                                             </option>
                                         </select>
                                     </div>
@@ -78,26 +57,20 @@
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
                                         <label>
-                                            Branch
+                                            Batch
                                         </label>
                                         <select class="form-control select">
                                             <option>
-                                                Mukkam
+                                                Select Batch
                                             </option>
                                             <option>
-                                                Ramanattukara
+                                                2019-2021
                                             </option>
                                             <option>
-                                                Kondottty
+                                                2020-2022
                                             </option>
                                             <option>
-                                                Manjery
-                                            </option>
-                                            <option>
-                                                Thenhippalam
-                                            </option>
-                                            <option>
-                                                Areekode
+                                                2021-2023
                                             </option>
                                         </select>
                                     </div>
@@ -105,23 +78,52 @@
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
                                         <label>
-                                            Branch
+                                            Subject
                                         </label>
-                                        <input type="date" class="form-control">
+                                        <select class="form-control select" required>
+                                            <option>
+                                                Select Subject
+                                            </option>
+                                            <option>
+                                                FASHION MARKETING
+                                            </option>
+                                            <option>
+                                                FASHION DESIGNING
+                                            </option>
+                                            <option>
+                                                CAD
+                                            </option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
                                         <label>
-                                            Paid Date
+                                            Start Time
+                                        </label>
+                                        <input type="time" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>
+                                            End Time
+                                        </label>
+                                        <input type="time" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>
+                                            Exam Date
                                         </label>
                                         <input type="date" class="form-control">
                                     </div>
                                 </div>
-                                <div class="col-12">
-                                    <button type="submit" class="btn btn-primary">
-                                        Submit
-                                    </button>
+                                <div class="col-12 text-end">
+                                    <a href="{% url 'branch:examaddbtwo' %}" class="btn btn-info ">
+                                        Next >
+                                    </a>
                                 </div>
                             </div>
                         </form>
@@ -131,6 +133,5 @@
         </div>
     </div>
 </div>
-
 
 {% endblock %}

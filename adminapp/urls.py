@@ -4,30 +4,35 @@ from . import views
 app_name='admins'
 
 urlpatterns = [
-    path('',views.admindashbord,name="admindash"),
-    path('branch',views.branch_list,name='branch'),
-    path('addbranch',views.add_branch,name="addbranch"),
-    path('branchcourse',views.branch_course,name="branchcourse"),
-    path('teachers',views.teachers,name="teachers"),
-    path('teachers_list',views.teachers_list,name="teachers_list"),
-    path('add_teacher',views.add_teacher,name="addteacher"),
-    path('students',views.students,name="students"),
-    path('coursestudents',views.students_by_courses,name="coursestudents"),
-    path('studentslist',views.students_list,name="studentslist"),
-    path('addstudent',views.add_student,name="addstudent"),
+    path('', views.admindashbord, name="admindash"),
+    path('branch', views.branch_list, name='branch'),
+    path('addbranch', views.add_branch, name="addbranch"),
+    path('branchcourse', views.branch_course, name="branchcourse"),
+    path('teachers', views.teachers, name="teachers"),
+    path('teachers_list', views.teachers_list, name="teachers_list"),
+    path('add_teacher', views.add_teacher, name="addteacher"),
+    path('students', views.students,name="students"),
+    path('coursestudents',  views.students_by_courses, name="coursestudents"),
+    path('studentslist', views.students_list, name="studentslist"),
+    path('addstudent', views.add_student, name="addstudent"),
+    path('editstudent', views.edit_student_by_admin, name="editstudentadmin"),
+
 
     # exams
 
-    path('exams',views.exam,name="exams"),
-    path('examsadd',views.exam_add_list,name="examsadd"),
-    path('examsaddone',views.exam_add_one,name="examsaddone"),
+    path('exams', views.exam, name="exams"),
+    path('examsadd', views.exam_add_list, name="examsadd"),
+    path('examsaddfirst', views.exam_add_first, name="examsaddfirst"),
+    path('examsaddone', views.exam_add_one, name="examsaddone"),
+    path('examsaddtwo', views.exam_add_two, name="examsaddtwo"),
 
+   # profile
 
-    #fees admin
+   path('profile', views.admin_profile, name="adminprofile"),
 
-    path('feesadding',views.fees_adding,name="feesadding"),
+    # fees admin
 
-
+    path('feesadding', views.fees_adding,name="feesadding"),
 
 
 
@@ -35,8 +40,5 @@ urlpatterns = [
     
     path('login', views.login,name="adminlogin"),
    
-
-
-
 
 ]

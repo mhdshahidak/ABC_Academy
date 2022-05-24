@@ -70,6 +70,13 @@ def add_student(request):
     }
     return render(request,'adminapps/addstudent.html', context)
 
+def edit_student_by_admin(request):
+    return render(request,'adminapps/students_edit_admin.html')
+
+# profile
+
+def admin_profile(request):
+    return render(request,'adminapps/profile_admin.html')
 
 
 # exams
@@ -86,17 +93,25 @@ def exam_add_list(request):
     }
     return render(request,'adminapps/exam_add_lists.html', context)
 
-# def exam_add_one(request):
-#     context={
-#         "is_exam_add_one":True
-#     }
-#     return render(request,'adminapps/exam_add1.html', context)
+def exam_add_first(request):
+    context={
+        "is_exam_add_one":True
+    }
+    return render(request,'adminapps/exam_add1.html', context)
 
 def exam_add_one(request):
     context={
         "is_exam_add_one":True
     }
     return render(request,'adminapps/exam_add_trial.html', context)
+
+
+def exam_add_two(request):
+    context={
+        "is_exam_add_two":True
+    }
+    return render(request,'adminapps/exam_add2.html', context)
+
 
 
 

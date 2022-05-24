@@ -2,107 +2,100 @@
 {% block content %}
 {% load static %}
 
-<link rel="stylesheet"href="{% static 'teacher/plugins/summernote/summernote-bs4.min.css' %}">     
-
 <div class="page-wrapper">
     <div class="content container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="tab-content profile-tab-cont">
-                    <div class="tab-pane fade show active" id="per_details_tab">
-                        <div class="row">
-                            <div class="col-md-12-sm-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <h3 class="col-sm-6  text-sm-end mb-0 mb-sm-3">
-                                                FASHION DESIGNING
-                                            </h3>
-                                            <!-- <p class="col-sm-9">
-                                                John Doe
-                                            </p> -->
-                                        </div>
-                                        <div class="row">
-                                            <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">
-                                                Batch
-                                            </p>
-                                            <select class="col-sm-5  select">
-                                                <option>
-                                                    2019-2022
-                                                </option>
-                                                <option>
-                                                    2020-2023
-                                                </option>
-                                                <option>
-                                                    2021-2024
-                                                </option>
-                                                <option>
-                                                    2022-2025
-                                               </option>
-                                            </select>
-                                        </div>
-                                        <br>
-                                        <div class="row">
-                                            <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">
-                                                Exam Name
-                                            </p>
-                                            <input type="text" class="col-sm-5">
-                                        </div>
-                                        <br>
-                                        <div class="row">
-                                            <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">
-                                                Exam Date
-                                            </p>
-                                            <input type="date" class="col-sm-5 ">
-                                        </div><br>
-                                        <div class="row">
-                                            <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">
-                                                Subject
-                                            </p>
-                                            <select class="col-sm-5  select">
-                                                <option>
-                                                    Designing
-                                                </option>
-                                                <option>
-                                                    Fashion Ormantation
-                                                </option>
-                                                <option>
-                                                    fashion Marketing
-                                                </option>
-                                                <option>
-                                                    CAD
-                                               </option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-    
-                        </div>
-                    </div>
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title">
+                        Add Exam
+                    </h3>
                     
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-sm-12">
                 <div class="card">
-                    <div class="card-header">
-                        <h5 class="card-title">
-                            Editor
-                        </h5>
-                    </div>
                     <div class="card-body">
-                        <div id="summernote">
-                        </div>
+                        <form>
+                            <div class="row">
+                                <div class="col-12">
+                                    <h5 class="form-title">
+                                        <span>Exam Information</span>
+                                    </h5>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>
+                                            Exam Name
+                                        </label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>
+                                            Batch
+                                        </label>
+                                        <select class="form-control select">
+                                            <option>
+                                                Select Batch
+                                            </option>
+                                            <option>
+                                                2019-2021
+                                            </option>
+                                            <option>
+                                                2020-2022
+                                            </option>
+                                            <option>
+                                                2021-2023
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>
+                                            Subject
+                                        </label>
+                                        <select class="form-control select" required>
+                                            <option>
+                                                Select Subject
+                                            </option>
+                                            <option>
+                                                FASHION MARKETING
+                                            </option>
+                                            <option>
+                                                FASHION DESIGNING
+                                            </option>
+                                            <option>
+                                                CAD
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>
+                                            Exam Date
+                                        </label>
+                                        <input type="date" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-12 text-end">
+                                    <a href="{% url 'admins:examsaddone' %}" class="btn btn-info ">
+                                        Next >
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
 </div>
-
 
 {% endblock %}
 

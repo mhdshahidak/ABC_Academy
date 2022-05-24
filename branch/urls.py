@@ -16,6 +16,20 @@ urlpatterns = [
     path('fees',views.fees,name="fees"),
     path('addfees',views.add_fees,name="addfees"),
 
+    # Exams
+
+    path('examlist', views.exam_list, name="examlist"),
+    path('examaddbone', views.exam_add_b_one, name="examaddbone"),
+    path('examaddbtwo', views.exam_add_b_two, name="examaddbtwo"),
+    path('examaddbthree', views.exam_add_b_Three, name="examaddbthree"),
+
+
+
+
+    # profile
+
+    path('branchprofile',views.profile_branch, name="branchprofile")
+
 
 
 ]
