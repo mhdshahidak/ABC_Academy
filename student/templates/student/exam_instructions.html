@@ -53,11 +53,53 @@
                             </h6>
                             <ul class="list-group">
                                 <li class="">
-                                  <input class="form-check-input me-1" type="checkbox" value="" aria-label="..." style="color: grey;">
-                                  First checkbox
+                                  <input class="form-check-input me-1" type="checkbox" value="" aria-label="..." style="background-color: grey;">
+                                    Not Visited
                                 </li>
-                            </ul>
+                                <li class="">
+                                    <input class="form-check-input me-1" type="checkbox" value="" aria-label="..." style="background-color: red;">
+                                    Not answewd
+                                </li>
+                                <li class="">
+                                    <input class="form-check-input me-1" type="checkbox" value="" aria-label="..." style="background-color: blue;">
+                                    Marked for review
+                                </li>
+                                <li class="">
+                                    <input class="form-check-input me-1" type="checkbox" value="" aria-label="..." style="background-color: green;">
+                                    Answered
+                                  </li>
+                            </ul><br>
 
+                            <ul class="list-group list-group-numbered">
+                                <li>
+                                    You can move the mouse cursor over the section names to see the number of answered, not answered.
+                                </li>
+                                <li>
+                                    You are allowed to Shuffle between sections and questions anytime during the examination as per your
+                                </li>
+                                <li>
+                                    You can change your response of the attempted answers anytime during the examination slot time by
+                                    clicking another answer, and then on SAVE & NEXT.
+                                </li>
+                                <li>
+                                    Click on SAVE & NEXT to save the answer before moving to the next question. The next question will automatically be displayed.
+                                </li>
+                                <li>
+                                    Click SKIP to proceed to the next question without changing the saved state for the current question.
+                                </li>
+                            </ul><hr>
+
+                            <form action="">
+                                <ul class="list-group">
+                                    <li class="">
+                                      <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+                                      I will not consult/copy answer from any source including a website,book,or friend/colleague to complete these tests.I have read and understood the instructions, I will be disqualified from giving the exam.
+                                    </li>
+                                    <li class="text-end">
+                                        <a href="{% url 'student:exam' %}" class="btn btn-rounded btn-danger">I Agree And Start Exam</a>
+                                    </li>
+                                </ul>
+                            </form>
                         </div>
                     </div>
                 </div>
