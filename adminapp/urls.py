@@ -15,8 +15,18 @@ urlpatterns = [
     path('coursestudents',views.students_by_courses,name="coursestudents"),
     path('studentslist',views.students_list,name="studentslist"),
     path('addstudent',views.add_student,name="addstudent"),
+
+    # exams
+
     path('exams',views.exam,name="exams"),
     path('examsadd',views.exam_add_list,name="examsadd"),
+    path('examsaddone',views.exam_add_one,name="examsaddone"),
+
+
+    #fees admin
+
+    path('feesadding',views.fees_adding,name="feesadding"),
+
 
 
 

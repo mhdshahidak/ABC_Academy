@@ -71,6 +71,9 @@ def add_student(request):
     return render(request,'adminapps/addstudent.html', context)
 
 
+
+# exams
+
 def exam(request):
     context={
         "is_exam":True
@@ -82,6 +85,28 @@ def exam_add_list(request):
         "is_exam_add_list":True
     }
     return render(request,'adminapps/exam_add_lists.html', context)
+
+# def exam_add_one(request):
+#     context={
+#         "is_exam_add_one":True
+#     }
+#     return render(request,'adminapps/exam_add1.html', context)
+
+def exam_add_one(request):
+    context={
+        "is_exam_add_one":True
+    }
+    return render(request,'adminapps/exam_add_trial.html', context)
+
+
+
+# fees adding 
+
+def fees_adding(request):
+    context={
+        "is_fees_adding":True
+    }
+    return render(request,'adminapps/fees_by_admin.html', context)
 
 
 # login
