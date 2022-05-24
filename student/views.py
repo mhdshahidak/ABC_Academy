@@ -16,3 +16,6 @@ def exam_list(request):
 
 def exam_instructions(request):
     return render(request,'student/exam_instructions.html')
+
+def exam(request):
+    return render(request,'student/exam.html')
