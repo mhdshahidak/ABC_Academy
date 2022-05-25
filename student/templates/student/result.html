@@ -1,0 +1,124 @@
+{% extends 'student/master.html' %}
+{% load static %}
+{% block content %}
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3 class="page-title">Result</h3>
+                    <ul class="breadcrumb">
+                        <li><a href="{% url 'student:home' %}">Dashboard /</a></li>
+                        <li class="breadcrumb-item active"> Result</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <form action="#">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Year:</label>
+                                            <select class="select form-control                                                                                              ">
+                                                <option>Select Customer</option>
+                                                <option>2010-2011</option>
+                                                <option>2011-2012</option>
+                                                <option>2010-2013</option>
+                                                <option>2010-2014</option>
+                                                <option>2010-2015</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Exam Type :</label>
+                                            <select class="select form-control                                                                                              ">
+                                                <option>Yearly Exam</option>
+                                                <option>Class Test</option>
+                                                <option>Mid Term Exam</option>
+                                            </select>
+                                    </div>
+                                </div>
+                                <div class="table-responsive mt-4">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Subject Name</th>
+                                                <th>Date</th>
+                                                <th>Total Mark</th>
+                                                <th>Mark Obtained</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody  id="tbodyofInvoice">
+                                            <tr>
+                                                <td>
+                                                    Physics
+                                                </td>
+                                                <td>
+                                                    12/02/2022
+                                                </td>
+                                                <td>
+                                                    50
+                                                </td>
+                                                <td>
+                                                    30
+                                                </td>
+                                                <td class="add-remove text-end">
+                                                    <i class="fa fa-eye"></i>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Physics
+                                                </td>
+                                                <td>
+                                                    12/02/2022
+                                                </td>
+                                                <td>
+                                                    50
+                                                </td>
+                                                <td>
+                                                    30
+                                                </td>
+                                                <td class="add-remove text-end">
+                                                    <i class="fa fa-eye"></i>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Physics
+                                                </td>
+                                                <td>
+                                                    12/02/2022
+                                                </td>
+                                                <td>
+                                                    50
+                                                </td>
+                                                <td>
+                                                    30
+                                                </td>
+                                                <td class="add-remove text-end">
+                                                    <i class="fa fa-eye"></i>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
