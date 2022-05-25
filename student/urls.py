@@ -10,4 +10,5 @@ urlpatterns = [
     path('examlist',views.exam_list,name='examlist'),
     path('examinst',views.exam_instructions,name='examinst'),
     path('exam',views.exam,name='exam'),
+    path('examq',views.examq,name='examq'),
 ]

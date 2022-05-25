@@ -46,3 +46,15 @@ def exam(request):
         "is_exam": True,
         }
     return render(request,'student/exam.html',context)
+
+def examq(request):
+    context = {
+        "is_exam": True,
+        }
+    return render(request,'student/examq.html',context)
+
+def examq(request):
+    context = {
+        "is_exam": True,
+        }
+    return render(request,'student/examq.html',context)
