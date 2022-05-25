@@ -184,18 +184,18 @@
                 <div id="sidebar-menu" class="sidebar-menu">
                     <ul>
                         <li class="menu-title"><span>Main</span></li>
-                        <li class="active">
+                        <li {% if is_home %} class="active"{% endif %}>
                             <a href="{% url 'student:home' %}"><i class="fa fa-th"></i> <span>Dashboard</span></a>
                         </li>
-                        <li class="submenu">
+                        <li class="submenu" {% if is_profile %} class="active" {% elif is_editprofile %} class="active" {% endif %}>
                             <a href=""><i class="fa fa-address-card"></i> <span> My Profile</span> <span
                                     class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="{% url 'student:profile' %}">My Profile</a></li>
-                                <li><a href="{% url 'student:editprofile' %}">Edit Profile</a></li>
+                                <li {% if is_profile %} class="active" {% endif %}><a href="{% url 'student:profile' %}">My Profile</a></li>
+                                <li {% if is_editprofile %} class="active" {% endif %}><a href="{% url 'student:editprofile' %}">Edit Profile</a></li>
                             </ul>
                         </li>
-                        <li>
+                        <li {% if is_examlist %} class="active" {% elif is_examinst %} class="active" {% elif is_exam %} class="active" {% endif %}>
                             <a href="{% url 'student:examlist' %}"><i class="fa fa-edit"></i> <span>Exam</span></a>
                         </li>
                         <li>

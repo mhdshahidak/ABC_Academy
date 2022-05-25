@@ -3,19 +3,58 @@ from django.shortcuts import render
 # Create your views here.
 
 def student_home(request):
-    return render(request,'student/student_home.html')
+    context = {
+        "is_home": True,
+        }
+    return render(request,'student/student_home.html',context)
+
+
 
 def profile(request):
-    return render(request,'student/profile.html')
+    context = {
+        "is_profile": True,
+        }
+    return render(request,'student/profile.html',context)
+
+
 
 def edit_profile(request):
-    return render(request,'student/edit_profile.html')
+    context = {
+        "is_editprofile": True,
+        }
+    return render(request,'student/edit_profile.html',context)
+
+
 
 def exam_list(request):
-    return render(request,'student/exam_list.html')
+    context = {
+        "is_examlist": True,
+        }
+    return render(request,'student/exam_list.html',context)
+
+
 
 def exam_instructions(request):
-    return render(request,'student/exam_instructions.html')
+    context = {
+        "is_examinst": True,
+        }
+    return render(request,'student/exam_instructions.html',context)
+
 
 def exam(request):
-    return render(request,'student/exam.html')
+    context = {
+        "is_exam": True,
+        }
+    return render(request,'student/exam.html',context)
+
+def examq(request):
+    context = {
+        "is_exam": True,
+        }
+    return render(request,'student/examq.html',context)
+
+def examq(request):
+    context = {
+        "is_exam": True,
+        }
+    return render(request,'student/examq.html',context)

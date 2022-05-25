@@ -5,7 +5,8 @@
     .list li {
         padding: 10px;
     }
-    .pagination li{
+
+    .pagination li {
         padding: 10px;
     }
 </style>
@@ -36,33 +37,17 @@
                                             The breakdown in a reverse biased p-n junction diode is more likely to occur
                                             due to....?
                                         </li>
-                                    </ul>
+                                    </ul><br>
                                     <ul class="list-group list px-4 ">
                                         <li>
-                                            <input class="form-check-input me-1" type="checkbox" value=""
-                                                aria-label="...">
-                                            First checkbox
+                                            <div class="md-form">
+                                                <i class="fas fa-pencil-alt prefix"></i>
+                                                <textarea id="form10" class="md-textarea form-control"
+                                                    rows="3"></textarea>
+
+                                            </div>
                                         </li>
-                                        <li>
-                                            <input class="form-check-input me-1" type="checkbox" value=""
-                                                aria-label="...">
-                                            Second checkbox
-                                        </li>
-                                        <li>
-                                            <input class="form-check-input me-1" type="checkbox" value=""
-                                                aria-label="...">
-                                            Third checkbox
-                                        </li>
-                                        <li>
-                                            <input class="form-check-input me-1" type="checkbox" value=""
-                                                aria-label="...">
-                                            Fourth checkbox
-                                        </li>
-                                        <li>
-                                            <input class="form-check-input me-1" type="checkbox" value=""
-                                                aria-label="...">
-                                            Fifth checkbox
-                                        </li>
+
                                     </ul>
                                 </form>
                             </div>
@@ -77,9 +62,10 @@
                                             <button type="button" class="btn btn-primary"> Skip</button>
                                             <button type="button" class="btn btn-primary">Reset</button>
                                         </div>
-                                        <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-left: 540px;">
-                                            <a href="{% url 'student:examq' %}" type="button" class="btn btn-success">Save &
-                                                Next</a>
+                                        <div class="d-grid gap-2 d-md-flex justify-content-md-end"
+                                            style="margin-left: 540px;">
+                                            <button type="button" class="btn btn-success">Save &
+                                                Next</button>
                                         </div>
                                     </div>
                                 </div>
@@ -107,15 +93,17 @@
 
                                         <div class="btn col-lg-12">
                                             <div class=" btn-group-md ">
-                                                <button type="button" class="btn btn-danger col-lg-8 col-sm-4">Finish Exam</button>
-                                                <button type="button" class="btn btn-success col-lg-3 col-sm-4"> <i class="fa fa-expand"></i></button>
+                                                <button type="button" class="btn btn-danger col-lg-8 col-sm-4">Finish
+                                                    Exam</button>
+                                                <button type="button" class="btn btn-success col-lg-3 col-sm-4"> <i
+                                                        class="fa fa-expand"></i></button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card-body">
                                     <h5 class=" text-center"><b>hr : min : sec</b></h5>
-                                    <h5 class="text-center"><span id="timer-countdown"></span></h5>   
+                                    <h5 class="text-center"><span id="timer-countdown"></span></h5>
                                 </div>
                             </div>
                         </div>
@@ -128,7 +116,7 @@
                             <div class="card-header">
                                 <h6 class="card-title d-flex justify-content-between">
                                     <span style="color: navy;">Questions</span>
-                                    
+
                                 </h6>
                             </div>
                             <div class="card-body">
