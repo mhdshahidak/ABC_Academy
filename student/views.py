@@ -53,8 +53,20 @@ def examq(request):
         }
     return render(request,'student/examq.html',context)
 
-def examq(request):
+def result(request):
     context = {
-        "is_exam": True,
+        "is_result": True,
         }
-    return render(request,'student/examq.html',context)
+    return render(request,'student/result.html',context)
+
+def fee(request):
+    context = {
+        "is_fee": True,
+        }
+    return render(request,'student/fee.html',context)
+
+def calendar(request):
+    context = {
+        "is_calendar": True,
+        }
+    return render(request,'student/calendar.html',context)

@@ -11,4 +11,7 @@ urlpatterns = [
     path('examinst',views.exam_instructions,name='examinst'),
     path('exam',views.exam,name='exam'),
     path('examq',views.examq,name='examq'),
+    path('result',views.result,name='result'),
+    path('fee',views.fee,name='fee'),
+    path('calendar',views.calendar,name='calendar'),                                                            
 ]
