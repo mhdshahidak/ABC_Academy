@@ -24,9 +24,13 @@ class UserManager(BaseUserManager):
         user = self.model(email=email,**extra_fields)
         user.set_password(password)
         user.is_superuser = True
+        user.is_staff   = True
         user.save(using=self._db)
         return user
+
+
 class Branch(models.Model):
+    branch_id = models.CharField(max_length=20,default="")
     branch_name = models.CharField(max_length=30)
     email = models.EmailField()
     phone_number = PhoneField(unique=True)
@@ -35,6 +39,7 @@ class Branch(models.Model):
     state = models.CharField(max_length=50)
     pin = models.BigIntegerField()
     address =  models.TextField()
+    password = models.CharField(max_length=50,default="0")
 
 
 
@@ -75,6 +80,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     branch = models.ForeignKey(Branch, on_delete=models.CASCADE,null=True)
     teacher = models.ForeignKey(Teacher,on_delete=models.CASCADE,null=True)
     Student=models.ForeignKey(Student,on_delete=models.CASCADE,null=True)
+    is_staff = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
     objects = UserManager()
     USERNAME_FIELD='email'
 
