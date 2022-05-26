@@ -15,8 +15,10 @@ def admindashbord(request):
     return render(request,'adminapps/home.html', context)
 
 def branch_list(request):
+    branches = Branch.objects.all()
     context={
-        "is_branch":True
+        "is_branch":True,
+        "branch":branches,
     }
     return render(request,'adminapps/branch.html', context)
 
