@@ -183,10 +183,10 @@
                 <div id="sidebar-menu" class="sidebar-menu">
                     <ul>
                         <li class="menu-title"><span>Main</span></li>
-                        <li class="active">
+                        <li {% if is_homepage %} class="active" {% endif %}>
                             <a href="{% url 'teacher:homepage' %}"><i class="fa fa-th"></i> <span>Dashboard</span></a>
                         </li>
-                        <li class="submenu">
+                        <li class="submenu" {% if is_profile %} class="active" {% elif is_editprofile %} class="active" {% endif %}>
                             <a href=""><i class="fa fa-address-card"></i> <span> My Profile</span> <span
                                     class="menu-arrow"></span></a>
                             <ul>
@@ -194,10 +194,10 @@
                                 <li><a href="{% url 'teacher:editprofile' %}">Edit Profile</a></li>
                             </ul>
                         </li>
-                        <li>
+                        <li {% if is_courses %} class="active" {% endif %}>
                             <a href="{% url 'teacher:courses' %}"><i class="fa fa-book"></i> <span>Courses</span></a>
                         </li>
-                        <li>
+                        <li {% if is_studentlist %} class="active" {% elif is_coursewisestudentlist %} class="active" {% endif %}>
                             <a href="{% url 'teacher:studentlist' %}"><i class="fa fa-user"></i> <span>Student</span></a>
                         </li>
                         <li class="submenu">
@@ -209,10 +209,10 @@
                                 <li><a href="">Evluation</a></li>
                             </ul>
                         </li>
-                        <li>
+                        <li {% if is_profile %} class="active" {% endif %}>
                             <a href=""><i class="fa fa-list-alt"></i> <span>Result</span></a>
                         </li>
-                        <li>
+                        <li {% if is_profile %} class="active" {% endif %}>
                             <a href="{% url 'teacher:calander' %}"><i class="fa fa-calendar"></i> <span>Calander</span></a>
                         </li>
                     </ul>
