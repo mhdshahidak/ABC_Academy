@@ -109,7 +109,7 @@
                                     <div class="col-md-4">
                                         <h3>Quick</h3>
                                         <ul>
-                                            <li><a href="" data-toggle="modal" data-target="#login">Login</a></li>
+                                            <li><a href="{% url 'admins:adminlogin' %}" >Login</a></li>
                                             <li><a href="" data-toggle="modal" data-target="#register">Register</a></li>
                                             <li><a href="{% url 'web:onlineapplication' %}">Apply Online</a></li>
                                         </ul>
@@ -117,7 +117,7 @@
                                 </div><!-- End menu-wrapper -->
                             </li>
                             <li><a href="{% url 'web:tours' %}">Tour</a></li>
-                            <li><a href="" data-toggle="modal" data-target="#login">Login</a></li>
+                            <li><a href="{% url 'admins:adminlogin' %}">Login</a></li>
                             <li><a href="{% url 'web:onlineapplication' %}">Apply Online</a></li>
                             <li><a href="#search" id="search_bt"><i class=" icon-search"></i><span>Search</span></a>
                             </li>
@@ -210,7 +210,7 @@
 
 
     <!-- Login modal -->
-    <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myLogin" aria-hidden="true">
+    <!-- <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myLogin" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content modal-popup">
                 <a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
@@ -228,7 +228,7 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- Register modal -->
     <div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="myRegister" aria-hidden="true">

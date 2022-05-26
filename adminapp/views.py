@@ -1,5 +1,11 @@
 from multiprocessing import context
-from django.shortcuts import render
+from django.http import HttpResponse
+from django.shortcuts import redirect, render
+from django.contrib.auth import authenticate, login
+from django.contrib.auth import get_user_model
+
+from adminapp.models import Branch
+
 
 # Create your views here.
 def admindashbord(request):
@@ -15,7 +21,35 @@ def branch_list(request):
     return render(request,'adminapps/branch.html', context)
 
 
+# add branch
+
 def add_branch(request):
+    if Branch.objects.exists():
+        branch = Branch.objects.last().id
+        branch_id = 'ABC'+str(1000+branch)
+    else:
+        est=0
+        branch_id = 'ABC'+str(1000+est)
+    if request.method == 'POST':
+        branch_name = request.POST['branchname']
+        email = request.POST['email']
+        phone = request.POST['phone']
+        password = request.POST['password']
+        cpassword = request.POST['cpassword']
+        city = request.POST['city']
+        state = request.POST['state']
+        address = request.POST['address']
+        district = request.POST['district']
+        pincode = request.POST['pincode']
+        btanch_id = branch_id
+
+        if password == cpassword:
+            new_branch = Branch(branch_id=btanch_id,branch_name=branch_name,email=email,phone_number=phone,city=city,district=district,state=state,pin=pincode,address=address,password=password)
+            new_branch.save()
+        else:
+            return HttpResponse('re enter correct password')
+
+
     context={
         "is_addbranch":True
     }
@@ -126,5 +160,16 @@ def fees_adding(request):
 
 # login
 
-def login(request):
+def log_in(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        password = request.POST['password']
+    # User = get_user_model()
+
+        user = authenticate(email=email, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('admins:admindash')
+        else:
+            return HttpResponse('not valid')
     return render(request,'adminapps/login.html')

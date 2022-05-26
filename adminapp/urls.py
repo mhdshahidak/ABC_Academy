@@ -6,6 +6,8 @@ app_name='admins'
 urlpatterns = [
     path('', views.admindashbord, name="admindash"),
     path('branch', views.branch_list, name='branch'),
+
+    # add branch 
     path('addbranch', views.add_branch, name="addbranch"),
     path('branchcourse', views.branch_course, name="branchcourse"),
     path('teachers', views.teachers, name="teachers"),
@@ -38,7 +40,7 @@ urlpatterns = [
 
     # login
     
-    path('login', views.login,name="adminlogin"),
+    path('login', views.log_in,name="adminlogin"),
    
 
 ]
