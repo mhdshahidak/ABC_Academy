@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from adminapp.models import Teacher
+from django.contrib.auth import get_user_model
 
 # Create your views here.
 def master(request):
@@ -8,6 +10,7 @@ def master(request):
     return render(request,'branch/home.html', context)
 
 def students(request):
+    print(request.user.id)
     context={
         "is_students":True
     }
@@ -38,6 +41,33 @@ def teachers(request):
     return render(request,'branch/teacherslist.html', context)
 
 def add_teachers(request):
+    if Teacher.objects.exists():
+        branch = Teacher.objects.last().id
+        techer_id = 'TEC'+str(1000+branch)
+    else:
+        est=0
+        techer_id = 'TEC'+str(1000+est)
+    if request.method=='POST':
+        name = request.POST['name']
+        gender = request.POST['gender']
+        Dob = request.POST['Dob']
+        mobile = request.POST['mobile']
+        JoiningDate = request.POST['Joining Date']
+        Qualification = request.POST['Qualification']
+        Experience = request.POST['Experience']
+        email = request.POST['email']
+        Password = request.POST['Password']
+        address = request.POST['address']
+        city = request.POST['city']
+        state = request.POST['state']
+        zipcode = request.POST['zipcode']
+        country = request.POST['country']
+        techerfk= request.user.branch
+        
+        techer = Teacher(branch=techerfk,teacher_id=techer_id,Password=Password,name=name,gender=gender,dob=Dob ,phone=mobile, email=email, joining_date=JoiningDate, qualification=Qualification, experience=Experience, address=address,pin=zipcode,country=country,state=state,city=city)
+        techer.save()
+        User = get_user_model()
+        User.objects.create_user(email=email, password=Password,teacher=techer)
     context={
         "is_add_teachers":True
     }
