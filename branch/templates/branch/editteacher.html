@@ -8,14 +8,14 @@
             <div class="row align-items-center">
                 <div class="col">
                     <h3 class="page-title">
-                        Add Students
+                        Add Teachers
                     </h3>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="students.html">Students</a>
+                            <a href="teachers.html">Teachers</a>
                         </li>
                         <li class="breadcrumb-item active">
-                            Add Students
+                            Edit Teachers
                         </li>
                     </ul>
                 </div>
@@ -30,31 +30,16 @@
                             <div class="row">
                                 <div class="col-12">
                                     <h5 class="form-title">
-                                        <span>Student Information</span>
+                                        <span>Basic Details</span>
                                     </h5>
                                 </div>
+
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
                                         <label>
-                                            First Name
+                                            Name
                                         </label>
-                                        <input type="text" name="name" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <div class="form-group">
-                                        <label>
-                                            Last Name
-                                        </label>
-                                        <input type="text" name="lastname" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <div class="form-group">
-                                        <label>
-                                            Student Id
-                                        </label>
-                                        <input type="text" name="studentid" class="form-control">
+                                        <input type="text" name="name" value="{{details.name}}" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
@@ -62,15 +47,12 @@
                                         <label>
                                             Gender
                                         </label>
-                                        <select name="gender" class="form-control select">
-                                            <option>
-                                                Select Gender
-                                            </option>
-                                            <option value="Female">
-                                                Female
-                                            </option>
+                                        <select name="gender"  class="form-control select">
                                             <option value="Male">
                                                 Male
+                                            </option>
+                                            <option value="FeMale">
+                                                Female
                                             </option>
                                             <option value="Others">
                                                 Others
@@ -81,69 +63,55 @@
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
                                         <label>
-                                            Course
-                                        </label>
-                                        <select name="course" class="form-control select" required>
-                                            <option selected disabled>
-                                                Select Subject
-                                            </option>
-                                            <option value="AMI">AMI</option>
-                                            <option value="MMI">MMI</option>
-                                            <option value="PPTTC">PPTTC</option>
-                                            <option value="FASION DESINGING">FASION DESINGING</option>
-                                            <option value="BEAUTICIAN">BEAUTICIAN</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <div class="form-group">
-                                        <label>
                                             Date of Birth
                                         </label>
-                                        <div>
-                                            <input name="dob" type="date" class="form-control">
-                                        </div>
+                                        <input type="date" required value="{{details.dob}}" name="Dob" class="form-control">
                                     </div>
                                 </div>
-                                <!-- <div class="col-12 col-sm-6">
-                                    <div class="form-group">
-                                        <label>
-                                            Course
-                                        </label>
-                                        <input type="text" class="form-control">
-                                    </div>
-                                </div> -->
-                               
-                              
-                              
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
                                         <label>
-                                            Mobile Number
+                                            Mobile
                                         </label>
-                                        <input type="text" name="phone" class="form-control">
+                                        <input type="text" name="mobile" value="{{details.phone}}" class="form-control">
                                     </div>
                                 </div>
-                                <!-- <div class="col-12 col-sm-6">
+                                <div class="col-12 col-sm-6">
                                     <div class="form-group">
                                         <label>
-                                            Student Image
+                                            Joining Date
                                         </label>
-                                        <input type="file" class="form-control">
+                                        <input type="date" required name="Joining Date" value="{{details.joining_date}}" class="form-control">
                                     </div>
-                                </div> -->
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>
+                                            Subject
+                                        </label>
+                                        <input class="form-control" name="Qualification" value="{{details.qualification}}"  type="text">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>
+                                            Experience
+                                        </label>
+                                        <input class="form-control" name="Experience"  value="{{details.experience}}"  type="text">
+                                    </div>
+                                </div>
                                 <div class="col-12">
                                     <h5 class="form-title">
                                         <span>Login Details</span>
                                     </h5>
                                 </div>
-                               
+
                                 <div class="col-12 col-sm-6">
-                                    <div class="form-group" >
+                                    <div class="form-group">
                                         <label>
                                             Email ID
                                         </label>
-                                        <input type="email" name="email" class="form-control">
+                                        <input type="email"  value="{{details.email}}"  name="email" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
@@ -151,7 +119,7 @@
                                         <label>
                                             Password
                                         </label>
-                                        <input type="text" name="password" class="form-control">
+                                        <input type="text" name="Password"  value="{{details.Password}}"  class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
@@ -159,44 +127,52 @@
                                         <label>
                                             Repeat Password
                                         </label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" placeholder="Repeat Password" class="form-control">
                                     </div>
                                 </div>
-                               
-                               
-                               
                                 <div class="col-12">
                                     <h5 class="form-title">
-                                        <span>Parent Information</span>
+                                        <span>Address</span>
                                     </h5>
                                 </div>
-                                <div class="col-12 col-sm-6">
+                                <div class="col-12">
                                     <div class="form-group">
                                         <label>
-                                            Father's Name
+                                            Address
                                         </label>
-                                        <input type="text" name="fathername" class="form-control">
+                                        <input type="text"  value="{{details.address}}"  name="address" class="form-control">
                                     </div>
                                 </div>
-                              
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
                                         <label>
-                                            Father's Mobile
+                                            City
                                         </label>
-                                        <input type="text" name="fatherphone" class="form-control">
+                                        <input type="text"   value="{{details.city}}" name="city" class="form-control">
                                     </div>
                                 </div>
-                              
-                              
-                             
-                               
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
                                         <label>
-                                            Permanent Address
+                                            State
                                         </label>
-                                        <textarea class="form-control" name="address"></textarea>
+                                        <input type="text"  value="{{details.state}}"  name="state" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>
+                                            Zip Code
+                                        </label>
+                                        <input type="text"  value="{{details.pin}}"  name="zipcode" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>
+                                            Country
+                                        </label>
+                                        <input type="text"  value="{{details.country}}"  name="country" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -212,5 +188,6 @@
         </div>
     </div>
 </div>
+
 
 {% endblock %}
