@@ -79,6 +79,7 @@ def teachers_list(request):
     return render(request,'adminapps/teachers_list.html', context)
 
 def add_teacher(request):
+
     context={
         "is_addteacher":True
     }

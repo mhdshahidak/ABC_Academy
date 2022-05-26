@@ -53,10 +53,16 @@ class Teacher(models.Model):
     email = models.EmailField()
     joining_date = models.DateField()
     qualification = models.CharField(max_length=100)
+    city = models.CharField(max_length=100 ,default="")
+    state = models.CharField(max_length=100,default="")
+    country = models.CharField(max_length=100,default="")
+    Password = models.CharField(max_length=100,default="")
     experience = models.FloatField()
     address = models.TextField()
     pin = models.BigIntegerField()
     branch = models.ForeignKey(Branch,on_delete=models.PROTECT)
+    class Meta:
+        db_table = 'name'
 
 
 class Student(models.Model):
