@@ -46,6 +46,9 @@ def add_branch(request):
         if password == cpassword:
             new_branch = Branch(branch_id=btanch_id,branch_name=branch_name,email=email,phone_number=phone,city=city,district=district,state=state,pin=pincode,address=address,password=password)
             new_branch.save()
+            User = get_user_model()
+            User.objects.create_user(email=email, password=password,branch=new_branch)
+
         else:
             return HttpResponse('re enter correct password')
 
@@ -74,6 +77,7 @@ def teachers_list(request):
     return render(request,'adminapps/teachers_list.html', context)
 
 def add_teacher(request):
+
     context={
         "is_addteacher":True
     }
@@ -169,7 +173,10 @@ def log_in(request):
         user = authenticate(email=email, password=password)
         if user is not None:
             login(request, user)
-            return redirect('admins:admindash')
+            if user.is_superuser == True:
+                return redirect('admins:admindash')
+            elif user.branch != None:
+                return redirect('branch:master')
         else:
             return HttpResponse('not valid')
     return render(request,'adminapps/login.html')
