@@ -179,6 +179,8 @@ def log_in(request):
                 return redirect('admins:admindash')
             elif user.branch != None:
                 return redirect('branch:master')
+            elif user.teacher != None:
+                return redirect('teacher:homepage')
         else:
             return HttpResponse('not valid')
     return render(request,'adminapps/login.html')
