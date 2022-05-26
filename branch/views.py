@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from adminapp.models import Teacher
+from django.shortcuts import render,redirect
+from adminapp.models import Teacher,Student
 from django.contrib.auth import get_user_model
 
 # Create your views here.
@@ -29,14 +29,31 @@ def all_students_list(request):
     return render(request,'branch/allstudents_list.html', context)
 
 def add_students_branch(request):
+    if request.method=='POST':
+        name = request.POST['name']
+        lastname = request.POST['lastname']
+        studentid = request.POST['studentid']
+        gender = request.POST['gender']
+        course = request.POST['course']
+        dob = request.POST['dob']
+        phone = request.POST['phone']
+        email = request.POST['email']
+        password = request.POST['password']
+        fathername = request.POST['fathername']
+        fatherphone = request.POST['fatherphone']
+        address = request.POST['address']
+        std = Student()
+
     context={
         "is_add_students_branch":True
     }
     return render(request,'branch/studentsaddbranch.html', context)
 
 def teachers(request):
+    techerlist= Teacher.objects.all()
     context={
-        "is_teachers":True
+        "is_teachers":True,
+        "techerlist":techerlist
     }
     return render(request,'branch/teacherslist.html', context)
 
@@ -73,6 +90,33 @@ def add_teachers(request):
     }
     return render(request,'branch/addteacher.html', context)
 
+
+def editteacher(request,id):
+    details= Teacher.objects.get(id=id)
+    if request.method=='POST':
+        name = request.POST['name']
+        gender = request.POST['gender']
+        Dob = request.POST['Dob']
+        mobile = request.POST['mobile']
+        JoiningDate = request.POST['Joining Date']
+        Qualification = request.POST['Qualification']
+        Experience = request.POST['Experience']
+        email = request.POST['email']
+        Password = request.POST['Password']
+        address = request.POST['address']
+        city = request.POST['city']
+        state = request.POST['state']
+        zipcode = request.POST['zipcode']
+        country = request.POST['country']
+        Teacher.objects.filter(id=id).update(Password=Password,name=name,gender=gender,dob=Dob ,phone=mobile, email=email, joining_date=JoiningDate, qualification=Qualification, experience=Experience, address=address,pin=zipcode,country=country,state=state,city=city)
+        return redirect('/branch/teacherslist')
+    print(details)
+    
+    context={
+        "is_teachers":True,
+        "details":details
+    }
+    return render(request,'branch/editteacher.html', context)
 def courses(request):
     context={
         "is_courses":True

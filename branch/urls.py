@@ -11,6 +11,7 @@ urlpatterns = [
     path('addstudent',views.add_students_branch,name="addstudent"),
     path('teacherslist',views.teachers,name="teacherslist"),
     path('addteacher',views.add_teachers,name="addteacherbranch"),
+    path('editteacher/<str:id>',views.editteacher,name="editteacher"),
     path('courses',views.courses,name="courses"),
     path('addcourses',views.add_courses,name="addcourses"),
     path('fees',views.fees,name="fees"),
