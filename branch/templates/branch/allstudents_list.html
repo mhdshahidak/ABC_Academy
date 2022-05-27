@@ -40,13 +40,16 @@
                                             Name
                                         </th>
                                         <th>
-                                            Class
+                                            Course
                                         </th>
                                         <th>
                                             DOB
                                         </th>
                                         <th>
                                             Parent Name
+                                        </th>
+                                        <th>
+                                           Email
                                         </th>
                                         <th>
                                             Mobile Number
@@ -60,6 +63,53 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    {% for i in student %}
+                                    <tr>
+                                        <td>
+                                           {{i.student_id}}
+                                        </td>
+                                        <td>
+                                            <h2 class="table-avatar">
+                                             
+                                                <a href="#"> {{i.first_name}}</a>
+                                            </h2>
+                                        </td>
+                                        
+                                        <td>
+                                            {{i.course.course.couse_name}}
+                                        </td>
+                                        <td>
+                                            {{i.dob}}
+                                        </td>
+                                        <td>
+                                            {{i.fathername}}
+                                        </td>
+                                        <td>
+                                            {{i.email}}
+                                        </td>
+                                        <td>
+                                            {{i.phone}}
+                                        </td>
+                                        <td>
+                                            {{i.address}}
+                                        </td>
+                                        <td class="text-end">
+                                            <div class="actions">
+                                                <a href="/branch/editstudent/{{i.id}}" class="btn btn-sm bg-success-light me-2">
+                                                    <i class="fas fa-pen"></i>
+                                                </a>
+                                                <a href="#" class="btn btn-sm bg-danger-light">
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                    
+
+
+                                </tbody>
+                                <!-- <tbody>
                                     <tr>
                                         <td>
                                             PRE2209
@@ -500,7 +550,7 @@
                                             </div>
                                         </td>
                                     </tr>
-                                </tbody>
+                                </tbody> -->
                             </table>
                         </div>
                     </div>

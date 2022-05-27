@@ -45,7 +45,7 @@
                     <i class="fas fa-bars"></i>
                 </a>
                 <ul class="nav user-menu">
-                    <li class="nav-item dropdown noti-dropdown">
+                    <!-- <li class="nav-item dropdown noti-dropdown">
                         <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
                             <i class="far fa-bell"></i> <span class="badge badge-pill">3</span>
                         </a>
@@ -138,7 +138,7 @@
                                 <a href="#">View all Notifications</a>
                             </div>
                         </div>
-                    </li>
+                    </li> -->
                     <li class="nav-item dropdown has-arrow">
                         <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
                             <span class="user-img">
@@ -156,9 +156,9 @@
                                          class="avatar-img rounded-circle">
                                 </div>
                                 <div class="user-text">
-                                    <h6>Ryan Taylor</h6>
+                                    <h6>{{details.id}}</h6>
                                     <p class="text-muted mb-0">
-                                        Administrator
+                                        {{details.branch_name}}
                                     </p>
                                 </div>
                             </div>
@@ -212,19 +212,7 @@
                                     
                                 </ul>
                             </li>
-                            <li {% if is_courses %} class="active submenu"
-                                {% elif is_add_courses %} class="active submenu"
-                                {% endif %}>
-                                <a href="#"><i class="fas fa-building"></i> <span> Departments</span> <span class="menu-arrow"></span></a>
-                                <ul>
-                                    <li {% if is_courses %} class="active"{% endif %}>
-                                        <a href="{% url 'branch:courses' %}">Department List</a>
-                                    </li>
-                                    <li {% if is_add_courses %} class="active"{% endif %}>
-                                        <a href="{% url 'branch:addcourses' %}">Department Add</a>
-                                    </li>
-                                </ul>
-                            </li>
+                      
                             <!-- <li class="submenu">
                                 <a href="#"><i class="fas fa-file-invoice-dollar"></i> <span> Accounts</span> <span class="menu-arrow"></span></a>
                                 <ul>
@@ -252,12 +240,7 @@
                             <li {% if is_fees %} class="active"{% endif %}>
                                 <a href="{% url 'branch:fees' %}"><i class="fas fa-comment-dollar"></i> <span>Fees</span></a>
                             </li>
-                            <li {% if is_exam_list %} class="active"
-                                {% elif is_exam_add_b_one %} class="active"
-                                {% elif is_exam_add_b_two %} class="active"
-                                {% elif is_exam_add_b_three %} class="active"{% endif %}>
-                                <a href="{% url 'branch:examlist' %}"><i class="fas fa-clipboard-list"></i> <span>Exam </span></a>
-                            </li>
+                          
                             <!-- <li>
                                 <a href="event.html"><i class="fas fa-calendar-day"></i> <span>Events</span></a>
                             </li> -->

@@ -1,6 +1,7 @@
 import email
 from enum import unique
 from django.db import models
+# from adminapp.views import courses
 from phone_field import PhoneField
 
 # Create your models here.
@@ -29,6 +30,25 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
+
+class Courses(models.Model):
+    course_id = models.CharField(max_length=50)
+    couse_name = models.CharField(max_length=100)
+    Duration = models.CharField(max_length=20)
+    total_fees = models.FloatField()
+    max_students = models.IntegerField(default=0)
+
+    class Meta:
+        db_table='courses'
+
+
+class Batch(models.Model):
+    course = models.ForeignKey(Courses,on_delete=models.PROTECT)
+    starting_date = models.DateField()
+    ending_date = models.DateField()
+
+    class Meta:
+        db_table='batch'
 
 class Branch(models.Model):
     branch_id = models.CharField(max_length=20,default="")
@@ -74,11 +94,14 @@ class Student(models.Model):
     last_name = models.CharField(max_length=50)
     gender = models.CharField(max_length=10,choices=gender_choices)
     dob = models.DateField()
+    course = models.ForeignKey(Batch,on_delete=models.PROTECT)
+    password = models.CharField(max_length=100,default="")
+    fathername = models.CharField(max_length=100,default="")
+    fatherphone = models.CharField(max_length=100,default="")
     phone = PhoneField(unique=True)
     email = models.EmailField()
     address = models.TextField()
-    pin = models.BigIntegerField()
-    branch = models.OneToOneField(Branch,on_delete=models.PROTECT)
+    branch = models.ForeignKey(Branch,on_delete=models.PROTECT)
 
 class User(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=20,null=True)
@@ -92,6 +115,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     objects = UserManager()
     USERNAME_FIELD='email'
+
 
 
 

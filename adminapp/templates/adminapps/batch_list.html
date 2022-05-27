@@ -8,20 +8,13 @@
             <div class="row align-items-center">
                 <div class="col">
                     <h3 class="page-title">
-                        Teachers
+                        Batches
                     </h3>
-                    <ul class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="index.html">Dashboard</a>
-                        </li>
-                        <li class="breadcrumb-item active">
-                            Teachers
-                        </li>
-                    </ul>
+                    
                 </div>
                 <div class="col-auto text-end float-end ms-auto">
-                    <a href="#" class="btn btn-outline-primary me-2"><i class="fas fa-download"></i> Download</a>
-                    <a href="{% url 'admins:addteacher' %}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+                    
+                    <a href="{% url 'admins:addbatch' %}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
                 </div>
             </div>
         </div>
@@ -34,28 +27,19 @@
                                 <thead>
                                     <tr>
                                         <th>
-                                            ID
+                                            Course ID
                                         </th>
                                         <th>
-                                            Name
-                                        </th>
-                                        <!-- <th>
-                                            Class
-                                        </th> -->
-                                        <th>
-                                            Gender
+                                            Course Name
                                         </th>
                                         <th>
-                                            Subject
-                                        </th>
-                                        <!-- <th>
-                                            Section
-                                        </th> -->
-                                        <th>
-                                            Mobile Number
+                                            Start date
                                         </th>
                                         <th>
-                                            Address
+                                            End date
+                                        </th>
+                                        <th>
+                                            No of Students
                                         </th>
                                         <th class="text-end">
                                             Action
@@ -63,38 +47,28 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {% for t in teacher %}
+                                    {% for b in batch %}
                                         <tr>
                                             <td>
-                                                {{t.teacher_id}}
+                                                {{b.course.course_id}}
                                             </td>
                                             <td>
-                                                <h2 class="table-avatar">
-                                                    
-                                                    <a href="">{{t.name}}</a>
+                                                <h2>
+                                                    <a>{{b.course.couse_name}}</a>
                                                 </h2>
                                             </td>
-                                            <!-- <td>
-                                                
-                                            </td> -->
                                             <td>
-                                                {{t.gender}}
+                                                {{b.starting_date}}
                                             </td>
                                             <td>
-                                                {{t.qualification}}
-                                            </td>
-                                            <!-- <td>
-                                                A
-                                            </td> -->
-                                            <td>
-                                                {{t.phone}}
+                                                {{b.ending_date}}
                                             </td>
                                             <td>
-                                                {{t.city}}
+                                                180
                                             </td>
                                             <td class="text-end">
                                                 <div class="actions">
-                                                    <a href="edit-teacher.html" class="btn btn-sm bg-success-light me-2">
+                                                    <a href="edit-department.html" class="btn btn-sm bg-success-light me-2">
                                                         <i class="fas fa-pen"></i>
                                                     </a>
                                                     <a href="#" class="btn btn-sm bg-danger-light">
@@ -104,7 +78,6 @@
                                             </td>
                                         </tr>
                                     {% endfor %}
-                                    
                                 </tbody>
                             </table>
                         </div>
@@ -113,6 +86,7 @@
             </div>
         </div>
     </div>
+    
 </div>
 
 {% endblock %}

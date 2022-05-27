@@ -10,8 +10,10 @@ urlpatterns = [
     # add branch 
     path('addbranch', views.add_branch, name="addbranch"),
     path('branchcourse', views.branch_course, name="branchcourse"),
+
+    # teacher 
     path('teachers', views.teachers, name="teachers"),
-    path('teachers_list', views.teachers_list, name="teachers_list"),
+    path('teachers_list/<int:id>', views.teachers_list, name="teachers_list"),
     path('add_teacher', views.add_teacher, name="addteacher"),
     path('students', views.students,name="students"),
     path('coursestudents',  views.students_by_courses, name="coursestudents"),
@@ -19,7 +21,13 @@ urlpatterns = [
     path('addstudent', views.add_student, name="addstudent"),
     path('editstudent', views.edit_student_by_admin, name="editstudentadmin"),
 
+    # courses
+    path('courses',views.courses,name="courses"),
+    path('addcourses',views.add_courses,name="addcourses"),
 
+    # batch
+    path('batch', views.batch, name="batch"),
+    path('addbatch', views.add_batch, name="addbatch"),
     # exams
 
     path('exams', views.exam, name="exams"),

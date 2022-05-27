@@ -15,7 +15,7 @@
                             <a href="students.html">Students</a>
                         </li>
                         <li class="breadcrumb-item active">
-                            Add Students
+                            Edit Students
                         </li>
                     </ul>
                 </div>
@@ -38,7 +38,7 @@
                                         <label>
                                             First Name
                                         </label>
-                                        <input type="text" name="name" class="form-control">
+                                        <input type="text" name="name" value="{{details.first_name}}" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
@@ -46,23 +46,23 @@
                                         <label>
                                             Last Name
                                         </label>
-                                        <input type="text" name="lastname" class="form-control">
+                                        <input type="text" name="lastname" value="{{details.last_name}}" class="form-control">
                                     </div>
                                 </div>
-                                <div class="col-12 col-sm-6">
+                                <!-- <div class="col-12 col-sm-6">
                                     <div class="form-group">
                                         <label>
                                             Student Id
                                         </label>
                                         <input type="text" name="studentid" class="form-control">
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
                                         <label>
                                             Gender
                                         </label>
-                                        <select name="gender" class="form-control select">
+                                        <select name="gender" required class="form-control select">
                                             <option>
                                                 Select Gender
                                             </option>
@@ -78,45 +78,9 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-12 col-sm-6">
-                                    <div class="form-group">
-                                        <label>
-                                            Course
-                                        </label>
-                                        <select name="course" class="form-control select" required>
-                                            <option selected disabled>
-                                                Select Subject
-                                            </option>
-                                            {% for i in course %}
-                                            <option value="{{i.id}}">{{i.course.couse_name}}  {{i.starting_date}} to  {{i.ending_date}} </option>
-                                            {% endfor %}
-                                            <!-- <option value="AMI">AMI</option>
-                                            <option value="MMI">MMI</option>
-                                            <option value="PPTTC">PPTTC</option>
-                                            <option value="FASION DESINGING">FASION DESINGING</option>
-                                            <option value="BEAUTICIAN">BEAUTICIAN</option> -->
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <div class="form-group">
-                                        <label>
-                                            Date of Birth
-                                        </label>
-                                        <div>
-                                            <input name="dob" type="date" class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- <div class="col-12 col-sm-6">
-                                    <div class="form-group">
-                                        <label>
-                                            Course
-                                        </label>
-                                        <input type="text" class="form-control">
-                                    </div>
-                                </div> -->
+                              
                                
+                              
                               
                               
                                 <div class="col-12 col-sm-6">
@@ -124,7 +88,7 @@
                                         <label>
                                             Mobile Number
                                         </label>
-                                        <input type="text" name="phone" class="form-control">
+                                        <input type="text" value="{{details.phone}}" name="phone" class="form-control">
                                     </div>
                                 </div>
                                 <!-- <div class="col-12 col-sm-6">
@@ -146,7 +110,7 @@
                                         <label>
                                             Email ID
                                         </label>
-                                        <input type="email" name="email" class="form-control">
+                                        <input type="email" name="email" value="{{details.email}}" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
@@ -154,7 +118,7 @@
                                         <label>
                                             Password
                                         </label>
-                                        <input type="text" name="password" class="form-control">
+                                        <input type="text" name="password" value="{{details.password}}" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
@@ -178,7 +142,7 @@
                                         <label>
                                             Father's Name
                                         </label>
-                                        <input type="text" name="fathername" class="form-control">
+                                        <input type="text" name="fathername" value="{{details.fathername}}" class="form-control">
                                     </div>
                                 </div>
                               
@@ -187,21 +151,14 @@
                                         <label>
                                             Father's Mobile
                                         </label>
-                                        <input type="text" name="fatherphone" class="form-control">
+                                        <input type="text" name="fatherphone" value="{{details.fatherphone}}" class="form-control">
                                     </div>
                                 </div>
                               
                               
                              
                                
-                                <div class="col-12 col-sm-6">
-                                    <div class="form-group">
-                                        <label>
-                                            Permanent Address
-                                        </label>
-                                        <textarea class="form-control" name="address"></textarea>
-                                    </div>
-                                </div>
+  
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-primary">
                                         Submit

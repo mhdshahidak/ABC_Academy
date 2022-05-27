@@ -18,7 +18,7 @@ def profile(request):
     print(branch_teacher)
     context = {
         "is_profile": True,
-        "teacher":teacher,
+        # "teacher":teacher,
         "branch_teacher":branch_teacher,
         }
     return render(request,'teacher/profile.html',context)
