@@ -11,8 +11,9 @@ def master(request):
 
 def students(request):
     print(request.user.id)
+    
     context={
-        "is_students":True
+        "is_students":True,
     }
     return render(request,'branch/students.html', context)
 
@@ -23,8 +24,10 @@ def studentslist(request):
     return render(request,'branch/students_list.html', context)
 
 def all_students_list(request):
+    student= Student.objects.all()
     context={
-        "is_all_students_list":True
+        "is_all_students_list":True,
+        "student":student
     }
     return render(request,'branch/allstudents_list.html', context)
 
@@ -42,7 +45,11 @@ def add_students_branch(request):
         fathername = request.POST['fathername']
         fatherphone = request.POST['fatherphone']
         address = request.POST['address']
-        std = Student()
+        studentFk= request.user.branch
+        std = Student(branch=studentFk,student_id=studentid, first_name=name, last_name=lastname, gender=gender, dob=dob, phone=phone,email=email, course=course ,password=password,fatherphone=fatherphone,fathername=fathername,address=address)
+        std.save()
+        User = get_user_model()
+        User.objects.create_user(email=email, password=password,Student=std)
 
     context={
         "is_add_students_branch":True

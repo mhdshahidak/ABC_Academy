@@ -72,10 +72,13 @@ class Student(models.Model):
     last_name = models.CharField(max_length=50)
     gender = models.CharField(max_length=10,choices=gender_choices)
     dob = models.DateField()
+    course = models.CharField(max_length=100,default="")
+    password = models.CharField(max_length=100,default="")
+    fathername = models.CharField(max_length=100,default="")
+    fatherphone = models.CharField(max_length=100,default="")
     phone = PhoneField(unique=True)
     email = models.EmailField()
     address = models.TextField()
-    pin = models.BigIntegerField()
     branch = models.OneToOneField(Branch,on_delete=models.PROTECT)
 
 class User(AbstractBaseUser, PermissionsMixin):
