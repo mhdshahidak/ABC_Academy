@@ -4,14 +4,18 @@ from django.contrib.auth import get_user_model
 
 # Create your views here.
 def master(request):
-    print(request.user.branch)
+
+    print(request.user.branch.branch_name)
+    details=request.user.branch
+    print(details.branch_name)
     student=Student.objects.filter(branch=request.user.branch).count()
     teacher=Teacher.objects.filter(branch=request.user.branch).count()
-    print(student)
+
     context={
         "is_master":True,
         "student":student,
-        "teacher":teacher
+        "teacher":teacher,
+        "details":details
     }
     return render(request,'branch/home.html', context)
 
@@ -184,7 +188,12 @@ def add_fees(request):
 # profile
 
 def profile_branch(request):
-    return render(request,'branch/profile_branch.html')
+    details=request.user.branch
+    context={
+        "is_exam_list":True,
+        "details":details
+    }
+    return render(request,'branch/profile_branch.html',context)
 
 # exam 
 
