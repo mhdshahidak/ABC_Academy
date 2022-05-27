@@ -1,6 +1,7 @@
 import email
 from enum import unique
 from django.db import models
+# from adminapp.views import courses
 from phone_field import PhoneField
 
 # Create your models here.
@@ -94,6 +95,25 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
     USERNAME_FIELD='email'
 
+
+class Courses(models.Model):
+    course_id = models.CharField(max_length=50)
+    couse_name = models.CharField(max_length=100)
+    Duration = models.CharField(max_length=20)
+    total_fees = models.FloatField()
+    max_students = models.IntegerField(default=0)
+
+    class Meta:
+        db_table='courses'
+
+
+class Batch(models.Model):
+    course = models.ForeignKey(Courses,on_delete=models.PROTECT)
+    starting_date = models.DateField()
+    ending_date = models.DateField()
+
+    class Meta:
+        db_table='batch'
 
 
 

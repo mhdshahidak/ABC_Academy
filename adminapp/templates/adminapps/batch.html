@@ -8,16 +8,16 @@
             <div class="row align-items-center">
                 <div class="col">
                     <h3 class="page-title">
-                        Add courses
+                        Add Batch
                     </h3>
-                    <ul class="breadcrumb">
+                    <!-- <ul class="breadcrumb">
                         <li class="">
                             <a href="coursess.html">Courses /</a>
                         </li>
                         <li class="breadcrumb-item active">
                             Add Courses
                         </li>
-                    </ul>
+                    </ul> -->
                 </div>
             </div>
         </div>
@@ -30,7 +30,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <h5 class="form-title">
-                                        <span>Course Details</span>
+                                        <span>Add Batch Details</span>
                                     </h5>
                                 </div>
                                
@@ -39,34 +39,33 @@
                                         <label>
                                             course Name
                                         </label>
-                                        <input type="text" class="form-control" name="name" required>
+                                        <select class="form-control select" name="course" required>
+                                            <option>Select Course</option>
+                                            {% for c in course %}
+                                            <option value="{{c.id}}">
+                                                {{c.couse_name}}
+                                            </option>
+                                            {% endfor %}
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
                                         <label>
-                                            Duration
+                                            Starting Date
                                         </label>
-                                        <input type="text" class="form-control" name="duration" required>
+                                        <input type="date" class="form-control" name="startdate" required>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
                                         <label>
-                                            Total Fees
+                                            Starting Date
                                         </label>
-                                        <input type="text" class="form-control" name="fees" required>
+                                        <input type="date" class="form-control" name="endingdate" required>
                                     </div>
                                 </div>
                                 
-                                <div class="col-12 col-sm-6">
-                                    <div class="form-group">
-                                        <label>
-                                            Maximum No of Students
-                                        </label>
-                                        <input type="text" class="form-control" name="maxstudent" required>
-                                    </div>
-                                </div>
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-primary" >
                                         Submit
@@ -80,5 +79,6 @@
         </div>
     </div>
 </div>
+
 
 {% endblock %}
