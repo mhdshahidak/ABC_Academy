@@ -27,6 +27,7 @@ urlpatterns = [
 
     # batch
     path('batch', views.batch, name="batch"),
+    path('addbatch', views.add_batch, name="addbatch"),
     # exams
 
     path('exams', views.exam, name="exams"),

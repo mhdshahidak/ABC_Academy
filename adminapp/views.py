@@ -154,8 +154,10 @@ def edit_student_by_admin(request):
 #courses 
 
 def courses(request):
+    course = Courses.objects.all()
     context={
-        "is_courses":True
+        "is_courses":True,
+        "course":course,
     }
     return render(request,'adminapps/courses.html', context)
 
@@ -182,7 +184,18 @@ def add_courses(request):
     return render(request,'adminapps/addcourses.html', context)
 
 # batch 
+
 def batch(request):
+    courses = Courses.objects.all()
+    batches = Batch.objects.all()
+    context={
+        "is_batch":True,
+        "course":courses,
+        "batch":batches,
+    }
+    return render(request,'adminapps/batch_list.html', context)
+
+def add_batch(request):
     if request.method == 'POST':
         course_id = request.POST['course']
         start_date = request.POST['startdate']
@@ -191,7 +204,7 @@ def batch(request):
         course = Courses.objects.get(id=course_id)
         new_batch = Batch(course=course,starting_date=start_date,ending_date=end_date)
         new_batch.save()
-        
+
     courses = Courses.objects.all()
     context={
         "is_batch":True,
