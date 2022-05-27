@@ -5,18 +5,19 @@ from adminapp.models import Teacher
 # Create your views here.
 
 def homepage(request):
+
     context = {
         "is_homepage": True,
         }
     return render(request,'teacher/teacher_home.html',context)
 
 def profile(request):
-    teacher=request.user.teacher
-    branch_teacher=Teacher.objects.get(id=request.user.teacher)
+    
+    branch_teacher=Teacher.objects.get(id=request.user.teacher.id)
     print(branch_teacher)
     context = {
         "is_profile": True,
-        "teacher":teacher,
+        # "teacher":teacher,
         "branch_teacher":branch_teacher,
         }
     return render(request,'teacher/profile.html',context)
