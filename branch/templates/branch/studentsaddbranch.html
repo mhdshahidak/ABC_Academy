@@ -87,11 +87,14 @@
                                             <option selected disabled>
                                                 Select Subject
                                             </option>
-                                            <option value="AMI">AMI</option>
+                                            {% for i in course %}
+                                            <option value="{{i.id}}">{{i.course.couse_name}}  {{i.starting_date}} to  {{i.ending_date}} </option>
+                                            {% endfor %}
+                                            <!-- <option value="AMI">AMI</option>
                                             <option value="MMI">MMI</option>
                                             <option value="PPTTC">PPTTC</option>
                                             <option value="FASION DESINGING">FASION DESINGING</option>
-                                            <option value="BEAUTICIAN">BEAUTICIAN</option>
+                                            <option value="BEAUTICIAN">BEAUTICIAN</option> -->
                                         </select>
                                     </div>
                                 </div>
