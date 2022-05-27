@@ -1,25 +1,53 @@
 from django.shortcuts import render
 
+from adminapp.models import Teacher
+
 # Create your views here.
 
 def homepage(request):
-    return render(request,'teacher/teacher_home.html')
+    context = {
+        "is_homepage": True,
+        }
+    return render(request,'teacher/teacher_home.html',context)
 
 def profile(request):
-    return render(request,'teacher/profile.html')
+    teacher=request.user.teacher
+    branch_teacher=Teacher.objects.get(id=request.user.teacher)
+    print(branch_teacher)
+    context = {
+        "is_profile": True,
+        "teacher":teacher,
+        "branch_teacher":branch_teacher,
+        }
+    return render(request,'teacher/profile.html',context)
 
 def edit_profile(request):
-    return render(request,'teacher/edit_teacher.html')
+    context = {
+        "is_editprofile": True,
+        }
+    return render(request,'teacher/edit_teacher.html',context)
 
 def courses(request):
-    return render(request,'teacher/courses.html')
+    context = {
+        "is_courses": True,
+        }
+    return render(request,'teacher/courses.html',context)
 
 def studentlist(request):
-    return render(request,'teacher/studentlist.html')
+    context = {
+        "is_studentlist": True,
+        }
+    return render(request,'teacher/studentlist.html',context)
 
 def coursewise_studentlist(request):
-    return render(request,'teacher/coursewise_studentlist.html')
+    context = {
+        "is_coursewisestudentlist": True,
+        }
+    return render(request,'teacher/coursewise_studentlist.html',context)
 
 def calander(request):
-    return render(request,'teacher/calender.html')
+    context = {
+        "is_calander": True,
+        }
+    return render(request,'teacher/calender.html',context)
 
