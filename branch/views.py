@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from adminapp.models import Teacher,Student
+from adminapp.models import Teacher,Student,Batch
 from django.contrib.auth import get_user_model
 
 # Create your views here.
@@ -21,16 +21,22 @@ def master(request):
 
 def students(request):
     
-    print(request.user.id)
-    
+    batch = Batch.objects.all()
+    print(batch)
     context={
         "is_students":True,
+        "batch":batch
+        
     }
     return render(request,'branch/students.html', context)
 
-def studentslist(request):
+def studentslist(request,id):
+    print(id)
+    viewstudent = Student.objects.filter(course=id).all()
+    print(viewstudent)
     context={
-        "is_studentslist":True
+        "is_studentslist":True,
+        "viewstudent":viewstudent
     }
     return render(request,'branch/students_list.html', context)
 
@@ -45,15 +51,16 @@ def all_students_list(request):
     return render(request,'branch/allstudents_list.html', context)
 
 def add_students_branch(request):
-    print(request.user.branch)
     studentFk= request.user.branch.id
+    course=Batch.objects.all()
+    print(course)
     print(studentFk)
     if request.method=='POST':
         name = request.POST['name']
         lastname = request.POST['lastname']
         studentid = request.POST['studentid']
         gender = request.POST['gender']
-        course = request.POST['course']
+        courseid = request.POST['course']
         dob = request.POST['dob']
         phone = request.POST['phone']
         email = request.POST['email']
@@ -61,15 +68,18 @@ def add_students_branch(request):
         fathername = request.POST['fathername']
         fatherphone = request.POST['fatherphone']
         address = request.POST['address']
+        print(courseid)
         studentFk= request.user.branch
+        course_id=Batch.objects.get(id=courseid)
         print(studentFk)
-        std = Student(branch=studentFk,student_id=studentid, first_name=name, last_name=lastname, gender=gender, dob=dob, phone=phone,email=email, course=course ,password=password,fatherphone=fatherphone,fathername=fathername,address=address)
+        std = Student(course=course_id,branch=studentFk,student_id=studentid, first_name=name, last_name=lastname, gender=gender, dob=dob, phone=phone,email=email ,password=password,fatherphone=fatherphone,fathername=fathername,address=address)
         std.save()
         User = get_user_model()
         User.objects.create_user(email=email, password=password,Student=std)
 
     context={
-        "is_add_students_branch":True
+        "is_add_students_branch":True,
+        "course":course
     }
     return render(request,'branch/studentsaddbranch.html', context)
 def editstudent(request,id):

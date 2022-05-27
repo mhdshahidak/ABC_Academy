@@ -30,6 +30,25 @@ class UserManager(BaseUserManager):
         return user
 
 
+class Courses(models.Model):
+    course_id = models.CharField(max_length=50)
+    couse_name = models.CharField(max_length=100)
+    Duration = models.CharField(max_length=20)
+    total_fees = models.FloatField()
+    max_students = models.IntegerField(default=0)
+
+    class Meta:
+        db_table='courses'
+
+
+class Batch(models.Model):
+    course = models.ForeignKey(Courses,on_delete=models.PROTECT)
+    starting_date = models.DateField()
+    ending_date = models.DateField()
+
+    class Meta:
+        db_table='batch'
+
 class Branch(models.Model):
     branch_id = models.CharField(max_length=20,default="")
     branch_name = models.CharField(max_length=30)
@@ -73,7 +92,7 @@ class Student(models.Model):
     last_name = models.CharField(max_length=50)
     gender = models.CharField(max_length=10,choices=gender_choices)
     dob = models.DateField()
-    course = models.CharField(max_length=100,default="")
+    course = models.ForeignKey(Batch,on_delete=models.PROTECT)
     password = models.CharField(max_length=100,default="")
     fathername = models.CharField(max_length=100,default="")
     fatherphone = models.CharField(max_length=100,default="")
@@ -96,24 +115,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD='email'
 
 
-class Courses(models.Model):
-    course_id = models.CharField(max_length=50)
-    couse_name = models.CharField(max_length=100)
-    Duration = models.CharField(max_length=20)
-    total_fees = models.FloatField()
-    max_students = models.IntegerField(default=0)
-
-    class Meta:
-        db_table='courses'
-
-
-class Batch(models.Model):
-    course = models.ForeignKey(Courses,on_delete=models.PROTECT)
-    starting_date = models.DateField()
-    ending_date = models.DateField()
-
-    class Meta:
-        db_table='batch'
 
 
 
