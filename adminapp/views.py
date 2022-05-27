@@ -4,7 +4,7 @@ from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import get_user_model
 
-from adminapp.models import Branch, Teacher
+from adminapp.models import Batch, Branch, Courses, Teacher
 
 
 # Create your views here.
@@ -160,10 +160,44 @@ def courses(request):
     return render(request,'adminapps/courses.html', context)
 
 def add_courses(request):
+    if Courses.objects.exists():
+        course = Courses.objects.last().id
+        course_id = 'ACA'+str(1000+course)
+    else:
+        est=0
+        course_id = 'ACA'+str(1000+est)
+    if request.method == 'POST':
+        c_name = request.POST['name']
+        duration = request.POST['duration']
+        fees = request.POST['fees']
+        maxstudent = request.POST['maxstudent']
+
+        new_course = Courses(course_id=course_id,couse_name=c_name,Duration=duration,total_fees=fees,max_students=maxstudent)
+        new_course.save()
+        return redirect('admins:courses')
+
     context={
         "is_add_courses":True
     }
     return render(request,'adminapps/addcourses.html', context)
+
+# batch 
+def batch(request):
+    if request.method == 'POST':
+        course_id = request.POST['course']
+        start_date = request.POST['startdate']
+        end_date = request.POST['endingdate']
+
+        course = Courses.objects.get(id=course_id)
+        new_batch = Batch(course=course,starting_date=start_date,ending_date=end_date)
+        new_batch.save()
+        
+    courses = Courses.objects.all()
+    context={
+        "is_batch":True,
+        "course":courses
+    }
+    return render(request,'adminapps/batch.html', context)
 
 # profile
 

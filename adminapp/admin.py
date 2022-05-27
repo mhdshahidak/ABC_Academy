@@ -22,3 +22,13 @@ class StudentAdmin(admin.ModelAdmin):
     list_display = ('first_name','email')
     search_fields=('first_name',)
 admin.site.register(Student,StudentAdmin)
+
+
+class CoursesAdmin(admin.ModelAdmin):
+    list_display = ('couse_name','course_id')
+    search_fields=('couse_name',)
+admin.site.register(Courses,CoursesAdmin)
+
+class BatchAdmin(admin.ModelAdmin):
+    list_display = ('starting_date','ending_date')
+admin.site.register(Batch,BatchAdmin)
