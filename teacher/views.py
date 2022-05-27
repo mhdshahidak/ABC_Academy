@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+from adminapp.models import Teacher
+
 # Create your views here.
 
 def homepage(request):
@@ -9,8 +11,13 @@ def homepage(request):
     return render(request,'teacher/teacher_home.html',context)
 
 def profile(request):
+    teacher=request.user.teacher
+    branch_teacher=Teacher.objects.get(id=request.user.teacher)
+    print(branch_teacher)
     context = {
         "is_profile": True,
+        "teacher":teacher,
+        "branch_teacher":branch_teacher,
         }
     return render(request,'teacher/profile.html',context)
 
