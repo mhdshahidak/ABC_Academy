@@ -4,7 +4,7 @@ from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import get_user_model
 
-from adminapp.models import Branch
+from adminapp.models import Branch, Teacher
 
 
 # Create your views here.
@@ -67,21 +67,58 @@ def branch_course(request):
     return render(request,'adminapps/branch_course.html', context)
 
 def teachers(request):
+    branches = Branch.objects.all()
     context={
-        "is_teachers":True
+        "is_teachers":True,
+        "branch":branches,
     }
     return render(request,'adminapps/teachers.html', context)
 
-def teachers_list(request):
+def teachers_list(request,id):
+    branch = Branch.objects.get(id=id)
+    teachers = Teacher.objects.filter(branch=branch)
     context={
-        "is_teacherslist":True
+        "is_teacherslist":True,
+        "teacher":teachers,
     }
     return render(request,'adminapps/teachers_list.html', context)
 
 def add_teacher(request):
-
+    if Teacher.objects.exists():
+        branch = Teacher.objects.last().id
+        techer_id = 'TEC'+str(1000+branch)
+    else:
+        est=0
+        techer_id = 'TEC'+str(1000+est)
+    if request.method=='POST':
+        name = request.POST['name']
+        gender = request.POST['gender']
+        Dob = request.POST['Dob']
+        mobile = request.POST['mobile']
+        JoiningDate = request.POST['Joining Date']
+        Qualification = request.POST['Qualification']
+        Experience = request.POST['Experience']
+        email = request.POST['email']
+        Password = request.POST['Password']
+        address = request.POST['address']
+        city = request.POST['city']
+        state = request.POST['state']
+        zipcode = request.POST['zipcode']
+        country = request.POST['country']
+        techerfk= request.POST['branch']
+        rpassword = request.POST['rPassword']
+        branch = Branch.objects.get(id=techerfk)
+        if Password == rpassword:
+            techer = Teacher(branch=branch,teacher_id=techer_id,Password=Password,name=name,gender=gender,dob=Dob ,phone=mobile, email=email, joining_date=JoiningDate, qualification=Qualification, experience=Experience, address=address,pin=zipcode,country=country,state=state,city=city)
+            techer.save()
+            User = get_user_model()
+            User.objects.create_user(email=email, password=Password,teacher=techer)
+        else:
+            return HttpResponse ('Repeat correct password')
+    branches = Branch.objects.all()
     context={
-        "is_addteacher":True
+        "is_addteacher":True,
+        "branch":branches,
     }
     return render(request,'adminapps/addteacher.html', context)
 
@@ -112,6 +149,21 @@ def add_student(request):
 
 def edit_student_by_admin(request):
     return render(request,'adminapps/students_edit_admin.html')
+
+
+#courses 
+
+def courses(request):
+    context={
+        "is_courses":True
+    }
+    return render(request,'adminapps/courses.html', context)
+
+def add_courses(request):
+    context={
+        "is_add_courses":True
+    }
+    return render(request,'adminapps/addcourses.html', context)
 
 # profile
 
