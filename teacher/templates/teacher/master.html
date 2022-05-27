@@ -160,7 +160,7 @@
                             <img src="{% static 'teacher/img/profiles/avatar-01.jpg' %}" alt="">
                             <span class="status online"></span>
                         </span>
-                        <span>Admin</span>
+                        <span>{{teacher.name|upper}}</span>
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href=""><i class="fa fa-user" class="me-1"></i>&nbsp;
@@ -191,7 +191,7 @@
                                     class="menu-arrow"></span></a>
                             <ul>
                                 <li><a href="{% url 'teacher:profile' %}">My Profile</a></li>
-                                <li><a href="{% url 'teacher:editprofile' %}">Edit Profile</a></li>
+                                {% comment %} <li><a href="{% url 'teacher:editprofile' teacher.id teacher.cid teacher.pid %}">Edit Profile</a></li> {% endcomment %}
                             </ul>
                         </li>
                         <li {% if is_courses %} class="active" {% endif %}>
@@ -200,19 +200,10 @@
                         <li {% if is_studentlist %} class="active" {% elif is_coursewisestudentlist %} class="active" {% endif %}>
                             <a href="{% url 'teacher:studentlist' %}"><i class="fa fa-user"></i> <span>Student</span></a>
                         </li>
-                        <li class="submenu">
-                            <a href=""><i class="fa fa-edit"></i> <span> Exam</span> <span
-                                    class="menu-arrow"></span></a>
-                            <ul>
-                                <li><a href="">Exam Date</a></li>
-                                <li><a href="">Upload Exam Paper</a></li>
-                                <li><a href="">Evluation</a></li>
-                            </ul>
+                        <li {% if is_result %} class="active" {% endif %}>
+                            <a href="{% url 'teacher:result' %}"><i class="fa fa-list-alt"></i> <span>Result</span></a>
                         </li>
-                        <li {% if is_profile %} class="active" {% endif %}>
-                            <a href=""><i class="fa fa-list-alt"></i> <span>Result</span></a>
-                        </li>
-                        <li {% if is_profile %} class="active" {% endif %}>
+                        <li {% if is_calander %} class="active" {% endif %}>
                             <a href="{% url 'teacher:calander' %}"><i class="fa fa-calendar"></i> <span>Calander</span></a>
                         </li>
                     </ul>
