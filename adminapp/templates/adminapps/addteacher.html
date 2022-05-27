@@ -10,14 +10,7 @@
                     <h3 class="page-title">
                         Add Teachers
                     </h3>
-                    <ul class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="teachers.html">Teachers</a>
-                        </li>
-                        <li class="breadcrumb-item active">
-                            Add Teachers
-                        </li>
-                    </ul>
+                   
                 </div>
             </div>
         </div>
@@ -25,7 +18,8 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-body">
-                        <form>
+                        <form method="POST">
+                            {% csrf_token %}
                             <div class="row">
                                 <div class="col-12">
                                     <h5 class="form-title">
@@ -35,9 +29,16 @@
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
                                         <label>
-                                            Teacher ID
+                                            Branch
                                         </label>
-                                        <input type="text" class="form-control">
+                                        <select class="form-control select" name="branch" required>
+                                            <option>Select Branch</option>
+                                            {% for b in branch %}
+                                            <option value="{{b.id}}">
+                                                {{b.branch_name}}
+                                            </option>
+                                            {% endfor %}
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
@@ -45,7 +46,7 @@
                                         <label>
                                             Name
                                         </label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" name="name">
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
@@ -53,14 +54,14 @@
                                         <label>
                                             Gender
                                         </label>
-                                        <select class="form-control select">
-                                            <option>
+                                        <select class="form-control select" name="gender">
+                                            <option value="Male">
                                                 Male
                                             </option>
-                                            <option>
+                                            <option value="FeMale">
                                                 Female
                                             </option>
-                                            <option>
+                                            <option value="Others">
                                                 Others
                                             </option>
                                         </select>
@@ -71,7 +72,7 @@
                                         <label>
                                             Date of Birth
                                         </label>
-                                        <input type="date" class="form-control">
+                                        <input type="date" class="form-control" name="Dob">
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
@@ -79,7 +80,7 @@
                                         <label>
                                             Mobile
                                         </label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" name="mobile">
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
@@ -87,7 +88,7 @@
                                         <label>
                                             Joining Date
                                         </label>
-                                        <input type="date" class="form-control">
+                                        <input type="date" class="form-control" name="Joining Date">
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
@@ -95,7 +96,7 @@
                                         <label>
                                             Qualification
                                         </label>
-                                        <input class="form-control" type="text">
+                                        <input class="form-control" type="text" name="Qualification">
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
@@ -103,7 +104,7 @@
                                         <label>
                                             Experience
                                         </label>
-                                        <input class="form-control" type="text">
+                                        <input class="form-control" type="text" name="Experience">
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -114,17 +115,9 @@
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
                                         <label>
-                                            Username
-                                        </label>
-                                        <input type="text" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <div class="form-group">
-                                        <label>
                                             Email ID
                                         </label>
-                                        <input type="email" class="form-control">
+                                        <input type="email" class="form-control" name="email">
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
@@ -132,7 +125,7 @@
                                         <label>
                                             Password
                                         </label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" name="Password">
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
@@ -140,7 +133,7 @@
                                         <label>
                                             Repeat Password
                                         </label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" name="rPassword">
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -153,7 +146,7 @@
                                         <label>
                                             Address
                                         </label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" name="address">
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
@@ -161,7 +154,7 @@
                                         <label>
                                             City
                                         </label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" name="city">
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
@@ -169,7 +162,7 @@
                                         <label>
                                             State
                                         </label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" name="state">
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
@@ -177,7 +170,7 @@
                                         <label>
                                             Zip Code
                                         </label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" name="zipcode">
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
@@ -185,7 +178,7 @@
                                         <label>
                                             Country
                                         </label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" name="country">
                                     </div>
                                 </div>
                                 <div class="col-12">
