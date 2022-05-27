@@ -79,7 +79,7 @@ class Student(models.Model):
     phone = PhoneField(unique=True)
     email = models.EmailField()
     address = models.TextField()
-    branch = models.OneToOneField(Branch,on_delete=models.PROTECT)
+    branch = models.ForeignKey(Branch,on_delete=models.PROTECT)
 
 class User(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=20,null=True)

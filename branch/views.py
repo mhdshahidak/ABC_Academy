@@ -4,12 +4,19 @@ from django.contrib.auth import get_user_model
 
 # Create your views here.
 def master(request):
+    print(request.user.branch)
+    student=Student.objects.filter(branch=request.user.branch).count()
+    teacher=Teacher.objects.filter(branch=request.user.branch).count()
+    print(student)
     context={
-        "is_master":True
+        "is_master":True,
+        "student":student,
+        "teacher":teacher
     }
     return render(request,'branch/home.html', context)
 
 def students(request):
+    
     print(request.user.id)
     
     context={
@@ -24,7 +31,9 @@ def studentslist(request):
     return render(request,'branch/students_list.html', context)
 
 def all_students_list(request):
-    student= Student.objects.all()
+
+    student= Student.objects.filter(branch=request.user.branch)
+    print(student)
     context={
         "is_all_students_list":True,
         "student":student
@@ -32,6 +41,9 @@ def all_students_list(request):
     return render(request,'branch/allstudents_list.html', context)
 
 def add_students_branch(request):
+    print(request.user.branch)
+    studentFk= request.user.branch.id
+    print(studentFk)
     if request.method=='POST':
         name = request.POST['name']
         lastname = request.POST['lastname']
@@ -46,6 +58,7 @@ def add_students_branch(request):
         fatherphone = request.POST['fatherphone']
         address = request.POST['address']
         studentFk= request.user.branch
+        print(studentFk)
         std = Student(branch=studentFk,student_id=studentid, first_name=name, last_name=lastname, gender=gender, dob=dob, phone=phone,email=email, course=course ,password=password,fatherphone=fatherphone,fathername=fathername,address=address)
         std.save()
         User = get_user_model()
@@ -55,6 +68,25 @@ def add_students_branch(request):
         "is_add_students_branch":True
     }
     return render(request,'branch/studentsaddbranch.html', context)
+def editstudent(request,id):
+    details= Student.objects.get(id=id)
+    if request.method=='POST':
+        name = request.POST['name']
+        lastname = request.POST['lastname']
+        gender = request.POST['gender']
+        phone = request.POST['phone']
+        email = request.POST['email']
+        password = request.POST['password']
+        fathername = request.POST['fathername']
+        fatherphone = request.POST['fatherphone']
+        Student.objects.filter(id=id).update( first_name=name, last_name=lastname, gender=gender,phone=phone,email=email ,password=password,fatherphone=fatherphone,fathername=fathername)
+        return redirect('/branch/allstudentslist')       
+
+    context={
+        "is_add_students_branch":True,
+        "details":details
+    }
+    return render(request,'branch/editstudent.html', context)
 
 def teachers(request):
     techerlist= Teacher.objects.all()

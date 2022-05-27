@@ -9,6 +9,7 @@ urlpatterns = [
     path('studentslist',views.studentslist,name="branchstudentslist"),
     path('allstudentslist',views.all_students_list,name="allbranchstudentslist"),
     path('addstudent',views.add_students_branch,name="addstudent"),
+    path('editstudent/<str:id>',views.editstudent,name="editstudent"),
     path('teacherslist',views.teachers,name="teacherslist"),
     path('addteacher',views.add_teachers,name="addteacherbranch"),
     path('editteacher/<str:id>',views.editteacher,name="editteacher"),
