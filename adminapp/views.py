@@ -3,16 +3,23 @@ from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import get_user_model
+# from abc_academy.decorators import auth_admin
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 
 from adminapp.models import Batch, Branch, Courses, Teacher
 
 
 # Create your views here.
+# @auth_admin
+@login_required(login_url='/login/')
 def admindashbord(request):
+    print(request.user)
     context={
         "is_admindash":True
     }
     return render(request,'adminapps/home.html', context)
+
 
 def branch_list(request):
     branches = Branch.objects.all()
@@ -24,7 +31,7 @@ def branch_list(request):
 
 
 # add branch
-
+@login_required(login_url='/adminapp/login')
 def add_branch(request):
     if Branch.objects.exists():
         branch = Branch.objects.last().id
@@ -60,12 +67,15 @@ def add_branch(request):
     }
     return render(request,'adminapps/addbranch.html', context)
 
+@login_required(login_url='/adminapp/login')
 def branch_course(request):
     context={
         "is_branch_course":True
     }
     return render(request,'adminapps/branch_course.html', context)
 
+
+@login_required(login_url='/adminapp/login')
 def teachers(request):
     branches = Branch.objects.all()
     context={
@@ -74,6 +84,8 @@ def teachers(request):
     }
     return render(request,'adminapps/teachers.html', context)
 
+
+@login_required(login_url='/adminapp/login')
 def teachers_list(request,id):
     branch = Branch.objects.get(id=id)
     teachers = Teacher.objects.filter(branch=branch)
@@ -83,6 +95,8 @@ def teachers_list(request,id):
     }
     return render(request,'adminapps/teachers_list.html', context)
 
+
+@login_required(login_url='/adminapp/login')
 def add_teacher(request):
     if Teacher.objects.exists():
         branch = Teacher.objects.last().id
@@ -122,6 +136,8 @@ def add_teacher(request):
     }
     return render(request,'adminapps/addteacher.html', context)
 
+
+@login_required(login_url='/adminapp/login')
 def students(request):
     context={
         "is_students":True
@@ -129,30 +145,40 @@ def students(request):
     return render(request,'adminapps/students.html', context)
 
 
+
+@login_required(login_url='/adminapp/login')
 def students_by_courses(request):
     context={
         "is_students_by_courses":True
     }
     return render(request,'adminapps/students_by_branch.html', context)
 
+
+@login_required(login_url='/adminapp/login')
 def students_list(request):
     context={
         "is_students_list":True
     }
     return render(request,'adminapps/students_list.html', context)
 
+
+@login_required(login_url='/adminapp/login')
 def add_student(request):
     context={
         "is_add_student":True
     }
     return render(request,'adminapps/addstudent.html', context)
 
+
+@login_required(login_url='/adminapp/login')
 def edit_student_by_admin(request):
     return render(request,'adminapps/students_edit_admin.html')
 
 
 #courses 
 
+
+@login_required(login_url='/adminapp/login')
 def courses(request):
     course = Courses.objects.all()
     context={
@@ -161,6 +187,8 @@ def courses(request):
     }
     return render(request,'adminapps/courses.html', context)
 
+
+@login_required(login_url='/adminapp/login')
 def add_courses(request):
     if Courses.objects.exists():
         course = Courses.objects.last().id
@@ -185,6 +213,8 @@ def add_courses(request):
 
 # batch 
 
+
+@login_required(login_url='/adminapp/login')
 def batch(request):
     courses = Courses.objects.all()
     batches = Batch.objects.all()
@@ -195,6 +225,8 @@ def batch(request):
     }
     return render(request,'adminapps/batch_list.html', context)
 
+
+@login_required(login_url='/adminapp/login')
 def add_batch(request):
     if request.method == 'POST':
         course_id = request.POST['course']
@@ -214,30 +246,40 @@ def add_batch(request):
 
 # profile
 
+
+@login_required(login_url='/adminapp/login')
 def admin_profile(request):
     return render(request,'adminapps/profile_admin.html')
 
 
 # exams
 
+
+@login_required(login_url='/adminapp/login')
 def exam(request):
     context={
         "is_exam":True
     }
     return render(request,'adminapps/exams.html', context)
 
+
+@login_required(login_url='/adminapp/login')
 def exam_add_list(request):
     context={
         "is_exam_add_list":True
     }
     return render(request,'adminapps/exam_add_lists.html', context)
 
+
+@login_required(login_url='/adminapp/login')
 def exam_add_first(request):
     context={
         "is_exam_add_one":True
     }
     return render(request,'adminapps/exam_add1.html', context)
 
+
+@login_required(login_url='/adminapp/login')
 def exam_add_one(request):
     context={
         "is_exam_add_one":True
@@ -245,6 +287,7 @@ def exam_add_one(request):
     return render(request,'adminapps/exam_add_trial.html', context)
 
 
+@login_required(login_url='/adminapp/login')
 def exam_add_two(request):
     context={
         "is_exam_add_two":True
@@ -256,6 +299,7 @@ def exam_add_two(request):
 
 # fees adding 
 
+@login_required(login_url='/adminapp/login')
 def fees_adding(request):
     context={
         "is_fees_adding":True
@@ -264,6 +308,7 @@ def fees_adding(request):
 
 
 # login
+
 
 def log_in(request):
     if request.method == 'POST':
@@ -281,5 +326,11 @@ def log_in(request):
             elif user.teacher != None:
                 return redirect('teacher:homepage')
         else:
-            return HttpResponse('not valid')
+            return redirect('admins:adminlogin')
     return render(request,'adminapps/login.html')
+
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('/adminapp/login')

@@ -49,6 +49,7 @@ urlpatterns = [
     # login
     
     path('login', views.log_in,name="adminlogin"),
+    path('logout_view', views.logout_view,name="logout_view"),
    
 
 ]
