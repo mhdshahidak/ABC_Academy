@@ -72,6 +72,7 @@ class Teacher(models.Model):
     dob = models.DateField()
     phone = PhoneField(unique=True)
     email = models.EmailField()
+    course = models.ForeignKey(Batch,on_delete=models.PROTECT)
     joining_date = models.DateField()
     qualification = models.CharField(max_length=100)
     city = models.CharField(max_length=100 ,default="")

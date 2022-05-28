@@ -71,6 +71,22 @@
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
                                         <label>
+                                            Course
+                                        </label>
+                                        <select name="course" class="form-control select" required>
+                                            <option selected disabled>
+                                                Select Subject
+                                            </option>
+                                            {% for i in course %}
+                                            <option value="{{i.id}}">{{i.course.couse_name}}  {{i.starting_date}} to  {{i.ending_date}} </option>
+                                            {% endfor %}
+                                          
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>
                                             Mobile
                                         </label>
                                         <input type="text" name="mobile" class="form-control">

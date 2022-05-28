@@ -136,6 +136,7 @@ def teachers(request):
 
 @login_required(login_url='/adminapp/login')
 def add_teachers(request):
+    course=Batch.objects.all()
     if Teacher.objects.exists():
         branch = Teacher.objects.last().id
         techer_id = 'TEC'+str(1000+branch)
@@ -157,14 +158,17 @@ def add_teachers(request):
         state = request.POST['state']
         zipcode = request.POST['zipcode']
         country = request.POST['country']
+        courseid = request.POST['course']
         techerfk= request.user.branch
+        course_id=Batch.objects.get(id=courseid)
         
-        techer = Teacher(branch=techerfk,teacher_id=techer_id,Password=Password,name=name,gender=gender,dob=Dob ,phone=mobile, email=email, joining_date=JoiningDate, qualification=Qualification, experience=Experience, address=address,pin=zipcode,country=country,state=state,city=city)
+        techer = Teacher(course=course_id,branch=techerfk,teacher_id=techer_id,Password=Password,name=name,gender=gender,dob=Dob ,phone=mobile, email=email, joining_date=JoiningDate, qualification=Qualification, experience=Experience, address=address,pin=zipcode,country=country,state=state,city=city)
         techer.save()
         User = get_user_model()
         User.objects.create_user(email=email, password=Password,teacher=techer)
     context={
-        "is_add_teachers":True
+        "is_add_teachers":True,
+        "course":course
     }
     return render(request,'branch/addteacher.html', context)
 
