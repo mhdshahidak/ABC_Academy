@@ -151,7 +151,7 @@
                                         <label for="district" class="col-sm-3 col-form-label input-label">Country</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="district" placeholder="Your District Name"
-                                                value="{{edit_teacher.country}}" name="state" name="country">
+                                                value="{{edit_teacher.country}}" name="country">
                                         </div>
                                     </div>
                                     <div class="row form-group">
@@ -185,7 +185,7 @@
                                         <label for="admissionnum" class="col-sm-3 col-form-label input-label">Staff ID</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="admissionnum" placeholder="Your ID"
-                                                value="254785445" name="id">
+                                                value="{{edit_teacher.teacher_id}}" name="id">
                                         </div>
                                     </div>
                                     
@@ -193,30 +193,16 @@
                                         <label for="jdate" class="col-sm-3 col-form-label input-label">Joining Date</label>
                                         <div class="col-sm-9">
                                             <input type="date" class="form-control" id="jdate" placeholder="Joining Dtae"
-                                                value="charleshafner@example.com" name="joiningdate">
+                                                value="{{edit_teacher.joining_date|date:"Y-m-d"}}" name="joiningdate" disabled>
                                         </div>
                                     </div>
-                                    <!-- <div class="row form-group">
-                                        <label for="course" class="col-sm-3 col-form-label input-label">Course</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="course" placeholder="Course"
-                                                value="ttc"  name="">
-                                        </div>
-                                    </div> -->
                                     <div class="row form-group">
                                         <label for="qualification" class="col-sm-3 col-form-label input-label">Qualification</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="qualification" placeholder="Qualification"
-                                                value="ttc" name="qualification">
+                                                value="{{edit_teacher.qualification}}" name="qualification">
                                         </div>
                                     </div>
-                                    <!-- <div class="row form-group">
-                                        <label for="section" class="col-sm-3 col-form-label input-label">Section</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="section" placeholder="Section"
-                                                value="charleshafner@example.com">
-                                        </div>
-                                    </div> -->
                                     <div class="text-end">
                                         <button type="submit" class="btn btn-primary">Save Changes</button>
                                     </div>
@@ -320,7 +306,5 @@
               
     </div>
 </div>
-
-<script src="{% static 'scripts.js' %}"></script>
 
 {% endblock %}
