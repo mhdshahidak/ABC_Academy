@@ -34,24 +34,51 @@
                                             </tr>
                                         </thead>
                                         <tbody  id="tbodyofInvoice">
+                                            {% for i in paymentdetails %}
+                                                
                                             <tr>
                                                
                                                 <td>
-                                                    12/02/2022
+                                                    {{i.paiddate}}
                                                 </td>
                                                 <td>
-                                                    5000
+                                                    {{i.paidamount}}
                                                 </td>
                                                 <td>
-                                                    22/07/2022
+                                                    {{i.student.course.ending_date}}  
                                                 </td>
                                               
                                             </tr>
                                             
+                                            {% endfor %}
+                                        
                                         </tbody>
                                     </table>
                                 </div>
                             </form>
+                           
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Total Amount:</label>
+                                <input type="text" value="{{total}}" disabled readonly class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Amount Paid :</label>
+                            <input type="text" value="{{recvamount}}" disabled readonly class="form-control">
+                        </div>
+                        <div class="col-md-4">
+                            <label>Balance Amount :</label>
+                            <input type="text" value="{{balanceamount}}" disabled readonly class="form-control">
                         </div>
                     </div>
                 </div>

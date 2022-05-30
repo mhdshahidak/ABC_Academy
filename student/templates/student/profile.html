@@ -22,7 +22,7 @@
 
                 <div class="profile-cover">
                     <div class="profile-cover-wrap">
-                        <img class="profile-cover-img" src="{% static 'teacher/img/profiles/avatar-02.jpg' %}"
+                        <img class="profile-cover-img" src="{% static 'cover.jfif' %}"
                             alt="Profile Cover">
 
                         <div class="cover-content">
@@ -39,24 +39,24 @@
                 </div>
                 <div class="text-center mb-5">
                     <label class="avatar avatar-xxl profile-cover-avatar" for="avatar_upload">
-                        <img class="avatar-img" src="{% static 'teacher/img/profiles/avatar-02.jpg' %}"
+                        <img class="avatar-img" src="{% static 'default.jpg' %}"
                             alt="Profile Image">
                         <input type="file" id="avatar_upload">
                         <span class="avatar-edit">
-                            <i data-feather="edit-2" class="avatar-uploader-icon shadow-soft"></i>
+                            <i class="fa fa-pen" class="avatar-uploader-icon shadow-soft"></i>
                         </span>
                     </label>
-                    <h2>Charles Hafner <i class="fas fa-certificate text-primary small" data-toggle="tooltip"
+                    <h2> {{student_profile.first_name|upper}}  {{student_profile.last_name|upper}} <i class="fas fa-certificate text-primary small" data-toggle="tooltip"
                             data-placement="top" title="" data-original-title="Verified"></i></h2>
                     <ul class="list-inline">
                         <li class="list-inline-item">
-                            <i class="far fa-building"></i> <span>Hafner Pvt Ltd.</span>
+                            <i class="far fa-building"></i> <span></span>
                         </li>
                         <li class="list-inline-item">
-                            <i class="fas fa-map-marker-alt"></i> West Virginia, US
+                            <i class="fas fa-map-marker-alt"></i> {{student_profile.student_id}}
                         </li>
                         <li class="list-inline-item">
-                            <i class="far fa-calendar-alt"></i> <span>Joined November 2017</span>
+                            <i class="far fa-calendar-alt"></i> <span> {{student_profile.dob}}</span>
                         </li>
                     </ul>
                 </div>
