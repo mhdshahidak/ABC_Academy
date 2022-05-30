@@ -188,11 +188,10 @@
                             <a href="{% url 'student:home' %}"><i class="fa fa-th"></i> <span>Dashboard</span></a>
                         </li>
                         <li class="submenu" {% if is_profile %} class="active" {% elif is_editprofile %} class="active" {% endif %}>
-                            <a href=""><i class="fa fa-address-card"></i> <span> My Profile</span> <span
-                                    class="menu-arrow"></span></a>
+                            <a href=""><i class="fa fa-address-card"></i> <span>My Profile</span> 
                             <ul>
                                 <li {% if is_profile %} class="active" {% endif %}><a href="{% url 'student:profile' %}">My Profile</a></li>
-                                <li {% if is_editprofile %} class="active" {% endif %}><a href="{% url 'student:editprofile' %}">Edit Profile</a></li>
+                                
                             </ul>
                         </li>
                         <li {% if is_examlist %} class="active" {% elif is_examinst %} class="active" {% elif is_exam %} class="active" {% endif %}>

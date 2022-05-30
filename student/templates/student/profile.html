@@ -66,7 +66,7 @@
                             <div class="card-header">
                                 <h5 class="card-title d-flex justify-content-between">
                                     <span>Profile</span>
-                                    <a class="btn btn-sm btn-white" href="{% url 'student:editprofile' %}">Edit</a>
+                                    <a class="btn btn-sm btn-white" href="{% url 'student:editprofile' student_profile.cid  %}">Edit</a>
                                 </h5>
                             </div>
                             <div class="card-body">
@@ -85,7 +85,7 @@
                                                 <small class="text-dark"><b><span>About</span></b></small>
                                             </li> -->
                                             <li>
-                                                {{student_profile.first_name}} {{student_profile.last_name}}
+                                                {{student_profile.first_name}} {{student_profile.id}}
                                             </li>
                                             <li>
                                                 {{student_profile.student_id}}

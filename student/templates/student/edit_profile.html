@@ -47,6 +47,7 @@
                             </div>
                             <div class="card-body">
                                 <form method="POST" id="form1" name="form1">
+                                    {% csrf_token %}
                                     <div class="row form-group">
                                         <label for="name" class="col-sm-3 col-form-label input-label">Name</label>
                                         <div class="col-sm-9">
@@ -81,7 +82,7 @@
                                         <label for="name" class="col-sm-3 col-form-label input-label">Second Name</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="name" placeholder="Your Name"
-                                                value="{{edit_profile.second_name}}" name="sname">
+                                                value="{{edit_profile.last_name}}" name="sname">
                                         </div>
                                     </div>
                                     <div class="row form-group">
@@ -102,7 +103,7 @@
                                         <label for="email" class="col-sm-3 col-form-label input-label">Email</label>
                                         <div class="col-sm-9">
                                             <input type="email" class="form-control" id="email" placeholder="Email"
-                                                value="charleshafner@example.com" name="email">
+                                                value="{{edit_profile.email}}" name="email">
                                         </div>
                                     </div>
                                     <div class="row form-group">
@@ -110,7 +111,7 @@
                                                 class="text-muted">(Optional)</span></label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="phone" placeholder="+x(xxx)xxx-xx-xx"
-                                                value="+1 (304) 499-13-66" name="phone">
+                                                value="{{edit_profile.phone}}" name="phone">
                                         </div>
                                     </div>
                                     <div class="text-end">
@@ -131,32 +132,26 @@
                             </div>
                             <div class="card-body">
                                 <form method="POST" id="form2" name="form2">
+                                    {% csrf_token %}
                                     <div class="row form-group">
                                         <label for="Fathername" class="col-sm-3 col-form-label input-label">Father Name</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="Fathername" placeholder="Your Father Name"
-                                                value="Charles Hafner" name="fname">
+                                                value="{{edit_profile.fathername}}" name="fname">
                                         </div>
                                     </div>
                                     <div class="row form-group">
-                                        <label for="email" class="col-sm-3 col-form-label input-label">Email</label>
-                                        <div class="col-sm-9">
-                                            <input type="email" class="form-control" id="email" placeholder="Gaurdian Email"
-                                                value="charleshafner@example.com" name="femail">
-                                        </div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <label for="phone" class="col-sm-3 col-form-label input-label">Phone <span
+                                        <label for="fphone" class="col-sm-3 col-form-label input-label">Phone <span
                                                 class="text-muted">(Optional)</span></label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="phone" placeholder="+x(xxx)xxx-xx-xx"
-                                                value="+1 (304) 499-13-66" name="phone">
+                                            <input type="text" class="form-control" id="fphone" placeholder="+x(xxx)xxx-xx-xx"
+                                                value="{{edit_profile.fatherphone}}" name="fatherphone">
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <label for="address" class="col-sm-3 col-form-label input-label">Address</label>
                                         <div class="col-sm-9">
-                                            <textarea name="address" id="address" cols="95" rows="4" class="form-control" value="yvygbh" name="address">ubuhygvgbasdff</textarea>
+                                            <textarea name="address" id="address" cols="95" rows="4" class="form-control" value="yvygbh" name="address">{{edit_profile.address}}</textarea>
                                         </div>
                                     </div>
                                     <div class="text-end">
@@ -178,11 +173,12 @@
                             </div>
                             <div class="card-body">
                                 <form method="POST" id="form3" name="form3">
+                                    {% csrf_token %}
                                     <div class="row form-group">
                                         <label for="admissionnum" class="col-sm-3 col-form-label input-label">Course ID</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="admissionnum" placeholder="Your CourseID"
-                                                value="Charles Hafner" name="cid">
+                                                value="{{edit_profile.course.course.course_id}}" name="cid">
                                         </div>
                                     </div>
                                     
@@ -190,21 +186,21 @@
                                         <label for="cname" class="col-sm-3 col-form-label input-label">Course Name</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="cname" placeholder="Section"
-                                                value="charleshafner@example.com" name="cname">
+                                                value="{{edit_profile.course.course.couse_name}}" name="cname">
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <label for="Class" class="col-sm-3 col-form-label input-label">Batch</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="Class" placeholder="Batch"
-                                                value="32156351" name="batch">
+                                                value="{{edit_profile.course.starting_date}}  to {{edit_profile.course.ending_date}}" name="batch">
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <label for="section" class="col-sm-3 col-form-label input-label">Duration</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="section" placeholder="Duration"
-                                                value="charleshafner@example.com" name="duration">
+                                                value="{{edit_profile.course.course.Duration}}" name="duration">
                                         </div>
                                     </div>
                                     <div class="text-end">
