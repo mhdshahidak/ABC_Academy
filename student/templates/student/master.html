@@ -161,14 +161,14 @@
                             <img src="{% static 'teacher/img/profiles/avatar-01.jpg' %}" alt="">
                             <span class="status online"></span>
                         </span>
-                        <span>Admin</span>
+                        <span>{{student.first_name|upper}} {{student.last_name|upper}}</span>
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="{% url 'student:profile' %}"><i class="fa fa-user" class="me-1"></i>&nbsp;
                                       Profile</a>
                         <a class="dropdown-item" href=""><i class="fa fa-cog" class="me-1"></i>&nbsp;
                             Settings</a>
-                        <a class="dropdown-item" href=""><i class="fa fa-sign-out-alt" class="me-1"></i>&nbsp;
+                        <a class="dropdown-item" href="{% url 'admins:logout_view' %}"><i class="fa fa-sign-out-alt" class="me-1"></i>&nbsp;
                             Logout</a>
                     </div>
                 </li>

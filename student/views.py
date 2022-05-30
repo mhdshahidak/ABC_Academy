@@ -5,17 +5,22 @@ from adminapp.models import Student
 # Create your views here.
 
 def student_home(request):
-    student=Student.objects.get(id=request.user.st)
+    student=request.user.Student
     context = {
         "is_home": True,
+        "student":student,
         }
     return render(request,'student/student_home.html',context)
 
 
 
 def profile(request):
+    student=request.user.Student
+    student_profile=Student.objects.get(id=request.user.Student.id)
     context = {
         "is_profile": True,
+        "student":student,
+        "student_profile":student_profile,
         }
     return render(request,'student/profile.html',context)
 
