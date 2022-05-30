@@ -34,7 +34,8 @@ urlpatterns = [
     path('examsadd/<int:id>', views.exam_add_list, name="examsadd"),
     path('examsaddfirst/<int:id>', views.exam_add_first, name="examsaddfirst"),
     path('examsaddone/<str:id>', views.exam_add_one, name="examsaddone"),
-    path('examsaddtwo', views.exam_add_two, name="examsaddtwo"),
+    path('examsaddtwo/<str:id>', views.exam_add_two, name="examsaddtwo"),
+    path('savedata/', views.savedata, name="savedata"),
 
    # profile
 

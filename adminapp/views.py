@@ -7,7 +7,12 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 
-from adminapp.models import Batch, Branch, Courses, Exam, Teacher
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
+
+from adminapp.models import Batch, Branch, Courses, Exam, Instructions, Questions, Teacher
+
+
 
 
 # Create your views here.
@@ -121,18 +126,23 @@ def add_teacher(request):
         country = request.POST['country']
         techerfk= request.POST['branch']
         rpassword = request.POST['rPassword']
+        batch = request.POST['course']
+
         branch = Branch.objects.get(id=techerfk)
+        batch = Batch.objects.get(id=batch)
         if Password == rpassword:
-            techer = Teacher(branch=branch,teacher_id=techer_id,Password=Password,name=name,gender=gender,dob=Dob ,phone=mobile, email=email, joining_date=JoiningDate, qualification=Qualification, experience=Experience, address=address,pin=zipcode,country=country,state=state,city=city)
+            techer = Teacher(branch=branch,course=batch,teacher_id=techer_id,Password=Password,name=name,gender=gender,dob=Dob ,phone=mobile, email=email, joining_date=JoiningDate, qualification=Qualification, experience=Experience, address=address,pin=zipcode,country=country,state=state,city=city)
             techer.save()
             User = get_user_model()
             User.objects.create_user(email=email, password=Password,teacher=techer)
         else:
             return HttpResponse ('Repeat correct password')
     branches = Branch.objects.all()
+    course=Batch.objects.all()
     context={
         "is_addteacher":True,
         "branch":branches,
+        "course":course,
     }
     return render(request,'adminapps/addteacher.html', context)
 
@@ -279,6 +289,7 @@ def exam_add_list(request,id):
 @login_required(login_url='/adminapp/login')
 def exam_add_first(request,id):
     if request.method == 'POST':
+    
         batch = request.POST['batch']
         name = request.POST['examname']
         date = request.POST['examdate']
@@ -290,7 +301,7 @@ def exam_add_first(request,id):
 
         new_exam = Exam(batch=batch,exam_name=name,exam_date=date,start_time=start_time,end_time=end_time,duration=duration,total_mark=mark)
         new_exam.save()
-        print(new_exam.id)
+        # print(new_exam.id)
         return redirect('/adminapp/examsaddone/'+str(new_exam.id))
 
     batch = Batch.objects.get(id=id)
@@ -304,9 +315,14 @@ def exam_add_first(request,id):
 @login_required(login_url='/adminapp/login')
 def exam_add_one(request,id):
     if request.method == 'POST':
-        print(request.POST)
+        # print("aa")
+        # print(request.POST)
+        instructions = request.POST['instruction']
         exam = Exam.objects.get(id=id)
 
+        new_insructions = Instructions(exam_id=exam,instructions=instructions)
+        new_insructions.save()
+        return redirect('/adminapp/examsaddtwo/'+str(exam.id))
     context={
         "is_exam_add_one":True
     }
@@ -314,12 +330,29 @@ def exam_add_one(request,id):
 
 
 @login_required(login_url='/adminapp/login')
-def exam_add_two(request):
+def exam_add_two(request,id):
+    exam = Exam.objects.get(id=id)
     context={
-        "is_exam_add_two":True
+        "is_exam_add_two":True,
+        "exam":exam,
     }
     return render(request,'adminapps/exam_add2.html', context)
 
+
+def savedata(request):
+    print(request.POST)
+    question = request.POST['question']
+    type = request.POST['radio']
+    exam_id = request.POST['exam_id']
+    options = request.POST['options']
+    mark = request.POST['mark']
+    print(question,type,exam_id,options,mark)
+
+    exam_pk = Exam.objects.get(id=exam_id)
+    print()
+    new_question = Questions(exam_id=exam_pk,question=question,type=type,option=options,mark=mark)
+    new_question.save()
+    return JsonResponse({new_question})
 
 
 

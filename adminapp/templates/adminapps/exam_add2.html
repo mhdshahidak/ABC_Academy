@@ -1,24 +1,21 @@
 {% extends 'adminapps/index.html' %}
 {% block content %}
-{% load static %}
-
-<div class="page-wrapper">
-    <div class="content container-fluid">
-        <div class="page-header">
-            <div class="row align-items-center">
-                <div class="col">
-                    <h3 class="page-title">
-                        FASHION MARKETING 2022-2023 MARCH
-                    </h3>
-                    
+    {% load static %}
+    <div class="page-wrapper">
+        <div class="content container-fluid">
+            <div class="page-header">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h3 class="page-title">{{ exam.exam_name }}</h3>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="card">
-                    <div class="card-body">
-                        <form>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <form method="POST" id="addquestion">
+                                {% csrf_token %}
                             <div class="row">
                                 <div class="col-12">
                                     <h5 class="form-title">
@@ -27,43 +24,50 @@
                                 </div>
                                 <div class="col-10">
                                     <div class="form-group">
-                                        <textarea class="form-control"></textarea>
+                                        <textarea class="form-control" required name="question" id="question"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-2-sm-12">
                                     <div class="form-group">
-                                        <!-- <label>
-                                            Type
-                                        </label>
-                                        <input type="checkbox"> -->
                                         <ul>
+                                            <li>Type:</li>
                                             <li>
-                                                Type:
+                                                <input type="radio"
+                                                       name="radio"
+                                                       id="mcq"
+                                                       value="mcq"
+                                                       class="form-check-input">
+                                                MCQ
                                             </li>
                                             <li>
-                                                <input type="checkbox" class="form-check-input"> MCQ
+                                                <input type="radio"
+                                                       id="desc"
+                                                       name="radio"
+                                                       value="description"
+                                                       class="form-check-input">
+                                                DESCRIPTION
                                             </li>
-                                            <li>
-                                                <input type="checkbox" class="form-check-input"> DESCRIPTION
-                                            </li>
+                                            <input type="number"
+                                                   class="form-control"
+                                                   id="exam_id"
+                                                   value="{{ exam.id }}"
+                                                   name="exam_id"
+                                                   hidden>
                                         </ul>
                                     </div>
                                 </div>
-                                <!-- <div class="col-12 text-end">
-                                    <a href="{% url 'admins:examsaddone' %}" class="btn btn-info ">
-                                        Next >
-                                    </a>
-                                </div> -->
                             </div>
                             <div class="row">
-                                <div class="col-12">
+                                <div class="col-12 mcq">
                                     <h5 class="">
-                                        <span>MCQ OPTIONS</span>
+                                        <span>MCQ OPTIONS
+                                            <h6>Options seperates by using comma ","</h6>
+                                        </span>
                                     </h5>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-12 mcq">
                                     <div class="form-group">
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" id="options" name="options">
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -73,27 +77,106 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <input type="number" class="form-control" min="0">
+                                        <input type="number" class="form-control" min="0" id="mark" name="mark">
                                     </div>
                                 </div>
                                 <div class="col-12 text-end">
-                                    <a href="{% url 'admins:examsaddone' %}" class="btn btn-success  ">
-                                        SAVE & NEXT
-                                    </a>
-                                    <a href="{% url 'admins:examsaddone' %}" class="btn btn-info  ">
-                                        FINISH 
-                                    </a>
+                                    <button class="btn btn-secondary  "    type="submit">ADD QUESTION +</button>
+                                    <!-- <a href="#" class="btn btn-info  ">FINISH</a> -->
                                 </div>
-                                <!-- <div class="col-12 ">
-                                    
-                                </div> -->
                             </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
+            <!-- second row starting -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover table-center mb-0 datatable" id="qtable">
+                                    <thead>
+                                        <tr>
+                                            <th>Question</th>
+                                            <th>Type</th>
+                                            <th>Maximum mark</th>
+                                            <th class="text-end">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- <tr>
+                                            <td>Q1</td>
+                                            <td>
+                                                <h2>MCQ</h2>
+                                            </td>
+                                            <td>180</td>
+                                            <td class="text-end">
+                                                <div class="actions">
+                                                    <a href="edit-department.html" class="btn btn-sm bg-success-light me-2">
+                                                        <i class="fas fa-pen"></i>
+                                                    </a>
+                                                    <a href="#" class="btn btn-sm bg-danger-light">
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr> -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- second row ending -->
         </div>
     </div>
-</div>
+    <script>
+        $(document).ready(function(){
+            alert('')
+        })
+            var myTable = $('#qtable').DataTable();
+            //  for (var i = 1; i < countsNew; i++) {
+            myTable.row.add( ['1','2','3','4'] ).draw()
+    </script>
+    <script>
+        $('#desc').click(function(){
+            $('.mcq').hide()
+        })
+        $('#mcq').click(function(){
+            $('.mcq').show()
+        })
 
+
+$("#addquestion").submit(function(){
+    var data = $("#addquestion").serializeArray();
+    $.ajax({
+        url: "/adminapp/savedata/",
+        type: 'POST',
+        data: data,
+        success: function (responce) {
+             var myTable = $('#qtable').DataTable();
+            //  for (var i = 1; i < countsNew; i++) {
+            myTable.row.add( ['1','2','3','4'] ).draw()
+
+            //  }
+
+          // $('#category' + id).val(responce.product.catagory)
+            // $('#productId' + id).val(responce.product.id)
+            // $('#priceselect' + id).append('<option value="' + responce.product.priceper_head + '">' + responce.product.priceper_head + ' Per Head</option>')
+            // $('#priceselect' + id).append('<option value="' + responce.product.priceper_kg + '">' + responce.product.priceper_kg + ' Per KG</option>')
+            // $("#amount" + id).val(responce.product.priceper_head)
+
+
+        }
+
+    })
+    console.log(data)
+    return false;
+})
+     
+   
+    </script>
 {% endblock %}

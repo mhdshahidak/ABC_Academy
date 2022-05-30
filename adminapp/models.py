@@ -131,11 +131,20 @@ class Exam(models.Model):
 
 
 class Instructions(models.Model):
-    exam_id = models.ForeignKey(Exam,on_delete=models.CASCADE)
+    exam_id = models.OneToOneField(Exam,on_delete=models.CASCADE,null=True)
     instructions = HTMLField()
 
     class Meta:
         db_table = 'instructions'
 
 
+class Questions(models.Model):
+    exam_id  = models.ForeignKey(Exam,on_delete=models.PROTECT)
+    question = models.CharField(max_length=9000)
+    type = models.CharField(max_length=50)
+    option = models.CharField(max_length=5000,blank=True)
+    mark = models.FloatField()
+
+    class Meta:
+        db_table = 'questions'
     

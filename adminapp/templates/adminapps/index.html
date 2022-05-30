@@ -12,6 +12,8 @@
         <link rel="stylesheet" href="{% static 'webapp/plugins/fontawesome/css/fontawesome.min.css' %}">
         <link rel="stylesheet" href="{% static 'webapp/plugins/fontawesome/css/all.min.css' %}">
         <link rel="stylesheet" href="{% static 'webapp/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'webapp/plugins/datatables/datatables.min.css' %}">
+
     </head>
     <body>
         <div class="main-wrapper">
@@ -278,8 +280,19 @@
         <script src="{% static 'webapp/plugins/apexchart/apexcharts.min.js' %}"></script>
         <script src="{% static 'webapp/plugins/apexchart/chart-data.js' %}"></script>
         <script src="{% static 'webapp/js/script.js' %}"></script>
+        <script src="{% static 'webapp/plugins/datatables/jquery.dataTables.min.js' %}"></script>
+        <script src="{% static 'webapp/plugins/datatables/datatables.min.js' %}"></script>
 
-
+        <script>
+            if ($('.datatable').length > 0) {
+		    $('.datatable').DataTable({
+			language: {
+				search: '<i class="fas fa-search"></i>',
+				searchPlaceholder: "Search"
+			  }
+		});
+	}
+        </script>
         
     </body>
 </html>
