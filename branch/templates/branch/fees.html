@@ -23,7 +23,6 @@
                     </ul> -->
                 </div>
                 <div class="col-auto text-end float-end ms-auto">
-                    <a href="#" class="btn btn-outline-primary me-2"><i class="fas fa-download"></i> Download</a>
                     <a href="{% url 'branch:addfees' %}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
                 </div>
             </div>
@@ -40,13 +39,16 @@
                                             ID
                                         </th>
                                         <th>
-                                            Fees Name
+                                            Student Name
                                         </th>
                                         <th>
-                                            Class
+                                            Course
                                         </th>
                                         <th>
                                             Amount
+                                        </th>
+                                        <th>
+                                            Paid Date
                                         </th>
                                         <th>
                                             Start Date
@@ -54,12 +56,57 @@
                                         <th>
                                             End Date
                                         </th>
-                                        <th class="text-end">
+                                        <!-- <th class="text-end">
                                             Action
-                                        </th>
+                                        </th> -->
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    {% for i in paymentdets %}
+                                    <tr>
+                                        <td>
+                                           {{i.student.student_id}}
+                                        </td>
+                                        <td>
+                                            <h2 class="table-avatar">
+                                             
+                                                <a href="#"> {{i.student.first_name}}</a>
+                                            </h2>
+                                        </td>
+                                        
+                                        <td>
+                                            {{i.student.course.course.couse_name}}
+                                        </td>
+                                        <td>
+                                            {{i.paidamount}}
+                                        </td>
+                                        <td>
+                                            {{i.paiddate}}
+                                        </td>
+                                        <td>
+                                            {{i.student.course.starting_date}}
+                                        </td>
+                                        <td>
+                                            {{i.student.course.ending_date}}
+                                        </td>
+                                        
+                                        <!-- <td class="text-end">
+                                            <div class="actions">
+                                                <a href="/branch/editstudent/{{i.id}}" class="btn btn-sm bg-success-light me-2">
+                                                    <i class="fas fa-pen"></i>
+                                                </a>
+                                                <a href="#" class="btn btn-sm bg-danger-light">
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
+                                            </div>
+                                        </td> -->
+                                    </tr>
+                                    {% endfor %}
+                                    
+
+
+                                </tbody>
+                                <!-- <tbody>
                                     <tr>
                                         <td>
                                             PRE2209
@@ -380,7 +427,7 @@
                                             </div>
                                         </td>
                                     </tr>
-                                </tbody>
+                                </tbody> -->
                             </table>
                         </div>
                     </div>
