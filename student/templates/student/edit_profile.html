@@ -46,14 +46,14 @@
                                 <h5 class="card-title">Basic information</h5>
                             </div>
                             <div class="card-body">
-                                <form>
+                                <form method="POST" id="form1" name="form1">
                                     <div class="row form-group">
                                         <label for="name" class="col-sm-3 col-form-label input-label">Name</label>
                                         <div class="col-sm-9">
                                             <div class="d-flex align-items-center">
                                                 <label class="avatar avatar-xxl profile-cover-avatar m-0" for="edit_img">
                                                     <img id="avatarImg" class="avatar-img"
-                                                        src="{% static 'teacher/img/profiles/avatar-02.jpg' %}"
+                                                        src="{% static 'default.jpg' %}"
                                                         alt="Profile Image">
                                                     <input type="file" id="edit_img">
                                                     <span class="avatar-edit">
@@ -64,38 +64,45 @@
                                         </div>
                                     </div>
                                     <div class="row form-group">
-                                        <label for="name" class="col-sm-3 col-form-label input-label">Name</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="name" placeholder="Your Name"
-                                                value="Charles Hafner">
-                                        </div>
-                                    </div>
-                                    <div class="row form-group">
                                         <label for="Student ID" class="col-sm-3 col-form-label input-label">Student ID</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="Student ID" placeholder="Student ID"
-                                                value="32156351">
+                                                value="{{edit_profile.student_id}}" name="id" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <label for="name" class="col-sm-3 col-form-label input-label">First Name</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="name" placeholder="Your Name"
+                                                value="{{edit_profile.first_name}}" name="fname">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <label for="name" class="col-sm-3 col-form-label input-label">Second Name</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="name" placeholder="Your Name"
+                                                value="{{edit_profile.second_name}}" name="sname">
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <label for="gender" class="col-sm-3 col-form-label input-label">Gender</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="gender" placeholder="Gender"
-                                                value="Male">
+                                                value="{{edit_profile.gender}}" name="gender">
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <label for="dob" class="col-sm-3 col-form-label input-label">DOB</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="dob" placeholder="dob"
-                                                value="12/02/1999">
+                                                value="{{edit_profile.dob}}" name="dob">
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <label for="email" class="col-sm-3 col-form-label input-label">Email</label>
                                         <div class="col-sm-9">
                                             <input type="email" class="form-control" id="email" placeholder="Email"
-                                                value="charleshafner@example.com">
+                                                value="charleshafner@example.com" name="email">
                                         </div>
                                     </div>
                                     <div class="row form-group">
@@ -103,7 +110,7 @@
                                                 class="text-muted">(Optional)</span></label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="phone" placeholder="+x(xxx)xxx-xx-xx"
-                                                value="+1 (304) 499-13-66">
+                                                value="+1 (304) 499-13-66" name="phone">
                                         </div>
                                     </div>
                                     <div class="text-end">
@@ -123,26 +130,19 @@
                                 <h5 class="card-title">Gaurdian information</h5>
                             </div>
                             <div class="card-body">
-                                <form>
+                                <form method="POST" id="form2" name="form2">
                                     <div class="row form-group">
                                         <label for="Fathername" class="col-sm-3 col-form-label input-label">Father Name</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="Fathername" placeholder="Your Father Name"
-                                                value="Charles Hafner">
-                                        </div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <label for="mothername" class="col-sm-3 col-form-label input-label">Mother Name</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="mothername" placeholder="Your Mother Name"
-                                                value="32156351">
+                                                value="Charles Hafner" name="fname">
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <label for="email" class="col-sm-3 col-form-label input-label">Email</label>
                                         <div class="col-sm-9">
                                             <input type="email" class="form-control" id="email" placeholder="Gaurdian Email"
-                                                value="charleshafner@example.com">
+                                                value="charleshafner@example.com" name="femail">
                                         </div>
                                     </div>
                                     <div class="row form-group">
@@ -150,13 +150,13 @@
                                                 class="text-muted">(Optional)</span></label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="phone" placeholder="+x(xxx)xxx-xx-xx"
-                                                value="+1 (304) 499-13-66">
+                                                value="+1 (304) 499-13-66" name="phone">
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <label for="address" class="col-sm-3 col-form-label input-label">Address</label>
                                         <div class="col-sm-9">
-                                            <textarea name="address" id="address" cols="95" rows="4" class="form-control" value="yvygbh">ubuhygvgbasdff</textarea>
+                                            <textarea name="address" id="address" cols="95" rows="4" class="form-control" value="yvygbh" name="address">ubuhygvgbasdff</textarea>
                                         </div>
                                     </div>
                                     <div class="text-end">
@@ -177,12 +177,12 @@
                                 <h5 class="card-title">Admission information</h5>
                             </div>
                             <div class="card-body">
-                                <form>
+                                <form method="POST" id="form3" name="form3">
                                     <div class="row form-group">
-                                        <label for="admissionnum" class="col-sm-3 col-form-label input-label">Admission Number</label>
+                                        <label for="admissionnum" class="col-sm-3 col-form-label input-label">Course ID</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="admissionnum" placeholder="Your Admission Number"
-                                                value="Charles Hafner">
+                                            <input type="text" class="form-control" id="admissionnum" placeholder="Your CourseID"
+                                                value="Charles Hafner" name="cid">
                                         </div>
                                     </div>
                                     
@@ -190,21 +190,21 @@
                                         <label for="cname" class="col-sm-3 col-form-label input-label">Course Name</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="cname" placeholder="Section"
-                                                value="charleshafner@example.com">
+                                                value="charleshafner@example.com" name="cname">
                                         </div>
                                     </div>
                                     <div class="row form-group">
-                                        <label for="Class" class="col-sm-3 col-form-label input-label">Class</label>
+                                        <label for="Class" class="col-sm-3 col-form-label input-label">Batch</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="Class" placeholder="Class"
-                                                value="32156351">
+                                            <input type="text" class="form-control" id="Class" placeholder="Batch"
+                                                value="32156351" name="batch">
                                         </div>
                                     </div>
                                     <div class="row form-group">
-                                        <label for="section" class="col-sm-3 col-form-label input-label">Section</label>
+                                        <label for="section" class="col-sm-3 col-form-label input-label">Duration</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="section" placeholder="Section"
-                                                value="charleshafner@example.com">
+                                            <input type="text" class="form-control" id="section" placeholder="Duration"
+                                                value="charleshafner@example.com" name="duration">
                                         </div>
                                     </div>
                                     <div class="text-end">

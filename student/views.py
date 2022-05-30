@@ -27,8 +27,10 @@ def profile(request):
 
 
 def edit_profile(request):
+    edit_profile=Student.objects.get(id=request.user.Student.id)
     context = {
         "is_editprofile": True,
+        "edit_profile":edit_profile
         }
     return render(request,'student/edit_profile.html',context)
 
