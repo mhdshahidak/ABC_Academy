@@ -352,7 +352,12 @@ def savedata(request):
     print()
     new_question = Questions(exam_id=exam_pk,question=question,type=type,option=options,mark=mark)
     new_question.save()
-    return JsonResponse({new_question})
+    data={
+        'no':new_question.id,
+        'type':new_question.type,
+        'mark':new_question.mark,
+    }
+    return JsonResponse(data)
 
 
 

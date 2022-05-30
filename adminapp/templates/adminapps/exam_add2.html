@@ -133,13 +133,15 @@
             <!-- second row ending -->
         </div>
     </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.8/js/jquery.dataTables.min.js"></script>
     <script>
-        $(document).ready(function(){
-            alert('')
-        })
-            var myTable = $('#qtable').DataTable();
+        var myTable = $('#qtable').DataTable();
+            // var editButton = ''responce.new_question.question
             //  for (var i = 1; i < countsNew; i++) {
-            myTable.row.add( ['1','2','3','4'] ).draw()
+            // myTable.row.add( ['1','2','3','4'] ).draw()
+
+            
     </script>
     <script>
         $('#desc').click(function(){
@@ -157,19 +159,18 @@ $("#addquestion").submit(function(){
         type: 'POST',
         data: data,
         success: function (responce) {
-             var myTable = $('#qtable').DataTable();
-            //  for (var i = 1; i < countsNew; i++) {
-            myTable.row.add( ['1','2','3','4'] ).draw()
+            console.log(responce)
+            console.log(responce.type)
 
-            //  }
+            var editButton = '<a href="/'+responce.no+'" class="btn btn-sm bg-success-light me-2">\
+                                                        <i class="fas fa-pen"></i>\
+                                                    </a> <a href="/'+responce.no+'" class="btn btn-sm bg-danger-light">\
+                                                        <i class="fas fa-trash"></i>\
+                                                    </a>'
+            
+            myTable.row.add( [responce.no,responce.type,responce.mark,editButton] ).draw()
 
-          // $('#category' + id).val(responce.product.catagory)
-            // $('#productId' + id).val(responce.product.id)
-            // $('#priceselect' + id).append('<option value="' + responce.product.priceper_head + '">' + responce.product.priceper_head + ' Per Head</option>')
-            // $('#priceselect' + id).append('<option value="' + responce.product.priceper_kg + '">' + responce.product.priceper_kg + ' Per KG</option>')
-            // $("#amount" + id).val(responce.product.priceper_head)
-
-
+           
         }
 
     })
