@@ -18,7 +18,8 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-body">
-                        <form>
+                        <form method="POST">
+                            {% csrf_token %}
                             <div class="row">
                                 <div class="col-12">
                                     <h5 class="form-title">
@@ -30,57 +31,24 @@
                                         <label>
                                             Exam Name
                                         </label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" name="examname" required>
                                     </div>
                                 </div>
-                                <div class="col-12 col-sm-6">
+                                <div class="col-12 col-sm-6" hidden>
                                     <div class="form-group">
                                         <label>
                                             Batch
                                         </label>
-                                        <select class="form-control select">
-                                            <option>
-                                                Select Batch
-                                            </option>
-                                            <option>
-                                                2019-2021
-                                            </option>
-                                            <option>
-                                                2020-2022
-                                            </option>
-                                            <option>
-                                                2021-2023
-                                            </option>
-                                        </select>
+                                        <input type="text" class="form-control" value="{{batch.id}}" name="batch" >
                                     </div>
                                 </div>
-                                <div class="col-12 col-sm-6">
-                                    <div class="form-group">
-                                        <label>
-                                            Subject
-                                        </label>
-                                        <select class="form-control select" required>
-                                            <option>
-                                                Select Subject
-                                            </option>
-                                            <option>
-                                                FASHION MARKETING
-                                            </option>
-                                            <option>
-                                                FASHION DESIGNING
-                                            </option>
-                                            <option>
-                                                CAD
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
+                                
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
                                         <label>
                                             Exam Date
                                         </label>
-                                        <input type="date" class="form-control">
+                                        <input type="date" class="form-control" name="examdate" required>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
@@ -88,7 +56,7 @@
                                         <label>
                                             Start Time
                                         </label>
-                                        <input type="time" class="form-control">
+                                        <input type="time" class="form-control" name="starttime" required>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
@@ -96,22 +64,30 @@
                                         <label>
                                             End Time
                                         </label>
-                                        <input type="time" class="form-control">
+                                        <input type="time" class="form-control" name="endtime" required>
                                     </div>
                                 </div>
-                                
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>
+                                            Duration (in minutes)
+                                        </label>
+                                        <input type="number" class="form-control" min="0" name="duration" required>
+                                    </div>
+                                </div>
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
                                         <label>
                                             Total Mark
                                         </label>
-                                        <input type="number" class="form-control" min="0" required>
+                                        <input type="number" class="form-control" min="0" name="totalmark" required>
                                     </div>
                                 </div>
                                 <div class="col-12 text-end">
-                                    <a href="{% url 'admins:examsaddone' %}" class="btn btn-info ">
-                                        Next >
-                                    </a>
+                                    
+                                    <button type="submit" class="btn btn-info">
+                                        NEXT >
+                                    </button>
                                 </div>
                             </div>
                         </form>

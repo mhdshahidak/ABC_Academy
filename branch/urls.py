@@ -30,7 +30,14 @@ urlpatterns = [
 
     # profile
 
-    path('branchprofile',views.profile_branch, name="branchprofile")
+    path('branchprofile',views.profile_branch, name="branchprofile"),
+
+    path('logout_view', views.logout_view,name="logout_view"),
+
+
+
+    path('getdata', views.getdata,name="getdata"),
+
 
 
 

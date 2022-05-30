@@ -32,3 +32,7 @@ admin.site.register(Courses,CoursesAdmin)
 class BatchAdmin(admin.ModelAdmin):
     list_display = ('starting_date','ending_date')
 admin.site.register(Batch,BatchAdmin)
+
+class ExamAdmin(admin.ModelAdmin):
+    list_display = ('exam_name','exam_date')
+admin.site.register(Exam,ExamAdmin)
