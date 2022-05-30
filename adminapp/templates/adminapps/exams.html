@@ -5,115 +5,34 @@
 <div class="page-wrapper">
     <div class="content container-fluid">
         <div class="row">
-            <div class="col-xl-3 col-sm-6 col-12">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="dash-widget-header">
-                            <span class="dash-widget-icon bg-1">
-                                <i class="fas fa-shapes"></i>
-                            </span>
-                            <div class="dash-count">
-                                <div class="dash-title">
+            {% for b in batches %}
+                <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="dash-widget-header">
+                                
+                                <div class="dash-count">
+                                    <div class="dash-title">
 
-                                    <h4>FASHION DESIGNING</h4>
+                                        <h5>{{b.course.couse_name |upper}} </h5><p>{{b.starting_date}}-{{b.ending_date}}</p>
+                                    </div>
+                                    <!-- <div class="dash-counts">
+                                        <p>
+                                            2022-2023
+                                        </p>
+                                        
+                                    </div> -->
                                 </div>
-                                <!-- <div class="dash-counts">
-                                    <p>
-                                        2022-2023
-                                    </p>
-                                    
-                                </div> -->
                             </div>
-                        </div>
-                        <div class="">
-                            <a href="{% url 'admins:examsadd' %}" class="btn btn-rounded btn-success " >Add Exam</a> 
-                            <a href="{% url 'admins:examsadd' %}" class="btn btn-rounded btn-primary px-4 " style="margin-left: 30px;" >View</a>
-                        </div>
-                        <!-- <p class="text-muted mt-3 mb-0">
-                            <a href=""><span class="text-danger me-1"><i class="fas fa-arrow-down me-1"></i></span></a>
-                        </p> -->
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 col-12">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="dash-widget-header">
-                            <span class="dash-widget-icon bg-2">
-                                <i class="fas fa-users"></i>
-                            </span>
-                            <div class="dash-count">
-                                <div class="dash-title">
-                                    <h4>LAB TECH</h4>
-                                </div>
-                                <!-- <div class="dash-counts">
-                                    <p>
-                                        2021-2022
-                                    </p>
-                                </div> -->
+                            <div class="">
+                                <a href="{% url 'admins:examsadd' b.id %}" class="btn btn-rounded btn-success " >Add Exam</a> 
+                                <a href="{% url 'admins:examsadd' b.id %}" class="btn btn-rounded btn-primary px-4 " style="margin-left: 30px;" >View</a>
                             </div>
-                        </div>
-                        <div class="">
-                            <a href="{% url 'admins:examsadd' %}" class="btn btn-rounded btn-success ">Add Exam</a> 
-                            <a href="{% url 'admins:examsadd' %}" class="btn btn-rounded btn-primary px-4 " style="margin-left: 30px;" >View</a>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 col-12">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="dash-widget-header">
-                            <span class="dash-widget-icon bg-3">
-                                <i class="fas fa-file-alt"></i>
-                            </span>
-                            <div class="dash-count">
-                                <div class="dash-title">
-                                    <h4>TTC</h4>
-                                </div>
-                                <!-- <div class="dash-counts">
-                                    <p>
-                                        2022-2023
-                                    </p>
-                                </div> -->
-                            </div>
-                        </div>
-                        <div class="">
-                            <a href="{% url 'admins:examsadd' %}" class="btn btn-rounded btn-success ">Add Exam</a>
-                            <a href="{% url 'admins:examsadd' %}" class="btn btn-rounded btn-primary px-4 " style="margin-left: 30px;" >View</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 col-12">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="dash-widget-header">
-                            <span class="dash-widget-icon bg-4">
-                                <i class="far fa-file"></i>
-                            </span>
-                            <div class="dash-count">
-                                <div class="dash-title">
-                                    <h4>TTC</h4>
-                                </div>
-                                <!-- <div class="dash-counts">
-                                    <p>
-                                        2021-2022
-                                    </p>
-                                </div> -->
-                            </div>
-                        </div>
-                        <div class="">
-                            <a href="{% url 'admins:examsadd' %}" class="btn btn-rounded btn-success ">Add Exam</a>
-                            <a href="{% url 'admins:examsadd' %}" class="btn btn-rounded btn-primary px-4 " style="margin-left: 30px;" >View</a>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        
+            {% endfor %}   
+        </div> 
     </div>
 </div>
 

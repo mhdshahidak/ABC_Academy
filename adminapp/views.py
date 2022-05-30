@@ -7,7 +7,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 
-from adminapp.models import Batch, Branch, Courses, Teacher
+from adminapp.models import Batch, Branch, Courses, Exam, Teacher
 
 
 # Create your views here.
@@ -257,30 +257,56 @@ def admin_profile(request):
 
 @login_required(login_url='/adminapp/login')
 def exam(request):
+    batches = Batch.objects.all()
     context={
-        "is_exam":True
+        "is_exam":True,
+        "batches":batches
     }
     return render(request,'adminapps/exams.html', context)
 
 
 @login_required(login_url='/adminapp/login')
-def exam_add_list(request):
+def exam_add_list(request,id):
+    batch = Batch.objects.get(id=id)
+    print(batch)
     context={
-        "is_exam_add_list":True
+        "is_exam_add_list":True,
+        "batch":batch,
     }
     return render(request,'adminapps/exam_add_lists.html', context)
 
 
 @login_required(login_url='/adminapp/login')
-def exam_add_first(request):
+def exam_add_first(request,id):
+    if request.method == 'POST':
+        batch = request.POST['batch']
+        name = request.POST['examname']
+        date = request.POST['examdate']
+        start_time = request.POST['starttime']
+        end_time = request.POST['endtime']
+        duration = request.POST['duration']
+        mark = request.POST['totalmark']
+        batch = Batch.objects.get(id=batch)
+
+        new_exam = Exam(batch=batch,exam_name=name,exam_date=date,start_time=start_time,end_time=end_time,duration=duration,total_mark=mark)
+        new_exam.save()
+        print(new_exam.id)
+        return redirect('/adminapp/examsaddone/'+str(new_exam.id))
+
+    batch = Batch.objects.get(id=id)
     context={
-        "is_exam_add_one":True
+        "is_exam_add_one":True,
+        "batch":batch,
     }
     return render(request,'adminapps/exam_add1.html', context)
 
 
 @login_required(login_url='/adminapp/login')
-def exam_add_one(request):
+def exam_add_one(request,id):
+    if request.method == 'POST':
+        print(request.POST)
+        exam = Exam.objects.get(id=id)
+
     context={
         "is_exam_add_one":True
     }
@@ -314,7 +340,6 @@ def log_in(request):
     if request.method == 'POST':
         email = request.POST['email']
         password = request.POST['password']
-    # User = get_user_model()
 
         user = authenticate(email=email, password=password)
         if user is not None:
@@ -325,6 +350,8 @@ def log_in(request):
                 return redirect('branch:master')
             elif user.teacher != None:
                 return redirect('teacher:homepage')
+            elif user.Student !=None:
+                return redirect('student:home')
         else:
             return redirect('admins:adminlogin')
     return render(request,'adminapps/login.html')

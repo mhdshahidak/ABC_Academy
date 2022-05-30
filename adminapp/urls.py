@@ -31,9 +31,9 @@ urlpatterns = [
     # exams
 
     path('exams', views.exam, name="exams"),
-    path('examsadd', views.exam_add_list, name="examsadd"),
-    path('examsaddfirst', views.exam_add_first, name="examsaddfirst"),
-    path('examsaddone', views.exam_add_one, name="examsaddone"),
+    path('examsadd/<int:id>', views.exam_add_list, name="examsadd"),
+    path('examsaddfirst/<int:id>', views.exam_add_first, name="examsaddfirst"),
+    path('examsaddone/<str:id>', views.exam_add_one, name="examsaddone"),
     path('examsaddtwo', views.exam_add_two, name="examsaddtwo"),
 
    # profile
