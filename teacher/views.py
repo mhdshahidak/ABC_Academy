@@ -57,8 +57,6 @@ def edit_profile(request,id):
             zipcode=request.POST['zipcode']
             Teacher.objects.filter(id=id).update(teacher_id=id,joining_date=joiningdate,qualification=qualification,pin=zipcode)
             return redirect('teacher:profile')
- 
-    print('*10'*10)
     edit_teacher=Teacher.objects.get(id=id)
     context = {
         "is_editprofile": True,
