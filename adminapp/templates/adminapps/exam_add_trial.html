@@ -266,43 +266,47 @@
                     </div>
                 </div>
             </div>
-            <div class="page-wrapper">
-                <div class="content container-fluid">
-                    <div class="page-header">
-                        
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <h3 class="page-title">
-                                    Add Instructions
-                                </h3>
-                                
+            <form method="POST">
+                {% csrf_token %}
+                <div class="page-wrapper">
+                    <div class="content container-fluid">
+
+                        <div class="page-header">
+                            
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h3 class="page-title">
+                                        Add Instructions
+                                    </h3>
+                                    
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h5 class="card-title">
-                                        
-                                    </h5>
-                                </div>
-                                <div class="card-body">
-                                    <div id="summernote">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="card-title">
+                                            
+                                        </h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div id="summernote">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 text-end">
-                            <a href="{% url 'admins:examsaddtwo' %}" class="btn btn-info ">
-                                Next >
-                            </a>
+                        <div class="row">
+                            <div class="col-12 text-end">
+                                <button type="submit" class="btn btn-info">
+                                   save & NEXT >
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
         <script src="{% static 'teacher/js/jquery-3.6.0.min.js' %}"></script>
         <script src="{% static 'teacher/js/bootstrap.bundle.min.js' %}"></script>

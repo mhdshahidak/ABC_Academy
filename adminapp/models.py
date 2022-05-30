@@ -3,6 +3,7 @@ from enum import unique
 from django.db import models
 # from adminapp.views import courses
 from phone_field import PhoneField
+from tinymce.models import HTMLField
 
 # Create your models here.
 
@@ -119,6 +120,22 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 
 
+class Exam(models.Model):
+    batch = models.ForeignKey(Batch,on_delete=models.PROTECT)
+    exam_name = models.CharField(max_length=150)
+    exam_date = models.DateField()
+    start_time = models.TimeField()
+    end_time = models.TimeField()
+    duration = models.IntegerField()
+    total_mark = models.FloatField()
+
+
+class Instructions(models.Model):
+    exam_id = models.ForeignKey(Exam,on_delete=models.CASCADE)
+    instructions = HTMLField()
+
+    class Meta:
+        db_table = 'instructions'
 
 
     
