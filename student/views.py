@@ -1,8 +1,11 @@
 from django.shortcuts import render
 
+from adminapp.models import Student
+
 # Create your views here.
 
 def student_home(request):
+    student=Student.objects.get(id=request.user.st)
     context = {
         "is_home": True,
         }
