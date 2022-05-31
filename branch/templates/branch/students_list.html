@@ -2,6 +2,8 @@
 {% block content %}
 {% load static %}
 
+<link rel="stylesheet" href="{% static 'webapp/plugins/datatables/datatables.min.css' %}">
+
 <div class="page-wrapper">
     <div class="content container-fluid">
         <div class="page-header">
@@ -11,17 +13,16 @@
                         Students
                     </h3>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="index.html">Dashboard</a>
+                        <li class="">
+                            <a href="{% url 'branch:master' %}">Dashboard /</a>
+                        </li>
+                        <li class="">
+                            <a href="{% url 'branch:branchstudents' %}">Students /</a> 
                         </li>
                         <li class="breadcrumb-item active">
-                            Students
+                            Branch Students
                         </li>
                     </ul>
-                </div>
-                <div class="col-auto text-end float-end ms-auto">
-                    <a href="#" class="btn btn-outline-primary me-2"><i class="fas fa-download"></i> Download</a>
-                    <a href="{% url 'branch:addstudent' %}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
                 </div>
             </div>
         </div>
@@ -40,13 +41,16 @@
                                             Name
                                         </th>
                                         <th>
-                                            Class
+                                            Course
                                         </th>
                                         <th>
                                             DOB
                                         </th>
                                         <th>
                                             Parent Name
+                                        </th>
+                                        <th>
+                                            Email
                                         </th>
                                         <th>
                                             Mobile Number
@@ -63,23 +67,23 @@
                                     {% for i in viewstudent %}
                                     <tr>
                                         <td>
-                                           {{i.student_id}}
+                                           {{i.student_id|upper}}
                                         </td>
                                         <td>
                                             <h2 class="table-avatar">
                                              
-                                                <a href="#"> {{i.first_name}}</a>
+                                                <a href=""> {{i.first_name|capfirst}} {{i.last_name|capfirst}}</a>
                                             </h2>
                                         </td>
                                         
                                         <td>
-                                            {{i.course.course.couse_name}}
+                                            {{i.course.course.couse_name|capfirst}}
                                         </td>
                                         <td>
                                             {{i.dob}}
                                         </td>
                                         <td>
-                                            {{i.fathername}}
+                                            {{i.fathername|capfirst}}
                                         </td>
                                         <td>
                                             {{i.email}}
@@ -92,10 +96,10 @@
                                         </td>
                                         <td class="text-end">
                                             <div class="actions">
-                                                <a href="/branch/editstudent/{{i.id}}" class="btn btn-sm bg-success-light me-2">
+                                                <a href="{% url 'branch:editstudent' i.id %}" class="btn btn-sm bg-success-light me-2">
                                                     <i class="fas fa-pen"></i>
                                                 </a>
-                                                <a href="#" class="btn btn-sm bg-danger-light">
+                                                <a href="" class="btn btn-sm bg-danger-light">
                                                     <i class="fas fa-trash"></i>
                                                 </a>
                                             </div>
@@ -115,5 +119,7 @@
         </div>
     </div>
 </div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.8/js/jquery.dataTables.min.js"></script>
 
 {% endblock %}

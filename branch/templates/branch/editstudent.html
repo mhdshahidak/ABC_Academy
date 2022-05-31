@@ -8,11 +8,14 @@
             <div class="row align-items-center">
                 <div class="col">
                     <h3 class="page-title">
-                        Add Students
+                        Edit Students
                     </h3>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="students.html">Students</a>
+                        <li class="">
+                            <a href="{% url 'branch:master' %}">Dashboard /</a>
+                        </li>
+                        <li class="">
+                            <a href="{% url 'branch:branchstudents' %}">Students /</a>
                         </li>
                         <li class="breadcrumb-item active">
                             Edit Students
@@ -38,7 +41,7 @@
                                         <label>
                                             First Name
                                         </label>
-                                        <input type="text" name="name" value="{{details.first_name}}" class="form-control">
+                                        <input type="text" name="name" value="{{editdetails.first_name}}" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
@@ -46,7 +49,7 @@
                                         <label>
                                             Last Name
                                         </label>
-                                        <input type="text" name="lastname" value="{{details.last_name}}" class="form-control">
+                                        <input type="text" name="lastname" value="{{editdetails.last_name}}" class="form-control">
                                     </div>
                                 </div>
                                 <!-- <div class="col-12 col-sm-6">
@@ -62,7 +65,8 @@
                                         <label>
                                             Gender
                                         </label>
-                                        <select name="gender" required class="form-control select">
+                                        <input type="text" value="{{editdetails.gender}}" name="gender" required class="form-control select">
+                                        <!-- <select name="gender" required class="form-control select" value="{{editdetails.gender}}">
                                             <option>
                                                 Select Gender
                                             </option>
@@ -75,7 +79,7 @@
                                             <option value="Others">
                                                 Others
                                             </option>
-                                        </select>
+                                        </select> -->
                                     </div>
                                 </div>
                               
@@ -88,7 +92,7 @@
                                         <label>
                                             Mobile Number
                                         </label>
-                                        <input type="text" value="{{details.phone}}" name="phone" class="form-control">
+                                        <input type="text" value="{{editdetails.phone}}" name="phone" class="form-control">
                                     </div>
                                 </div>
                                 <!-- <div class="col-12 col-sm-6">
@@ -110,7 +114,7 @@
                                         <label>
                                             Email ID
                                         </label>
-                                        <input type="email" name="email" value="{{details.email}}" class="form-control">
+                                        <input type="email" name="email" value="{{editdetails.email}}" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
@@ -118,7 +122,7 @@
                                         <label>
                                             Password
                                         </label>
-                                        <input type="text" name="password" value="{{details.password}}" class="form-control">
+                                        <input type="text" name="password" value="{{editdetails.password}}" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
@@ -142,7 +146,7 @@
                                         <label>
                                             Father's Name
                                         </label>
-                                        <input type="text" name="fathername" value="{{details.fathername}}" class="form-control">
+                                        <input type="text" name="fathername" value="{{editdetails.fathername}}" class="form-control">
                                     </div>
                                 </div>
                               
@@ -151,7 +155,7 @@
                                         <label>
                                             Father's Mobile
                                         </label>
-                                        <input type="text" name="fatherphone" value="{{details.fatherphone}}" class="form-control">
+                                        <input type="text" name="fatherphone" value="{{editdetails.fatherphone}}" class="form-control">
                                     </div>
                                 </div>
                               

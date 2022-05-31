@@ -67,60 +67,16 @@ def edit_profile(request,id):
     
     return render(request,'teacher/edit_teacher.html',context)
 
-# def edit_contact(request,cid):
-#     teacher=request.user.teacher
-#     if 'form2' in request.method == "POST":
-#         print('%'*10)
-#         address=request.POST['address']
-#         city=request.POST['city']
-#         state=request.POST['state']
-#         country=request.POST['country']
-#         zipcode=request.POST['zipcode']
-#         Teacher.objects.filter(id=cid).update(city=city,address=address,state=state,country=country,pin=zipcode)
-#         return redirect('teacher:profile')
-#     else:
-#         edit_teachercontact=Teacher.objects.get(id=cid)
-#         context = {
-#             "is_editprofile": True,
-#             "teacher":teacher,
-#             "edit_teacher":edit_teachercontact,
-#             }
-#     return render(request,'teacher/edit_teacher.html',context)
-
-
-# def edit_prof(request,pid):
-#     teacher=request.user.teacher
-#     if 'form3' in request.method == "POST":
-#         id=request.POST['id']
-#         joiningdate=request.POST['joiningdate']
-#         qualification=request.POST['qualification']
-#         zipcode=request.POST['zipcode']
-#         Teacher.objects.filter(id=pid).update(teacher_id=id,joining_date=joiningdate,qualification=qualification,pin=zipcode)
-#         return redirect('teacher:profile')
-#     else:
-#         edit_teachercontact=Teacher.objects.get(id=pid)
-#         context = {
-#             "is_editprofile": True,
-#             "teacher":teacher,
-#             "edit_teacher":edit_teachercontact,
-#             }
-#     return render(request,'teacher/edit_teacher.html',context)
-
-
-
 
 
 def courses(request):
     teacher=request.user.teacher
-    teacher_course=Teacher.objects.get(qualification=teacher.qualification)
-    course_id=Courses.objects.filter()
-    print(teacher_course)
     context = {
         "is_courses": True,
         "teacher":teacher,
-        "teacher_course":teacher_course
         }
     return render(request,'teacher/courses.html',context)
+
 
 def studentlist(request):
     teacher=request.user.teacher

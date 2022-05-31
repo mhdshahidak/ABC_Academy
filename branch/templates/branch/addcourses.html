@@ -12,7 +12,10 @@
                     </h3>
                     <ul class="breadcrumb">
                         <li class="">
-                            <a href="coursess.html">Courses /</a>
+                            <a href="{% url 'branch:master' %}">Dashboard /</a>
+                        </li>
+                        <li class="">
+                            <a href="{% url 'branch:courses' %}">Courses /</a>
                         </li>
                         <li class="breadcrumb-item active">
                             Add Courses

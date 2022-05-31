@@ -31,7 +31,7 @@ def profile(request):
 
 
 @login_required(login_url='/adminapp/login')
-def edit_profile(request,cid):
+def edit_profile(request,id):
     student=request.user.Student
     if request.method == "POST":
         if 'id' in request.POST:
@@ -58,7 +58,7 @@ def edit_profile(request,cid):
             Student.objects.filter(id=cid).update(course__course__course_id=cid,course__course__couse_name=cname,course__course__Duration=duration,course__starting_date=batch)
             return redirect('student:profile')
             
-    edit_profile=Student.objects.get(id=cid)
+    edit_profile=Student.objects.get(id=id)
     context = {
         "is_editprofile": True,
         "edit_profile":edit_profile,
@@ -112,32 +112,32 @@ def result(request):
     return render(request,'student/result.html',context)
 
 def fee(request):
-    print(request.user.id)
-    id=request.user.Student.id
-    print(id)
-    paymentdetails = Payment.objects.filter(student=request.user.Student)
-    viewpro=Student.objects.get(id=id) 
-    # print(viewpro)
-    total=viewpro.course.course.total_fees
-    print(total)
-    balanceamount=total
-    if paymentdetails.exists():
-        recivedamount = Payment.objects.filter(student=viewpro.id).aggregate(Sum('paidamount'))
-        recvamount= recivedamount['paidamount__sum']
-        balanceamount  = total - recivedamount['paidamount__sum']
-        print(total)
-        print(balanceamount)
-    print(paymentdetails)
+    # print(request.user.id)
+    # id=request.user.Student.id
+    # print(id)
+    # paymentdetails = Payment.objects.filter(student=request.user.Student)
+    # viewpro=Student.objects.get(id=id) 
+    # # print(viewpro)
+    # total=viewpro.course.course.total_fees
+    # print(total)
+    # balanceamount=total
+    # if paymentdetails.exists():
+    #     recivedamount = Payment.objects.filter(student=viewpro.id).aggregate(Sum('paidamount'))
+    #     recvamount= recivedamount['paidamount__sum']
+    #     balanceamount  = total - recivedamount['paidamount__sum']
+    #     print(total)
+    #     print(balanceamount)
+    # print(paymentdetails)
 
-    context = {
-        "is_fee": True,
-        "paymentdetails":paymentdetails,
-        "recvamount":recvamount,
-        "balanceamount":balanceamount,
-        "total":total
+    # context = {
+    #     "is_fee": True,
+    #     "paymentdetails":paymentdetails,
+    #     "recvamount":recvamount,
+    #     "balanceamount":balanceamount,
+    #     "total":total
 
-        }
-    return render(request,'student/fee.html',context)
+    #     }
+    return render(request,'student/fee.html')
 
 def calendar(request):
     context = {

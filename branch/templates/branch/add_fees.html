@@ -8,6 +8,16 @@
 
 <div class="page-wrapper">
     <div class="content container-fluid">
+
+        {% if status == 1 %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Successfully</strong> add the Fee.
+            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                aria-label="Close"></button>
+        </div>
+        
+        {% endif %}
+
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col">
@@ -15,11 +25,14 @@
                         Add Fees
                     </h3>
                     <ul class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="{% url 'branch:master' %}">Dashboard /</a>
+                        </li>
                         <li class="">
-                            <a href="{% url 'branch:master' %}">Accounts</a>
+                            <a href="{% url 'branch:fees' %}">Fee /</a>
                         </li>
                         <li class="breadcrumb-item active">
-                            Add Fees
+                            Add Fee
                         </li>
                     </ul>
                 </div>
