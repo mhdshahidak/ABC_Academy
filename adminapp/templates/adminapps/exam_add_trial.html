@@ -287,19 +287,25 @@
                                 <div class="card">
                                     <div class="card-header">
                                         <h5 class="card-title">
-                                            
+                                            <h1>Add Instructions here</h1>
                                         </h5>
                                     </div>
-                                    <div class="card-body">
+                                    <!-- <div class="card-body">
                                         <div id="summernote">
                                         </div>
-                                    </div>
+                                    </div> -->
+                                    <!-- <h1>Add Instructions here</h1> -->
+                                        <!-- <form method="POST">
+                                            {% csrf_token %} -->
+                                            <textarea id="mytextarea" name="instruction" style="min-height: 480px;"></textarea>
+                                        <!-- </form> -->
+                                        <!-- <button id="bottone" onclick="myFunc()" >Ok</button> -->
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12 text-end">
-                                <button type="submit" class="btn btn-info">
+                                <button type="submit" class="btn btn-info" id="bottone" onclick="myFunc()">
                                    save & NEXT >
                                 </button>
                             </div>
@@ -308,6 +314,13 @@
                 </div>
             </form>
         </div>
+        <script src="https://cdn.tiny.cloud/1/nklzzr80nbh42fu5eby0d4ipfkv57tp61il9if12c53ie9le/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+        <script>
+            tinymce.init({
+              selector: "#mytextarea"
+            });
+          
+        </script> 
         <script src="{% static 'teacher/js/jquery-3.6.0.min.js' %}"></script>
         <script src="{% static 'teacher/js/bootstrap.bundle.min.js' %}"></script>
         <script src="{% static 'teacher/js/feather.min.js' %}"></script>

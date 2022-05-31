@@ -157,14 +157,7 @@ Version      : 1.0
     //     });
     // }
 
-	if ($('.datatable').length > 0) {
-		$('.datatable').DataTable({
-			language: {
-				search: '<i class="fas fa-search"></i>',
-				searchPlaceholder: "Search"
-			  }
-		});
-	}
+	
 	// Check all email
 	
 	$(document).on('click', '#check_all', function() {

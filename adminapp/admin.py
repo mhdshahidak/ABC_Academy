@@ -36,3 +36,13 @@ admin.site.register(Batch,BatchAdmin)
 class ExamAdmin(admin.ModelAdmin):
     list_display = ('exam_name','exam_date')
 admin.site.register(Exam,ExamAdmin)
+
+
+class InstructionsAdmin(admin.ModelAdmin):
+    list_display = ('exam_id','instructions')
+admin.site.register(Instructions,InstructionsAdmin)
+
+
+class QuestionsAdmin(admin.ModelAdmin):
+    list_display = ('question','type','exam_id')
+admin.site.register(Questions,QuestionsAdmin)
