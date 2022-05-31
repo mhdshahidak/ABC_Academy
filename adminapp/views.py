@@ -12,6 +12,7 @@ from django.http import JsonResponse
 
 from adminapp.models import Batch, Branch, Courses, Exam, Instructions, Questions, Teacher,Student
 from branch.models import Payment
+from django.db.models import Sum
 
 
 
