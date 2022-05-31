@@ -1,8 +1,12 @@
+
+from datetime import datetime, timedelta, time
 from django.shortcuts import render
 
-from adminapp.models import Student,Batch
+from adminapp.models import Exam, Instructions, Student,Batch
 from branch.models import Payment
 from django.db.models import Sum
+
+from student.models import ExamStatus
 
 
 # Create your views here.
@@ -40,23 +44,44 @@ def edit_profile(request):
 
 
 def exam_list(request):
+    student = request.user.Student
+    exam = Exam.objects.filter(batch=student.course)
+    # print(exam)
+    # print(student)
     context = {
         "is_examlist": True,
+        "student":student,
+        "exam":exam,
         }
     return render(request,'student/exam_list.html',context)
 
 
 
-def exam_instructions(request):
+def exam_instructions(request,id):
+    
+    exam = Exam.objects.get(id=id)
+    instructions = Instructions.objects.get(exam_id=exam)
     context = {
         "is_examinst": True,
+        "instructions":instructions,
+        "exam":exam
         }
     return render(request,'student/exam_instructions.html',context)
 
 
-def exam(request):
+def exam(request,id):
+    exam = Exam.objects.get(id=id)
+    student = request.user.Student
+    status = "Attended"
+    today = datetime.now().date()
+    attnd_time = datetime.combine(today, time())
+    # print(today,today_start)
+    Attending_obj = ExamStatus(exam_id=exam,student=student,status=status,Attended_time=attnd_time)
+    Attending_obj.save()
+    print(Attending_obj)
     context = {
         "is_exam": True,
+        "exam":exam,
         }
     return render(request,'student/exam.html',context)
 

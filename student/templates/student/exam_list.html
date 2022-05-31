@@ -37,44 +37,28 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            <h2>
-                                                <a href="">Physics <span>Series Exam1</span></a>
-                                            </h2>
-                                        </td>
-                                        <td>
-                                            12/02/2022
-                                        </td>
-                                        <td>10:00 AM</td>
-                                        <td>12:30 PM</td>
-                                        <th>2.30 hrs</th>
-                                        <td><span class="badge badge-pill bg-warning-light">Not Attended</span></td>
-                                        <td class="text-start">
-                                            <a href="{% url 'student:examinst' %}"
-                                                class="btn btn-sm btn-white text-primary me-2"><i
-                                                    class="far fa-edit me-1"></i> Attend Exam</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <h2>
-                                                <a href="">Physics <span>Series Exam1</span></a>
-                                            </h2>
-                                        </td>
-                                        <td>
-                                            12/02/2022
-                                        </td>
-                                        <td>10:00 AM</td>
-                                        <td>12:30 PM</td>
-                                        <th>2.30 hrs</th>
-                                        <td><span class="badge badge-pill bg-success-light">Attended</span></td>
-                                        <td class="text-start">
-                                            <a href=""
-                                                class="btn btn-sm btn-white text-primary me-2"><i
-                                                    class="far fa-edit me-1"></i> Attend Exam</a>
-                                        </td>
-                                    </tr>
+                                    {% for i in exam %}
+                                        <tr>
+                                            <td>
+                                                <h2>
+                                                    <a href="">{{i.exam_name}} <span>Series Exam1</span></a>
+                                                </h2>
+                                            </td>
+                                            <td><b>
+                                                {{i.exam_date}}</b>
+                                            </td>
+                                            <td>{{i.start_time}}</td>
+                                            <td>{{i.end_time}}</td>
+                                            <td><b>{{i.duration}} MINUTES</b></td>
+                                            <td><span class="badge badge-pill bg-warning-light">Not Attended</span></td>
+                                            <td class="text-start">
+                                                <a href="{% url 'student:examinst' i.id %}"
+                                                    class="btn btn-sm btn-white text-primary me-2"><i
+                                                        class="far fa-edit me-1"></i> Attend Exam</a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    
                                     
                                 </tbody>
                             </table>

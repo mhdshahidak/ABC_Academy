@@ -16,8 +16,8 @@
                         <div class="card">
                             <div class="card-header">
                                 <h6 class="card-title d-flex justify-content-between">
-                                    <span style="color: navy;"><i class="fa fa-edit"></i> Physics Exam</span>
-                                    <span style="color: navy;"> Total Mark : 25</span>
+                                    <span style="color: navy;"><i class="fa fa-edit"></i> {{exam.exam_name}}</span>
+                                    <span style="color: navy;"> Total Mark : {{exam.total_mark}}</span>
                                 </h6>
                             </div>
                             <div class="card-body">
@@ -95,7 +95,7 @@
                             </div>
                             <div class="card-body">
                                 <h6 class="card-title btn-sm d-grid gap-2">
-                                    <a type="button" href="{% url 'student:examinst' %}"
+                                    <a type="button" href="#"
                                         class="btn btn-primary">Instructions</a>
                                 </h6>
                                 <div class="row">

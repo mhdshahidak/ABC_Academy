@@ -11,12 +11,12 @@
                     <div class="card">
                         <div class="card-header">
                             <h6 class="card-title d-flex justify-content-between">
-                                <span style="color: navy;"><i class="fa fa-edit"></i> Physics Exam</span>
+                                <span style="color: navy;"><i class="fa fa-edit"></i> {{exam.exam_name}}</span>
                                 <button type="button" class="btn btn-sm btn-rounded btn-danger"><i class="fa fa-undo"></i>&nbsp;
                                     Pending Submission
                                 </button>
                                 <button type="button" class="btn btn-sm btn-rounded btn-warning">
-                                    Mark : 25
+                                    Mark : {{exam.total_mark}}
                                 </button>
                                 <!-- <a class="btn btn-sm btn-white" href="settings.html">Edit</a> -->
                             </h6>
@@ -25,29 +25,9 @@
                             <h5 class="card-title text-center pt-2 pb-0">
                                 Please Read the instructions carefully
                             </h5><br>
-                            <ul class="list-group list-group-numbered">
-                                <li>
-                                    he clock has been set at server and count down timer at the top right corner of the screen will display left out time to closure from where you can monitor time you have to complete the exam.
-                                </li>
-                                <li>
-                                    Click one of the answer option buttons to select your answer.
-                                </li>
-                                <li>
-                                    To change an answer, simply click the desired option button.
-                                </li>
-                                <li>
-                                    The size of the file attached should be less than 10 MB
-                                </li>
-                                <li>
-                                    Click on SAVE & NEXT to save the answer before moving to the next question. The next question will automatically be displayed.
-                                </li>
-                                <li>
-                                    Click SKIP to proceed to the next question without changing the saved state for the current question.
-                                </li>
-                                <li>
-                                    To go to a question, click on the question number in the Question Palette on the right hand side of the screen.
-                                </li>
-                            </ul><br>
+                            {{instructions.instructions|safe}}
+                            
+                            
                             <h6>
                                 Color Indication
                             </h6>
@@ -71,9 +51,9 @@
                             </ul><br>
 
                             <ul class="list-group list-group-numbered">
-                                <li>
+                                <!-- <li>
                                     You can move the mouse cursor over the section names to see the number of answered, not answered.
-                                </li>
+                                </li> -->
                                 <li>
                                     You are allowed to Shuffle between sections and questions anytime during the examination as per your
                                 </li>
@@ -89,17 +69,17 @@
                                 </li>
                             </ul><hr>
 
-                            <form action="">
+                            <!-- <form action=""> -->
                                 <ul class="list-group">
                                     <li class="">
                                       <input class="form-check-input me-1 checkbox" type="checkbox" required value="" aria-label="...">
                                       I will not consult/copy answer from any source including a website,book,or friend/colleague to complete these tests.I have read and understood the instructions, I will be disqualified from giving the exam.
                                     </li>
                                     <li class="text-end">
-                                        <a href="{% url 'student:exam' %}"  class="btn btn-rounded btn-danger disabled " id="buttondisabled">I Agree And Start Exam</a>
+                                        <a href="{% url 'student:exam' exam.id %}"  class="btn btn-rounded btn-danger disabled " id="buttondisabled">I Agree And Start Exam</a>
                                     </li>
                                 </ul>
-                            </form>
+                            <!-- </form> -->
                         </div>
                     </div>
                 </div>
