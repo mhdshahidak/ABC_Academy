@@ -354,6 +354,7 @@ def savedata(request):
     new_question.save()
     data={
         'no':new_question.id,
+        'question':new_question.question,
         'type':new_question.type,
         'mark':new_question.mark,
     }

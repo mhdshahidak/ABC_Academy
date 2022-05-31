@@ -1,6 +1,21 @@
 {% extends 'adminapps/index.html' %}
 {% block content %}
     {% load static %}
+    <style>
+        body{
+            counter-reset: Serial;          
+        }
+        table{
+            border-collapse: separate;
+        }
+        tr td:first-child:before
+            {
+              counter-increment: Serial;      
+              content: counter(Serial); 
+            }
+        
+       
+    </style>
     <div class="page-wrapper">
         <div class="content container-fluid">
             <div class="page-header">
@@ -99,7 +114,7 @@
                                 <table class="table table-hover table-center mb-0 datatable" id="qtable">
                                     <thead>
                                         <tr>
-                                            <th>Question</th>
+                                            <th>Q NO</th>
                                             <th>Type</th>
                                             <th>Maximum mark</th>
                                             <th class="text-end">Action</th>
@@ -136,7 +151,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.8/js/jquery.dataTables.min.js"></script>
     <script>
-        var myTable = $('#qtable').DataTable();
+        // var myTable = $('#qtable').DataTable();
             // var editButton = ''responce.new_question.question
             //  for (var i = 1; i < countsNew; i++) {
             // myTable.row.add( ['1','2','3','4'] ).draw()
@@ -161,14 +176,18 @@ $("#addquestion").submit(function(){
         success: function (responce) {
             console.log(responce)
             console.log(responce.type)
-
             var editButton = '<a href="/'+responce.no+'" class="btn btn-sm bg-success-light me-2">\
                                                         <i class="fas fa-pen"></i>\
                                                     </a> <a href="/'+responce.no+'" class="btn btn-sm bg-danger-light">\
                                                         <i class="fas fa-trash"></i>\
                                                     </a>'
+            $('#qtable').append('<tr id="tr"><td>' + '' + '</td><td>' + responce.no + '</td><td>' + responce.type + '</td><td>' + responce.mark + '</td><td>' + editButton + '</td></tr>')
+            $('#question').val("")
+            $('#options').val("")
+            $('#mark').val("")
             
-            myTable.row.add( [responce.no,responce.type,responce.mark,editButton] ).draw()
+            
+            // myTable.row.add( [responce.no,responce.type,responce.mark,editButton] ).draw()
 
            
         }
