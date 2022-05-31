@@ -1,36 +1,35 @@
 {% extends 'adminapps/index.html' %}
 {% block content %}
-    {% load static %}
-    <style>
-        body{
-            counter-reset: Serial;          
-        }
-        table{
-            border-collapse: separate;
-        }
-        tr td:first-child:before
-            {
-              counter-increment: Serial;      
-              content: counter(Serial); 
-            }
-        
-       
-    </style>
-    <div class="page-wrapper">
-        <div class="content container-fluid">
-            <div class="page-header">
-                <div class="row align-items-center">
-                    <div class="col">
-                        <h3 class="page-title">{{ exam.exam_name }}</h3>
-                    </div>
+{% load static %}
+<style>
+    body {
+        counter-reset: Serial;
+    }
+
+    table {
+        border-collapse: separate;
+    }
+
+    tr td:first-child:before {
+        counter-increment: Serial;
+        content: counter(Serial);
+    }
+</style>
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title">{{ exam.exam_name }}</h3>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <form method="POST" id="addquestion">
-                                {% csrf_token %}
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form method="POST" id="addquestion">
+                            {% csrf_token %}
                             <div class="row">
                                 <div class="col-12">
                                     <h5 class="form-title">
@@ -39,7 +38,8 @@
                                 </div>
                                 <div class="col-10">
                                     <div class="form-group">
-                                        <textarea class="form-control" required name="question" id="question"></textarea>
+                                        <textarea class="form-control" required name="question"
+                                            id="question"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-2-sm-12">
@@ -47,27 +47,17 @@
                                         <ul>
                                             <li>Type:</li>
                                             <li>
-                                                <input type="radio"
-                                                       name="radio"
-                                                       id="mcq"
-                                                       value="mcq"
-                                                       class="form-check-input">
+                                                <input type="radio" name="radio" id="mcq" value="mcq"
+                                                    class="form-check-input">
                                                 MCQ
                                             </li>
                                             <li>
-                                                <input type="radio"
-                                                       id="desc"
-                                                       name="radio"
-                                                       value="description"
-                                                       class="form-check-input">
+                                                <input type="radio" id="desc" name="radio" value="description"
+                                                    class="form-check-input">
                                                 DESCRIPTION
                                             </li>
-                                            <input type="number"
-                                                   class="form-control"
-                                                   id="exam_id"
-                                                   value="{{ exam.id }}"
-                                                   name="exam_id"
-                                                   hidden>
+                                            <input type="number" class="form-control" id="exam_id" value="{{ exam.id }}"
+                                                name="exam_id" hidden>
                                         </ul>
                                     </div>
                                 </div>
@@ -96,32 +86,53 @@
                                     </div>
                                 </div>
                                 <div class="col-12 text-end">
-                                    <button class="btn btn-secondary  "    type="submit">ADD QUESTION +</button>
+                                    <button class="btn btn-secondary  " type="submit">ADD QUESTION +</button>
                                     <!-- <a href="#" class="btn btn-info  ">FINISH</a> -->
                                 </div>
                             </div>
-                            </form>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
-            <!-- second row starting -->
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-hover table-center mb-0 datatable" id="qtable">
-                                    <thead>
-                                        <tr>
-                                            <th>Q NO</th>
-                                            <th>Type</th>
-                                            <th>Maximum mark</th>
-                                            <th class="text-end">Action</th>
+        </div>
+        <!-- second row starting -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-center mb-0 datatable" id="qtable">
+                                <thead>
+                                    <tr>
+
+                                        <th>Q NO</th>
+                                        <th>Type</th>
+                                        <th>Maximum mark</th>
+                                        <th class="text-end">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for i in Question %}
+                                    <tr>
+                                            <td></td>
+                                            <td>
+                                                <h2>{{ i.type }}</h2>
+                                            </td>
+                                            <td><h2>{{ i.mark}}</h2></td>
+                                            <td class="text-end">
+                                                <div class="actions">
+                                                    <a  onclick="editdata({{i.id}})" data-bs-toggle="modal" data-bs-target="#edit_items" class="btn btn-sm bg-success-light me-2">
+                                                        <i class="fas fa-pen"></i>
+                                                    </a>
+                                                    <a href="#" class="btn btn-sm bg-danger-light">
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        <!-- <tr>
+
+                                    {% endfor %}
+                                    <!-- <tr>
                                             <td>Q1</td>
                                             <td>
                                                 <h2>MCQ</h2>
@@ -138,65 +149,214 @@
                                                 </div>
                                             </td>
                                         </tr> -->
-                                    </tbody>
-                                </table>
-                            </div>
+                                </tbody>
+                            </table>
+                           
                         </div>
+                       <div class="row">
+                        <div class="col-12 text-end">
+                            <a href="/adminapp/exams" class="btn btn-info  ">FINISH</a>
+                        </div>
+                       </div>
                     </div>
                 </div>
             </div>
-            <!-- second row ending -->
         </div>
+        <!-- --------------------------------------------------------------------------------------- -->
+        <div class="modal custom-modal fade bank-details" id="edit_items" role="dialog">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <!-- <form action="editProductdata\{{i.id}}" method="post"> -->
+                    <div class="modal-header">
+                        <div class="form-header text-start mb-0">
+                            <h4 class="mb-0">Edit Exam</h4>
+                        </div>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="bank-inner-details">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h5 class="form-title">
+                                        <span>Question 1</span>
+                                    </h5>
+                                </div>
+                                <div class="col-10">
+                                    <div class="form-group">
+                                        <textarea class="form-control" required name="question"
+                                            id="editquestion"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-2-sm-12">
+                                    <div class="form-group">
+                                        <ul>
+                                            <li>Type:</li>
+                                            <li>
+                                                <input type="radio" name="radio" id="mcq1" value="mcq"
+                                                    class="form-check-input">
+                                                MCQ
+                                            </li>
+                                            <li>
+                                                <input type="radio" id="desc1" name="radio" value="description"
+                                                    class="form-check-input">
+                                                DESCRIPTION
+                                            </li>
+                                            <input type="number" class="form-control" id="exam_id" value="{{ exam.id }}"
+                                                name="exam_id" hidden>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 mcq1">
+                                    <h5 class="">
+                                        <span>MCQ OPTIONS
+                                            <h6>Options seperates by using comma ","</h6>
+                                        </span>
+                                    </h5>
+                                </div>
+                                <div class="col-12 mcq1">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="editoptions" name="options">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <h6 class="">
+                                        <span>Maximum Mark</span>
+                                    </h6>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" min="0" id="editmark" name="mark">
+                                    </div>
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="bank-details-btn">
+                            <a href="javascript:void(0);" data-bs-dismiss="modal" class="btn bank-cancel-btn me-2">Cancel</a>
+                            <button type="button" id="update" class="btn bank-save-btn">Save Item</button>
+                        </div>
+                    </div>
+                    <!-- </form> -->
+                </div>
+            </div>
+        </div>
+        <!-- --------------------------------------------------------------------------------------- -->
+        <!-- second row ending -->
     </div>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.8/js/jquery.dataTables.min.js"></script>
-    <script>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.8/js/jquery.dataTables.min.js"></script>
+<script>
         // var myTable = $('#qtable').DataTable();
             // var editButton = ''responce.new_question.question
             //  for (var i = 1; i < countsNew; i++) {
             // myTable.row.add( ['1','2','3','4'] ).draw()
 
-            
-    </script>
-    <script>
-        $('#desc').click(function(){
-            $('.mcq').hide()
-        })
-        $('#mcq').click(function(){
-            $('.mcq').show()
-        })
 
-
-$("#addquestion").submit(function(){
-    var data = $("#addquestion").serializeArray();
-    $.ajax({
-        url: "/adminapp/savedata/",
-        type: 'POST',
-        data: data,
-        success: function (responce) {
-            console.log(responce)
-            console.log(responce.type)
-            var editButton = '<a href="/'+responce.no+'" class="btn btn-sm bg-success-light me-2">\
-                                                        <i class="fas fa-pen"></i>\
-                                                    </a> <a href="/'+responce.no+'" class="btn btn-sm bg-danger-light">\
-                                                        <i class="fas fa-trash"></i>\
-                                                    </a>'
-            $('#qtable').append('<tr id="tr"><td>' + '' + '</td><td>' + responce.no + '</td><td>' + responce.type + '</td><td>' + responce.mark + '</td><td>' + editButton + '</td></tr>')
-            $('#question').val("")
-            $('#options').val("")
-            $('#mark').val("")
-            
-            
-            // myTable.row.add( [responce.no,responce.type,responce.mark,editButton] ).draw()
-
-           
-        }
-
+</script>
+<script>
+    $('#desc').click(function () {
+        $('.mcq').hide()
     })
-    console.log(data)
-    return false;
-})
-     
-   
-    </script>
+    $('#mcq').click(function () {
+        $('.mcq').show()
+    })
+    $('#desc1').click(function () {
+        $('.mcq1').hide()
+    })
+    $('#mcq1').click(function () {
+        $('.mcq1').show()
+    })
+
+
+    $("#addquestion").submit(function () {
+        var data = $("#addquestion").serializeArray();
+        $.ajax({
+            url: "/adminapp/savedata/",
+            type: 'POST',
+            data: data,
+            success: function (responce) {
+                window.location.reload()
+                // console.log(responce)
+                // console.log(responce.type)
+                // var editButton = '<a href="/' + responce.no + '" class="btn btn-sm bg-success-light me-2" >\
+                //                                         <i class="fas fa-pen"></i>\
+                //                                     </a> <a data-bs-toggle="modal" onclick="editdata({{responce.no}})" data-bs-target="#edit_items" class="btn btn-sm bg-danger-light">\
+                //                                         <i class="fas fa-trash"></i>\
+                //                                     </a>'
+                // $('#qtable').append('<tr id="tr"><td>' + '' + '</td><td>' + responce.type + '</td><td>' + responce.mark + '</td><td>' + editButton + '</td></tr>')
+                // $('#question').val("")
+                // $('#options').val("")
+                // $('#mark').val("")
+
+
+                // myTable.row.add( [responce.no,responce.type,responce.mark,editButton] ).draw()
+
+
+            }
+
+        })
+        console.log(data)
+        return false;
+    })
+
+
+    function editdata(id) {
+        $.ajax({
+            url: "/adminapp/editQuestiontdata/" + id,
+            type: 'GET',
+
+            success: function (responce) {
+
+
+                // console.log(responce)
+                $('#editquestion').val(responce.question.question)
+                // $('#editcat').val(responce.question.type)
+                $('#editoptions').val(responce.question.option)
+                $('#editmark').val(responce.question.mark)
+                if(responce.question.type == 'mcq'){
+                    $("#mcq1").prop('checked',true)
+                    $(".mcq1").show()
+                }
+                else{
+                    $("#desc1").prop('checked',true)
+                    $(".mcq1").hide()
+                } 
+            }
+
+        })
+
+        $('#update').click(() => {
+            console.log('hello')
+            $.ajax({
+                url: "/adminapp/updateQuestion/",
+                type: 'post',
+                data: {
+                    'Questionid': id,
+                    'editquestion': $('#editquestion').val(),
+                    'editoptions': $('#editoptions').val(),
+                    'editmark': $('#editmark').val(),
+                    
+                },
+                success: function (responce) {
+
+                    window.location.reload()
+                }
+
+
+            })
+        })
+
+
+
+    }
+
+
+</script>
 {% endblock %}

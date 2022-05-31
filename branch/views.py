@@ -1,5 +1,4 @@
 from django.shortcuts import render,redirect
-
 from adminapp.models import Teacher,Student,Batch,Branch
 from . models import Payment
 from django.contrib.auth import get_user_model
@@ -347,6 +346,10 @@ def getdata(request):
         "balanceamount":balanceamount
     }
     return JsonResponse({'details': data})   
+
+
+
+
 
 
 
