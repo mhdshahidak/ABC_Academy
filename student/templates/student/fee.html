@@ -1,0 +1,92 @@
+{% extends 'student/master.html' %}
+{% load static %}
+{% block content %}
+
+
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3 class="page-title">Fees</h3>
+                    <ul class="breadcrumb">
+                        <li><a href="{% url 'student:home' %}">Dashboard /</a></li>
+                        <li class="breadcrumb-item active"> Fees</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <form action="#">
+                               
+                                <div class="table-responsive mt-4">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                
+                                                <th> Paid Date</th>
+                                                <th>Amount</th>
+                                                <th>Due Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody  id="tbodyofInvoice">
+                                            {% for i in paymentdetails %}
+                                                
+                                            <tr>
+                                               
+                                                <td>
+                                                    {{i.paiddate}}
+                                                </td>
+                                                <td>
+                                                    {{i.paidamount}}
+                                                </td>
+                                                <td>
+                                                    {{i.student.course.ending_date}}  
+                                                </td>
+                                              
+                                            </tr>
+                                            
+                                            {% endfor %}
+                                        
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </form>
+                           
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Total Amount:</label>
+                                <input type="text" value="{{total}}" disabled readonly class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Amount Paid :</label>
+                            <input type="text" value="{{recvamount}}" disabled readonly class="form-control">
+                        </div>
+                        <div class="col-md-4">
+                            <label>Balance Amount :</label>
+                            <input type="text" value="{{balanceamount}}" disabled readonly class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

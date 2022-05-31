@@ -1,6 +1,9 @@
 from django.shortcuts import render
 
-from adminapp.models import Student
+from adminapp.models import Student,Batch
+from branch.models import Payment
+from django.db.models import Sum
+
 
 # Create your views here.
 
@@ -70,8 +73,30 @@ def result(request):
     return render(request,'student/result.html',context)
 
 def fee(request):
+    print(request.user.id)
+    id=request.user.Student.id
+    print(id)
+    paymentdetails = Payment.objects.filter(student=request.user.Student)
+    viewpro=Student.objects.get(id=id) 
+    # print(viewpro)
+    total=viewpro.course.course.total_fees
+    print(total)
+    balanceamount=total
+    if paymentdetails.exists():
+        recivedamount = Payment.objects.filter(student=viewpro.id).aggregate(Sum('paidamount'))
+        recvamount= recivedamount['paidamount__sum']
+        balanceamount  = total - recivedamount['paidamount__sum']
+        print(total)
+        print(balanceamount)
+    print(paymentdetails)
+
     context = {
         "is_fee": True,
+        "paymentdetails":paymentdetails,
+        "recvamount":recvamount,
+        "balanceamount":balanceamount,
+        "total":total
+
         }
     return render(request,'student/fee.html',context)
 
