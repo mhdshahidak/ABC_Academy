@@ -92,11 +92,11 @@
                             <form action="">
                                 <ul class="list-group">
                                     <li class="">
-                                      <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+                                      <input class="form-check-input me-1 checkbox" type="checkbox" required value="" aria-label="...">
                                       I will not consult/copy answer from any source including a website,book,or friend/colleague to complete these tests.I have read and understood the instructions, I will be disqualified from giving the exam.
                                     </li>
                                     <li class="text-end">
-                                        <a href="{% url 'student:exam' %}" class="btn btn-rounded btn-danger">I Agree And Start Exam</a>
+                                        <a href="{% url 'student:exam' %}"  class="btn btn-rounded btn-danger disabled " id="buttondisabled">I Agree And Start Exam</a>
                                     </li>
                                 </ul>
                             </form>
@@ -108,4 +108,17 @@
     </div>
 </div>
 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+$(".checkbox").change(function() {
+    if(this.checked) {
+        $("#buttondisabled").removeClass("disabled");
+    }
+    else{
+        $("#buttondisabled").addClass("disabled");
+    }
+});
+</script>
 {% endblock %}

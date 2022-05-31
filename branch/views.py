@@ -34,41 +34,47 @@ def master(request):
 
 @login_required(login_url='/adminapp/login')
 def students(request):
-    
+    details=request.user.branch
     batch = Batch.objects.all()
     print(batch)
     context={
         "is_students":True,
-        "batch":batch
+        "batch":batch,
+        "details":details,
         
     }
     return render(request,'branch/students.html', context)
+
 @login_required(login_url='/adminapp/login')
 def studentslist(request,id):
     print(id)
+    details=request.user.branch
     viewstudent = Student.objects.filter(course=id).all()
     print(viewstudent)
     context={
         "is_studentslist":True,
-        "viewstudent":viewstudent
+        "viewstudent":viewstudent,
+        "details":details,
     }
     return render(request,'branch/students_list.html', context)
 
 
 @login_required(login_url='/adminapp/login')
 def all_students_list(request):
-
+    details=request.user.branch
     student= Student.objects.filter(branch=request.user.branch)
     print(student)
     context={
         "is_all_students_list":True,
-        "student":student
+        "student":student,
+        "details":details,
     }
     return render(request,'branch/allstudents_list.html', context)
 
 
 @login_required(login_url='/adminapp/login')
 def add_students_branch(request):
+    details=request.user.branch
     studentFk= request.user.branch.id
     course=Batch.objects.all()
     print(course)
@@ -97,12 +103,14 @@ def add_students_branch(request):
 
     context={
         "is_add_students_branch":True,
-        "course":course
+        "course":course,
+        "details":details,
     }
     return render(request,'branch/studentsaddbranch.html', context)
 
 @login_required(login_url='/adminapp/login')    
 def editstudent(request,id):
+    detail=request.user.branch
     details= Student.objects.get(id=id)
     if request.method=='POST':
         name = request.POST['name']
@@ -118,7 +126,8 @@ def editstudent(request,id):
 
     context={
         "is_add_students_branch":True,
-        "details":details
+        "details":details,
+        "details":detail
     }
     return render(request,'branch/editstudent.html', context)
 
@@ -126,16 +135,19 @@ def editstudent(request,id):
 
 @login_required(login_url='/adminapp/login')
 def teachers(request):
+    details=request.user.branch
     techerlist= Teacher.objects.all()
     context={
         "is_teachers":True,
-        "techerlist":techerlist
+        "techerlist":techerlist,
+        "details":details,
     }
     return render(request,'branch/teacherslist.html', context)
 
 
 @login_required(login_url='/adminapp/login')
 def add_teachers(request):
+    details=request.user.branch
     course=Batch.objects.all()
     if Teacher.objects.exists():
         branch = Teacher.objects.last().id
@@ -168,12 +180,14 @@ def add_teachers(request):
         User.objects.create_user(email=email, password=Password,teacher=techer)
     context={
         "is_add_teachers":True,
-        "course":course
+        "course":course,
+        "details":details,
     }
     return render(request,'branch/addteacher.html', context)
 
 @login_required(login_url='/adminapp/login')
 def editteacher(request,id):
+    detail=request.user.branch
     details= Teacher.objects.get(id=id)
     if request.method=='POST':
         name = request.POST['name']
@@ -196,38 +210,46 @@ def editteacher(request,id):
     
     context={
         "is_teachers":True,
-        "details":details
+        "details":details,
+        "details":detail,
     }
     return render(request,'branch/editteacher.html', context)
 
 @login_required(login_url='/adminapp/login')    
 def courses(request):
+    details=request.user.branch
     context={
-        "is_courses":True
+        "is_courses":True,
+        "details":details,
     }
     return render(request,'branch/courses.html', context)
 
 
 @login_required(login_url='/adminapp/login')
 def add_courses(request):
+    details=request.user.branch
     context={
-        "is_add_courses":True
+        "is_add_courses":True,
+        "details":details,
     }
     return render(request,'branch/addcourses.html', context)
 
 
 @login_required(login_url='/adminapp/login')
 def fees(request):
+    details=request.user.branch
     paymentdets = Payment.objects.all()
     context={
         "is_fees":True,
-        "paymentdets":paymentdets
+        "paymentdets":paymentdets,
+        "details":details,
     }
     return render(request,'branch/fees.html', context)
 
 
 @login_required(login_url='/adminapp/login')
 def add_fees(request):
+    details=request.user.branch
     if request.method=='POST':
         studentid = request.POST['studentid']
         paidamount = request.POST['paidamount']
@@ -239,6 +261,7 @@ def add_fees(request):
         payment.save()
     context={
         "is_add_fees":True,
+        "details":details,
     }
     return render(request,'branch/add_fees.html', context)
 
@@ -249,15 +272,17 @@ def profile_branch(request):
     details=request.user.branch
     context={
         "is_exam_list":True,
-        "details":details
+        "details":details,
     }
     return render(request,'branch/profile_branch.html',context)
 
 # exam 
 @login_required(login_url='/adminapp/login')
 def exam_list(request):
+    details=request.user.branch
     context={
-        "is_exam_list":True
+        "is_exam_list":True,
+        "details":details,
     }
     return render(request,'branch/exam_list.html', context)
 
