@@ -4,6 +4,16 @@
 
 <div class="page-wrapper">
     <div class="content container-fluid">
+
+        {% if status == 1 %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Successfully</strong> add the Student.
+            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                aria-label="Close"></button>
+        </div>
+        
+        {% endif %}
+
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col">
@@ -11,8 +21,8 @@
                         Add Students
                     </h3>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="students.html">Students</a>
+                        <li class="">
+                            <a href="{% url 'branch:master' %}">Dashboard /</a>
                         </li>
                         <li class="breadcrumb-item active">
                             Add Students

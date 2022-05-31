@@ -11,8 +11,8 @@
                         Students
                     </h3>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="index.html">Dashboard</a>
+                        <li class="">
+                            <a href="{% url 'branch:master' %}">Dashboard /</a>
                         </li>
                         <li class="breadcrumb-item active">
                             Students
@@ -38,7 +38,7 @@
                             </div>
                             <div class="db-info">
                                 <h6>
-                                    {{i.course.couse_name}}
+                                    {{i.course.couse_name|upper}}
                                 </h6>
                                 <h6>
                                     {{i.starting_date}} to  {{i.ending_date}} 

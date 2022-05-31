@@ -11,8 +11,8 @@
                         Teachers
                     </h3>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="index.html">Dashboard</a>
+                        <li class="">
+                            <a href="{% url 'branch:master' %}">Dashboard / </a>
                         </li>
                         <li class="breadcrumb-item active">
                             Teachers
@@ -20,12 +20,11 @@
                     </ul>
                 </div>
                 <div class="col-auto text-end float-end ms-auto">
-                    <a href="#" class="btn btn-outline-primary me-2"><i class="fas fa-download"></i> Download</a>
-                    <a href="{% url 'branch:addteacherbranch' %}" class="btn btn-primary"><i
-                            class="fas fa-plus"></i></a>
+                    <a href="{% url 'branch:addteacherbranch' %}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
                 </div>
             </div>
         </div>
+
         <div class="row">
             <div class="col-sm-12">
                 <div class="card card-table">
@@ -45,10 +44,10 @@
                                             Gender
                                         </th>
                                         <th>
-                                            Subject
+                                            Course
                                         </th>
                                         <th>
-                                            Section
+                                            Email
                                         </th>
                                         <th>
                                             Mobile Number
@@ -70,15 +69,15 @@
                                         <td>
                                             <h2 class="table-avatar">
                                              
-                                                <a href="#"> {{i.name}}</a>
+                                                <a href=""> {{i.name|capfirst}}</a>
                                             </h2>
                                         </td>
                                         
                                         <td>
-                                            {{i.gender}}
+                                            {{i.gender|capfirst}}
                                         </td>
                                         <td>
-                                            {{i.qualification}}
+                                            {{i.course.course.couse_name|upper}}
                                         </td>
                                         <td>
                                             {{i.email}}
@@ -87,14 +86,14 @@
                                             {{i.phone}}
                                         </td>
                                         <td>
-                                            {{i.address}}
+                                            {{i.address|capfirst}}
                                         </td>
                                         <td class="text-end">
                                             <div class="actions">
                                                 <a href="/branch/editteacher/{{i.id}}" class="btn btn-sm bg-success-light me-2">
                                                     <i class="fas fa-pen"></i>
                                                 </a>
-                                                <a href="#" class="btn btn-sm bg-danger-light">
+                                                <a href="{% url 'branch:deleteteacher' i.id %}" class="btn btn-sm bg-danger-light">
                                                     <i class="fas fa-trash"></i>
                                                 </a>
                                             </div>

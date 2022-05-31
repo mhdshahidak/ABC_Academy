@@ -28,9 +28,10 @@
                                 <i class="fas fa-desktop"></i>
                             </span>
                             <div class="dash-count">
-                                <div class="dash-title">{{teacher_course.qualification}}</div>
+                                <div class="dash-title">{{teacher.course.course.couse_name|upper}}</div>
                                 <div class="dash-counts">
-                                    <p>{{teacher_course.course_id}}</p>
+                                    <p>{{teacher.course.course.course_id|upper}}</p>
+                                    <h6>{{teacher.course.starting_date|upper}} to {{teacher.course.ending_date|upper}}</h6>
                                 </div>
                             </div>
                         </div>

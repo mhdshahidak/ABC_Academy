@@ -13,14 +13,14 @@
                     <h3 class="page-title">
                         Fees
                     </h3>
-                    <!-- <ul class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="{% url 'branch:master'%}">Dashboard</a>
+                    <ul class="breadcrumb">
+                        <li class="">
+                            <a href="{% url 'branch:master' %}">Dashboard /</a>
                         </li>
                         <li class="breadcrumb-item active">
-                            Fees
+                            Fee
                         </li>
-                    </ul> -->
+                    </ul>
                 </div>
                 <div class="col-auto text-end float-end ms-auto">
                     <a href="{% url 'branch:addfees' %}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
@@ -65,17 +65,17 @@
                                     {% for i in paymentdets %}
                                     <tr>
                                         <td>
-                                           {{i.student.student_id}}
+                                           {{i.student.student_id|upper}}
                                         </td>
                                         <td>
                                             <h2 class="table-avatar">
                                              
-                                                <a href="#"> {{i.student.first_name}}</a>
+                                                <a href="#"> {{i.student.first_name|capfirst}}</a>
                                             </h2>
                                         </td>
                                         
                                         <td>
-                                            {{i.student.course.course.couse_name}}
+                                            {{i.student.course.course.couse_name|upper}}
                                         </td>
                                         <td>
                                             {{i.paidamount}}
