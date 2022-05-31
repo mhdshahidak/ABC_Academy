@@ -9,7 +9,7 @@ urlpatterns = [
 
     # add branch 
     path('addbranch', views.add_branch, name="addbranch"),
-    path('branchcourse', views.branch_course, name="branchcourse"),
+    path('branchcourse/<int:id>', views.branch_course, name="branchcourse"),
 
     # teacher 
     path('teachers', views.teachers, name="teachers"),
@@ -20,6 +20,7 @@ urlpatterns = [
     path('studentslist', views.students_list, name="studentslist"),
     path('addstudent', views.add_student, name="addstudent"),
     path('editstudent', views.edit_student_by_admin, name="editstudentadmin"),
+    path('studentbatchlish/<int:id>', views.studentbatchlish, name="studentbatchlish"),
 
     # courses
     path('courses',views.courses,name="courses"),
@@ -36,6 +37,9 @@ urlpatterns = [
     path('examsaddone/<str:id>', views.exam_add_one, name="examsaddone"),
     path('examsaddtwo/<str:id>', views.exam_add_two, name="examsaddtwo"),
     path('savedata/', views.savedata, name="savedata"),
+    path('updateQuestion/', views.updateQuestion, name="updateQuestion"),
+    path('editQuestiontdata/<int:id>',views.editQuestiontdata,name="editQuestiontdata"),
+
 
    # profile
 
@@ -44,6 +48,7 @@ urlpatterns = [
     # fees admin
 
     path('feesadding', views.fees_adding,name="feesadding"),
+    path('getdatapayment', views.getdatapayment,name="getdatapayment"),
 
 
 

@@ -10,7 +10,8 @@ from django.contrib.auth import logout
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 
-from adminapp.models import Batch, Branch, Courses, Exam, Instructions, Questions, Teacher
+from adminapp.models import Batch, Branch, Courses, Exam, Instructions, Questions, Teacher,Student
+from branch.models import Payment
 
 
 
@@ -20,8 +21,17 @@ from adminapp.models import Batch, Branch, Courses, Exam, Instructions, Question
 @login_required(login_url='/login/')
 def admindashbord(request):
     print(request.user)
+    students=Student.objects.all().count()
+    teacher= Teacher.objects.all().count()
+    branch= Branch.objects.all().count()
+    course= Courses.objects.all().count()
     context={
-        "is_admindash":True
+        "is_admindash":True,
+        "students":students,
+        "teacher":teacher,
+        "branch":branch,
+        "course":course,
+        
     }
     return render(request,'adminapps/home.html', context)
 
@@ -73,7 +83,9 @@ def add_branch(request):
     return render(request,'adminapps/addbranch.html', context)
 
 @login_required(login_url='/adminapp/login')
-def branch_course(request):
+def branch_course(request,id):
+    print(id)
+
     context={
         "is_branch_course":True
     }
@@ -149,8 +161,10 @@ def add_teacher(request):
 
 @login_required(login_url='/adminapp/login')
 def students(request):
+    branch= Branch.objects.all()
     context={
-        "is_students":True
+        "is_students":True,
+        "branch":branch
     }
     return render(request,'adminapps/students.html', context)
 
@@ -158,24 +172,60 @@ def students(request):
 
 @login_required(login_url='/adminapp/login')
 def students_by_courses(request):
+    course = Batch.objects.all()
     context={
-        "is_students_by_courses":True
+        "is_students_by_courses":True,
+        "course":course
     }
     return render(request,'adminapps/students_by_branch.html', context)
 
 
+
+@login_required(login_url='/adminapp/login')
+def studentbatchlish(request,id):
+    print(id)
+    return render(request,'adminapps/studentbatchlish.html')
+
 @login_required(login_url='/adminapp/login')
 def students_list(request):
+    
     context={
-        "is_students_list":True
+        "is_students_list":True,
+
     }
-    return render(request,'adminapps/students_list.html', context)
+    return render(request,'adminapps/s_list.html', context)
 
 
 @login_required(login_url='/adminapp/login')
 def add_student(request):
+    course= Batch.objects.all()
+    branch = Branch.objects.all()
+    if request.method=='POST':
+        name = request.POST['name']
+        lastname = request.POST['lastname']
+        studentid = request.POST['studentid']
+        gender = request.POST['gender']
+        courseid = request.POST['course']
+        dob = request.POST['dob']
+        phone = request.POST['phone']
+        email = request.POST['email']
+        password = request.POST['password']
+        fathername = request.POST['fathername']
+        fatherphone = request.POST['fatherphone']
+        address = request.POST['address']
+        branch = request.POST['branch']
+        print(courseid)
+        course_id=Batch.objects.get(id=courseid)
+        branch_id = Branch.objects.get(id=branch)
+        print(branch_id)
+        std = Student(course=course_id,branch=branch_id,student_id=studentid, first_name=name, last_name=lastname, gender=gender, dob=dob, phone=phone,email=email ,password=password,fatherphone=fatherphone,fathername=fathername,address=address)
+        std.save()
+        User = get_user_model()
+        User.objects.create_user(email=email, password=password,Student=std)
     context={
-        "is_add_student":True
+        "is_add_student":True,
+        "course":course,
+        "branch":branch
     }
     return render(request,'adminapps/addstudent.html', context)
 
@@ -183,6 +233,7 @@ def add_student(request):
 @login_required(login_url='/adminapp/login')
 def edit_student_by_admin(request):
     return render(request,'adminapps/students_edit_admin.html')
+
 
 
 #courses 
@@ -278,10 +329,12 @@ def exam(request):
 @login_required(login_url='/adminapp/login')
 def exam_add_list(request,id):
     batch = Batch.objects.get(id=id)
-    print(batch)
+    exam = Exam.objects.filter(batch=batch)
+    print(batch,exam)
     context={
         "is_exam_add_list":True,
         "batch":batch,
+        "exam":exam
     }
     return render(request,'adminapps/exam_add_lists.html', context)
 
@@ -332,9 +385,12 @@ def exam_add_one(request,id):
 @login_required(login_url='/adminapp/login')
 def exam_add_two(request,id):
     exam = Exam.objects.get(id=id)
+    Question= Questions.objects.filter(exam_id=id)
+    print(Question)
     context={
         "is_exam_add_two":True,
         "exam":exam,
+        "Question":Question
     }
     return render(request,'adminapps/exam_add2.html', context)
 
@@ -362,10 +418,53 @@ def savedata(request):
 
 
 
+
+
+@csrf_exempt
+def editQuestiontdata(request,id):
+
+    editquestion=Questions.objects.get(id=id)
+    print(editquestion)
+    
+    data={
+        "question":editquestion.question,
+        "type":editquestion.type,
+        "option":editquestion.option,
+        "mark":editquestion.mark,
+
+    }
+    return JsonResponse({'question': data}) 
+
+
+@csrf_exempt
+def updateQuestion(request):
+    id=request.POST['Questionid']
+    editquestion = request.POST['editquestion']
+    editoptions = request.POST['editoptions']
+    editmark = request.POST['editmark']
+ 
+    Questions.objects.filter(id=id).update(question=editquestion, option=editoptions, mark=editmark)
+    return JsonResponse({'message': 'sucesses'})       
+
+
+
+
 # fees adding 
 
 @login_required(login_url='/adminapp/login')
 def fees_adding(request):
+    if request.method=='POST':
+        studentid = request.POST['studentid']
+        paidamount = request.POST['paidamount']
+        paiddate = request.POST['paiddate']
+        totalprice = request.POST['totalprice']
+        student_id= Student.objects.get(student_id=studentid) 
+        # print(paidamount,paiddate,studentid,totalprice)
+        payment= Payment(student=student_id, paidamount=paidamount, paiddate=paiddate)
+        payment.save()
+    context={
+        "is_add_fees":True,
+    }
     context={
         "is_fees_adding":True
     }
@@ -400,3 +499,34 @@ def log_in(request):
 def logout_view(request):
     logout(request)
     return redirect('/adminapp/login')
+
+
+
+
+@csrf_exempt
+def getdatapayment(request):
+    studentid = request.POST['studentid']
+    course = request.POST['course']
+    print(course)
+    viewpro=Student.objects.get(student_id=studentid) 
+    print(viewpro.first_name) 
+    print(viewpro.course.course.couse_name) 
+    total=viewpro.course.course.total_fees
+    balanceamount=total
+    # batch = Student.objects.get(course=)
+    if Payment.objects.filter(student=viewpro.id).exists():
+        recivedamount = Payment.objects.filter(student=viewpro.id).aggregate(Sum('paidamount'))
+        print(recivedamount['paidamount__sum'])
+        balanceamount  = total - recivedamount['paidamount__sum']
+        print(total)
+        print(balanceamount)
+    data={     
+        "name":viewpro.first_name,
+        "coursename":viewpro.course.course.couse_name,
+        "price":viewpro.course.course.total_fees,
+        "balanceamount":balanceamount
+    }
+    return JsonResponse({'details': data})   
+
+
+

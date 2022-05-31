@@ -1,6 +1,5 @@
-from django.shortcuts import render, redirect
-
-from adminapp.models import Teacher, Student, Batch, Branch
+from django.shortcuts import render,redirect
+from adminapp.models import Teacher,Student,Batch,Branch
 from . models import Payment
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
@@ -384,5 +383,9 @@ def getdata(request):
 #         "is_exam_add_b_three": True
 #     }
 #     return render(request, 'branch/exam_addb3.html', context)
+
+
+
+
 
 

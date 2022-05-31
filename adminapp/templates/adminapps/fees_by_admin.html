@@ -1,6 +1,8 @@
 {% extends 'adminapps/index.html' %}
 {% block content %}
 {% load static %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 
 <div class="page-wrapper">
     <div class="content container-fluid">
@@ -10,14 +12,14 @@
                     <h3 class="page-title">
                         Add Fees
                     </h3>
-                    <!-- <ul class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="fees-collections.html">Accounts</a>
+                    <ul class="breadcrumb">
+                        <li class="">
+                            <a href="{% url 'branch:master' %}">Accounts</a>
                         </li>
                         <li class="breadcrumb-item active">
                             Add Fees
                         </li>
-                    </ul> -->
+                    </ul>
                 </div>
             </div>
         </div>
@@ -25,7 +27,8 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-body">
-                        <form>
+                        <form method="post" action="">
+                            {% csrf_token %}
                             <div class="row">
                                 <div class="col-12">
                                     <h5 class="form-title">
@@ -37,7 +40,7 @@
                                         <label>
                                             Student ID
                                         </label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" id="studentid" name="studentid" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
@@ -45,77 +48,64 @@
                                         <label>
                                             Student Name
                                         </label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" readonly  id="first_name" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
                                         <label>
-                                            Fees Type
+                                            Course 
                                         </label>
-                                        <select class="form-control select">
-                                            <option>
-                                                Select Type
+                                        <input type="text" readonly  id="course" class="form-control">
+                                    </div>
+                                </div>
+                                <!-- <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>
+                                            Course
+                                        </label>
+                                        <select name="course" id="course" class="form-control select" required>
+                                            <option selected disabled>
+                                                Select Subject
                                             </option>
-                                            <option>
-                                                Class Test
-                                            </option>
-                                            <option>
-                                                Exam Fees
-                                            </option>
-                                            <option>
-                                                Hostel Fees
-                                            </option>
-                                            <option>
-                                                Transport Fees
-                                            </option>
-                                            <option>
-                                                Mess Fees
-                                            </option>
+                                            {% for i in course %}
+                                            <option value="{{i.id}}">{{i.course.couse_name}} {{i.starting_date}} to
+                                                {{i.ending_date}} </option>
+                                            {% endfor %}
+
                                         </select>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
                                         <label>
-                                            Branch
+                                            Course Fee
                                         </label>
-                                        <select class="form-control select">
-                                            <option>
-                                                Mukkam
-                                            </option>
-                                            <option>
-                                                Ramanattukara
-                                            </option>
-                                            <option>
-                                                Kondottty
-                                            </option>
-                                            <option>
-                                                Manjery
-                                            </option>
-                                            <option>
-                                                Thenhippalam
-                                            </option>
-                                            <option>
-                                                Areekode
-                                            </option>
-                                        </select>
+                                        <input type="text" readonly name="totalprice" id="totalprice" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
                                         <label>
-                                            Branch
+                                            Balance Amount
                                         </label>
-                                        <input type="date" class="form-control">
+                                        <input type="text" readonly name="totalprice" id="balanceamount" class="form-control">
                                     </div>
                                 </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>
+                                            Fees Amount
+                                        </label>
+                                        <input type="text" name="paidamount" class="form-control">
+                                    </div>
+                                </div>  
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
                                         <label>
                                             Paid Date
                                         </label>
-                                        <input type="date" class="form-control">
+                                        <input type="date" name="paiddate" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -132,5 +122,28 @@
     </div>
 </div>
 
+<script>
+    $('#studentid').keyup(function () {
+        $.ajax({
+            url: "getdatapayment",
+            type: 'POST',
+            data: {
+                'studentid': $('#studentid').val(),
+                'course': $('#course').val(),
+        
+
+            },
+            success: function (responce) {
+                $('#first_name').val(responce.details.name)
+                $('#totalprice').val(responce.details.price)
+                $('#course').val(responce.details.coursename)
+                $('#balanceamount').val(responce.details.balanceamount)
+            }
+
+        })
+
+    })
+
+</script>
 
 {% endblock %}
