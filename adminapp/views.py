@@ -541,7 +541,7 @@ def result(request):
     answer= ExamStatus.objects.all()
     
     context={
-        "is_students_list":True,
+        "is_result":True,
         "answer":answer
 
 
