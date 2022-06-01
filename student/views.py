@@ -1,6 +1,9 @@
 from datetime import datetime, timedelta, time
+from operator import le
 
-from adminapp.models import Exam, Instructions, Student,Batch
+from django.http import JsonResponse
+
+from adminapp.models import Exam, Instructions, Questions, Student,Batch
 from django.shortcuts import redirect, render
 
 from django.contrib.auth.decorators import login_required
@@ -8,7 +11,7 @@ from django.contrib.auth.decorators import login_required
 from branch.models import Payment
 from django.db.models import Sum
 
-from student.models import ExamStatus
+from student.models import Answer, ExamStatus
 
 
 # Create your views here.
@@ -108,9 +111,12 @@ def exam(request,id):
     Attending_obj = ExamStatus(exam_id=exam,student=student,status=status,Attended_time=attnd_time)
     Attending_obj.save()
     print(Attending_obj)
+    que = Questions.objects.filter(exam_id=exam)
+    print(que)
     context = {
         "is_exam": True,
         "exam":exam,
+        "que":que
         }
     return render(request,'student/exam.html',context)
 
@@ -163,3 +169,47 @@ def calendar(request):
         "is_calendar": True,
         }
     return render(request,'student/calendar.html',context)
+
+
+def questions(request):
+    if request.method == "POST":
+        print(request.user.Student)
+        examId = request.POST['exam_id']
+        examIds = []
+        qts = Questions.objects.filter(exam_id = examId)
+        for i in qts:
+            if Answer.objects.filter(question=i.id,student=request.user.Student).exists():
+                pass
+            else:
+                examIds.append(i.id)
+        print(examIds)
+        question = Questions.objects.filter(id__in= examIds).first()
+        print(len(examIds))
+        if len(examIds) > 0:
+            choices = question.option.split(',')
+            data={
+                "question":question.question,
+                "id":question.id,
+                "option":choices,
+                "type":question.type,
+                "lenght":len(examIds),
+                "mark":question.mark,
+            }
+        else:
+             data={
+                "lenght":0,
+            }
+        return JsonResponse(data)
+        
+        
+
+def datasave(request):
+    if request.method =='POST':
+        print(request.POST)
+        questionid=request.POST['questionId']
+        answer=request.POST['answer']
+        studentid=request.user.Student
+        queid= Questions.objects.get(id=questionid)
+        ans=Answer(student=studentid,question=queid,savedaswer=answer,status="Wait For Valuation" )
+        ans.save()
+        return JsonResponse({'msg':'added'})

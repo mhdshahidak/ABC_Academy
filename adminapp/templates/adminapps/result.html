@@ -1,0 +1,66 @@
+{% extends 'adminapps/index.html' %}
+{% load static %}
+{% block content %}
+    <div class="page-wrapper">
+        <div class="content container-fluid">
+            <div class="page-header">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h3 class="page-title">Result</h3>
+                    
+                    </div>
+                  
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card card-table">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover table-center mb-0 datatable">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <!-- <th>Class</th> -->
+                                            <th>Course</th>
+                                            <th>batch</th>
+                                            <!-- <th>Section</th> -->
+                                            <th>Exam</th>
+                                            <th class="text-end">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>654erf</td>
+                                            <td>
+                                                <h2 class="table-avatar">
+                                                    <a href="">Shahil</a>
+                                                </h2>
+                                            </td>
+                                            <!-- <td></td> -->
+                                            <td>English</td>
+                                            <td>Batch 34</td>
+                                            <!-- <td>A</td> -->
+                                            <td>Examid</td>
+                                            <td class="text-end">
+                                                <div class="actions">
+                                                    <a href="/adminapp/checkresult" class="btn btn-sm bg-success-light me-2">
+                                                        <i class="fas fa-pen"></i>
+                                                    </a>
+                                                    <a href="#" class="btn btn-sm bg-danger-light">
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
