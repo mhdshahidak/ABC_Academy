@@ -1,79 +1,82 @@
 {% extends 'adminapps/index.html' %}
 {% load static %}
 {% block content %}
-
-
-<div class="page-wrapper">
-    <div class="content container-fluid">
-        <div class="row justify-content-lg-center">
-            <div class="col-lg-12">
-
-                <div class="row">
-                    <div class="col-lg-8">
-                        <div class="card">
-                            <!-- <div class="card-header">
-                                <h6 class="card-title d-flex justify-content-between">
-                                    <span style="color: navy;"><i class="fa fa-edit"></i> {{exam.exam_name}}</span>
-                                    <span style="color: navy;"> Total Mark : {{exam.total_mark}}</span>
+    <div class="page-wrapper">
+        <div class="content container-fluid">
+            <div class="row justify-content-lg-center">
+                <div class="col-lg-12">
+                    <div class="profile-header">
+                        <div class="row align-items-center">
+                            <div class="col ms-md-n2 profile-user-info">
+                                <h4 class="user-name mb-0">
+                                    
+                                </h4>
+                                <h6 class="">
+                                    {{std.first_name}} {{std.last_name}}
                                 </h6>
-                            </div> -->
-                         
-                             <div class="card-body">
-                                <h6 class="card-title d-flex justify-content-between">
-                                    <span> Question Number : </span>
-                                    <span> Mark :</span>
-                                </h6><br>
-
-                                <form action="">
-                                    <ul class="list-group list-group-numbered">
-                                        <li class="py-0">
-                                       sdsfzjlzsd flar
-                                        </li>
-                                    </ul>
-                                   
-                                    <ul class="list-group list px-4 ">
-                                        <li>
-                                            <input class="form-check-input me-1" type="checkbox" value=""
-                                                aria-label="...">
-                                            First checkbox
-                                        </li>
-                                        <li>
-                                            <input class="form-check-input me-1" type="checkbox" value=""
-                                                aria-label="...">
-                                            Second checkbox
-                                        </li>
-                                        <li>
-                                            <input class="form-check-input me-1" type="checkbox" value=""
-                                                aria-label="...">
-                                            Third checkbox
-                                        </li>
-                                        <li>
-                                            <input class="form-check-input me-1" type="checkbox" value=""
-                                                aria-label="...">
-                                            Fourth checkbox
-                                        </li>
-                                        <li>
-                                            <input class="form-check-input me-1" type="checkbox" value=""
-                                                aria-label="...">
-                                            Fifth checkbox
-                                        </li>
-                                    </ul>
-                                </form>
-                            </div> 
-                          
-                            
+                                <div class="user-Location">
+                                    {{std.student_id}}
+                                </div>
+                            </div>
                         </div>
-                       
                     </div>
-
-                    
-
                 </div>
 
+                <div class="tab-content profile-tab-cont">
+                    <div class="tab-pane fade show active" id="per_details_tab">
+                        <div class="row">
+                            <div class="card">
+                                {% for i in answer %}
+                                <div class="card-body">
+                                    <h6 class="card-title ">
+                                       Question.No:  
+                                    </h6>
+                                    <p>{{i.question.question}}</p>
+                                    <div class="row">
+                                        <p class="">
+                                           Answer : 
+                                           {{i.savedaswer}}
+                                        </p>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                {% for i in answer %}
+                                <div class="profile-header">
+                                    <div class="row align-items-center">
+                                       <div class="col ms-md-n2 profile-user-info">
+                                        <h4 class="user-name mb-0"></h4>
+                                        <h6 class="">
+                                            Question.No:   </h6>
+                                            <p>{{i.question.question}}</p>
+                                       
+                                        <div class="about-text">Answer:  
+                                            {{i.savedaswer}}
+                                        </div>
+                                    </div>
+                                       
+                                        
+                                    </div>
+                                </div>
+                                {% endfor %}
+                              
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
             </div>
         </div>
     </div>
-</div>
-
-
+    
 {% endblock %}

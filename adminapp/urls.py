@@ -57,7 +57,7 @@ urlpatterns = [
     path('login', views.log_in,name="adminlogin"),
     path('logout_view', views.logout_view,name="logout_view"),
     path('result', views.result,name="result"),
-    path('checkresult', views.checkresult,name="checkresult"),
+    path('checkresult/<int:eid>/<int:sid>', views.checkresult,name="checkresult"),
    
 
 ]

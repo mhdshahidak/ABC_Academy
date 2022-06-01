@@ -13,7 +13,7 @@ from django.http import JsonResponse
 from adminapp.models import Batch, Branch, Courses, Exam, Instructions, Questions, Teacher,Student
 from branch.models import Payment
 from django.db.models import Sum
-from student.models import Answer
+from student.models import Answer, ExamStatus
 
 
 
@@ -537,17 +537,28 @@ def getdatapayment(request):
 
 @login_required(login_url='/adminapp/login')
 def result(request):
+    # answer= Answer.objects.filter()
+    answer= ExamStatus.objects.all()
+    
     context={
         "is_students_list":True,
+        "answer":answer
+
 
     }
     return render(request,'adminapps/result.html', context)
 
 
 @login_required(login_url='/adminapp/login')
-def checkresult(request):
+def checkresult(request,eid,sid):
+    print(id)
+    answer = Answer.objects.filter(exam=eid,student=sid)
+    std= Student.objects.get(id=sid)
+    print(answer)
     context={
         "is_students_list":True,
+        "answer":answer,
+        "std":std
 
     }
     return render(request,'adminapps/checkresult.html', context)

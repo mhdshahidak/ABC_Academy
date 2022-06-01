@@ -149,17 +149,8 @@
 <script src="{% static 'teacher/plugins/countup/jquery.missofis-countdown.js' %}"></script>
 
 <script>
-    if($('#timer-countdown').length > 0) {
-		$( '#timer-countdown' ).countdown( {
-			from: 180, // 3 minutes (3*60)
-			to: 0, // stop at zero
-			movingUnit: 1000, // 1000 for 1 second increment/decrements
-			timerEnd: undefined,
-			outputPattern: ' $hour : $minute : $second',
-			autostart: true
-		});
-	}
-
+   
+    
     // datatable
     if ($('.datatable').length > 0) {
         $('.datatable').DataTable({

@@ -12,7 +12,9 @@ function questions() {
         data: data,
         type: "POST",
         success: function (response) {
-            console.log(response)
+            var questionNo = response['attended_questions'] + 1
+            $("#totalquestion").html('Total Questions:'+response['total_questions'])
+            $("#attentedquestion").html('Attended Questions:'+response['attended_questions'])
             if (response['lenght'] == 0) {
                 $("#exampleModal").modal('show')
             }
@@ -22,8 +24,8 @@ function questions() {
                 <span> Question Number : </span>\
                 <span> Mark : '+ response['mark'] + '</span>\
             </h6><br>\
-                <ul class="list-group list-group-numbered">\
-                    <li class="py-0">\
+                <ul class="list-group ">\
+                    <li class="py-0">'+questionNo+'.\
                       '+ response['question'] + '\
                     </li>\
                 </ul>\
@@ -33,11 +35,6 @@ function questions() {
                 <div class="row">\
                 <div class="col-lg-12">\
                     <div class="btn-toolbar text-center">\
-                        <div class=" btn-group-md">\
-                            <button type="button" class="btn btn-primary">Mark For Review</button>\
-                            <button type="button" class="btn btn-primary"> Skip</button>\
-                            <button type="button" class="btn btn-primary">Reset</button>\
-                        </div>\
                         <div class="d-grid gap-2 d-md-flex text-end" >\
                             <button type="submit" class="btn btn-success">Save &\
                                 Next</button>\
@@ -91,6 +88,8 @@ $("#questionsForm").validate({
     },
     submitHandler: function (e) {
         var data = $("#questionsForm").serializeArray();
+        var examid = $("#examId").val()
+        data[data.length] = { name: "exam_id", value: examid };
         savedata(data)
     }
 })
@@ -111,3 +110,21 @@ function savedata(data) {
     return false;
 }
 
+var time = $('#duration').val()
+
+
+if($('#timer-countdown').length > 0) {
+    $( '#timer-countdown' ).countdown( {
+        from: time*60, // 3 minutes (3*60)
+        to: 0, // stop at zero
+        movingUnit: 1000, // 1000 for 1 second increment/decrements
+        timerEnd: undefined,
+        outputPattern: ' $hour : $minute : $second',
+        autostart: true,
+        timerEnd: function() {
+            $("#exampleModal").modal('show')
+        } 
+    });
+
+    
+}
