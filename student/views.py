@@ -12,7 +12,8 @@ from branch.models import Payment
 from django.db.models import Sum
 
 from student.models import Answer, ExamStatus
-
+from datetime import datetime
+import datetime
 
 # Create your views here.
 @login_required(login_url='/adminapp/login')
@@ -90,8 +91,17 @@ def exam_list(request):
 
 
 def exam_instructions(request,id):
-    
+    now = datetime.datetime.today().strftime('%Y-%m-%d')
     exam = Exam.objects.get(id=id)
+    exam_date = exam.exam_date
+    exam_time = exam.start_time
+    end_time = exam.end_time  
+    print('#'*10,exam_time)
+    if str(exam_date) == str(now):
+
+        print('***'*10)
+    else:
+        print('&'*10)
     instructions = Instructions.objects.get(exam_id=exam)
     context = {
         "is_examinst": True,

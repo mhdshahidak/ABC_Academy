@@ -122,7 +122,10 @@ if($('#timer-countdown').length > 0) {
         outputPattern: ' $hour : $minute : $second',
         autostart: true,
         timerEnd: function() {
-            $("#exampleModal").modal('show')
+            $("#timeout").modal('show')
+            setTimeout(function () {
+                window.location.href="/student/examlist"
+            }, 2500);
         } 
     });
 

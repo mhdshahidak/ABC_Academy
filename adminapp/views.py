@@ -18,6 +18,7 @@ from student.models import Answer, ExamStatus
 
 
 
+
 # Create your views here.
 # @auth_admin
 @login_required(login_url='/login/')
@@ -369,6 +370,7 @@ def exam_add_first(request,id):
 
 @login_required(login_url='/adminapp/login')
 def exam_add_one(request,id):
+    
     if request.method == 'POST':
         # print("aa")
         # print(request.POST)
