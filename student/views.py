@@ -102,6 +102,8 @@ def exam_instructions(request,id):
 
 
 def exam(request,id):
+    if ExamStatus.objects.filter(student=request.user.Student,exam_id__id=id).exists():
+        return redirect('/student/examlist')    
     exam = Exam.objects.get(id=id)
     student = request.user.Student
     status = "Attended"
@@ -176,23 +178,25 @@ def questions(request):
         print(request.user.Student)
         examId = request.POST['exam_id']
         examIds = []
+        countQt =  Questions.objects.filter(exam_id = examId).count()
         qts = Questions.objects.filter(exam_id = examId)
+        attendedQt = Answer.objects.filter(exam= examId,student=request.user.Student).count()
         for i in qts:
             if Answer.objects.filter(question=i.id,student=request.user.Student).exists():
                 pass
             else:
                 examIds.append(i.id)
-        print(examIds)
         question = Questions.objects.filter(id__in= examIds).first()
-        print(len(examIds))
         if len(examIds) > 0:
             choices = question.option.split(',')
             data={
                 "question":question.question,
                 "id":question.id,
                 "option":choices,
+                'total_questions':countQt,
                 "type":question.type,
                 "lenght":len(examIds),
+                "attended_questions":attendedQt,
                 "mark":question.mark,
             }
         else:
@@ -208,8 +212,14 @@ def datasave(request):
         print(request.POST)
         questionid=request.POST['questionId']
         answer=request.POST['answer']
+        exam=request.POST['exam_id']
+        print(exam)
         studentid=request.user.Student
         queid= Questions.objects.get(id=questionid)
-        ans=Answer(student=studentid,question=queid,savedaswer=answer,status="Wait For Valuation" )
+        examid= Exam.objects.get(id=exam)
+        
+        print('#'*10,examid)
+        ans=Answer(exam=examid,student=studentid,question=queid,savedaswer=answer,status="Wait For Valuation" )
         ans.save()
+
         return JsonResponse({'msg':'added'})
