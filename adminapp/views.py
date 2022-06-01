@@ -13,6 +13,7 @@ from django.http import JsonResponse
 from adminapp.models import Batch, Branch, Courses, Exam, Instructions, Questions, Teacher,Student
 from branch.models import Payment
 from django.db.models import Sum
+from student.models import Answer
 
 
 
@@ -396,6 +397,7 @@ def exam_add_two(request,id):
     return render(request,'adminapps/exam_add2.html', context)
 
 
+@login_required(login_url='/login/')
 def savedata(request):
     print(request.POST)
     question = request.POST['question']
@@ -421,6 +423,7 @@ def savedata(request):
 
 
 
+@login_required(login_url='/login/')
 @csrf_exempt
 def editQuestiontdata(request,id):
 
@@ -437,6 +440,7 @@ def editQuestiontdata(request,id):
     return JsonResponse({'question': data}) 
 
 
+@login_required(login_url='/login/')
 @csrf_exempt
 def updateQuestion(request):
     id=request.POST['Questionid']
@@ -531,3 +535,19 @@ def getdatapayment(request):
 
 
 
+@login_required(login_url='/adminapp/login')
+def result(request):
+    context={
+        "is_students_list":True,
+
+    }
+    return render(request,'adminapps/result.html', context)
+
+
+@login_required(login_url='/adminapp/login')
+def checkresult(request):
+    context={
+        "is_students_list":True,
+
+    }
+    return render(request,'adminapps/checkresult.html', context)
