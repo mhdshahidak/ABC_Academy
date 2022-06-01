@@ -541,7 +541,7 @@ def result(request):
     answer= ExamStatus.objects.all()
     
     context={
-        "is_students_list":True,
+        "is_result":True,
         "answer":answer
 
 
@@ -555,7 +555,7 @@ def checkresult(request,eid,sid):
     answer = Answer.objects.filter(exam=eid,student=sid)
     print(answer)
     context={
-        "is_students_list":True,
+        "is_result":True,
         "answer":answer
 
     }
