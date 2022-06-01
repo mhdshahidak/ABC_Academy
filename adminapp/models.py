@@ -1,5 +1,3 @@
-import email
-from enum import unique
 from django.db import models
 # from adminapp.views import courses
 from phone_field import PhoneField
