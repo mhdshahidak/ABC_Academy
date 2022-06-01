@@ -5,6 +5,49 @@
         <div class="content container-fluid">
             <div class="row justify-content-lg-center">
                 <div class="col-lg-12">
+                    <div class="profile-header">
+                        <div class="row align-items-center">
+                            <div class="col ms-md-n2 profile-user-info">
+                                <h4 class="user-name mb-0">
+                                    
+                                </h4>
+                                <h6 class="">
+                                    {{std.first_name}} {{std.last_name}}
+                                </h6>
+                                <div class="user-Location">
+                                    {{std.student_id}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content profile-tab-cont">
+                    <div class="tab-pane fade show active" id="per_details_tab">
+                        <div class="row">
+                            <div class="card">
+                                {% for i in answer %}
+                                <div class="card-body">
+                                    <h6 class="card-title ">
+                                       Question.No:  
+                                    </h6>
+                                    <p>{{i.question.question}}</p>
+                                    <div class="row">
+                                        <p class="">
+                                           Answer : 
+                                           {{i.savedaswer}}
+                                        </p>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- <div class="col-lg-12">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="card">
@@ -13,9 +56,13 @@
                                     <div class="row align-items-center">
                                        <div class="col ms-md-n2 profile-user-info">
                                         <h4 class="user-name mb-0"></h4>
-                                        <h6 class="text-muted">{{i.question.question}}</h6>
+                                        <h6 class="">
+                                            Question.No:   </h6>
+                                            <p>{{i.question.question}}</p>
                                        
-                                        <div class="about-text">{{i.savedaswer}}</div>
+                                        <div class="about-text">Answer:  
+                                            {{i.savedaswer}}
+                                        </div>
                                     </div>
                                        
                                         
@@ -27,7 +74,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

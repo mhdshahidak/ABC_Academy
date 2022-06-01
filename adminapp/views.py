@@ -555,10 +555,12 @@ def result(request):
 def checkresult(request,eid,sid):
     print(id)
     answer = Answer.objects.filter(exam=eid,student=sid)
+    std= Student.objects.get(id=sid)
     print(answer)
     context={
-        "is_result":True,
-        "answer":answer
+        "is_students_list":True,
+        "answer":answer,
+        "std":std
 
     }
     return render(request,'adminapps/checkresult.html', context)
