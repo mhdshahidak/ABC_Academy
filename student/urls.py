@@ -14,4 +14,6 @@ urlpatterns = [
     path('result',views.result,name='result'),
     path('fee',views.fee,name='fee'),
     path('calendar',views.calendar,name='calendar'),                                                            
+    path('questions/',views.questions,name='questions'),                                                            
+    path('datasave/',views.datasave,name='datasave'),                                                            
 ]

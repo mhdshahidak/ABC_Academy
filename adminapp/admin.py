@@ -1,7 +1,7 @@
 
 from django.contrib import admin
 
-from student.models import ExamStatus
+from student.models import ExamStatus,Answer
 from .models import *
 # Register your models here.
 
@@ -53,3 +53,7 @@ admin.site.register(Questions,QuestionsAdmin)
 class ExamStatusAdmin(admin.ModelAdmin):
     list_display = ('student','status')
 admin.site.register(ExamStatus,ExamStatusAdmin)
+
+class AnswerAdmin(admin.ModelAdmin):
+    list_display = ('student','question')
+admin.site.register(Answer,AnswerAdmin)
