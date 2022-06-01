@@ -22,7 +22,6 @@ from student.models import Answer
 # @auth_admin
 @login_required(login_url='/login/')
 def admindashbord(request):
-    print(request.user)
     students=Student.objects.all().count()
     teacher= Teacher.objects.all().count()
     branch= Branch.objects.all().count()
