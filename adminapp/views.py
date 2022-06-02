@@ -174,11 +174,14 @@ def students(request):
 
 
 @login_required(login_url='/adminapp/login')
-def students_by_courses(request):
+def students_by_courses(request,id):
+    branch = Branch.objects.get(id=id)
+    print(branch)
     course = Batch.objects.all()
     context={
         "is_students_by_courses":True,
-        "course":course
+        "course":course,
+        "branch":branch,
     }
     return render(request,'adminapps/students_by_branch.html', context)
 
@@ -186,7 +189,7 @@ def students_by_courses(request):
 
 @login_required(login_url='/adminapp/login')
 def studentbatchlish(request,id):
-    print(id)
+    
     return render(request,'adminapps/studentbatchlish.html')
 
 @login_required(login_url='/adminapp/login')
@@ -217,10 +220,10 @@ def add_student(request):
         fatherphone = request.POST['fatherphone']
         address = request.POST['address']
         branch = request.POST['branch']
-        print(courseid)
+        
         course_id=Batch.objects.get(id=courseid)
         branch_id = Branch.objects.get(id=branch)
-        print(branch_id)
+     
         std = Student(course=course_id,branch=branch_id,student_id=studentid, first_name=name, last_name=lastname, gender=gender, dob=dob, phone=phone,email=email ,password=password,fatherphone=fatherphone,fathername=fathername,address=address)
         std.save()
         User = get_user_model()
@@ -278,7 +281,7 @@ def add_courses(request):
 # batch 
 
 def edit_course(request,id):
-    print(id)
+    
     course =Courses.objects.get(id=id)
     if request.method == "POST":
         c_name = request.POST['name']
