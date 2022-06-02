@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta, time
-from operator import le
+# from operator import le
 
 from django.http import JsonResponse
 
@@ -8,8 +8,8 @@ from django.shortcuts import redirect, render
 
 from django.contrib.auth.decorators import login_required
 
-from branch.models import Payment
-from django.db.models import Sum
+# from branch.models import Payment
+# from django.db.models import Sum
 
 from student.models import Answer, ExamStatus
 from datetime import datetime
@@ -102,7 +102,8 @@ def exam_instructions(request,id):
             pass
         else:
             return redirect('/student/examlist')  
-    else:   
+    else:
+           
         return redirect('/student/examlist')
     instructions = Instructions.objects.get(exam_id=exam)
     context = {
@@ -119,9 +120,9 @@ def exam(request,id):
     exam = Exam.objects.get(id=id)
     student = request.user.Student
     status = "Attended"
-    today = datetime.now().date()
-    attnd_time = datetime.combine(today, time())
-    Attending_obj = ExamStatus(exam_id=exam,student=student,status=status,Attended_time=attnd_time)
+    # today = datetime.now().date()
+    # attnd_time = datetime.combine(today, time())
+    Attending_obj = ExamStatus(exam_id=exam,student=student,status=status)
     Attending_obj.save()
     que = Questions.objects.filter(exam_id=exam)
     context = {

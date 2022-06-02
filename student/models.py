@@ -10,7 +10,7 @@ class ExamStatus(models.Model):
     exam_id = models.ForeignKey(Exam,on_delete=models.CASCADE)
     student = models.ForeignKey(Student,on_delete=models.CASCADE)
     status = models.CharField(max_length=30)
-    Attended_time = models.TimeField(default=datetime.date.today)
+    Attended_time = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         unique_together = ('exam_id', 'student')
