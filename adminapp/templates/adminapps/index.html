@@ -138,9 +138,7 @@
                                     <li>
                                         <a href="{% url 'admins:editstudentadmin' %}">Student Edit</a>
                                     </li>
-                                    <li>
-                                        <a href="{% url 'admins:result' %}">Result</a>
-                                    </li>
+                                    
                                 </ul>
                             </li>
                             <!-- <li class="submenu">
@@ -157,22 +155,26 @@
                                     </li>
                                 </ul>
                             </li> -->
-                            <li>
+                            <li {% if is_courses %} class="active"{% endif %}>
                                 <a href="{% url 'admins:courses' %}"><i class="fa fa-book"></i> <span>Courses</span></a>
                             </li>
-                            <li>
+                            <li {% if is_batch %} class="active"{% endif %}>
                                 <a href="{% url 'admins:batch' %}"><i class="fa fa-users"></i> <span>Batches</span></a>
+                            </li>
+                            <li {% if is_exam %} class="active"{% endif %}>
+                                <a href="{% url 'admins:exams' %}"><i class="fas fa-clipboard-list"></i> <span>Exam </span></a>
+                            </li>
+                            <li {% if is_result %} class="active"{% endif %}>
+                                <a href="{% url 'admins:result' %}"><i class="fas fa-clipboard"></i><span>Result</span></a>
                             </li>
                             <li class="menu-title">
                                 <span>Management</span>         
                             </li>
                             
-                            <li>
+                            <li {% if is_fees_adding %} class="active"{% endif %}>
                                 <a href="{% url 'admins:feesadding' %}"><i class="fas fa-comment-dollar"></i> <span>Fees</span></a>
                             </li>
-                            <li>
-                                <a href="{% url 'admins:exams' %}"><i class="fas fa-clipboard-list"></i> <span>Exam </span></a>
-                            </li>
+                            
                            
                         </ul>
                     </div>

@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta, time
-from operator import le
+# from operator import le
 
 from django.http import JsonResponse
 
@@ -8,11 +8,13 @@ from django.shortcuts import redirect, render
 
 from django.contrib.auth.decorators import login_required
 
-from branch.models import Payment
-from django.db.models import Sum
+# from branch.models import Payment
+# from django.db.models import Sum
 
 from student.models import Answer, ExamStatus
-
+from datetime import datetime
+from pytz import timezone 
+import time
 
 # Create your views here.
 @login_required(login_url='/adminapp/login')
@@ -78,8 +80,6 @@ def edit_profile(request,id):
 def exam_list(request):
     student = request.user.Student
     exam = Exam.objects.filter(batch=student.course)
-    # print(exam)
-    # print(student)
     context = {
         "is_examlist": True,
         "student":student,
@@ -90,8 +90,21 @@ def exam_list(request):
 
 
 def exam_instructions(request,id):
-    
+    now = datetime.now(timezone("Asia/Kolkata")).strftime('%Y-%m-%d')
     exam = Exam.objects.get(id=id)
+    exam_date = exam.exam_date
+    exam_time = exam.start_time
+    end_time = exam.end_time  
+   
+    if str(exam_date) == str(now):
+        currentTime =  datetime.now().time()
+        if currentTime > exam_time and currentTime < end_time:   
+            pass
+        else:
+            return redirect('/student/examlist')  
+    else:
+           
+        return redirect('/student/examlist')
     instructions = Instructions.objects.get(exam_id=exam)
     context = {
         "is_examinst": True,
@@ -107,14 +120,11 @@ def exam(request,id):
     exam = Exam.objects.get(id=id)
     student = request.user.Student
     status = "Attended"
-    today = datetime.now().date()
-    attnd_time = datetime.combine(today, time())
-    # print(today,today_start)
-    Attending_obj = ExamStatus(exam_id=exam,student=student,status=status,Attended_time=attnd_time)
+    # today = datetime.now().date()
+    # attnd_time = datetime.combine(today, time())
+    Attending_obj = ExamStatus(exam_id=exam,student=student,status=status)
     Attending_obj.save()
-    print(Attending_obj)
     que = Questions.objects.filter(exam_id=exam)
-    print(que)
     context = {
         "is_exam": True,
         "exam":exam,
@@ -213,12 +223,9 @@ def datasave(request):
         questionid=request.POST['questionId']
         answer=request.POST['answer']
         exam=request.POST['exam_id']
-        print(exam)
         studentid=request.user.Student
         queid= Questions.objects.get(id=questionid)
         examid= Exam.objects.get(id=exam)
-        
-        print('#'*10,examid)
         ans=Answer(exam=examid,student=studentid,question=queid,savedaswer=answer,status="Wait For Valuation" )
         ans.save()
 
