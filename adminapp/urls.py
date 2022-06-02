@@ -25,6 +25,7 @@ urlpatterns = [
     # courses
     path('courses',views.courses,name="courses"),
     path('addcourses',views.add_courses,name="addcourses"),
+    path('editcourse/<int:id>',views.edit_course,name="editcourse"),
 
     # batch
     path('batch', views.batch, name="batch"),

@@ -277,6 +277,25 @@ def add_courses(request):
 
 # batch 
 
+def edit_course(request,id):
+    print(id)
+    course =Courses.objects.get(id=id)
+    if request.method == "POST":
+        c_name = request.POST['name']
+        duration = request.POST['duration']
+        fees = request.POST['fees']
+        maxstudent = request.POST['maxstudent']
+        # new_course = Courses(course_id=course_id,couse_name=c_name,Duration=duration,total_fees=fees,max_students=maxstudent)
+        # new_course.save()
+        # return redirect('admins:courses')
+        Courses.objects.filter(id=id).update(couse_name=c_name,Duration=duration,total_fees=fees,max_students=maxstudent)  # direct updation
+        msg = "updated successfully"
+        return redirect('admins:courses')                  
+    context = {
+        "is_edit_course":True,
+        "course":course
+    }
+    return render(request,'adminapps/edit_course.html', context)
 
 @login_required(login_url='/adminapp/login')
 def batch(request):
