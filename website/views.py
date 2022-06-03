@@ -14,6 +14,9 @@ def course_ttc(request):
 def course_fashion(request):
     return render(request,'website/fashion.html')
 
+def course_beautician(request):
+    return render(request,'website/beautician.html')
+
 def online_application(request):
     return render(request,'website/apply_online.html')
 
