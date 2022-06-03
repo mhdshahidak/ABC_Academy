@@ -1,25 +1,27 @@
 {% extends 'adminapps/index.html' %}
 {% block content %}
 {% load static %}
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
 <div class="page-wrapper">
     <div class="content container-fluid">
+
+        {% if status == 1 %}
+        
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Successfully</strong> paid the amount.
+                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                    aria-label="Close"></button>
+            </div>
+        
+        {% endif %}
+
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col">
                     <h3 class="page-title">
                         Add Fees
                     </h3>
-                    <ul class="breadcrumb">
-                        <li class="">
-                            <a href="{% url 'branch:master' %}">Accounts</a>
-                        </li>
-                        <li class="breadcrumb-item active">
-                            Add Fees
-                        </li>
-                    </ul>
                 </div>
             </div>
         </div>
@@ -121,6 +123,8 @@
         </div>
     </div>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script>
     $('#studentid').keyup(function () {

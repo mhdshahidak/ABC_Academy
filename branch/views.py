@@ -97,8 +97,7 @@ def add_students_branch(request):
         studentFk = request.user.branch
         course_id = Batch.objects.get(id=courseid)
         print(studentFk)
-        std = Student(course=course_id, branch=studentFk, student_id=studentid, first_name=name, last_name=lastname, gender=gender,
-                      dob=dob, phone=phone, email=email, password=password, fatherphone=fatherphone, fathername=fathername, address=address)
+        std = Student(course=course_id, branch=studentFk, student_id=studentid, first_name=name, last_name=lastname, gender=gender,dob=dob, phone=phone, email=email, password=password, fatherphone=fatherphone, fathername=fathername, address=address)
         std.save()
         User = get_user_model()
         User.objects.create_user(email=email, password=password, Student=std)
