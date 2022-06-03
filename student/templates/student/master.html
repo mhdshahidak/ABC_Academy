@@ -84,23 +84,25 @@
             <div class="sidebar-inner slimscroll">
                 <div id="sidebar-menu" class="sidebar-menu">
                     <ul>
-                        <li class="menu-title"><span>Main</span></li>
+                        <!-- <li class="menu-title"><span>Main</span></li> -->
                         <li {% if is_home %} class="active"{% endif %}>
                             <a href="{% url 'student:home' %}"><i class="fa fa-th"></i> <span>Dashboard</span></a>
                         </li>
-                        <li class="submenu" {% if is_profile %} class="active" {% elif is_editprofile %} class="active" {% endif %}>
+                        <!-- <li class="" {% if is_profile %} class="active" {% elif is_editprofile %} class="active" {% endif %}>
                             <a href=""><i class="fa fa-address-card"></i> <span>My Profile</span> 
                             <ul>
                                 <li {% if is_profile %} class="active" {% endif %}><a href="{% url 'student:profile' %}">My Profile</a></li>
                                 
                             </ul>
-                        </li>
+                        </li> -->
+                        <li {% if is_profile %} class="active" {% endif %}><a href="{% url 'student:profile' %}">
+                            <i class="fa fa-address-card"></i> <span>My Profile</span></a></li>
                         <li {% if is_examlist %} class="active" {% elif is_examinst %} class="active" {% elif is_exam %} class="active" {% endif %}>
                             <a href="{% url 'student:examlist' %}"><i class="fa fa-edit"></i> <span>Exam</span></a>
                         </li>
-                        <li {% if is_result %} class="active" {% endif %}>
+                        {% comment %} <li {% if is_result %} class="active" {% endif %}>
                             <a href="{% url 'student:result' %}"><i class="fa fa-clipboard"></i> <span>Result</span></a>
-                        </li>
+                        </li> {% endcomment %}
                         <li {% if is_fee %} class="active" {% endif %}>
                             <a href="{% url 'student:fee' %}"><i class="fas fa-rupee-sign"></i> <span>Fee</span></a>
                         </li>

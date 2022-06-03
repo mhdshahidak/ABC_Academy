@@ -6,10 +6,13 @@ from django.http import JsonResponse
 from adminapp.models import Exam, Instructions, Questions, Student,Batch
 from django.shortcuts import redirect, render
 
+from django.contrib.auth import get_user_model
+
 from django.contrib.auth.decorators import login_required
+from branch.models import Payment
 
 # from branch.models import Payment
-# from django.db.models import Sum
+from django.db.models import Sum
 
 from student.models import Answer, ExamStatus
 from datetime import datetime
@@ -20,9 +23,12 @@ import time
 @login_required(login_url='/adminapp/login')
 def student_home(request):
     student=request.user.Student
+    exams = Exam.objects.filter(batch=student.course).count()
+   
     context = {
         "is_home": True,
-        "student":student,
+        "stexamcountudent":student,
+        "examcount":exams,
         }
     return render(request,'student/student_home.html',context)
 
@@ -42,31 +48,48 @@ def profile(request):
 @login_required(login_url='/adminapp/login')
 def edit_profile(request,id):
     student=request.user.Student
+    students_id = student.id
+    # print("hh")
     if request.method == "POST":
-        if 'id' in request.POST:
-            id=request.POST['id']
+        if 'fname' in request.POST:
+            # sid=request.POST['sid']
             first_name=request.POST['fname']
             second_name=request.POST['sname']
-            gender=request.POST['gender']
-            dob=request.POST['dob']
-            email=request.POST['email']
+            # gender=request.POST['gender']
+            # dob=request.POST['dob']
+            # email=request.POST['email']
             phone=request.POST['phone']
-            Student.objects.filter(id=cid).update(student_id=id,first_name=first_name,last_name=second_name,gender=gender,dob=dob,phone=phone,email=email)
+            Student.objects.filter(id=id).update(first_name=first_name,last_name=second_name,phone=phone)
             return redirect('student:profile')
-        # elif 'fname' in request.POST:
-        #     fname=request.POST['fname']
-        #     fatherphone=request.POST['fatherhone']
-        #     address=request.POST['address']
-        #     Student.objects.filter(id=cid).update(fathername=fname,fatherphone=fatherphone,address=address)
-        #     return redirect('student:profile')
-        elif 'cid' in request.POST:
-            cid=request.POST['cid']
-            cname=request.POST['cname']
-            batch=request.POST['batch']
-            duration=request.POST['duration']
-            Student.objects.filter(id=cid).update(course__course__course_id=cid,course__course__couse_name=cname,course__course__Duration=duration,course__starting_date=batch)
+        elif 'address' in request.POST:
+            address=request.POST['address']
+            Student.objects.filter(id=students_id).update(address=address)
             return redirect('student:profile')
-            
+        elif 'currentpassword' in request.POST:
+            print('%'*10)
+            print(request.POST)
+            currentpassword=request.POST['currentpassword']
+            newpassword=request.POST['newpassword']
+            cnewpassword=request.POST['cnewpassword']
+            oldpassword =  Student.objects.get(id=students_id).password
+            print('oldpassword',oldpassword)
+            if newpassword == cnewpassword:
+                print('test')
+                print()
+                if oldpassword == currentpassword:
+                    print('conform')
+                    print(newpassword)
+                    Student.objects.filter(id=students_id).update(password=newpassword)
+                    changePassword = get_user_model().objects.get(id=request.user.id)
+                    print('*'*10,changePassword.email)
+                    changePassword.set_password(newpassword) 
+                    changePassword.save()
+                    return redirect('student:profile')
+                else:
+                    msg = "Incorrect old password"
+            else:
+                msg = "re enter correct password"
+         
     edit_profile=Student.objects.get(id=id)
     context = {
         "is_editprofile": True,
@@ -76,7 +99,7 @@ def edit_profile(request,id):
     return render(request,'student/edit_profile.html',context)
 
 
-
+@login_required(login_url='/adminapp/login')
 def exam_list(request):
     student = request.user.Student
     exam = Exam.objects.filter(batch=student.course)
@@ -89,6 +112,7 @@ def exam_list(request):
 
 
 
+@login_required(login_url='/adminapp/login')
 def exam_instructions(request,id):
     now = datetime.now(timezone("Asia/Kolkata")).strftime('%Y-%m-%d')
     exam = Exam.objects.get(id=id)
@@ -114,6 +138,7 @@ def exam_instructions(request,id):
     return render(request,'student/exam_instructions.html',context)
 
 
+@login_required(login_url='/adminapp/login')
 def exam(request,id):
     if ExamStatus.objects.filter(student=request.user.Student,exam_id__id=id).exists():
         return redirect('/student/examlist')    
@@ -132,6 +157,8 @@ def exam(request,id):
         }
     return render(request,'student/exam.html',context)
 
+
+@login_required(login_url='/adminapp/login')
 def examq(request):
     student=request.user.Student
     context = {
@@ -140,41 +167,39 @@ def examq(request):
         }
     return render(request,'student/examq.html',context)
 
-def result(request):
-    student=request.user.Student
-    context = {
-        "is_result": True,
-        "student":student,
-        }
-    return render(request,'student/result.html',context)
+# def result(request):
+#     student=request.user.Student
+#     context = {
+#         "is_result": True,
+#         "student":student,
+#         }
+#     return render(request,'student/result.html',context)
 
 def fee(request):
     # print(request.user.id)
-    # id=request.user.Student.id
+    id=request.user.Student.id
     # print(id)
-    # paymentdetails = Payment.objects.filter(student=request.user.Student)
-    # viewpro=Student.objects.get(id=id) 
-    # # print(viewpro)
-    # total=viewpro.course.course.total_fees
-    # print(total)
-    # balanceamount=total
-    # if paymentdetails.exists():
-    #     recivedamount = Payment.objects.filter(student=viewpro.id).aggregate(Sum('paidamount'))
-    #     recvamount= recivedamount['paidamount__sum']
-    #     balanceamount  = total - recivedamount['paidamount__sum']
-    #     print(total)
-    #     print(balanceamount)
-    # print(paymentdetails)
+    paymentdetails = Payment.objects.filter(student=request.user.Student)
+    viewpro=Student.objects.get(id=id) 
+    total=viewpro.course.course.total_fees
+    balanceamount=total
+    if paymentdetails.exists():
+        recivedamount = Payment.objects.filter(student=viewpro.id).aggregate(Sum('paidamount'))
+        recvamount= recivedamount['paidamount__sum']
+        balanceamount  = total - recivedamount['paidamount__sum']
+       
 
-    # context = {
-    #     "is_fee": True,
-    #     "paymentdetails":paymentdetails,
-    #     "recvamount":recvamount,
-    #     "balanceamount":balanceamount,
-    #     "total":total
+    context = {
+        "is_fee": True,
+        "paymentdetails":paymentdetails,
+        "recvamount":recvamount,
+        "balanceamount":balanceamount,
+        "total":total
 
-    #     }
-    return render(request,'student/fee.html')
+        }
+    return render(request,'student/fee.html',context)
+
+
 
 def calendar(request):
     context = {
@@ -183,6 +208,7 @@ def calendar(request):
     return render(request,'student/calendar.html',context)
 
 
+@login_required(login_url='/adminapp/login')
 def questions(request):
     if request.method == "POST":
         print(request.user.Student)
@@ -219,7 +245,6 @@ def questions(request):
 
 def datasave(request):
     if request.method =='POST':
-        print(request.POST)
         questionid=request.POST['questionId']
         answer=request.POST['answer']
         exam=request.POST['exam_id']
