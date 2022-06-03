@@ -21,6 +21,7 @@ urlpatterns = [
     path('addstudent', views.add_student, name="addstudent"),
     path('editstudent', views.edit_student_by_admin, name="editstudentadmin"),
     path('studentbatchlish/<int:id>', views.studentbatchlish, name="studentbatchlish"),
+    path('deleteteacher/<int:id>',views.delete_teacher,name="deleteteacher"),
 
     # courses
     path('courses',views.courses,name="courses"),
@@ -30,6 +31,7 @@ urlpatterns = [
     # batch
     path('batch', views.batch, name="batch"),
     path('addbatch', views.add_batch, name="addbatch"),
+    path('editbatch/<int:id>',views.edit_batch,name="editbatch"),
     # exams
 
     path('exams', views.exam, name="exams"),

@@ -23,7 +23,6 @@ from student.models import Answer, ExamStatus
 # @auth_admin
 @login_required(login_url='/login/')
 def admindashbord(request):
-    print(request.user)
     students=Student.objects.all().count()
     teacher= Teacher.objects.all().count()
     branch= Branch.objects.all().count()
@@ -75,14 +74,18 @@ def add_branch(request):
             new_branch.save()
             User = get_user_model()
             User.objects.create_user(email=email, password=password,branch=new_branch)
+            context={
+                "is_addbranch":True,
+                "status":1,
+            }
 
         else:
             return HttpResponse('re enter correct password')
-
-
-    context={
-        "is_addbranch":True
-    }
+    else:
+        context={
+            "is_addbranch":True,
+            "status":0
+        }
     return render(request,'adminapps/addbranch.html', context)
 
 @login_required(login_url='/adminapp/login')
@@ -118,6 +121,8 @@ def teachers_list(request,id):
 
 @login_required(login_url='/adminapp/login')
 def add_teacher(request):
+    branches = Branch.objects.all()
+    course=Batch.objects.all()
     if Teacher.objects.exists():
         branch = Teacher.objects.last().id
         techer_id = 'TEC'+str(1000+branch)
@@ -150,16 +155,29 @@ def add_teacher(request):
             techer.save()
             User = get_user_model()
             User.objects.create_user(email=email, password=Password,teacher=techer)
+            context={
+                "is_addteacher":True,
+                "branch":branches,
+                "course":course,
+                "status":1
+            }
         else:
             return HttpResponse ('Repeat correct password')
-    branches = Branch.objects.all()
-    course=Batch.objects.all()
-    context={
-        "is_addteacher":True,
-        "branch":branches,
-        "course":course,
-    }
+    else:
+        context={
+                "is_addteacher":True,
+                "branch":branches,
+                "course":course,
+                "status":0
+            }
     return render(request,'adminapps/addteacher.html', context)
+
+def delete_teacher(request,id):
+    Teacher.objects.get(id=id).delete()
+    # print(student)
+    # student.delete()
+    return redirect('admins:teachers_list')
+
 
 
 @login_required(login_url='/adminapp/login')
@@ -228,11 +246,20 @@ def add_student(request):
         std.save()
         User = get_user_model()
         User.objects.create_user(email=email, password=password,Student=std)
-    context={
+        context={
+            "is_add_student":True,
+            "course":course,
+            "branch":branch,
+            "status":1
+        }
+    else:
+        context={
         "is_add_student":True,
         "course":course,
-        "branch":branch
+        "branch":branch,
+        "status":0
     }
+    
     return render(request,'adminapps/addstudent.html', context)
 
 
@@ -272,9 +299,9 @@ def add_courses(request):
         new_course = Courses(course_id=course_id,couse_name=c_name,Duration=duration,total_fees=fees,max_students=maxstudent)
         new_course.save()
         return redirect('admins:courses')
-
     context={
-        "is_add_courses":True
+        "is_add_courses":True,
+    
     }
     return render(request,'adminapps/addcourses.html', context)
 
@@ -303,7 +330,7 @@ def edit_course(request,id):
 @login_required(login_url='/adminapp/login')
 def batch(request):
     courses = Courses.objects.all()
-    batches = Batch.objects.all()
+    batches = Batch.objects.all().order_by('-starting_date')
     context={
         "is_batch":True,
         "course":courses,
@@ -314,6 +341,7 @@ def batch(request):
 
 @login_required(login_url='/adminapp/login')
 def add_batch(request):
+    courses = Courses.objects.all()
     if request.method == 'POST':
         course_id = request.POST['course']
         start_date = request.POST['startdate']
@@ -322,17 +350,46 @@ def add_batch(request):
         course = Courses.objects.get(id=course_id)
         new_batch = Batch(course=course,starting_date=start_date,ending_date=end_date)
         new_batch.save()
-
-    courses = Courses.objects.all()
-    context={
-        "is_batch":True,
-        "course":courses
-    }
+        context={
+            "is_batch":True,
+            "course":courses,
+            "status":1,
+        }
+    else:
+        context={
+            "is_batch":True,
+            "course":courses,
+            "status":0,
+        }
     return render(request,'adminapps/batch.html', context)
 
+
+def edit_batch(request,id):
+    batch=Batch.objects.get(id=id)
+    course=Courses.objects.all()
+    if request.method == "POST":
+        coursename=request.POST['coursename']
+        stardate=request.POST['startdate']
+        enddate=request.POST['endingdate']
+        courses=Courses.objects.get(id=coursename)
+        print(courses)
+        Batch.objects.filter(id=id).update(course=courses,starting_date=stardate,ending_date=enddate)
+
+        context={
+            "is_edit":True,
+            "batch":batch,
+            "status":1
+        }
+    else:
+        context={
+            "is_edit":True,
+            "batch":batch,
+            "courses":course,
+            "status":0
+        }
+    return render(request,'adminapps/edit_batch.html',context)
+
 # profile
-
-
 @login_required(login_url='/adminapp/login')
 def admin_profile(request):
     return render(request,'adminapps/profile_admin.html')
@@ -491,12 +548,15 @@ def fees_adding(request):
         # print(paidamount,paiddate,studentid,totalprice)
         payment= Payment(student=student_id, paidamount=paidamount, paiddate=paiddate)
         payment.save()
-    context={
-        "is_add_fees":True,
-    }
-    context={
-        "is_fees_adding":True
-    }
+        context={
+            "is_fees_adding":True,
+            "status":1
+        }
+    else:
+        context={
+            "is_fees_adding":True,
+            "status":0
+        }
     return render(request,'adminapps/fees_by_admin.html', context)
 
 
