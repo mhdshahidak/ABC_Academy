@@ -96,6 +96,23 @@ def add_students_branch(request):
         print(courseid)
         studentFk = request.user.branch
         course_id = Batch.objects.get(id=courseid)
+        User = get_user_model()
+        if User.objects.filter(email=email).exists():
+            context = {
+            "is_add_students_branch": True,
+            "course": course,
+            "details": details,
+            "msg":"Email id Alredy Exit"
+            }
+            return render(request, 'branch/studentsaddbranch.html',context)
+        elif Student.objects.filter(phone=phone).exists():
+            context = {
+            "is_add_students_branch": True,
+            "course": course,
+            "details": details,
+            "phone":"Phone Number Alredy Exit"
+            }
+            return render(request, 'branch/studentsaddbranch.html',context)    
         print(studentFk)
         std = Student(course=course_id, branch=studentFk, student_id=studentid, first_name=name, last_name=lastname, gender=gender,
                       dob=dob, phone=phone, email=email, password=password, fatherphone=fatherphone, fathername=fathername, address=address)
@@ -188,8 +205,25 @@ def add_teachers(request):
         country = request.POST['country']
         courseid = request.POST['course']
         techerfk = request.user.branch
-
+        User = get_user_model()
         course_id = Batch.objects.get(id=courseid)
+        if User.objects.filter(email=email).exists():
+            context = {
+            "is_add_students_branch": True,
+            "course": course,
+            "details": details,
+            "msg":"Email id Alredy Exit"
+            }
+            return render(request, 'branch/addteacher.html',context)
+        elif Teacher.objects.filter(phone=mobile).exists():
+            context = {
+            "is_add_students_branch": True,
+            "course": course,
+            "details": details,
+            "phone":"Phone Number Alredy Exit"
+            }
+            return render(request, 'branch/addteacher.html',context)
+
 
         techer = Teacher(course=course_id, branch=techerfk, teacher_id=techer_id, Password=Password, name=name, gender=gender, dob=Dob, phone=mobile, email=email,
                          joining_date=JoiningDate, qualification=Qualification, experience=Experience, address=address, pin=zipcode, country=country, state=state, city=city)
@@ -244,7 +278,15 @@ def delete_teacher(request,id):
     Teacher.objects.get(id=id).delete()
     # print(student)
     # student.delete()
-    return redirect('branch:allbranchstudentslist')
+    return redirect('branch:teacherslist')
+
+def deletestudent(request):
+    studentId = request.POST['id']
+    Student.objects.get(id=studentId).delete()
+    
+    # print(student)
+    # student.delete()
+    return JsonResponse({'msg':'success'})
 
 
 
