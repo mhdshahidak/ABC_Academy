@@ -8,7 +8,7 @@
         {% if status == 1 %}
         
             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>Successfully</strong> add the Batch.
+                <strong>Successfully</strong> Update the Batch.
                 <button type="button" class="btn-close" data-bs-dismiss="alert"
                     aria-label="Close"></button>
             </div>
@@ -23,7 +23,7 @@
             <div class="row align-items-center">
                 <div class="col">
                     <h3 class="page-title">
-                        Add Batch
+                        Edit Batch
                     </h3>
                 </div>
             </div>
@@ -46,14 +46,15 @@
                                         <label>
                                             course Name
                                         </label>
-                                        <select class="form-control select" name="course" required>
+                                        <select class="form-control select" name="coursename" value="{{batch.course.couse_name}}">
                                             <option>Select Course</option>
-                                            {% for c in course %}
+                                            {% for c in courses %}
                                             <option value="{{c.id}}">
                                                 {{c.couse_name}}
                                             </option>
                                             {% endfor %}
                                         </select>
+                                        <!-- <input type="text" class="form-control" name="coursename" required value="{{batch.course.couse_name}}"> -->
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
@@ -61,7 +62,7 @@
                                         <label>
                                             Starting Date
                                         </label>
-                                        <input type="date" class="form-control" name="startdate" required>
+                                        <input type="date" class="form-control" name="startdate" required value="{{batch.starting_date|date:"Y-m-d"}}">
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
@@ -69,7 +70,7 @@
                                         <label>
                                             Ending Date
                                         </label>
-                                        <input type="date" class="form-control" name="endingdate" required>
+                                        <input type="date" class="form-control" name="endingdate" required value="{{batch.ending_date|date:"Y-m-d"}}">
                                     </div>
                                 </div>
                                 

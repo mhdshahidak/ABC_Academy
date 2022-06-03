@@ -46,10 +46,11 @@
                         <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
                             <span class="user-img">
                                 <img class="rounded-circle"
-                                     src="{% static 'webapp/img/profiles/avatar-01.jpg' %}"
+                                     src="{% static 'default.jpg' %}"
                                      width="31"
-                                     alt="Ryan Taylor">
+                                     alt="admin">
                             </span>
+                            <span>Admin</span>
                         </a>
                         <div class="dropdown-menu">
                             <div class="user-header">
@@ -59,7 +60,7 @@
                                          class="avatar-img rounded-circle">
                                 </div>
                                 <div class="user-text">
-                                    <h6>Ryan Taylor</h6>
+                                    <h6>Admin</h6>
                                     <p class="text-muted mb-0">
                                         Administrator
                                     </p>
@@ -135,9 +136,9 @@
                                     <li {% if is_add_student %} class="active"{% endif %}>
                                         <a href="{% url 'admins:addstudent' %}">Student Add</a>
                                     </li>
-                                    <li>
+                                    <!-- <li>
                                         <a href="{% url 'admins:editstudentadmin' %}">Student Edit</a>
-                                    </li>
+                                    </li> -->
                                     
                                 </ul>
                             </li>
@@ -155,7 +156,7 @@
                                     </li>
                                 </ul>
                             </li> -->
-                            <li {% if is_courses %} class="active"{% endif %}>
+                            <li {% if is_courses %} class="active"{% endif %} {% if is_add_courses %} class="active"{% endif %}>
                                 <a href="{% url 'admins:courses' %}"><i class="fa fa-book"></i> <span>Courses</span></a>
                             </li>
                             <li {% if is_batch %} class="active"{% endif %}>

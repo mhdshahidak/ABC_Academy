@@ -10,17 +10,8 @@
                     <h3 class="page-title">
                         Teachers
                     </h3>
-                    <ul class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="index.html">Dashboard</a>
-                        </li>
-                        <li class="breadcrumb-item active">
-                            Teachers
-                        </li>
-                    </ul>
                 </div>
                 <div class="col-auto text-end float-end ms-auto">
-                    <a href="#" class="btn btn-outline-primary me-2"><i class="fas fa-download"></i> Download</a>
                     <a href="{% url 'admins:addteacher' %}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
                 </div>
             </div>
@@ -94,11 +85,8 @@
                                             </td>
                                             <td class="text-end">
                                                 <div class="actions">
-                                                    <a href="edit-teacher.html" class="btn btn-sm bg-success-light me-2">
-                                                        <i class="fas fa-pen"></i>
-                                                    </a>
-                                                    <a href="#" class="btn btn-sm bg-danger-light">
-                                                        <i class="fas fa-trash"></i>
+                                                    <a href="{% url 'admins:deleteteacher' t.id %}" class="btn btn-sm bg-danger-light">
+                                                        <i class="fas fa-trash"></i> Delete
                                                     </a>
                                                 </div>
                                             </td>
