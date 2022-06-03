@@ -16,6 +16,12 @@
         
         {% endif %}
 
+            <div id="alertBox" class="alert alert-success alert-dismissible fade show" role="alert">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                    aria-label="Close"></button>
+            </div>
+
+
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col">
@@ -125,7 +131,9 @@
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+<script>
+    $("#alertBox").hide();
+</script>
 <script>
     $('#studentid').keyup(function () {
         $.ajax({
@@ -138,11 +146,24 @@
 
             },
             success: function (responce) {
-                $('#first_name').val(responce.details.name)
-                $('#totalprice').val(responce.details.price)
-                $('#course').val(responce.details.coursename)
-                $('#balanceamount').val(responce.details.balanceamount)
-                $('#paidamount').attr('max',responce.details.balanceamount)
+                if(responce.details.msg == 0){
+                    $("#alertBox").empty();
+                    $("#alertBox").append('Student does not exixts')
+                    $("#alertBox").show();
+                    $('#first_name').val()
+                    $('#totalprice').val()
+                    $('#course').val()
+                    $('#balanceamount').val()
+                }
+                else{
+                    $("#alertBox").hide();
+                    $('#first_name').val(responce.details.name)
+                    $('#totalprice').val(responce.details.price)
+                    $('#course').val(responce.details.coursename)
+                    $('#balanceamount').val(responce.details.balanceamount)
+                    $('#paidamount').attr('max',responce.details.balanceamount)
+                }
+                
             }
 
         })
