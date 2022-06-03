@@ -12,6 +12,7 @@ function questions() {
         data: data,
         type: "POST",
         success: function (response) {
+            $("#questionsDiv").empty();
             var questionNo = response['attended_questions'] + 1
             $("#totalquestion").html('Total Questions:'+response['total_questions'])
             $("#attentedquestion").html('Attended Questions:'+response['attended_questions'])
@@ -19,7 +20,7 @@ function questions() {
                 $("#exampleModal").modal('show')
             }
             else{
-                $("#questionsDiv").empty();
+                // $("#questionsDiv").empty();
                 $("#questionsDiv").append(' <h6 class="card-title d-flex justify-content-between">\
                 <span> Question Number : </span>\
                 <span> Mark : '+ response['mark'] + '</span>\
