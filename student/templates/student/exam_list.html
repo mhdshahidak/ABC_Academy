@@ -32,7 +32,7 @@
                                         <th>Start Time</th>
                                         <th>End Time</th>
                                         <th>Total Hours</th>
-                                        <th>Status</th>
+                                        <!-- <th>Status</th> -->
                                         <th class="text-start">Actions</th>
                                     </tr>
                                 </thead>
@@ -50,7 +50,7 @@
                                             <td>{{i.start_time}}</td>
                                             <td>{{i.end_time}}</td>
                                             <td><b>{{i.duration}} MINUTES</b></td>
-                                            <td><span class="badge badge-pill bg-warning-light">Not Attended</span></td>
+                                            <!-- <td><span class="badge badge-pill bg-warning-light">Not Attended</span></td> -->
                                             <td class="text-start">
                                                 <a href="{% url 'student:examinst' i.id %}"
                                                     class="btn btn-sm btn-white text-primary me-2"><i

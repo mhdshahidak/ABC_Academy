@@ -17,6 +17,7 @@ urlpatterns = [
     path('addteacher',views.add_teachers,name="addteacherbranch"),
     path('editteacher/<str:id>',views.editteacher,name="editteacher"),
     path('deleteteacher/<int:id>',views.delete_teacher,name="deleteteacher"),
+    path('deletestudent/',views.deletestudent,name="deletestudent"),
 
     # path('courses',views.courses,name="courses"),
     # path('addcourses',views.add_courses,name="addcourses"),
