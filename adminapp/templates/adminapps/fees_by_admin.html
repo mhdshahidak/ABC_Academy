@@ -99,7 +99,7 @@
                                         <label>
                                             Fees Amount
                                         </label>
-                                        <input type="text" name="paidamount" class="form-control" required>
+                                        <input type="number" name="paidamount" class="form-control" required  id="paidamount">
                                     </div>
                                 </div>  
                                 <div class="col-12 col-sm-6">
@@ -142,6 +142,7 @@
                 $('#totalprice').val(responce.details.price)
                 $('#course').val(responce.details.coursename)
                 $('#balanceamount').val(responce.details.balanceamount)
+                $('#paidamount').attr('max',responce.details.balanceamount)
             }
 
         })
