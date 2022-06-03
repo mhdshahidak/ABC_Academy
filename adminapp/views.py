@@ -90,7 +90,6 @@ def add_branch(request):
 
 @login_required(login_url='/adminapp/login')
 def branch_course(request,id):
-    print(id)
 
     context={
         "is_branch_course":True
@@ -174,9 +173,8 @@ def add_teacher(request):
 
 def delete_teacher(request,id):
     Teacher.objects.get(id=id).delete()
-    # print(student)
-    # student.delete()
-    return redirect('admins:teachers_list')
+    
+    return redirect('/adminapp/teachers')
 
 
 
@@ -194,7 +192,6 @@ def students(request):
 @login_required(login_url='/adminapp/login')
 def students_by_courses(request,id):
     branch = Branch.objects.get(id=id)
-    print(branch)
     course = Batch.objects.all()
     context={
         "is_students_by_courses":True,
@@ -206,9 +203,13 @@ def students_by_courses(request,id):
 
 
 @login_required(login_url='/adminapp/login')
-def studentbatchlish(request,id):
-    
-    return render(request,'adminapps/studentbatchlish.html')
+def studentbatchlish(request,id,bid):
+    students = Student.objects.filter(course=id,branch=bid)
+    context={
+        "is_studentbatchlish":True,
+        "students":students,
+    }
+    return render(request,'adminapps/students_list.html',context)
 
 @login_required(login_url='/adminapp/login')
 def students_list(request):
@@ -368,12 +369,11 @@ def edit_batch(request,id):
     batch=Batch.objects.get(id=id)
     course=Courses.objects.all()
     if request.method == "POST":
-        coursename=request.POST['coursename']
+        # coursename=request.POST['coursename']
         stardate=request.POST['startdate']
         enddate=request.POST['endingdate']
-        courses=Courses.objects.get(id=coursename)
-        print(courses)
-        Batch.objects.filter(id=id).update(course=courses,starting_date=stardate,ending_date=enddate)
+        # courses=Courses.objects.get(id=coursename)
+        Batch.objects.filter(id=id).update(starting_date=stardate,ending_date=enddate)
 
         context={
             "is_edit":True,
@@ -412,7 +412,6 @@ def exam(request):
 def exam_add_list(request,id):
     batch = Batch.objects.get(id=id)
     exam = Exam.objects.filter(batch=batch)
-    print(batch,exam)
     context={
         "is_exam_add_list":True,
         "batch":batch,
@@ -436,7 +435,6 @@ def exam_add_first(request,id):
 
         new_exam = Exam(batch=batch,exam_name=name,exam_date=date,start_time=start_time,end_time=end_time,duration=duration,total_mark=mark)
         new_exam.save()
-        # print(new_exam.id)
         return redirect('/adminapp/examsaddone/'+str(new_exam.id))
 
     batch = Batch.objects.get(id=id)
@@ -451,8 +449,7 @@ def exam_add_first(request,id):
 def exam_add_one(request,id):
     
     if request.method == 'POST':
-        # print("aa")
-        # print(request.POST)
+    
         instructions = request.POST['instruction']
         exam = Exam.objects.get(id=id)
 
@@ -469,7 +466,6 @@ def exam_add_one(request,id):
 def exam_add_two(request,id):
     exam = Exam.objects.get(id=id)
     Question= Questions.objects.filter(exam_id=id)
-    print(Question)
     context={
         "is_exam_add_two":True,
         "exam":exam,
@@ -480,16 +476,13 @@ def exam_add_two(request,id):
 
 @login_required(login_url='/login/')
 def savedata(request):
-    print(request.POST)
     question = request.POST['question']
     type = request.POST['radio']
     exam_id = request.POST['exam_id']
     options = request.POST['options']
     mark = request.POST['mark']
-    print(question,type,exam_id,options,mark)
 
     exam_pk = Exam.objects.get(id=exam_id)
-    print()
     new_question = Questions(exam_id=exam_pk,question=question,type=type,option=options,mark=mark)
     new_question.save()
     data={
@@ -509,8 +502,6 @@ def savedata(request):
 def editQuestiontdata(request,id):
 
     editquestion=Questions.objects.get(id=id)
-    print(editquestion)
-    
     data={
         "question":editquestion.question,
         "type":editquestion.type,
@@ -545,7 +536,6 @@ def fees_adding(request):
         paiddate = request.POST['paiddate']
         totalprice = request.POST['totalprice']
         student_id= Student.objects.get(student_id=studentid) 
-        # print(paidamount,paiddate,studentid,totalprice)
         payment= Payment(student=student_id, paidamount=paidamount, paiddate=paiddate)
         payment.save()
         context={
@@ -596,19 +586,13 @@ def logout_view(request):
 def getdatapayment(request):
     studentid = request.POST['studentid']
     course = request.POST['course']
-    print(course)
     viewpro=Student.objects.get(student_id=studentid) 
-    print(viewpro.first_name) 
-    print(viewpro.course.course.couse_name) 
     total=viewpro.course.course.total_fees
     balanceamount=total
     # batch = Student.objects.get(course=)
     if Payment.objects.filter(student=viewpro.id).exists():
         recivedamount = Payment.objects.filter(student=viewpro.id).aggregate(Sum('paidamount'))
-        print(recivedamount['paidamount__sum'])
         balanceamount  = total - recivedamount['paidamount__sum']
-        print(total)
-        print(balanceamount)
     data={     
         "name":viewpro.first_name,
         "coursename":viewpro.course.course.couse_name,
@@ -635,10 +619,8 @@ def result(request):
 
 @login_required(login_url='/adminapp/login')
 def checkresult(request,eid,sid):
-    print(id)
     answer = Answer.objects.filter(exam=eid,student=sid)
     std= Student.objects.get(id=sid)
-    print(answer)
     context={
         "is_students_list":True,
         "answer":answer,

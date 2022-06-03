@@ -41,12 +41,12 @@
                                     </h5>
                                 </div>
                                
-                                <div class="col-12 col-sm-6">
+                                {% comment %} <div class="col-12 col-sm-6">
                                     <div class="form-group">
                                         <label>
                                             course Name
                                         </label>
-                                        <select class="form-control select" name="coursename" value="{{batch.course.couse_name}}">
+                                        <select class="form-control select" required name="coursename" value="{{batch.course.couse_name}}">
                                             <option>Select Course</option>
                                             {% for c in courses %}
                                             <option value="{{c.id}}">
@@ -55,6 +55,14 @@
                                             {% endfor %}
                                         </select>
                                         <!-- <input type="text" class="form-control" name="coursename" required value="{{batch.course.couse_name}}"> -->
+                                    </div>
+                                </div> {% endcomment %}
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>
+                                            Course
+                                        </label>
+                                        <input type="text" class="form-control"  required value="{{batch.course.couse_name}}" readonly>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">

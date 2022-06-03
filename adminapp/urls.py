@@ -20,7 +20,7 @@ urlpatterns = [
     path('studentslist', views.students_list, name="studentslist"),
     path('addstudent', views.add_student, name="addstudent"),
     path('editstudent', views.edit_student_by_admin, name="editstudentadmin"),
-    path('studentbatchlish/<int:id>', views.studentbatchlish, name="studentbatchlish"),
+    path('studentbatchlish/<int:id>/<int:bid>', views.studentbatchlish, name="studentbatchlish"),
     path('deleteteacher/<int:id>',views.delete_teacher,name="deleteteacher"),
 
     # courses

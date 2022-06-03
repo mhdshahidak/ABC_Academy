@@ -124,9 +124,9 @@
                                                     <a  onclick="editdata({{i.id}})" data-bs-toggle="modal" data-bs-target="#edit_items" class="btn btn-sm bg-success-light me-2">
                                                         <i class="fas fa-pen"></i>
                                                     </a>
-                                                    <a href="#" class="btn btn-sm bg-danger-light">
+                                                    <!-- <a href="#" class="btn btn-sm bg-danger-light">
                                                         <i class="fas fa-trash"></i>
-                                                    </a>
+                                                    </a> -->
                                                 </div>
                                             </td>
                                         </tr>
@@ -263,9 +263,11 @@
 <script>
     $('#desc').click(function () {
         $('.mcq').hide()
+        $('#editoptions').val("")
     })
     $('#mcq').click(function () {
         $('.mcq').show()
+        
     })
     $('#desc1').click(function () {
         $('.mcq1').hide()
