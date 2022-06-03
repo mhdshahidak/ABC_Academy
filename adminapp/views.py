@@ -37,7 +37,7 @@ def admindashbord(request):
     }
     return render(request,'adminapps/home.html', context)
 
-
+@login_required(login_url='/adminapp/login')
 def branch_list(request):
     branches = Branch.objects.all()
     context={
@@ -171,6 +171,8 @@ def add_teacher(request):
             }
     return render(request,'adminapps/addteacher.html', context)
 
+
+@login_required(login_url='/adminapp/login')
 def delete_teacher(request,id):
     Teacher.objects.get(id=id).delete()
     
@@ -306,10 +308,11 @@ def add_courses(request):
     }
     return render(request,'adminapps/addcourses.html', context)
 
-# batch 
 
+
+# batch 
+@login_required(login_url='/adminapp/login')
 def edit_course(request,id):
-    
     course =Courses.objects.get(id=id)
     if request.method == "POST":
         c_name = request.POST['name']
@@ -340,6 +343,7 @@ def batch(request):
     return render(request,'adminapps/batch_list.html', context)
 
 
+
 @login_required(login_url='/adminapp/login')
 def add_batch(request):
     courses = Courses.objects.all()
@@ -364,7 +368,7 @@ def add_batch(request):
         }
     return render(request,'adminapps/batch.html', context)
 
-
+@login_required(login_url='/adminapp/login')
 def edit_batch(request,id):
     batch=Batch.objects.get(id=id)
     course=Courses.objects.all()
