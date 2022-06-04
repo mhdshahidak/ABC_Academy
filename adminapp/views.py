@@ -570,7 +570,7 @@ def log_in(request):
             elif user.branch != None:
                 return redirect('branch:master')
             elif user.teacher != None:
-                return redirect('teacher:homepage')
+                return redirect('teacher:profile')
             elif user.Student !=None:
                 return redirect('student:home')
         else:

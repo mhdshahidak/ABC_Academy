@@ -273,12 +273,16 @@ def editteacher(request, id):
     }
     return render(request, 'branch/editteacher.html', context)
 
+
+@login_required(login_url='/adminapp/login')
 def delete_teacher(request,id):
     Teacher.objects.get(id=id).delete()
     # print(student)
     # student.delete()
     return redirect('branch:teacherslist')
 
+
+@login_required(login_url='/adminapp/login')
 def deletestudent(request):
     studentId = request.POST['id']
     Student.objects.get(id=studentId).delete()
@@ -301,29 +305,6 @@ def fees(request):
     return render(request, 'branch/fees.html', context)
 
 
-# @login_required(login_url='/adminapp/login')
-# def add_fees(request):
-#     details = request.user.branch
-#     if request.method == 'POST':
-#         studentid = request.POST['studentid']
-#         paidamount = request.POST['paidamount']
-#         paiddate = request.POST['paiddate']
-#         totalprice = request.POST['totalprice']
-#         student_id = Student.objects.get(student_id=studentid)
-#         # print(paidamount,paiddate,studentid,totalprice)
-#         payment = Payment(student=student_id, paidamount=paidamount, paiddate=paiddate)
-#         payment.save()
-#         context = {
-#             "is_add_fees": True,
-#             "details": details,
-#             "status":1
-#         }
-#     else:
-#         context = {
-#             "is_add_fees": True,
-#             "details": details,
-#         }
-#     return render(request, 'branch/add_fees.html', context)
 
 
 @login_required(login_url='/adminapp/login')
@@ -392,34 +373,6 @@ def profile_branch(request):
 def logout_view(request):
     logout(request)
     return redirect('/adminapp/login')
-
-
-# @csrf_exempt
-# def getdata(request):
-#     studentid = request.POST['studentid']
-#     course = request.POST['course']
-#     # print(course)
-#     viewpro = Student.objects.get(student_id=studentid)
-#     # print(viewpro.first_name)
-#     # print(viewpro.course.course.couse_name)
-#     total = viewpro.course.course.total_fees
-#     balanceamount = total
-#     # batch = Student.objects.get(course=)
-#     if Payment.objects.filter(student=viewpro.id).exists():
-#         recivedamount = Payment.objects.filter(
-#             student=viewpro.id).aggregate(Sum('paidamount'))
-#         # print(recivedamount['paidamount__sum'])
-#         balanceamount = total - recivedamount['paidamount__sum']
-#         # print(total)
-#         # print(balanceamount)
-#     data = {
-#         "name": viewpro.first_name,
-#         "coursename": viewpro.course.course.couse_name,
-#         "price": viewpro.course.course.total_fees,
-#         "balanceamount": balanceamount
-#     }
-#     return JsonResponse({'details': data})
-
 
 
 # @login_required(login_url='/adminapp/login')

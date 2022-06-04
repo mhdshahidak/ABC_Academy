@@ -32,9 +32,9 @@
 
                 <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false"><i class="fas fa-chalkboard-teacher"></i> <span>Professional Settings</span></a>
 
-                <a class="nav-link" id="v-pills-psw-tab" data-toggle="pill" href="#v-pills-psw" role="tab" aria-controls="v-pills-messages" aria-selected="false"><i class="fas fa-unlock-alt"></i> <span>Change Password</span></a>
+                <!-- <a class="nav-link" id="v-pills-psw-tab" data-toggle="pill" href="#v-pills-psw" role="tab" aria-controls="v-pills-messages" aria-selected="false"><i class="fas fa-unlock-alt"></i> <span>Change Password</span></a> -->
 
-                <a class="nav-link" id="v-pills-acc-tab" data-toggle="pill" href="#v-pills-acc" role="tab" aria-controls="v-pills-messages" aria-selected="false"><i class="fas fa-ban"></i> <span>Delete Account</span></a>
+                <!-- <a class="nav-link" id="v-pills-acc-tab" data-toggle="pill" href="#v-pills-acc" role="tab" aria-controls="v-pills-messages" aria-selected="false"><i class="fas fa-ban"></i> <span>Delete Account</span></a> -->
               </div>
             </div>
             <div class="col-9">
@@ -69,35 +69,35 @@
                                         <label for="name" class="col-sm-3 col-form-label input-label">Name</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="name" placeholder="Your Name"
-                                                value="{{edit_teacher.name}}" name="name">
+                                                value="{{edit_teacher.name}}" name="name" required>
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <label for="Student ID" class="col-sm-3 col-form-label input-label">Staff ID</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="Student ID" placeholder="Student ID"
-                                                value="{{edit_teacher.teacher_id}}" name="id">
+                                                value="{{edit_teacher.teacher_id}}" name="id" required readonly>
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <label for="gender" class="col-sm-3 col-form-label input-label">Gender</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="gender" placeholder="Gender"
-                                                value="{{edit_teacher.gender}}" name="gender">
+                                                value="{{edit_teacher.gender}}" name="gender" required readonly>
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <label for="dob" class="col-sm-3 col-form-label input-label">DOB</label>
                                         <div class="col-sm-9">
                                             <input type="date" class="form-control" id="dob" placeholder="dob"
-                                                value="{{edit_teacher.dob|date:"Y-m-d"}}" name="dob">
+                                                value="{{edit_teacher.dob|date:"Y-m-d"}}" name="dob" required readonly>
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <label for="email" class="col-sm-3 col-form-label input-label">Email</label>
                                         <div class="col-sm-9">
                                             <input type="email" class="form-control" id="email" placeholder="Email"
-                                                value="{{edit_teacher.email}}" name="email">
+                                                value="{{edit_teacher.email}}" name="email" required readonly>
                                         </div>
                                     </div>
                                     <div class="row form-group">
@@ -105,7 +105,7 @@
                                                 class="text-muted">(Optional)</span></label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="phone" placeholder="+x(xxx)xxx-xx-xx"
-                                                value="{{edit_teacher.phone}}" name="phone">
+                                                value="{{edit_teacher.phone}}" name="phone" required >
                                         </div>
                                     </div>
                                     <div class="text-end">
@@ -130,35 +130,35 @@
                                     <div class="row form-group">
                                         <label for="address" class="col-sm-3 col-form-label input-label">Address</label>
                                         <div class="col-sm-9">
-                                            <textarea name="address" id="address" class="form-control" cols="30" rows="10">{{edit_teacher.address}}</textarea>
+                                            <textarea name="address" id="address" class="form-control" cols="30" rows="10" required>{{edit_teacher.address}}</textarea>
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <label for="city" class="col-sm-3 col-form-label input-label">City</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="city" placeholder="Your City Name"
-                                                value="{{edit_teacher.city}}" name="city">
+                                                value="{{edit_teacher.city}}" name="city" required>
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <label for="district" class="col-sm-3 col-form-label input-label">State</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="district" placeholder="Your District Name"
-                                                value="{{edit_teacher.state}}" name="state">
+                                                value="{{edit_teacher.state}}" name="state" required>
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <label for="district" class="col-sm-3 col-form-label input-label">Country</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="district" placeholder="Your District Name"
-                                                value="{{edit_teacher.country}}" name="country">
+                                                value="{{edit_teacher.country}}" name="country" required>
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <label for="pin" class="col-sm-3 col-form-label input-label">Zip Code</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="pin" placeholder="Your zipcode"
-                                                value="{{edit_teacher.pin}}" name="zipcode">
+                                                value="{{edit_teacher.pin}}" name="zipcode" required>
                                         </div>
                                     </div>
                                     <div class="text-end">
@@ -270,9 +270,7 @@
                         </div>
                     </div>
                 </div>
-
-
-                <div class="tab-pane fade" id="v-pills-acc" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                <!-- <div class="tab-pane fade" id="v-pills-acc" role="tabpanel" aria-labelledby="v-pills-settings-tab">
                     <div class="col-xl-9 col-md-8">
                         <div class="card">
                             <div class="card-header">
@@ -299,7 +297,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>

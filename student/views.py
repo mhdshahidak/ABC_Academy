@@ -29,6 +29,7 @@ def student_home(request):
         "is_home": True,
         "stexamcountudent":student,
         "examcount":exams,
+        "student":student
         }
     return render(request,'student/student_home.html',context)
 
@@ -49,7 +50,6 @@ def profile(request):
 def edit_profile(request,id):
     student=request.user.Student
     students_id = student.id
-    # print("hh")
     if request.method == "POST":
         if 'fname' in request.POST:
             # sid=request.POST['sid']
@@ -66,22 +66,15 @@ def edit_profile(request,id):
             Student.objects.filter(id=students_id).update(address=address)
             return redirect('student:profile')
         elif 'currentpassword' in request.POST:
-            print('%'*10)
-            print(request.POST)
             currentpassword=request.POST['currentpassword']
             newpassword=request.POST['newpassword']
             cnewpassword=request.POST['cnewpassword']
             oldpassword =  Student.objects.get(id=students_id).password
-            print('oldpassword',oldpassword)
             if newpassword == cnewpassword:
-                print('test')
-                print()
+                
                 if oldpassword == currentpassword:
-                    print('conform')
-                    print(newpassword)
                     Student.objects.filter(id=students_id).update(password=newpassword)
                     changePassword = get_user_model().objects.get(id=request.user.id)
-                    print('*'*10,changePassword.email)
                     changePassword.set_password(newpassword) 
                     changePassword.save()
                     return redirect('student:profile')
@@ -176,9 +169,8 @@ def examq(request):
 #     return render(request,'student/result.html',context)
 
 def fee(request):
-    # print(request.user.id)
     id=request.user.Student.id
-    # print(id)
+    student = request.user.Student
     paymentdetails = Payment.objects.filter(student=request.user.Student)
     viewpro=Student.objects.get(id=id) 
     total=viewpro.course.course.total_fees
@@ -194,7 +186,8 @@ def fee(request):
         "paymentdetails":paymentdetails,
         "recvamount":recvamount,
         "balanceamount":balanceamount,
-        "total":total
+        "total":total,
+        "student":student,
 
         }
     return render(request,'student/fee.html',context)
@@ -211,7 +204,6 @@ def calendar(request):
 @login_required(login_url='/adminapp/login')
 def questions(request):
     if request.method == "POST":
-        print(request.user.Student)
         examId = request.POST['exam_id']
         examIds = []
         countQt =  Questions.objects.filter(exam_id = examId).count()

@@ -80,21 +80,21 @@
     function deleteTeacher(id) {
         swal({
             title: "Are you sure?",
-            text: "Once deleted, you will not be able to recover this imaginary file!",
+            text: "Once deleted, you will not be able to recover this Teacher file!",
             icon: "warning",
             buttons: true,
             dangerMode: true,
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    swal("Poof! Your imaginary file has been deleted!", {
+                    swal("Poof! Teacher has been deleted!", {
                         icon: "success",
                     });
                     setTimeout(function () {
                         window.location.href = "/branch/deleteteacher/" + id
                     }, 1000);
                 } else {
-                    swal("Your imaginary file is safe!");
+                    swal("Your Teacher is safe!");
                 }
             });
     }

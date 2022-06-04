@@ -129,13 +129,12 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
     function deleteStudent(id) {
-        alert()
         var data = {
             'id':id,
             csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()        }
         swal({
             title: "Are you sure?",
-            text: "Once deleted, you will not be able to recover this imaginary file!",
+            text: "Once deleted, you will not be able to recover this Student",
             icon: "warning",
             buttons: true,
             dangerMode: true,
@@ -152,7 +151,7 @@
                             alert('cannot be deleted')
                             },
                             200: function(xhr) {
-                                swal("Poof! Your imaginary file has been deleted!", {
+                                swal("Poof! Student has been deleted!", {
                         icon: "success",
                     });
                     setTimeout(function () {
@@ -163,7 +162,7 @@
 
                     })
                 } else {
-                    swal("Your imaginary file is safe!");
+                    swal("Your Student is safe!");
                 }
             });
     }
