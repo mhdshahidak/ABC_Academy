@@ -1,5 +1,5 @@
 from multiprocessing import context
-from django.http import HttpResponse
+from django.http import Http404, HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import get_user_model
@@ -590,20 +590,30 @@ def logout_view(request):
 def getdatapayment(request):
     studentid = request.POST['studentid']
     course = request.POST['course']
-    viewpro=Student.objects.get(student_id=studentid) 
-    total=viewpro.course.course.total_fees
-    balanceamount=total
-    # batch = Student.objects.get(course=)
-    if Payment.objects.filter(student=viewpro.id).exists():
-        recivedamount = Payment.objects.filter(student=viewpro.id).aggregate(Sum('paidamount'))
-        balanceamount  = total - recivedamount['paidamount__sum']
-    data={     
-        "name":viewpro.first_name,
-        "coursename":viewpro.course.course.couse_name,
-        "price":viewpro.course.course.total_fees,
-        "balanceamount":balanceamount
-    }
-    return JsonResponse({'details': data})   
+    if Student.objects.filter(student_id = studentid).exists():
+        print('fdfsdfdsfdsnjfnsdnfk')
+        viewpro=Student.objects.get(student_id=studentid) 
+        total=viewpro.course.course.total_fees
+        balanceamount=total
+        # batch = Student.objects.get(course=)
+        if Payment.objects.filter(student=viewpro.id).exists():
+            print('exists')
+            recivedamount = Payment.objects.filter(student=viewpro.id).aggregate(Sum('paidamount'))
+            balanceamount  = total - recivedamount['paidamount__sum']
+        
+            data={     
+                "msg":'success',
+                "name":viewpro.first_name,
+                "coursename":viewpro.course.course.couse_name,
+                "price":viewpro.course.course.total_fees,
+                "balanceamount":balanceamount
+            }
+            return JsonResponse({'details':data})
+    else:
+        data = {
+            'msg':'0'
+        }
+        return JsonResponse({'details':data})
 
 
 
