@@ -3,8 +3,6 @@
 {% load static %}
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
 
 <div class="page-wrapper">
     <div class="content container-fluid">
@@ -17,6 +15,11 @@
         </div>
         
         {% endif %}
+
+        <div id="alertBox" class="alert alert-danger alert-dismissible fade show" role="alert">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                aria-label="Close"></button>
+        </div>
 
         <div class="page-header">
             <div class="row align-items-center">
@@ -112,7 +115,7 @@
                                         <label>
                                             Fees Amount
                                         </label>
-                                        <input type="text" required name="paidamount" class="form-control">
+                                        <input type="number"  name="paidamount" class="form-control" required  id="paidamount">
                                     </div>
                                 </div>  
                                 <div class="col-12 col-sm-6">
@@ -137,7 +140,7 @@
     </div>
 </div>
 
-<script>
+<!-- <script>
     $('#studentid').keyup(function () {
         $.ajax({
             url: "getdata",
@@ -159,6 +162,48 @@
 
     })
 
+</script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $("#alertBox").hide();
 </script>
+<script>
+    $('#studentid').keyup(function () {
+        $.ajax({
+            url: "getdata",
+            type: 'POST',
+            data: {
+                'studentid': $('#studentid').val(),
+                'course': $('#course').val(),
+        
+
+            },
+            success: function (responce) {
+                if(responce.details.msg == 0){
+                    $("#alertBox").empty();
+                    $("#alertBox").append('Student does not exists')
+                    $("#alertBox").show();
+                    $('#first_name').val()
+                    $('#totalprice').val()
+                    $('#course').val()
+                    $('#balanceamount').val()
+                }
+                else{
+                    $("#alertBox").hide();
+                    $('#first_name').val(responce.details.name)
+                    $('#totalprice').val(responce.details.price)
+                    $('#course').val(responce.details.coursename)
+                    $('#balanceamount').val(responce.details.balanceamount)
+                    $('#paidamount').attr('max',responce.details.balanceamount)
+                }
+                
+            }
+
+        })
+
+    })
+
+</script>
+
 
 {% endblock %}

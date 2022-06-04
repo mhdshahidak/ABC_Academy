@@ -43,7 +43,7 @@ urlpatterns = [
 
 
 
-    path('getdata', views.getdata,name="getdata"),
+    path('getdata', views.getdatapayment,name="getdata"),
 
 
 
