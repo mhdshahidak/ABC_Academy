@@ -3,6 +3,21 @@
 {% block content %}
 
 
+<style>
+    .row{
+        height: 300px;
+    }
+    .img_list {
+        min-height: 300px;
+    }
+    
+    .course_list_desc {
+        height:300px;
+    }
+    .details_list_col a.button_outline {
+        margin-top: 100px;
+    }
+</style>
 
 
 <div class="sub_header bg_1">
@@ -197,7 +212,7 @@
                         <div class="col-lg-2 col-md-2 col-sm-2">
                             <div class="details_list_col">
                                 <div>
-                                    <a href="" class="button_outline">Details</a>
+                                    <a href="{% url 'web:beauticiancourse' %}" class="button_outline">Details</a>
                                 </div>
                             </div>
                         </div>
