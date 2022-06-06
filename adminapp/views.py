@@ -591,13 +591,11 @@ def getdatapayment(request):
     studentid = request.POST['studentid']
     course = request.POST['course']
     if Student.objects.filter(student_id = studentid).exists():
-        print('fdfsdfdsfdsnjfnsdnfk')
         viewpro=Student.objects.get(student_id=studentid) 
         total=viewpro.course.course.total_fees
         balanceamount=total
         # batch = Student.objects.get(course=)
         if Payment.objects.filter(student=viewpro.id).exists():
-            print('exists')
             recivedamount = Payment.objects.filter(student=viewpro.id).aggregate(Sum('paidamount'))
             balanceamount  = total - recivedamount['paidamount__sum']
         

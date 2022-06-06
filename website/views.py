@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+from adminapp.models import Branch
+
 # Create your views here.
 
 def homepage(request):
@@ -18,7 +20,11 @@ def course_beautician(request):
     return render(request,'website/beautician.html')
 
 def online_application(request):
-    return render(request,'website/apply_online.html')
+    branches = Branch.objects.all()
+    context = {
+        "branches":branches,
+    }
+    return render(request,'website/apply_online.html',context)
 
 def about_us(request):
     return render(request,'website/about_us.html')
