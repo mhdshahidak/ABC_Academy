@@ -61,6 +61,11 @@ urlpatterns = [
     path('logout_view', views.logout_view,name="logout_view"),
     path('result', views.result,name="result"),
     path('checkresult/<int:eid>/<int:sid>', views.checkresult,name="checkresult"),
+
+    # registration list
+
+    path('checkregistration', views.check_registration,name="checkregistration"),
+    path('deletereg/<int:id>',views.delete_registration,name="deletereg"),
    
 
 ]

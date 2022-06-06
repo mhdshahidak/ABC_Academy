@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
 from adminapp.models import Branch
+from website.models import OnlineApplying
 
 # Create your views here.
 
@@ -21,8 +22,29 @@ def course_beautician(request):
 
 def online_application(request):
     branches = Branch.objects.all()
+    if request.method == "POST":
+        first_name = request.POST['name_apply']
+        last_name = request.POST['lastname_apply']
+        email = request.POST['email_apply']
+        phone = request.POST['phone_apply']
+        dob = request.POST['birth_apply']
+        gender = request.POST['gender_apply']
+        address = request.POST['address_apply']
+        town = request.POST['town_apply']
+        country = request.POST['country_apply']
+        pin = request.POST['postal_code_apply']
+        branch_apply = request.POST['branch_apply']
+        course = request.POST['fav_course']
+
+        branch = Branch.objects.get(id=branch_apply)
+        new_apply = OnlineApplying(first_name=first_name,last_name=last_name,email=email,phone=phone,gender=gender,dob=dob,course=course,branch=branch,address=address,city=town,country=country,pin=pin)
+        new_apply.save()
+        context = {
+            "status":1
+        }
     context = {
         "branches":branches,
+        "status":0
     }
     return render(request,'website/apply_online.html',context)
 

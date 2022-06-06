@@ -175,6 +175,9 @@
                             <li {% if is_fees_adding %} class="active"{% endif %}>
                                 <a href="{% url 'admins:feesadding' %}"><i class="fas fa-comment-dollar"></i> <span>Fees</span></a>
                             </li>
+                            <li {% if is_check_registration %} class="active"{% endif %}>
+                                <a href="{% url 'admins:checkregistration' %}"><i class="fas fa-list"></i> <span>Registrations</span></a>
+                            </li>
                             
                            
                         </ul>

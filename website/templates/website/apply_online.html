@@ -2,6 +2,9 @@
 {% load static %}
 {% block content %}
 
+
+
+
 <link href="{% static 'websites/css/skins/square/blue.css' %}" rel="stylesheet">
 
 
@@ -31,6 +34,7 @@
             <div class="col-md-12">
                 <div class="box_style_1">
                     <form action="" id="apply_online" method="POST">
+                        {% csrf_token %}
                         <div class="indent_title_in">
                             <i class="pe-7s-user"></i>
                             <h3>Personal details</h3>
@@ -41,14 +45,14 @@
                                     <div class="form-group">
                                         <label>First name</label>
                                         <input type="text" class="form-control styled required" id="name_apply"
-                                            name="name_apply" placeholder="First name">
+                                            name="name_apply" placeholder="First name" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Last name</label>
                                         <input type="text" class="form-control styled required" id="lastname_apply"
-                                            name="lastname_apply" placeholder="Last name">
+                                            name="lastname_apply" placeholder="Last name" required>
                                     </div>
                                 </div>
                             </div><!-- End row -->
@@ -72,7 +76,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Date of birth</label>
-                                        <input type="text" class="form-control styled required" id="birth_apply"
+                                        <input type="date" class="form-control styled required" id="birth_apply"
                                             name="birth_apply" placeholder="dd/mm/year">
                                     </div>
                                 </div>
@@ -391,8 +395,8 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Postal Code</label>
-                                        <input type="text" class="form-control styled required"
-                                            id="postal_code_apply" name="postal_code_apply" placeholder="eg:-">
+                                        <input type="number" class="form-control styled required"
+                                            id="postal_code_apply" name="postal_code_apply" placeholder="558558">
                                     </div>
                                 </div>
                             </div>
@@ -409,7 +413,7 @@
                                 <div class="col-md-6">
                                     <label>Branch</label>
                                     <div class="styled-select">
-                                        <select class="form-control required" name="country_apply"
+                                        <select class="form-control required" name="branch_apply"
                                             id="country_apply">
                                             {% for b in branches %}
                                             <option value="{{b.id}}" >{{b.branch_name |upper}}</option>
@@ -422,10 +426,11 @@
                                 <div class="col-md-4">
                                     <!-- <h4>Diploma courses</h4> -->
                                     <ul>
-                                        <li>
+                                        
+                                        <!-- <li>
                                             <label>
                                                 <input type="checkbox" name="apply_course[]"
-                                                    id="mathematics_apply" value="Mathematics diploma" required
+                                                    id="mathematics_apply" value="Mathematics diploma" 
                                                     minlength="1">Montessory TTC
                                             </label>
                                         </li>
@@ -441,7 +446,13 @@
                                                     id="litterature_apply"
                                                     value="Litterature diploma">Other Short Term Courses
                                             </label>
-                                        </li>
+                                        </li> -->
+                                        <input type="radio" id="html" name="fav_course" value="Montessory TTC" checked="True">
+                                            <label for="html">Montessory TTC</label><br>
+                                            <input type="radio" id="css" name="fav_course" value="Fashion Designing">
+                                            <label for="css">Fashion Designing</label><br>
+                                            <input type="radio" id="javascript" name="fav_course" value="Other Short Term Courses">
+                                            <label for="javascript">Other Short Term Courses</label>
                                     </ul>
                                 </div>
                             </div>
@@ -450,7 +461,7 @@
                         <hr class="styled_2">
 
                         <div class="wrapper_indent">
-                            <p><button type="submit" class="button">Submit</button></p>
+                            <p><button type="submit" class="button" onclick="registered()">Submit</button></p>
                         </div>
                     </form>
                 </div>
@@ -475,6 +486,12 @@ $('input').iCheck({
  <script src="{% static 'websites/js/jquery.validate.js' %}"></script>
  <script>
   $("#apply_online").validate();
+</script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    function registered(){
+        swal("Good job!", "Successfully Registerd!", "success");
+    }
 </script>
 
 {% endblock  %}

@@ -14,6 +14,7 @@ from adminapp.models import Batch, Branch, Courses, Exam, Instructions, Question
 from branch.models import Payment
 from django.db.models import Sum
 from student.models import Answer, ExamStatus
+from website.models import OnlineApplying
 
 
 
@@ -640,3 +641,21 @@ def checkresult(request,eid,sid):
 
     }
     return render(request,'adminapps/checkresult.html', context)
+
+
+
+@login_required(login_url='/adminapp/login')
+def check_registration(request):
+    registrations = OnlineApplying.objects.all()
+    context = {
+        "is_check_registration":True,
+        "registrations":registrations,
+    }
+    return render(request,'adminapps/registration_list.html',context)
+
+
+@login_required(login_url='/adminapp/login')
+def delete_registration(request,id):
+    OnlineApplying.objects.get(id=id).delete()
+    
+    return redirect('/adminapp/checkregistration')
