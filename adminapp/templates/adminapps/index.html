@@ -168,6 +168,9 @@
                             <li {% if is_result %} class="active"{% endif %}>
                                 <a href="{% url 'admins:result' %}"><i class="fas fa-clipboard"></i><span>Result</span></a>
                             </li>
+                            <li {% if is_reschedule %} class="active"{% endif %}>
+                                <a href="{% url 'admins:reschedule' %}"><i class="fas fa-undo"></i><span>Reschedule</span></a>
+                            </li>
                             <li class="menu-title">
                                 <span>Management</span>         
                             </li>

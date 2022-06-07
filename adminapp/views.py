@@ -529,6 +529,36 @@ def updateQuestion(request):
     return JsonResponse({'message': 'sucesses'})       
 
 
+# rechedule
+
+@login_required(login_url='/adminapp/login')
+def reschedule(request):
+    exams = Exam.objects.all()
+    context={
+            "is_reschedule":True,
+            "exams":exams,
+        }
+    return render(request,'adminapps/reschedule.html', context)
+
+
+
+@login_required(login_url='/adminapp/login')
+def reschedule_list(request,id):
+    exam_status = ExamStatus.objects.filter(exam_id=id,status="Attended")
+    print(exam_status)
+    context={
+            "is_reschedule_list":True,
+            "exam_status":exam_status,
+        }
+    return render(request,'adminapps/reschedule_list.html', context)
+
+
+@login_required(login_url='/adminapp/login')
+def delete_schedule_status(request,id):
+    
+    ExamStatus.objects.get(id=id).delete()
+    
+    return redirect('/adminapp/reschedule')
 
 
 # fees adding 

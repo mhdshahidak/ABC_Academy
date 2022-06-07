@@ -168,6 +168,7 @@ def examq(request):
 #         }
 #     return render(request,'student/result.html',context)
 
+@login_required(login_url='/adminapp/login')
 def fee(request):
     id=request.user.Student.id
     student = request.user.Student

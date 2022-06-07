@@ -43,6 +43,12 @@ urlpatterns = [
     path('updateQuestion/', views.updateQuestion, name="updateQuestion"),
     path('editQuestiontdata/<int:id>',views.editQuestiontdata,name="editQuestiontdata"),
 
+    # Exam rechedule
+
+    path('reschedule', views.reschedule, name="reschedule"),
+    path('reschedulelist/<int:id>', views.reschedule_list, name="reschedulelist"),
+    path('reschedulelistdelete/<int:id>', views.delete_schedule_status, name="reschedulelistdelete"),
+
 
    # profile
 
