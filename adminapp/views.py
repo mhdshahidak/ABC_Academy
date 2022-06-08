@@ -616,7 +616,8 @@ def log_in(request):
             elif user.Student !=None:
                 return redirect('student:home')
         else:
-            return redirect('admins:adminlogin')
+            msg = "* Incorrect email or password *"
+            return render(request,'adminapps/login.html',{'msg':msg,})
     return render(request,'adminapps/login.html')
 
 
