@@ -6,13 +6,12 @@
     <div class="content container-fluid">
 
         {% if status == 1 %}
-        
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>Successfully</strong> add the Teacher.
-                <button type="button" class="btn-close" data-bs-dismiss="alert"
-                    aria-label="Close"></button>
-            </div>
-        
+
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Successfully</strong> add the Teacher.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
         {% endif %}
 
         <div class="page-header">
@@ -21,7 +20,7 @@
                     <h3 class="page-title">
                         Add Teachers
                     </h3>
-                   
+
                 </div>
             </div>
         </div>
@@ -43,7 +42,7 @@
                                             Branch
                                         </label>
                                         <select class="form-control select" name="branch" required>
-                                           
+
                                             {% for b in branch %}
                                             <option value="{{b.id}}">
                                                 {{b.branch_name}}
@@ -58,11 +57,12 @@
                                             Course
                                         </label>
                                         <select name="course" class="form-control select" required>
-                                            
+
                                             {% for i in course %}
-                                            <option value="{{i.id}}">{{i.course.couse_name}}  {{i.starting_date}} to  {{i.ending_date}} </option>
+                                            <option value="{{i.id}}">{{i.course.couse_name}} {{i.starting_date}} to
+                                                {{i.ending_date}} </option>
                                             {% endfor %}
-                                          
+
                                         </select>
                                     </div>
                                 </div>

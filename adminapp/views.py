@@ -207,10 +207,14 @@ def students_by_courses(request,id):
 
 @login_required(login_url='/adminapp/login')
 def studentbatchlish(request,id,bid):
+    course = Batch.objects.get(id=id)
+    branch = Branch.objects.get(id=bid)
     students = Student.objects.filter(course=id,branch=bid)
     context={
         "is_studentbatchlish":True,
         "students":students,
+        "course":course,
+        "branch":branch,
     }
     return render(request,'adminapps/students_list.html',context)
 
@@ -270,6 +274,13 @@ def add_student(request):
 @login_required(login_url='/adminapp/login')
 def edit_student_by_admin(request):
     return render(request,'adminapps/students_edit_admin.html')
+
+
+@login_required(login_url='/adminapp/login')
+def delete_student(request,id):
+    Student.objects.get(id=id).delete()
+    
+    return redirect('/adminapp/students')
 
 
 
