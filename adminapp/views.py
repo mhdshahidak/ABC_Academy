@@ -276,11 +276,11 @@ def edit_student_by_admin(request):
     return render(request,'adminapps/students_edit_admin.html')
 
 
-@login_required(login_url='/adminapp/login')
-def delete_student(request,id):
-    Student.objects.get(id=id).delete()
+# @login_required(login_url='/adminapp/login')
+# def delete_student(request,id):
+#     Student.objects.get(id=id).delete()
     
-    return redirect('/adminapp/students')
+#     return redirect('/adminapp/students')
 
 
 
