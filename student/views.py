@@ -107,6 +107,7 @@ def exam_list(request):
 
 @login_required(login_url='/adminapp/login')
 def exam_instructions(request,id):
+    context = {}
     now = datetime.now(timezone("Asia/Kolkata")).strftime('%Y-%m-%d')
     exam = Exam.objects.get(id=id)
     exam_date = exam.exam_date
@@ -122,11 +123,18 @@ def exam_instructions(request,id):
     else:
            
         return redirect('/student/examlist')
-    instructions = Instructions.objects.get(exam_id=exam)
-    context = {
-        "is_examinst": True,
-        "instructions":instructions,
-        "exam":exam
+    if Instructions.objects.filter(exam_id=exam).exists():
+        instructions = Instructions.objects.get(exam_id=exam)
+        context = {
+            "is_examinst": True,
+            "instructions":instructions,
+            "exam":exam
+        }
+    else:
+         context = {
+            "is_examinst": True,
+            "instructions":None,
+            "exam":exam
         }
     return render(request,'student/exam_instructions.html',context)
 

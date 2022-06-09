@@ -22,12 +22,13 @@
                             </h6>
                         </div>
                         <div class="card-body">
+                            {% if instructions != None %}
                             <h5 class="card-title text-center pt-2 pb-0">
                                 Please Read the instructions carefully
                             </h5><br>
                             {{instructions.instructions|safe}}
                             
-                            
+                            {% endif %}
                             <h6>
                                 Color Indication
                             </h6>
