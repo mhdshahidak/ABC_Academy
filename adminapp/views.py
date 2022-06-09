@@ -249,11 +249,21 @@ def add_student(request):
         
         course_id=Batch.objects.get(id=courseid)
         branch_id = Branch.objects.get(id=branch)
-     
-        std = Student(course=course_id,branch=branch_id,student_id=studentid, first_name=name, last_name=lastname, gender=gender, dob=dob, phone=phone,email=email ,password=password,fatherphone=fatherphone,fathername=fathername,address=address)
-        std.save()
-        User = get_user_model()
-        User.objects.create_user(email=email, password=password,Student=std)
+        email_exists = Student.objects.filter(email=email).exists()
+        if not email_exists:
+            std = Student(course=course_id,branch=branch_id,student_id=studentid, first_name=name, last_name=lastname, gender=gender, dob=dob, phone=phone,email=email ,password=password,fatherphone=fatherphone,fathername=fathername,address=address)
+            std.save()
+            User = get_user_model()
+            User.objects.create_user(email=email, password=password,Student=std)
+        else :
+            # msg = "email already exists"
+            context={
+                "is_add_student":True,
+                "course":course,
+                "branch":branch,
+                "status":2
+            }
+            return render(request,'adminapps/addstudent.html', context)
         context={
             "is_add_student":True,
             "course":course,
