@@ -6,7 +6,7 @@ from website.models import OnlineApplying
 from .models import *
 # Register your models here.
 
-
+admin.site.register(User)
 class BranchAdmin(admin.ModelAdmin):
     list_display = ('branch_name','email')
     search_fields=('branch_name',)

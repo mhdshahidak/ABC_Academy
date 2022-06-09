@@ -272,8 +272,30 @@ def add_student(request):
 
 
 @login_required(login_url='/adminapp/login')
-def edit_student_by_admin(request):
-    return render(request,'adminapps/students_edit_admin.html')
+def edit_student_by_admin(request,id):
+    print(id)
+    editdetails = Student.objects.get(id=id)
+    if request.method == 'POST':
+        name = request.POST['name']
+        lastname = request.POST['lastname']
+        gender = request.POST['gender']
+        phone = request.POST['phone']
+        email = request.POST['email']
+        # password = request.POST['password']
+        fathername = request.POST['fathername']
+        fatherphone = request.POST['fatherphone']
+        #  email=email, password=password,
+        Student.objects.filter(id=id).update(first_name=name,email=email, last_name=lastname, gender=gender,
+                                             phone=phone, fatherphone=fatherphone, fathername=fathername)
+        # Student.objects.filter(id=students_id).update(password=newpassword)
+        get_user_model().objects.filter(Student = id).update(email=email)
+        return redirect('admins:students')
+
+    context = {
+        "is_edit_student_by_admin": True,
+        "editdetails": editdetails,
+        }
+    return render(request,'adminapps/edit_student_admin.html',context)
 
 
 # @login_required(login_url='/adminapp/login')

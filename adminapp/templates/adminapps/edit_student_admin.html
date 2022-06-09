@@ -1,4 +1,4 @@
-{% extends 'branch/master.html' %}
+{% extends 'adminapps/index.html' %}
 {% block content %}
 {% load static %}
 
@@ -65,7 +65,7 @@
                                         <label>
                                             Gender
                                         </label>
-                                        <input type="text" value="{{editdetails.gender}}" name="gender" required class="form-control select" required>
+                                        <input type="text" value="{{editdetails.gender}}" name="gender" required class="form-control select">
                                         <!-- <select name="gender" required class="form-control select" value="{{editdetails.gender}}">
                                             <option>
                                                 Select Gender
@@ -151,11 +151,6 @@
                                         <input type="text" name="fatherphone" value="{{editdetails.fatherphone}}" class="form-control" required>
                                     </div>
                                 </div>
-                              
-                              
-                             
-                               
-  
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-primary">
                                         Submit

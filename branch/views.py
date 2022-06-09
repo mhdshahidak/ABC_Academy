@@ -144,11 +144,16 @@ def editstudent(request, id):
         gender = request.POST['gender']
         phone = request.POST['phone']
         email = request.POST['email']
-        password = request.POST['password']
+        # password = request.POST['password']
         fathername = request.POST['fathername']
         fatherphone = request.POST['fatherphone']
-        Student.objects.filter(id=id).update(first_name=name, last_name=lastname, gender=gender,
-                                             phone=phone, email=email, password=password, fatherphone=fatherphone, fathername=fathername)
+        #  email=email, password=password,
+        Student.objects.filter(id=id).update(first_name=name,email=email, last_name=lastname, gender=gender,
+                                             phone=phone, fatherphone=fatherphone, fathername=fathername)
+        # Student.objects.filter(id=students_id).update(password=newpassword)
+        get_user_model().objects.filter(Student = id).update(email=email)
+        # changePassword.set_password(password) 
+        # changePassword.save()
         return redirect('/branch/allstudentslist')
     context = {
         "is_add_students_branch": True,
