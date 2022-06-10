@@ -588,7 +588,6 @@ def reschedule(request):
 @login_required(login_url='/adminapp/login')
 def reschedule_list(request,id):
     exam_status = ExamStatus.objects.filter(exam_id=id,status="Attended")
-    print(exam_status)
     context={
             "is_reschedule_list":True,
             "exam_status":exam_status,
@@ -612,7 +611,6 @@ def fees_adding(request):
         studentid = request.POST['studentid']
         paidamount = request.POST['paidamount']
         paiddate = request.POST['paiddate']
-        totalprice = request.POST['totalprice']
         student_id= Student.objects.get(student_id=studentid) 
         payment= Payment(student=student_id, paidamount=paidamount, paiddate=paiddate)
         payment.save()
@@ -691,9 +689,9 @@ def getdatapayment(request):
 
 
 @login_required(login_url='/adminapp/login')
-def result(request):
+def result(request,id):
     # answer= Answer.objects.filter()
-    answer= ExamStatus.objects.all()
+    answer= ExamStatus.objects.filter(student__course__id=id)
     
     context={
         "is_result":True,
@@ -703,6 +701,20 @@ def result(request):
     }
     return render(request,'adminapps/result.html', context)
 
+
+@login_required(login_url='/adminapp/login')
+def result_batch(request):
+    # answer= Answer.objects.filter()
+    # answer= ExamStatus.objects.all()
+    batch = Batch.objects.all()
+    
+    context={
+        "is_result_batch":True,
+        "batch":batch,
+
+
+    }
+    return render(request,'adminapps/result_batch.html', context)
 
 @login_required(login_url='/adminapp/login')
 def checkresult(request,eid,sid):

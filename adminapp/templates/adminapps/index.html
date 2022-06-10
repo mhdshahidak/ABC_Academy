@@ -151,8 +151,8 @@
                             <li {% if is_exam %} class="active"{% endif %}>
                                 <a href="{% url 'admins:exams' %}"><i class="fas fa-clipboard-list"></i> <span>Exam </span></a>
                             </li>
-                            <li {% if is_result %} class="active"{% endif %}>
-                                <a href="{% url 'admins:result' %}"><i class="fas fa-clipboard"></i><span>Result</span></a>
+                            <li {% if is_result_batch %} class="active"{% endif %}>
+                                <a href="{% url 'admins:resultbatch' %}"><i class="fas fa-clipboard"></i><span>Result</span></a>
                             </li>
                             <li {% if is_reschedule %} class="active"{% endif %}>
                                 <a href="{% url 'admins:reschedule' %}"><i class="fas fa-undo"></i><span>Reschedule</span></a>

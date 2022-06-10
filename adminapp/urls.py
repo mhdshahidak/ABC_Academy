@@ -49,6 +49,13 @@ urlpatterns = [
     path('updateQuestion/', views.updateQuestion, name="updateQuestion"),
     path('editQuestiontdata/<int:id>',views.editQuestiontdata,name="editQuestiontdata"),
 
+
+    # result
+
+    path('resultbatch', views.result_batch,name="resultbatch"),
+    path('result/<int:id>', views.result,name="result"),
+    path('checkresult/<int:eid>/<int:sid>', views.checkresult,name="checkresult"),
+
     # Exam rechedule
 
     path('reschedule', views.reschedule, name="reschedule"),
@@ -71,8 +78,7 @@ urlpatterns = [
     
     path('login', views.log_in,name="adminlogin"),
     path('logout_view', views.logout_view,name="logout_view"),
-    path('result', views.result,name="result"),
-    path('checkresult/<int:eid>/<int:sid>', views.checkresult,name="checkresult"),
+   
 
     # registration list
 
