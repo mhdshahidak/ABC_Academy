@@ -680,9 +680,18 @@ def getdatapayment(request):
                 "balanceamount":balanceamount
             }
             return JsonResponse({'details':data})
+        else:
+            data = {
+            'msg':2,
+            "name":viewpro.first_name,
+            "coursename":viewpro.course.course.couse_name,
+            "price":viewpro.course.course.total_fees,
+            "balanceamount":0
+        }
+        return JsonResponse({'details':data})
     else:
         data = {
-            'msg':'0'
+            'msg':'0',
         }
         return JsonResponse({'details':data})
 
