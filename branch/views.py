@@ -13,13 +13,10 @@ from django.db.models import Sum
 
 @login_required(login_url='/adminapp/login')
 def master(request):
-    print(request.user.branch.branch_name)
     details = request.user.branch
-    print(details.branch_name)
     student = Student.objects.filter(branch=request.user.branch).count()
     teacher = Teacher.objects.filter(branch=request.user.branch).count()
     branch = Branch.objects.all()
-    print(branch)
     # viewstudent = Student.objects.filter(course=id).all()
 
     context = {
@@ -37,7 +34,6 @@ def master(request):
 def students(request):
     details = request.user.branch
     batch = Batch.objects.all()
-    print(batch)
     context = {
         "is_students": True,
         "batch": batch,
@@ -48,10 +44,8 @@ def students(request):
 
 @login_required(login_url='/adminapp/login')
 def studentslist(request, id):
-    # print(id)
     details = request.user.branch
     viewstudent = Student.objects.filter(course=id).all()
-    # print(viewstudent)
     context = {
         "is_studentslist": True,
         "viewstudent": viewstudent,
@@ -64,7 +58,6 @@ def studentslist(request, id):
 def all_students_list(request):
     details = request.user.branch
     student = Student.objects.filter(branch=request.user.branch)
-    # print(student)
     context = {
         "is_all_students_list": True,
         "student": student,
@@ -78,8 +71,6 @@ def add_students_branch(request):
     details = request.user.branch
     studentFk = request.user.branch.id
     course = Batch.objects.all()
-    # print(course)
-    # print(studentFk)
     if request.method == 'POST':
         name = request.POST['name']
         lastname = request.POST['lastname']
@@ -93,7 +84,6 @@ def add_students_branch(request):
         fathername = request.POST['fathername']
         fatherphone = request.POST['fatherphone']
         address = request.POST['address']
-        print(courseid)
         studentFk = request.user.branch
         course_id = Batch.objects.get(id=courseid)
         User = get_user_model()
@@ -113,7 +103,6 @@ def add_students_branch(request):
             "phone":"Phone Number Alredy Exit"
             }
             return render(request, 'branch/studentsaddbranch.html',context)    
-        print(studentFk)
         std = Student(course=course_id, branch=studentFk, student_id=studentid, first_name=name, last_name=lastname, gender=gender,dob=dob, phone=phone, email=email, password=password, fatherphone=fatherphone, fathername=fathername, address=address)
         std.save()
         User = get_user_model()
@@ -164,8 +153,6 @@ def editstudent(request, id):
 
 def delete_student(request,id):
     Student.objects.get(id=id).delete()
-    # print(student)
-    # student.delete()
     return redirect('branch:allbranchstudentslist')
 
 
@@ -282,8 +269,7 @@ def editteacher(request, id):
 @login_required(login_url='/adminapp/login')
 def delete_teacher(request,id):
     Teacher.objects.get(id=id).delete()
-    # print(student)
-    # student.delete()
+
     return redirect('branch:teacherslist')
 
 
@@ -291,9 +277,7 @@ def delete_teacher(request,id):
 def deletestudent(request):
     studentId = request.POST['id']
     Student.objects.get(id=studentId).delete()
-    
-    # print(student)
-    # student.delete()
+
     return JsonResponse({'msg':'success'})
 
 
@@ -342,7 +326,6 @@ def getdatapayment(request):
         total=viewpro.course.course.total_fees
         balanceamount=total
         if Payment.objects.filter(student=viewpro.id).exists():
-            print('exists')
             recivedamount = Payment.objects.filter(student=viewpro.id).aggregate(Sum('paidamount'))
             balanceamount  = total - recivedamount['paidamount__sum']
         
@@ -354,6 +337,15 @@ def getdatapayment(request):
                 "balanceamount":balanceamount
             }
             return JsonResponse({'details':data})
+        else:
+            data = {
+            'msg':2,
+            "name":viewpro.first_name,
+            "coursename":viewpro.course.course.couse_name,
+            "price":viewpro.course.course.total_fees,
+            "balanceamount":0
+        }
+        return JsonResponse({'details':data})
     else:
         data = {
             'msg':'0'

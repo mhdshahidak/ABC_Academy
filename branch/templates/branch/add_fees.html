@@ -166,6 +166,14 @@
                     $('#course').val()
                     $('#balanceamount').val()
                 }
+                else if(responce.details.msg == 2){
+                    $("#alertBox").hide();
+                    $('#first_name').val(responce.details.name)
+                    $('#totalprice').val(responce.details.price)
+                    $('#course').val(responce.details.coursename)
+                    $('#balanceamount').val(responce.details.balanceamount)
+                    $('#paidamount').attr('max',responce.details.price)
+                }
                 else{
                     $("#alertBox").hide();
                     $('#first_name').val(responce.details.name)
