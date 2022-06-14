@@ -1,0 +1,104 @@
+{% extends 'adminapps/index.html' %}
+{% block content %}
+{% load static %}
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title">
+                        Add Exam
+                    </h3>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-12">
+                                    <h5 class="form-title">
+                                        <span>Exam Information</span>
+                                    </h5>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>
+                                            Exam Name
+                                        </label>
+                                        <input type="text" value="{{exam.exam_name}}" class="form-control" name="examname" required>
+                                    </div>
+                                </div>
+                                
+                                
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>
+                                            Exam Date
+                                        </label>
+                                        <input type="date" class="form-control" value="{{exam.exam_date}}" name="examdate" required>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>
+                                            Start Time
+                                        </label>
+                                        <input type="time" class="form-control" value="{{exam.start_time}}" name="starttime" required>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>
+                                            End Time
+                                        </label>
+                                        <input type="time" class="form-control" value="{{exam.end_time}}" name="endtime" required>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>
+                                            Duration (in minutes)
+                                        </label>
+                                        <input type="number" class="form-control" value="{{exam.duration}}" min="0" name="duration" required>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>
+                                            Total Mark
+                                        </label>
+                                        <input type="number" class="form-control" value="{{exam.total_mark}}" min="0" name="totalmark" required>
+                                    </div>
+                                </div>
+                                <div class="col-12 text-end">
+                                    
+                                    <button type="submit" class="btn btn-info">
+                                        Edit
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block js %}
+
+<script src="{% static 'teacher/js/feather.min.js' %}"></script>
+<script src="{% static 'teacher/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+<script src="{% static 'teacher/plugins/summernote/summernote-bs4.min.js' %}"></script>
+<script src="{% static 'teacher/js/jquery-ui.min.js' %}"></script>
+<script src="{% static 'teacher/js/script.js' %}"></script>
+
+{% endblock %}

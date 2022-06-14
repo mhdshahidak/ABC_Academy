@@ -48,6 +48,7 @@ urlpatterns = [
     path('savedata/', views.savedata, name="savedata"),
     path('updateQuestion/', views.updateQuestion, name="updateQuestion"),
     path('editQuestiontdata/<int:id>',views.editQuestiontdata,name="editQuestiontdata"),
+    path('editexamdata/<int:id>',views.editExam,name="editexamdata"),
 
 
     # result

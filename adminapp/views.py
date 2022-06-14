@@ -1,4 +1,6 @@
 from multiprocessing import context
+from datetime import datetime
+from pytz import timezone
 from django.http import Http404, HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login
@@ -460,10 +462,18 @@ def exam(request):
 def exam_add_list(request,id):
     batch = Batch.objects.get(id=id)
     exam = Exam.objects.filter(batch=batch)
+    # currentTime =  datetime.now().time()
+    now = datetime.now(timezone("Asia/Kolkata")).strftime('%Y-%m-%d')
+    upcoming_exam = Exam.objects.filter(batch=batch,exam_date__gte=str(now))
+    previuos_exam = Exam.objects.filter(batch=batch,exam_date__lt=str(now))
+ 
+
     context={
         "is_exam_add_list":True,
         "batch":batch,
-        "exam":exam
+        "exam":exam,
+        "uexam":upcoming_exam,
+        "pexam":previuos_exam,
     }
     return render(request,'adminapps/exam_add_lists.html', context)
 
@@ -569,7 +579,33 @@ def updateQuestion(request):
     editmark = request.POST['editmark']
  
     Questions.objects.filter(id=id).update(question=editquestion, option=editoptions, mark=editmark)
-    return JsonResponse({'message': 'sucesses'})       
+    return JsonResponse({'message': 'sucesses'})   
+
+
+@login_required(login_url='/login/')
+def editExam(request,id):
+    exam = Exam.objects.get(id=id)
+    if request.method == 'POST':
+    
+        name = request.POST['examname']
+        date = request.POST['examdate']
+        start_time = request.POST['starttime']
+        end_time = request.POST['endtime']
+        duration = request.POST['duration']
+        mark = request.POST['totalmark']
+        
+
+        # new_exam = Exam(batch=batch,exam_name=name,exam_date=date,start_time=start_time,end_time=end_time,duration=duration,total_mark=mark)
+        # new_exam.save()
+        # return redirect()
+        Exam.objects.filter(id=id).update(exam_name=name,exam_date=date,start_time=start_time,end_time=end_time,duration=duration,total_mark=mark)
+        return redirect('admins:exams')
+
+    context={
+            "is_editExam":True,
+            "exam":exam,        
+        }  
+    return render(request,'adminapps/edit_exam_details.html', context)
 
 
 # rechedule
@@ -711,6 +747,7 @@ def result_batch(request):
     }
     return render(request,'adminapps/result_batch.html', context)
 
+@login_required(login_url='/adminapp/login')
 def result_exam(request,id):
     exams = Exam.objects.filter(batch__id=id)
     context={

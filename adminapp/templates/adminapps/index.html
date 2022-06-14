@@ -146,6 +146,7 @@
                             <li {% if is_exam %} class="active"{% endif %}
                                 {% if is_exam_add_list %} class="active"{% endif %}
                                 {% if is_exam_add_first %} class="active"{% endif %}
+                                {% if is_editExam %} class="active"{% endif %}
                                 {% if is_exam_add_two %} class="active"{% endif %}>
                                 <a href="{% url 'admins:exams' %}"><i class="fas fa-clipboard-list"></i> <span>Exam </span></a>
                             </li>

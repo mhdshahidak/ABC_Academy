@@ -20,12 +20,12 @@
                         <li class="nav-item"><a class="nav-link active"
                                 href="#solid-rounded-justified-tab1" data-bs-toggle="tab">All Exams</a>
                         </li>
-                        <!-- <li class="nav-item"><a class="nav-link"
+                        <li class="nav-item"><a class="nav-link"
                                 href="#solid-rounded-justified-tab2"
                                 data-bs-toggle="tab">Upcoming Exams</a></li>
                         <li class="nav-item"><a class="nav-link"
                                 href="#solid-rounded-justified-tab3"
-                                data-bs-toggle="tab">Previous Exams</a></li> -->
+                                data-bs-toggle="tab">Previous Exams</a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane show active" id="solid-rounded-justified-tab1">
@@ -41,7 +41,7 @@
                                                                 Exam Name
                                                             </th>
                                                             <th>
-                                                                Class
+                                                                Batch
                                                             </th>
                                                           
                                                             <th>
@@ -53,8 +53,8 @@
                                                             <th>
                                                                 Date
                                                             </th>
-                                                            <th class="text-end">
-                                                                Action
+                                                            <th class="text-center">
+                                                                Edit
                                                             </th>
                                                         </tr>
                                                     </thead>
@@ -83,12 +83,12 @@
                                                             </td>
                                                             <td class="text-end">
                                                                 <div class="actions">
-                                                                    <a href="/adminapp/examsaddtwo/{{i.id}}" class="btn btn-sm bg-success-light me-2">
-                                                                        <i class="fas fa-pen"></i>
+                                                                    <a href="/adminapp/editexamdata/{{i.id}}" class="btn btn-sm bg-success">
+                                                                        <i class="fas fa-pen"></i> Exam
                                                                     </a>
-                                                                    <!-- <a href="#" class="btn btn-sm bg-danger-light">
-                                                                        <i class="fas fa-trash"></i>
-                                                                    </a> -->
+                                                                    <a href="/adminapp/examsaddtwo/{{i.id}}" class="btn btn-sm bg-success-light me-2">
+                                                                        <i class="fas fa-pen"></i>Question
+                                                                    </a>
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -116,9 +116,7 @@
                                                             <th>
                                                                 Class
                                                             </th>
-                                                            <th>
-                                                                Subject
-                                                            </th>
+                                                        
                                                             <th>
                                                                 Start Time
                                                             </th>
@@ -128,110 +126,45 @@
                                                             <th>
                                                                 Date
                                                             </th>
-                                                            <th class="text-end">
-                                                                Action
+                                                            <th class="text-center">
+                                                                Edit
                                                             </th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                        {% for u in uexam %}
                                                         <tr>
                                                             <td>
                                                                 <h2>
-                                                                    <a>Class Test</a>
+                                                                  {{u.exam_name}}
                                                                 </h2>
                                                             </td>
                                                             <td>
-                                                                10
+                                                                {{u.batch.course.couse_name}}
+                                                            </td>
+                                                            
+                                                            <td>
+                                                                {{u.start_time}}
                                                             </td>
                                                             <td>
-                                                                English
+                                                                {{u.end_time}}
                                                             </td>
                                                             <td>
-                                                                10:00 AM
-                                                            </td>
-                                                            <td>
-                                                                01:00 PM
-                                                            </td>
-                                                            <td>
-                                                                23 Apr 2020
+                                                                {{u.exam_date}}
+                                                              
                                                             </td>
                                                             <td class="text-end">
                                                                 <div class="actions">
-                                                                    <a href="edit-exam.html" class="btn btn-sm bg-success-light me-2">
-                                                                        <i class="fas fa-pen"></i>
+                                                                    <a href="/adminapp/editexamdata/{{u.id}}" class="btn btn-sm bg-success">
+                                                                        <i class="fas fa-pen"></i> Exam
                                                                     </a>
-                                                                    <a href="#" class="btn btn-sm bg-danger-light">
-                                                                        <i class="fas fa-trash"></i>
+                                                                    <a href="/adminapp/examsaddtwo/{{u.id}}" class="btn btn-sm bg-success-light me-2">
+                                                                        <i class="fas fa-pen"></i>Question
                                                                     </a>
                                                                 </div>
                                                             </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <h2>
-                                                                    <a>Half Yearly</a>
-                                                                </h2>
-                                                            </td>
-                                                            <td>
-                                                                1
-                                                            </td>
-                                                            <td>
-                                                                Botony
-                                                            </td>
-                                                            <td>
-                                                                10:00 AM
-                                                            </td>
-                                                            <td>
-                                                                01:00 PM
-                                                            </td>
-                                                            <td>
-                                                                23 Apr 2020
-                                                            </td>
-                                                            <td class="text-end">
-                                                                <div class="actions">
-                                                                    <a href="edit-exam.html" class="btn btn-sm bg-success-light me-2">
-                                                                        <i class="fas fa-pen"></i>
-                                                                    </a>
-                                                                    <a href="#" class="btn btn-sm bg-danger-light">
-                                                                        <i class="fas fa-trash"></i>
-                                                                    </a>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <h2>
-                                                                    <a>Quaterly</a>
-                                                                </h2>
-                                                            </td>
-                                                            <td>
-                                                                9
-                                                            </td>
-                                                            <td>
-                                                                Biology
-                                                            </td>
-                                                            <td>
-                                                                01:00 PM
-                                                            </td>
-                                                            <td>
-                                                                04:00 PM
-                                                            </td>
-                                                            <td>
-                                                                26 Nov 2020
-                                                            </td>
-                                                            <td class="text-end">
-                                                                <div class="actions">
-                                                                    <a href="edit-exam.html" class="btn btn-sm bg-success-light me-2">
-                                                                        <i class="fas fa-pen"></i>
-                                                                    </a>
-                                                                    <a href="#" class="btn btn-sm bg-danger-light">
-                                                                        <i class="fas fa-trash"></i>
-                                                                    </a>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        
-                                                        
+                                                      {% endfor %} 
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -255,9 +188,7 @@
                                                             <th>
                                                                 Class
                                                             </th>
-                                                            <th>
-                                                                Subject
-                                                            </th>
+                                                            
                                                             <th>
                                                                 Start Time
                                                             </th>
@@ -267,141 +198,33 @@
                                                             <th>
                                                                 Date
                                                             </th>
-                                                            <th class="text-end">
-                                                                Action
-                                                            </th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         
+                                                        {% for p in pexam %}
                                                         <tr>
                                                             <td>
                                                                 <h2>
-                                                                    <a>Quaterly</a>
+                                                                  {{p.exam_name}}
                                                                 </h2>
                                                             </td>
                                                             <td>
-                                                                7
+                                                                {{p.batch.course.couse_name}}
+                                                            </td>
+                                                            
+                                                            <td>
+                                                                {{p.start_time}}
                                                             </td>
                                                             <td>
-                                                                History
+                                                                {{p.end_time}}
                                                             </td>
                                                             <td>
-                                                                01:00 PM
-                                                            </td>
-                                                            <td>
-                                                                04:00 PM
-                                                            </td>
-                                                            <td>
-                                                                23 Jul 2020
-                                                            </td>
-                                                            <td class="text-end">
-                                                                <div class="actions">
-                                                                    <a href="edit-exam.html" class="btn btn-sm bg-success-light me-2">
-                                                                        <i class="fas fa-pen"></i>
-                                                                    </a>
-                                                                    <a href="#" class="btn btn-sm bg-danger-light">
-                                                                        <i class="fas fa-trash"></i>
-                                                                    </a>
-                                                                </div>
+                                                                {{p.exam_date}}
+                                                              
                                                             </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <h2>
-                                                                    <a>Class Test</a>
-                                                                </h2>
-                                                            </td>
-                                                            <td>
-                                                                2
-                                                            </td>
-                                                            <td>
-                                                                Biology
-                                                            </td>
-                                                            <td>
-                                                                10:00 AM
-                                                            </td>
-                                                            <td>
-                                                                01:00 PM
-                                                            </td>
-                                                            <td>
-                                                                15 Oct 2020
-                                                            </td>
-                                                            <td class="text-end">
-                                                                <div class="actions">
-                                                                    <a href="edit-exam.html" class="btn btn-sm bg-success-light me-2">
-                                                                        <i class="fas fa-pen"></i>
-                                                                    </a>
-                                                                    <a href="#" class="btn btn-sm bg-danger-light">
-                                                                        <i class="fas fa-trash"></i>
-                                                                    </a>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <h2>
-                                                                    <a>Half Yearly</a>
-                                                                </h2>
-                                                            </td>
-                                                            <td>
-                                                                6
-                                                            </td>
-                                                            <td>
-                                                                Botony
-                                                            </td>
-                                                            <td>
-                                                                10:00 AM
-                                                            </td>
-                                                            <td>
-                                                                01:00 PM
-                                                            </td>
-                                                            <td>
-                                                                02 Jun 2020
-                                                            </td>
-                                                            <td class="text-end">
-                                                                <div class="actions">
-                                                                    <a href="edit-exam.html" class="btn btn-sm bg-success-light me-2">
-                                                                        <i class="fas fa-pen"></i>
-                                                                    </a>
-                                                                    <a href="#" class="btn btn-sm bg-danger-light">
-                                                                        <i class="fas fa-trash"></i>
-                                                                    </a>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <h2>
-                                                                    <a>Class Test</a>
-                                                                </h2>
-                                                            </td>
-                                                            <td>
-                                                                12
-                                                            </td>
-                                                            <td>
-                                                                Mathematics
-                                                            </td>
-                                                            <td>
-                                                                10:00 AM
-                                                            </td>
-                                                            <td>
-                                                                01:00 PM
-                                                            </td>
-                                                            <td>
-                                                                23 Apr 2020
-                                                            </td>
-                                                            <td class="text-end">
-                                                                <div class="actions">
-                                                                    <a href="edit-exam.html" class="btn btn-sm bg-success-light me-2">
-                                                                        <i class="fas fa-pen"></i>
-                                                                    </a>
-                                                                    <a href="#" class="btn btn-sm bg-danger-light">
-                                                                        <i class="fas fa-trash"></i>
-                                                                    </a>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
+                                                      {% endfor %}
                                                     </tbody>
                                                 </table>
                                             </div>
