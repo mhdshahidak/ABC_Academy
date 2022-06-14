@@ -53,7 +53,8 @@ urlpatterns = [
     # result
 
     path('resultbatch', views.result_batch,name="resultbatch"),
-    path('result/<int:id>', views.result,name="result"),
+    path('resultexam/<int:id>', views.result_exam,name="resultexam"),
+    path('result/<int:id>/<int:bid>', views.result,name="result"),
     path('checkresult/<int:eid>/<int:sid>', views.checkresult,name="checkresult"),
 
     # Exam rechedule

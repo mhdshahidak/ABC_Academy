@@ -487,7 +487,7 @@ def exam_add_first(request,id):
 
     batch = Batch.objects.get(id=id)
     context={
-        "is_exam_add_one":True,
+        "is_exam_add_first":True,
         "batch":batch,
     }
     return render(request,'adminapps/exam_add1.html', context)
@@ -698,20 +698,6 @@ def getdatapayment(request):
 
 
 @login_required(login_url='/adminapp/login')
-def result(request,id):
-    # answer= Answer.objects.filter()
-    answer= ExamStatus.objects.filter(student__course__id=id)
-    
-    context={
-        "is_result":True,
-        "answer":answer
-
-
-    }
-    return render(request,'adminapps/result.html', context)
-
-
-@login_required(login_url='/adminapp/login')
 def result_batch(request):
     # answer= Answer.objects.filter()
     # answer= ExamStatus.objects.all()
@@ -725,12 +711,37 @@ def result_batch(request):
     }
     return render(request,'adminapps/result_batch.html', context)
 
+def result_exam(request,id):
+    exams = Exam.objects.filter(batch__id=id)
+    context={
+        "is_result_exam":True,
+        "exams":exams,
+        
+    }
+    return render(request,'adminapps/result_exam.html', context)
+
+
+@login_required(login_url='/adminapp/login')
+def result(request,id,bid):
+    # answer= Answer.objects.filter()
+    answer= ExamStatus.objects.filter(student__course__id=bid,exam_id=id)
+    
+    context={
+        "is_result":True,
+        "answer":answer
+
+
+    }
+    return render(request,'adminapps/result.html', context)
+
+
+
 @login_required(login_url='/adminapp/login')
 def checkresult(request,eid,sid):
     answer = Answer.objects.filter(exam=eid,student=sid)
     std= Student.objects.get(id=sid)
     context={
-        "is_students_list":True,
+        "is_checkresult":True,
         "answer":answer,
         "std":std
 

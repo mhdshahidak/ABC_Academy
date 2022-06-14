@@ -143,10 +143,16 @@
                             <li {% if is_batch %} class="active"{% endif %}>
                                 <a href="{% url 'admins:batch' %}"><i class="fa fa-users"></i> <span>Batches</span></a>
                             </li>
-                            <li {% if is_exam %} class="active"{% endif %}>
+                            <li {% if is_exam %} class="active"{% endif %}
+                                {% if is_exam_add_list %} class="active"{% endif %}
+                                {% if is_exam_add_first %} class="active"{% endif %}
+                                {% if is_exam_add_two %} class="active"{% endif %}>
                                 <a href="{% url 'admins:exams' %}"><i class="fas fa-clipboard-list"></i> <span>Exam </span></a>
                             </li>
-                            <li {% if is_result_batch %} class="active"{% endif %}>
+                            <li {% if is_result_batch %} class="active"{% endif %}
+                                {% if is_result_exam %} class="active"{% endif %}
+                                {% if is_result %} class="active"{% endif %}
+                                {% if is_checkresult %} class="active"{% endif %}>
                                 <a href="{% url 'admins:resultbatch' %}"><i class="fas fa-clipboard"></i><span>Result</span></a>
                             </li>
                             <li {% if is_reschedule %} class="active"{% endif %}>
