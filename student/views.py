@@ -184,9 +184,10 @@ def fee(request):
     viewpro=Student.objects.get(id=id) 
     total=viewpro.course.course.total_fees
     balanceamount=total
+    recvamount = ""
     if paymentdetails.exists():
         recivedamount = Payment.objects.filter(student=viewpro.id).aggregate(Sum('paidamount'))
-        recvamount= recivedamount['paidamount__sum']
+        recvamount = recivedamount['paidamount__sum']
         balanceamount  = total - recivedamount['paidamount__sum']
        
 
