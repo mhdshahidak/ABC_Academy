@@ -24,7 +24,7 @@ function questions() {
                 $("#questionsDiv").append(' <h6 class="card-title d-flex justify-content-between">\
                 <span> Question Number : </span>\
                 <span> Mark : '+ response['mark'] + '</span>\
-            </h6><br>\
+                    </h6><br>\
                 <ul class="list-group ">\
                     <li class="py-0">'+questionNo+'.\
                       '+ response['question'] + '\
@@ -130,5 +130,4 @@ if($('#timer-countdown').length > 0) {
         } 
     });
 
-    
 }

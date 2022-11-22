@@ -12,7 +12,7 @@ from django.contrib.auth import logout
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 
-from adminapp.models import Batch, Branch, Courses, Exam, Instructions, Questions, Teacher,Student
+from adminapp.models import Batch, Branch, Courses, Exam, Instructions, Questions, Teacher, Student
 from branch.models import Payment
 from django.db.models import Sum
 from student.models import Answer, ExamStatus
@@ -539,10 +539,13 @@ def savedata(request):
     exam_id = request.POST['exam_id']
     options = request.POST['options']
     mark = request.POST['mark']
+    answer = request.POST['answer']
 
     exam_pk = Exam.objects.get(id=exam_id)
-    new_question = Questions(exam_id=exam_pk,question=question,type=type,option=options,mark=mark)
+    new_question = Questions(exam_id=exam_pk,question=question,type=type,option=options,mark=mark,true_answer=answer)
     new_question.save()
+    # answer = QuestionAnswer(question=new_question,true_answer=answer)
+    # answer.save()
     data={
         'no':new_question.id,
         'question':new_question.question,
@@ -564,6 +567,7 @@ def editQuestiontdata(request,id):
         "question":editquestion.question,
         "type":editquestion.type,
         "option":editquestion.option,
+        "answer":editquestion.true_answer,
         "mark":editquestion.mark,
 
     }
@@ -576,10 +580,14 @@ def updateQuestion(request):
     id=request.POST['Questionid']
     editquestion = request.POST['editquestion']
     editoptions = request.POST['editoptions']
+    editanswer = request.POST['editanswer']
     editmark = request.POST['editmark']
  
-    Questions.objects.filter(id=id).update(question=editquestion, option=editoptions, mark=editmark)
+    Questions.objects.filter(id=id).update(question=editquestion, option=editoptions, true_answer=editanswer, mark=editmark)
     return JsonResponse({'message': 'sucesses'})   
+
+
+
 
 
 @login_required(login_url='/login/')
@@ -776,11 +784,15 @@ def result(request,id,bid):
 @login_required(login_url='/adminapp/login')
 def checkresult(request,eid,sid):
     answer = Answer.objects.filter(exam=eid,student=sid)
+    total_mark = Questions.objects.filter(exam_id=eid).aggregate(Sum('mark'))
+    mark = Answer.objects.filter(exam=eid,student=sid).aggregate(Sum('mark'))
     std= Student.objects.get(id=sid)
     context={
         "is_checkresult":True,
         "answer":answer,
-        "std":std
+        "std":std,
+        "total_mark":total_mark,
+        "mark":mark,
 
     }
     return render(request,'adminapps/checkresult.html', context)

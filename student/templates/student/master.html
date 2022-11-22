@@ -100,9 +100,9 @@
                         <li {% if is_examlist %} class="active" {% elif is_examinst %} class="active" {% elif is_exam %} class="active" {% endif %}>
                             <a href="{% url 'student:examlist' %}"><i class="fa fa-edit"></i> <span>Exam</span></a>
                         </li>
-                        {% comment %} <li {% if is_result %} class="active" {% endif %}>
+                        <li {% if is_result %} class="active" {% endif %}>
                             <a href="{% url 'student:result' %}"><i class="fa fa-clipboard"></i> <span>Result</span></a>
-                        </li> {% endcomment %}
+                        </li> 
                         <li {% if is_fee %} class="active" {% endif %}>
                             <a href="{% url 'student:fee' %}"><i class="fas fa-rupee-sign"></i> <span>Fee</span></a>
                         </li>

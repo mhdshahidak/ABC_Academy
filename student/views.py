@@ -112,7 +112,7 @@ def exam_instructions(request,id):
     exam = Exam.objects.get(id=id)
     exam_date = exam.exam_date
     exam_time = exam.start_time
-    end_time = exam.end_time  
+    end_time = exam.end_time
    
     if str(exam_date) == str(now):
         currentTime =  datetime.now().time()
@@ -168,13 +168,13 @@ def examq(request):
         }
     return render(request,'student/examq.html',context)
 
-# def result(request):
-#     student=request.user.Student
-#     context = {
-#         "is_result": True,
-#         "student":student,
-#         }
-#     return render(request,'student/result.html',context)
+def result(request):
+    student=request.user.Student
+    context = {
+        "is_result": True,
+        "student":student,
+        }
+    return render(request,'student/result.html',context)
 
 @login_required(login_url='/adminapp/login')
 def fee(request):
@@ -252,8 +252,12 @@ def datasave(request):
         exam=request.POST['exam_id']
         studentid=request.user.Student
         queid= Questions.objects.get(id=questionid)
+        mark = queid.mark
         examid= Exam.objects.get(id=exam)
-        ans=Answer(exam=examid,student=studentid,question=queid,savedaswer=answer,status="Wait For Valuation" )
-        ans.save()
-
+        if queid.true_answer == answer:
+            ans=Answer(exam=examid,student=studentid,question=queid,savedaswer=answer,ans_true=True,mark=mark,status="Wait For Valuation" )
+            ans.save()
+        else :
+            ans=Answer(exam=examid,student=studentid,question=queid,savedaswer=answer,status="Wait For Valuation" )
+            ans.save()
         return JsonResponse({'msg':'added'})

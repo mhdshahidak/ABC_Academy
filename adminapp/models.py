@@ -141,8 +141,17 @@ class Questions(models.Model):
     question = models.CharField(max_length=9000)
     type = models.CharField(max_length=50)
     option = models.CharField(max_length=5000,blank=True)
-    mark = models.FloatField()
+    true_answer = models.CharField(max_length=1000,null=True)
+    mark = models.FloatField(default=0)
 
     class Meta:
         db_table = 'questions'
+
+
+# class QuestionAnswer(models.Model):
+#     question = models.OneToOneField(Questions,on_delete=models.CASCADE,null=True)
+#     true_answer = models.CharField(max_length=1000,null=True)
+
+#     class Meta:
+#         db_table = 'qanswer'
     

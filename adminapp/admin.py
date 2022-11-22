@@ -50,6 +50,10 @@ class QuestionsAdmin(admin.ModelAdmin):
     list_display = ('question','type','exam_id')
 admin.site.register(Questions,QuestionsAdmin)
 
+# class QuestionAnswerAdmin(admin.ModelAdmin):
+#     list_display = ('question','true_answer')
+# admin.site.register(QuestionAnswer,QuestionAnswerAdmin)
+
 
 class ExamStatusAdmin(admin.ModelAdmin):
     list_display = ('student','status')

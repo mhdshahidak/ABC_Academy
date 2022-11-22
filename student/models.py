@@ -20,4 +20,6 @@ class Answer(models.Model):
     exam = models.ForeignKey(Exam,on_delete=models.CASCADE,null=True)
     question = models.ForeignKey(Questions,on_delete=models.CASCADE,null=True)
     savedaswer=models.CharField(max_length=30000)
+    ans_true = models.BooleanField(default=False)
+    mark = models.FloatField(default=0)
     status=models.CharField(max_length=30,null=True)

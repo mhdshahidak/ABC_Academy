@@ -47,15 +47,15 @@
                                         <ul>
                                             <li>Type:</li>
                                             <li>
-                                                <input type="radio" name="radio" id="mcq" value="mcq"
+                                                <input type="radio" checked="true" name="radio" id="mcq" value="mcq"
                                                     class="form-check-input">
                                                 MCQ
                                             </li>
-                                            <li>
+                                            <!-- <li>
                                                 <input type="radio" id="desc" name="radio" value="description"
                                                     class="form-check-input">
                                                 DESCRIPTION
-                                            </li>
+                                            </li> -->
                                             <input type="number" class="form-control" id="exam_id" value="{{ exam.id }}"
                                                 name="exam_id" hidden>
                                         </ul>
@@ -73,6 +73,16 @@
                                 <div class="col-12 mcq">
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="options" name="options">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <h6 class="">
+                                        <span>Answer</span>
+                                    </h6>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" required id="answer" name="answer">
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -107,6 +117,7 @@
 
                                         <th>Q NO</th>
                                         <th>Type</th>
+                                        <th>Answer</th>
                                         <th>Maximum mark</th>
                                         <th class="text-end">Action</th>
                                     </tr>
@@ -119,6 +130,7 @@
                                                 <h2>{{ i.type }}</h2>
                                             </td>
                                             <td><h2>{{ i.mark}}</h2></td>
+                                            <td><h2>{{ i.true_answer}}</h2></td>
                                             <td class="text-end">
                                                 <div class="actions">
                                                     <a  onclick="editdata({{i.id}})" data-bs-toggle="modal" data-bs-target="#edit_items" class="btn btn-sm bg-success-light me-2">
@@ -194,15 +206,15 @@
                                         <ul>
                                             <li>Type:</li>
                                             <li>
-                                                <input type="radio" name="radio" id="mcq1" value="mcq"
+                                                <input type="radio" checked="true" name="radio" id="mcq1" value="mcq"
                                                     class="form-check-input">
                                                 MCQ
                                             </li>
-                                            <li>
+                                            <!-- <li>
                                                 <input type="radio" id="desc1" name="radio" value="description"
                                                     class="form-check-input">
                                                 DESCRIPTION
-                                            </li>
+                                            </li> -->
                                             <input type="number" class="form-control" id="exam_id" value="{{ exam.id }}"
                                                 name="exam_id" hidden>
                                         </ul>
@@ -222,6 +234,15 @@
                                         <input type="text" class="form-control" id="editoptions" name="options">
                                     </div>
                                 </div>
+                                <div class="col-12">
+                                    <h6 class="">
+                                        <span>Answer</span>
+                                    </h6>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="editanswer" name="answer">
+                                    </div>
                                 <div class="col-12">
                                     <h6 class="">
                                         <span>Maximum Mark</span>
@@ -321,6 +342,7 @@
                 $('#editquestion').val(responce.question.question)
                 // $('#editcat').val(responce.question.type)
                 $('#editoptions').val(responce.question.option)
+                $('#editanswer').val(responce.question.answer)
                 $('#editmark').val(responce.question.mark)
                 if(responce.question.type == 'mcq'){
                     $("#mcq1").prop('checked',true)
@@ -343,6 +365,7 @@
                     'Questionid': id,
                     'editquestion': $('#editquestion').val(),
                     'editoptions': $('#editoptions').val(),
+                    'editanswer': $('#editanswer').val(),
                     'editmark': $('#editmark').val(),
                     
                 },
