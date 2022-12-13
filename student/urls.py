@@ -12,6 +12,7 @@ urlpatterns = [
     path('exam/<int:id>',views.exam,name='exam'),
     path('examq',views.examq,name='examq'),
     path('result',views.result,name='result'),
+    path('show-result/<int:id>', views.showResult, name='showresult'),
     path('fee',views.fee,name='fee'),
     path('calendar',views.calendar,name='calendar'),                                                            
     path('questions/',views.questions,name='questions'),                                                            

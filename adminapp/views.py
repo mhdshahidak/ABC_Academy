@@ -769,15 +769,21 @@ def result_exam(request,id):
 @login_required(login_url='/adminapp/login')
 def result(request,id,bid):
     # answer= Answer.objects.filter()
+    exam = Exam.objects.get(id=id)
     answer= ExamStatus.objects.filter(student__course__id=bid,exam_id=id)
-    
     context={
         "is_result":True,
-        "answer":answer
-
-
+        "answer":answer,
+        "exam":exam,
     }
     return render(request,'adminapps/result.html', context)
+
+
+def resultPublish(request,id):
+    exam = Exam.objects.get(id=id)
+    exam.is_published = True
+    exam.save()
+    return redirect("admins:resultbatch")
 
 
 

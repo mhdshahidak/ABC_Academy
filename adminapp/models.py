@@ -126,6 +126,7 @@ class Exam(models.Model):
     end_time = models.TimeField()
     duration = models.IntegerField()
     total_mark = models.FloatField()
+    is_published = models.BooleanField(default=False)
 
 
 class Instructions(models.Model):

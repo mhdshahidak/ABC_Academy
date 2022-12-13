@@ -9,7 +9,11 @@
                         <h3 class="page-title">Result</h3>
                     </div>
                 </div>
-                <a  class="btn btn-success">PUBLISH RESULT</a>
+                {% if exam.is_published == False %}
+                <a href="{% url 'admins:publishresult' exam.id %}" class="btn btn-success">PUBLISH RESULT</a>
+                {% else %}
+                <a class="btn btn-danger">RESULT PUBLISHED</a>
+                {% endif %}
             </div>
             
             <!-- <div class="row">

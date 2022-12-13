@@ -57,6 +57,7 @@ urlpatterns = [
     path('resultexam/<int:id>', views.result_exam,name="resultexam"),
     path('result/<int:id>/<int:bid>', views.result,name="result"),
     path('checkresult/<int:eid>/<int:sid>', views.checkresult,name="checkresult"),
+    path('publishresult/<int:id>', views.resultPublish,name="publishresult"),
 
     # Exam rechedule
 

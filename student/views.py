@@ -75,7 +75,7 @@ def edit_profile(request,id):
                 if oldpassword == currentpassword:
                     Student.objects.filter(id=students_id).update(password=newpassword)
                     changePassword = get_user_model().objects.get(id=request.user.id)
-                    changePassword.set_password(newpassword) 
+                    changePassword.set_password(newpassword)
                     changePassword.save()
                     return redirect('student:profile')
                 else:
@@ -170,11 +170,29 @@ def examq(request):
 
 def result(request):
     student=request.user.Student
+    exam = Exam.objects.filter(batch=student.course,is_published=True)
     context = {
         "is_result": True,
         "student":student,
+        "exam":exam,
         }
     return render(request,'student/result.html',context)
+
+
+def showResult(request,id):
+    student=request.user.Student
+    answer = Answer.objects.filter(exam=id,student=student)
+    total_mark = Questions.objects.filter(exam_id=id).aggregate(Sum('mark'))
+    mark = Answer.objects.filter(exam=id,student=student).aggregate(Sum('mark'))
+    std= Student.objects.get(id=student.id)
+    context = {
+        "is_result": True,
+        "answer":answer,
+        "std":student,
+        "total_mark":total_mark,
+        "mark":mark,
+        }
+    return render(request,'student/show-result.html',context)
 
 @login_required(login_url='/adminapp/login')
 def fee(request):
